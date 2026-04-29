@@ -25,7 +25,7 @@ Before you begin, ensure you have the following installed:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/kurtmorales-portfolio.git
+   git clone https://github.com/kurtmorales-tech/kurtmorales-portfolio.git
    cd kurtmorales-portfolio
    ```
 
@@ -88,4 +88,4 @@ This project is licensed under the MIT License.
 
 Kurt Morales - [Your Email or Social Links]
 
-Project Link: [https://github.com/yourusername/kurtmorales-portfolio](https://github.com/yourusername/kurtmorales-portfolio)
+Project Link: [https://github.com/kurtmorales-tech/kurtmorales-portfolio](https://github.com/kurtmorales-tech/kurtmorales-portfolio)
