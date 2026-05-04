@@ -20,8 +20,10 @@
     "tailwindcss": "^4.1.14"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260503.1",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "cloudflare": "^6.0.0",
     "typescript": "^5.8.0"
   }
 }

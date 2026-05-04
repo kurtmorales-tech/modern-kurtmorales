@@ -1,12 +1,14 @@
-const CMS_URL = import.meta.env.PUBLIC_CMS_URL || 'http://localhost:3001';
+// API client — reads from Cloudflare Pages Functions + D1
+// Falls back to static data if API is unavailable (build time)
 
-export interface PayloadPost {
+const API = import.meta.env.PUBLIC_API_URL || '';  // empty = same origin (Pages Functions)
+
+export interface Post {
   id: string;
   slug: string;
   title: string;
   excerpt: string;
-  content?: any;
-  contentMarkdown?: string;
+  content?: string;
   date: string;
   readTime?: string;
   tags?: { tag: string }[];
@@ -14,7 +16,7 @@ export interface PayloadPost {
   status: 'draft' | 'published';
 }
 
-export interface PayloadProject {
+export interface Project {
   id: string;
   title: string;
   type?: string;
@@ -25,29 +27,32 @@ export interface PayloadProject {
   order?: number;
 }
 
-export async function getPosts(): Promise<PayloadPost[]> {
+// Keep PayloadCMS interface aliases for backward compat
+export type PayloadPost = Post;
+export type PayloadProject = Project;
+
+export async function getPosts(): Promise<Post[]> {
   try {
-    const res = await fetch(`${CMS_URL}/api/posts?where[status][equals]=published&sort=-date&limit=100`);
+    const res = await fetch(`${API}/api/posts?status=published&limit=50`);
     if (!res.ok) return [];
-    const data = await res.json();
-    return data.docs;
+    const data = await res.json() as { docs: Post[] };
+    return data.docs ?? [];
   } catch { return []; }
 }
 
-export async function getPostBySlug(slug: string): Promise<PayloadPost | null> {
+export async function getPostBySlug(slug: string): Promise<Post | null> {
   try {
-    const res = await fetch(`${CMS_URL}/api/posts?where[slug][equals]=${slug}&limit=1`);
+    const res = await fetch(`${API}/api/posts/${encodeURIComponent(slug)}`);
     if (!res.ok) return null;
-    const data = await res.json();
-    return data.docs[0] || null;
+    return await res.json() as Post;
   } catch { return null; }
 }
 
-export async function getProjects(): Promise<PayloadProject[]> {
+export async function getProjects(): Promise<Project[]> {
   try {
-    const res = await fetch(`${CMS_URL}/api/projects?sort=order&limit=100`);
+    const res = await fetch(`${API}/api/projects`);
     if (!res.ok) return [];
-    const data = await res.json();
-    return data.docs;
+    const data = await res.json() as { docs: Project[] };
+    return data.docs ?? [];
   } catch { return []; }
 }
