@@ -1,24 +1,37 @@
 ---
 ---
-<section id="home" class="relative pt-32 pb-40 border-b border-gray-100">
-  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-[1.2fr_0.8fr] gap-20 items-center">
+<section id="home" class="relative pt-32 pb-40 border-b border-gray-100 mesh-gradient grain overflow-hidden">
+  <!-- Decorative elements -->
+  <div class="absolute top-20 right-10 w-72 h-72 bg-brand/5 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute bottom-10 left-10 w-48 h-48 bg-brand/3 rounded-full blur-2xl pointer-events-none"></div>
+
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-[1.2fr_0.8fr] gap-20 items-center relative z-10">
     <div>
-      <span class="inline-block text-[10px] font-black tracking-[0.3em] uppercase mb-8 text-gray-400">
-        Web Design & Development
-      </span>
-      <h1 class="text-5xl md:text-8xl font-display font-medium leading-[0.95] tracking-tight mb-10 text-brand">
-        Purposeful design.<br/>Fast performance.
+      <div class="reveal inline-flex items-center gap-3 mb-8 px-4 py-2 bg-white/60 backdrop-blur-sm border border-gray-200/60 rounded-full">
+        <span class="w-2 h-2 bg-green-500 rounded-full pulse-dot"></span>
+        <span class="text-[10px] font-black tracking-[0.3em] uppercase text-gray-500">
+          Available for Projects
+        </span>
+      </div>
+
+      <h1 class="reveal text-5xl md:text-[5.5rem] font-display font-medium leading-[0.92] tracking-tight mb-10" style="transition-delay: 100ms">
+        <span class="text-brand">Purposeful</span>
+        <span class="text-gray-900"> design.</span><br/>
+        <span class="text-gray-900">Fast </span>
+        <span class="text-brand">performance.</span>
       </h1>
-      <p class="text-lg md:text-xl text-gray-500 mb-12 max-w-xl leading-relaxed">
+
+      <p class="reveal text-lg md:text-xl text-gray-500 mb-12 max-w-xl leading-relaxed" style="transition-delay: 200ms">
         KurtMorales builds high-performance web experiences that focus on clarity, conversion, and long-term business growth.
       </p>
-      <div class="flex flex-col gap-6">
+
+      <div class="reveal flex flex-col gap-6" style="transition-delay: 300ms">
         <div class="flex flex-wrap gap-4">
-          <a href="mailto:email@kurtmorales.com" class="px-10 py-5 bg-brand text-white font-bold flex items-center gap-3 hover:opacity-90 transition-all active:scale-95">
+          <a href="mailto:email@kurtmorales.com" class="group px-10 py-5 bg-brand text-white font-bold flex items-center gap-3 hover:bg-brand-dark transition-all duration-300 active:scale-[0.97]">
             Let's Talk Projects
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-7-7 7 7-7 7"/></svg>
+            <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-7-7 7 7-7 7"/></svg>
           </a>
-          <a href="#projects" class="px-10 py-5 border border-brand text-brand font-bold hover:bg-brand hover:text-white transition-all active:scale-95">
+          <a href="#projects" class="px-10 py-5 border border-brand text-brand font-bold hover:bg-brand hover:text-white transition-all duration-300 active:scale-[0.97]">
             Explore Portfolio
           </a>
         </div>
@@ -28,17 +41,21 @@
       </div>
     </div>
 
-    <div class="border border-gray-900 p-10 relative bg-white">
+    <div class="reveal-right border border-gray-200 p-10 relative bg-white/80 backdrop-blur-sm card-lift">
+      <!-- Accent corner -->
+      <div class="absolute top-0 left-0 w-12 h-[2px] bg-brand"></div>
+      <div class="absolute top-0 left-0 w-[2px] h-12 bg-brand"></div>
+
       <div class="flex items-center gap-3 mb-8">
-        <span class="w-2 h-2 bg-black"></span>
+        <span class="w-2 h-2 bg-brand"></span>
         <span class="text-[10px] font-black uppercase tracking-widest text-gray-900">Current Availability</span>
       </div>
       <h2 class="text-2xl font-display font-medium mb-8 leading-tight">Delivering clean solutions for local & global businesses.</h2>
       <ul class="space-y-5 text-sm text-gray-500">
-        {['Las Vegas based, globally active', 'Cloudflare & Vercel deployment', 'Modern TypeScript architecture', 'User-centric interface design'].map((item) => (
-          <li class="flex items-start gap-4">
-            <span class="mt-1 w-1.5 h-1.5 border border-gray-300 flex-shrink-0"></span>
-            <span>{item}</span>
+        {['Las Vegas based, globally active', 'Cloudflare & Vercel deployment', 'Modern TypeScript architecture', 'User-centric interface design'].map((item, i) => (
+          <li class="flex items-start gap-4 group/item">
+            <span class="mt-1.5 w-1.5 h-1.5 border border-brand/40 group-hover/item:bg-brand group-hover/item:border-brand transition-colors flex-shrink-0"></span>
+            <span class="group-hover/item:text-gray-700 transition-colors">{item}</span>
           </li>
         ))}
       </ul>

@@ -23,21 +23,56 @@ const projects = cmsProjects.length > 0 ? cmsProjects : fallbackProjects;
     <Projects projects={projects} />
     <Skills />
     <DigitalFootprint />
-    <section id="contact" class="py-32 border-t border-gray-100">
-      <div class="max-w-6xl mx-auto px-6 text-center">
-        <span class="text-gray-400 font-bold text-[10px] tracking-widest uppercase block mb-6">Get in Touch</span>
-        <h2 class="text-4xl md:text-6xl font-display font-medium leading-tight text-brand mb-8">
-          Let's build something great.
+
+    <!-- Contact CTA — dark section -->
+    <section id="contact" class="relative py-32 bg-gray-950 text-white overflow-hidden">
+      <!-- Subtle gradient orbs -->
+      <div class="absolute top-0 left-1/4 w-96 h-96 bg-brand/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute bottom-0 right-1/4 w-64 h-64 bg-brand/5 rounded-full blur-2xl pointer-events-none"></div>
+
+      <div class="max-w-6xl mx-auto px-6 text-center relative z-10">
+        <div class="reveal">
+          <span class="inline-flex items-center gap-3 px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full mb-8">
+            <span class="w-2 h-2 bg-green-400 rounded-full pulse-dot"></span>
+            <span class="text-[10px] font-black tracking-[0.3em] uppercase text-gray-400">Open to New Projects</span>
+          </span>
+        </div>
+        <h2 class="reveal text-4xl md:text-6xl font-display font-medium leading-tight mb-8" style="transition-delay:100ms">
+          Let's build something<br/><span class="text-brand-light">great together.</span>
         </h2>
-        <p class="text-gray-500 text-lg max-w-xl mx-auto mb-12 leading-relaxed">
+        <p class="reveal text-gray-400 text-lg max-w-xl mx-auto mb-12 leading-relaxed" style="transition-delay:200ms">
           Ready to start a project? Reach out and let's discuss how I can help grow your online presence.
         </p>
-        <a href="mailto:email@kurtmorales.com" class="inline-flex items-center gap-3 px-10 py-5 bg-brand text-white font-bold hover:opacity-90 transition-all active:scale-95">
-          Start a Conversation
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-7-7 7 7-7 7"/></svg>
-        </a>
+        <div class="reveal flex flex-wrap justify-center gap-4" style="transition-delay:300ms">
+          <a href="mailto:email@kurtmorales.com" class="group inline-flex items-center gap-3 px-10 py-5 bg-brand text-white font-bold hover:bg-brand-light transition-all duration-300 active:scale-[0.97]">
+            Start a Conversation
+            <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-7-7 7 7-7 7"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/kurtanthonymorales/" target="_blank" rel="noreferrer" class="inline-flex items-center gap-3 px-10 py-5 border border-white/20 text-white font-bold hover:bg-white/10 transition-all duration-300 active:scale-[0.97]">
+            Connect on LinkedIn
+          </a>
+        </div>
       </div>
     </section>
   </main>
   <Footer />
 </BaseLayout>
+
+<!-- Scroll Reveal Observer -->
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+  );
+
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach((el) => {
+    observer.observe(el);
+  });
+</script>

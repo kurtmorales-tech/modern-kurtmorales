@@ -4,43 +4,54 @@ const services = [
     icon: 'layout',
     title: 'Brand Websites',
     desc: 'High-clarity interfaces designed to build trust and present your services effectively.',
+    num: '01',
   },
   {
     icon: 'arrow',
     title: 'Conversion Pages',
     desc: 'Goal-oriented landing pages optimized for maximum lead acquisition and sales.',
+    num: '02',
   },
   {
     icon: 'code',
     title: 'Custom Tools',
     desc: 'Bespoke dashboards, booking systems, and interactive calculators for business workflows.',
+    num: '03',
   },
 ];
 ---
-<section id="services" class="py-32">
+<section id="services" class="py-32 relative">
   <div class="max-w-6xl mx-auto px-6">
-    <div class="max-w-2xl mb-24">
+    <div class="max-w-2xl mb-24 reveal-left">
       <span class="text-gray-400 font-bold text-[10px] tracking-widest uppercase block mb-6">Expertise</span>
       <h2 class="text-4xl md:text-6xl font-display font-medium leading-tight text-brand">
         Digital products for service providers.
       </h2>
     </div>
-    <div class="grid md:grid-cols-3 gap-16">
-      {services.map((s) => (
-        <article class="flex flex-col">
-          <div class="mb-8 p-4 border border-gray-100 w-fit">
-            {s.icon === 'layout' && (
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-            )}
-            {s.icon === 'arrow' && (
-              <svg class="w-5 h-5 rotate-[-45deg]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-7-7 7 7-7 7"/></svg>
-            )}
-            {s.icon === 'code' && (
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-            )}
+    <div class="grid md:grid-cols-3 gap-6">
+      {services.map((s, i) => (
+        <article class="reveal group relative bg-white border border-gray-100 p-10 card-lift overflow-hidden" style={`transition-delay: ${i * 120}ms`}>
+          <!-- Number watermark -->
+          <span class="absolute -top-4 -right-2 text-[8rem] font-display font-bold text-gray-50 leading-none select-none group-hover:text-brand/5 transition-colors duration-500">{s.num}</span>
+
+          <div class="relative z-10">
+            <div class="mb-8 p-4 border border-gray-100 w-fit group-hover:border-brand/30 group-hover:bg-brand/5 transition-all duration-300">
+              {s.icon === 'layout' && (
+                <svg class="w-5 h-5 text-gray-400 group-hover:text-brand transition-colors duration-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              )}
+              {s.icon === 'arrow' && (
+                <svg class="w-5 h-5 rotate-[-45deg] text-gray-400 group-hover:text-brand transition-colors duration-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-7-7 7 7-7 7"/></svg>
+              )}
+              {s.icon === 'code' && (
+                <svg class="w-5 h-5 text-gray-400 group-hover:text-brand transition-colors duration-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              )}
+            </div>
+            <h3 class="text-xl font-bold mb-4 text-black tracking-tight group-hover:text-brand transition-colors duration-300">{s.title}</h3>
+            <p class="text-gray-500 leading-relaxed text-sm">{s.desc}</p>
+
+            <!-- Bottom accent -->
+            <div class="mt-8 h-[2px] w-0 bg-brand group-hover:w-full transition-all duration-500 ease-out"></div>
           </div>
-          <h3 class="text-xl font-bold mb-6 text-black tracking-tight">{s.title}</h3>
-          <p class="text-gray-500 leading-relaxed text-sm">{s.desc}</p>
         </article>
       ))}
     </div>

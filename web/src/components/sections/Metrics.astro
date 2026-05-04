@@ -1,18 +1,24 @@
 ---
 const metrics = [
-  { val: '19+', label: 'Public repos' },
-  { val: '4+', label: 'Badges earned' },
-  { val: '100%', label: 'Responsive' },
-  { val: 'Fast', label: 'Static delivery' },
+  { val: '19+', label: 'Public Repos', suffix: '' },
+  { val: '4+', label: 'Badges Earned', suffix: '' },
+  { val: '100', label: 'Responsive', suffix: '%' },
+  { val: '<1s', label: 'Load Times', suffix: '' },
 ];
 ---
-<section class="py-20 bg-white border-b border-gray-100">
+<section class="py-20 bg-white border-b border-gray-100 overflow-hidden">
   <div class="max-w-6xl mx-auto px-6">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-12">
-      {metrics.map((m) => (
-        <div class="text-center md:text-left">
-          <div class="text-4xl font-display font-medium text-brand mb-2">{m.val}</div>
-          <div class="text-[10px] font-black text-gray-400 uppercase tracking-widest">{m.label}</div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 stagger">
+      {metrics.map((m, i) => (
+        <div class="reveal text-center md:text-left group relative" style={`transition-delay: ${i * 120}ms`}>
+          <div class="relative">
+            <div class="text-4xl md:text-5xl font-display font-medium text-brand mb-3 counter tracking-tight">
+              {m.val}{m.suffix}
+            </div>
+            <div class="text-[10px] font-black text-gray-400 uppercase tracking-widest">{m.label}</div>
+          </div>
+          <!-- Hover accent line -->
+          <div class="absolute -bottom-4 left-1/2 md:left-0 w-0 h-[2px] bg-brand/30 group-hover:w-12 transition-all duration-500 -translate-x-1/2 md:translate-x-0"></div>
         </div>
       ))}
     </div>
