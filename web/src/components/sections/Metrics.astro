@@ -1,0 +1,20 @@
+---
+const metrics = [
+  { val: '19+', label: 'Public repos' },
+  { val: '4+', label: 'Badges earned' },
+  { val: '100%', label: 'Responsive' },
+  { val: 'Fast', label: 'Static delivery' },
+];
+---
+<section class="py-20 bg-white border-b border-gray-100">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-12">
+      {metrics.map((m) => (
+        <div class="text-center md:text-left">
+          <div class="text-4xl font-display font-medium text-brand mb-2">{m.val}</div>
+          <div class="text-[10px] font-black text-gray-400 uppercase tracking-widest">{m.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

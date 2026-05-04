@@ -1,91 +1,33 @@
-# Kurt Morales - Personal Portfolio
+# KurtMorales — Portfolio & Blog
 
-A modern, responsive personal portfolio website built with React, TypeScript, and Tailwind CSS. Showcasing projects, skills, and professional experience.
+Monorepo for [kurtmorales.com](https://kurtmorales.com): Astro 5 frontend + PayloadCMS backend.
 
-[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)](https://react.dev/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat&logo=vite&logoColor=white)](https://vitejs.dev/)
-
-## Features
-
-- **Responsive Design** - Optimized for all devices and screen sizes
-- **Modern UI/UX** - Clean, minimalist aesthetic with smooth animations
-- **Fast Performance** - Built with Vite for lightning-fast development and production builds
-- **Type Safe** - Written in TypeScript for better code quality and developer experience
-- **SEO Friendly** - Optimized meta tags and semantic HTML structure
-
-## Prerequisites
-
-Before you begin, ensure you have the following installed:
-- [Node.js](https://nodejs.org/) (version 18 or higher recommended)
-- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
-
-## Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/kurtmorales-tech/kurtmorales-portfolio.git
-   cd kurtmorales-portfolio
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-## Development
-
-Run the development server:
+## Quick Start
 
 ```bash
-npm run dev
+npm install
+npm run seed          # Seed CMS with initial content
+npm run dev           # Start CMS (3001) + Frontend (3000)
 ```
 
-Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
+## Architecture
 
-## Building for Production
+| Package | Stack | Port |
+|---------|-------|------|
+| `web/`  | Astro 5, React 19, Tailwind v4 | 3000 |
+| `cms/`  | PayloadCMS 3, Next.js 15, SQLite | 3001 |
 
-Create an optimized production build:
+## Commands
 
-```bash
-npm run build
-```
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start both services |
+| `npm run dev:web` | Frontend only |
+| `npm run dev:cms` | CMS only |
+| `npm run build` | Build both |
+| `npm run seed` | Seed CMS data |
+| `npm run clean` | Remove build artifacts |
 
-Preview the production build locally:
+## CMS Admin
 
-```bash
-npm run preview
-```
-
-## Project Structure
-
-```
-kurtmorales-portfolio/
-├── src/                 # Source code
-├── public/              # Static assets
-├── index.html           # Entry HTML file
-├── package.json         # Project dependencies
-├── tsconfig.json        # TypeScript configuration
-└── vite.config.ts       # Vite configuration
-```
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License.
-
-## Contact
-
-Kurt Morales - [Your Email or Social Links]
-
-Project Link: [https://github.com/kurtmorales-tech/kurtmorales-portfolio](https://github.com/kurtmorales-tech/kurtmorales-portfolio)
+Visit `http://localhost:3001/admin` — default credentials: `admin@kurtmorales.com` / `changeme123`

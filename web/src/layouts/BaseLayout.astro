@@ -1,0 +1,31 @@
+---
+interface Props { title: string; description?: string; }
+const { title, description = 'KurtMorales - Las Vegas freelance web designer building clean, SEO-optimized websites.' } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="keywords" content="KurtMorales, web designer las vegas, junior developer, freelance web design" />
+  <link rel="canonical" href="https://kurtmorales.com" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org", "@type": "Person",
+    "name": "Kurt Anthony Morales", "brand": "KurtMorales",
+    "jobTitle": "Freelance Web Designer & Junior Developer",
+    "url": "https://kurtmorales.com",
+    "address": { "@type": "PostalAddress", "addressLocality": "Las Vegas", "addressRegion": "NV" },
+    "sameAs": ["https://github.com/kurtmorales-tech","https://www.linkedin.com/in/kurtanthonymorales/","https://x.com/xkamhype","https://www.facebook.com/kamhypeofficial"]
+  })} />
+</head>
+<body class="min-h-screen bg-[#fafafa] text-gray-900 font-sans selection:bg-brand selection:text-white">
+  <slot />
+</body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>

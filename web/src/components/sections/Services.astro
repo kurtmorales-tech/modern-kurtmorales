@@ -1,0 +1,48 @@
+---
+const services = [
+  {
+    icon: 'layout',
+    title: 'Brand Websites',
+    desc: 'High-clarity interfaces designed to build trust and present your services effectively.',
+  },
+  {
+    icon: 'arrow',
+    title: 'Conversion Pages',
+    desc: 'Goal-oriented landing pages optimized for maximum lead acquisition and sales.',
+  },
+  {
+    icon: 'code',
+    title: 'Custom Tools',
+    desc: 'Bespoke dashboards, booking systems, and interactive calculators for business workflows.',
+  },
+];
+---
+<section id="services" class="py-32">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="max-w-2xl mb-24">
+      <span class="text-gray-400 font-bold text-[10px] tracking-widest uppercase block mb-6">Expertise</span>
+      <h2 class="text-4xl md:text-6xl font-display font-medium leading-tight text-brand">
+        Digital products for service providers.
+      </h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-16">
+      {services.map((s) => (
+        <article class="flex flex-col">
+          <div class="mb-8 p-4 border border-gray-100 w-fit">
+            {s.icon === 'layout' && (
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            )}
+            {s.icon === 'arrow' && (
+              <svg class="w-5 h-5 rotate-[-45deg]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-7-7 7 7-7 7"/></svg>
+            )}
+            {s.icon === 'code' && (
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            )}
+          </div>
+          <h3 class="text-xl font-bold mb-6 text-black tracking-tight">{s.title}</h3>
+          <p class="text-gray-500 leading-relaxed text-sm">{s.desc}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

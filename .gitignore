@@ -1,13 +1,15 @@
 node_modules/
-build/
-dist/
-coverage/
-.DS_Store
-*.log
-.env*
-!.env.example
+.env
 
-# wrangler files
-.wrangler
-.dev.vars*
-!.dev.vars.example
+# CMS
+cms/.next/
+cms/data/
+cms/public/media/
+
+# Frontend
+web/dist/
+web/.astro/
+
+# OS / Editor
+.DS_Store
+*.swp
