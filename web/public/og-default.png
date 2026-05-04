@@ -1,0 +1,29 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#fafaf9"/>
+  <!-- Left accent bar -->
+  <rect width="6" height="630" fill="#827169"/>
+  <!-- Top accent line -->
+  <rect x="6" y="0" width="1194" height="3" fill="#827169" opacity="0.3"/>
+  <!-- Brand dot grid (decorative) -->
+  <circle cx="900" cy="150" r="200" fill="#827169" opacity="0.04"/>
+  <circle cx="1050" cy="400" r="150" fill="#827169" opacity="0.06"/>
+
+  <!-- Logo wordmark -->
+  <text x="80" y="120" font-family="Inter,sans-serif" font-size="18" font-weight="900" letter-spacing="0.3em" text-transform="uppercase" fill="#9ca3af" opacity="0.8">KURTMORALES</text>
+
+  <!-- Main headline -->
+  <text x="80" y="260" font-family="Inter,sans-serif" font-size="72" font-weight="700" fill="#827169">Purposeful design.</text>
+  <text x="80" y="350" font-family="Inter,sans-serif" font-size="72" font-weight="700" fill="#1a1a1a">Fast performance.</text>
+
+  <!-- Sub -->
+  <text x="80" y="430" font-family="Inter,sans-serif" font-size="24" fill="#6b7280" letter-spacing="0.01em">Freelance web designer &amp; developer — Las Vegas, NV</text>
+
+  <!-- URL tag -->
+  <rect x="80" y="510" width="260" height="48" fill="#827169" rx="0"/>
+  <text x="210" y="541" font-family="Inter,sans-serif" font-size="16" font-weight="700" fill="white" text-anchor="middle" letter-spacing="0.05em">kurtmorales.com</text>
+
+  <!-- Available badge -->
+  <circle cx="420" cy="534" r="6" fill="#22c55e"/>
+  <text x="434" y="539" font-family="Inter,sans-serif" font-size="13" font-weight="700" letter-spacing="0.2em" fill="#6b7280" text-transform="uppercase">AVAILABLE FOR PROJECTS</text>
+</svg>

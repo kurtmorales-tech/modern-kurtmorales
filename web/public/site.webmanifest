@@ -1,0 +1,12 @@
+{
+  "name": "KurtMorales",
+  "short_name": "KurtMorales",
+  "description": "Freelance web designer & developer in Las Vegas, NV",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fafafa",
+  "theme_color": "#827169",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

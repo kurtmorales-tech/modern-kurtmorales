@@ -14,7 +14,11 @@ import { fallbackProjects } from '../data/fallback';
 const cmsProjects = await getProjects();
 const projects = cmsProjects.length > 0 ? cmsProjects : fallbackProjects;
 ---
-<BaseLayout title="KurtMorales — Web Design & Development">
+<BaseLayout
+  title="KurtMorales | Web Designer & Developer Las Vegas NV"
+  description="KurtMorales — Las Vegas freelance web designer & developer. I build fast, clean, SEO-optimized websites for small businesses, service providers, and startups. Cloudflare Pages, React, Astro."
+  canonical="/"
+>
   <Header />
   <main>
     <Hero />

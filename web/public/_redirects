@@ -1,0 +1,5 @@
+# Redirect www → non-www
+https://www.kurtmorales.com/* https://kurtmorales.com/:splat 301!
+
+# Redirect /home → /
+/home / 301

@@ -20,7 +20,17 @@ if (!post) return Astro.redirect('/blog');
 
 const htmlContent = post.contentMarkdown ? markdownToHtml(post.contentMarkdown) : '';
 ---
-<BaseLayout title={`${post.title} — KurtMorales`} description={post.excerpt}>
+<BaseLayout
+  title={`${post.title} — KurtMorales`}
+  description={post.excerpt}
+  ogType="article"
+  ogImage={post.cover?.url || 'https://kurtmorales.com/og-default.png'}
+  article={{
+    publishedTime: post.date,
+    author: 'Kurt Anthony Morales',
+    tags: post.tags?.map(t => t.tag),
+  }}
+>
   <Header />
   <main class="pt-12 pb-32">
     <article class="max-w-3xl mx-auto px-6">

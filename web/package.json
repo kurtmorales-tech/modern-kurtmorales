@@ -8,15 +8,16 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.9.0",
     "@astrojs/react": "^4.4.0",
-    "@tailwindcss/vite": "^4.1.14",
+    "@astrojs/sitemap": "^3.7.2",
     "@tailwindcss/typography": "^0.5.19",
-    "tailwindcss": "^4.1.14",
+    "@tailwindcss/vite": "^4.1.14",
+    "astro": "^5.9.0",
+    "lucide-react": "^0.546.0",
+    "motion": "^12.23.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "lucide-react": "^0.546.0",
-    "motion": "^12.23.0"
+    "tailwindcss": "^4.1.14"
   },
   "devDependencies": {
     "@types/react": "^19.0.0",
