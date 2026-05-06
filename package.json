@@ -7,6 +7,7 @@
     "cms"
   ],
   "scripts": {
+    "test": "bun test web/src/lib/payload.test.ts cms/src/automation/rssSources.test.ts",
     "dev": "npm run dev:cms & npm run dev:web",
     "dev:cms": "cd cms && npm run dev",
     "dev:web": "cd web && npm run dev",
