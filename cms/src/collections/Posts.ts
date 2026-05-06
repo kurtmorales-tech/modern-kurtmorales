@@ -1,4 +1,24 @@
-import type { CollectionConfig } from 'payload'
+import type { Access, CollectionConfig, PayloadRequest } from 'payload'
+
+function automationToken(req: PayloadRequest): string | null {
+  const headers = req.headers as Headers | Record<string, string | string[] | undefined>
+
+  if (typeof (headers as Headers).get === 'function') {
+    return (headers as Headers).get('x-automation-token')
+  }
+
+  const value = (headers as Record<string, string | string[] | undefined>)['x-automation-token']
+  return Array.isArray(value) ? value[0] ?? null : value ?? null
+}
+
+const canCreateOrUpdatePost: Access = ({ req }) => {
+  if (req.user) return true
+
+  const configuredToken = process.env.CONTENT_AUTOMATION_TOKEN
+  if (!configuredToken) return false
+
+  return automationToken(req) === configuredToken
+}
 
 export const Posts: CollectionConfig = {
   slug: 'posts',
@@ -8,6 +28,9 @@ export const Posts: CollectionConfig = {
   },
   access: {
     read: () => true,
+    create: canCreateOrUpdatePost,
+    update: canCreateOrUpdatePost,
+    delete: ({ req }) => Boolean(req.user),
   },
   fields: [
     {

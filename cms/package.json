@@ -7,25 +7,35 @@
     "dev": "next dev --port 3001",
     "build": "next build",
     "start": "next start --port 3001",
-    "seed": "PAYLOAD_CONFIG_PATH=src/payload.config.ts tsx src/seed.ts",
-    "generate:types": "payload generate:types"
+    "seed": "PAYLOAD_CONFIG_PATH=src/payload.config.ts bun src/seed.ts",
+    "generate:types": "payload generate:types",
+    "rss:dev": "wrangler dev --config wrangler.jsonc",
+    "rss:deploy": "wrangler deploy --config wrangler.jsonc",
+    "rss:trigger": "bun scripts/trigger-rss-workflow.ts",
+    "rss:batch": "NODE_ENV=production bun scripts/generate-rss-blog-batch.ts",
+    "rss:delete-generated": "NODE_ENV=production bun scripts/delete-generated-rss-posts.ts",
+    "rss:types": "wrangler types --config wrangler.jsonc",
+    "rss:typecheck": "tsc --noEmit -p tsconfig.worker.json"
   },
   "dependencies": {
     "@payloadcms/db-sqlite": "^3.84.1",
     "@payloadcms/next": "^3.84.1",
     "@payloadcms/richtext-lexical": "^3.84.1",
-    "graphql": "^16.13.0",
-    "next": "15.4.11",
+    "graphql": "^16.13.2",
+    "next": "16.2.4",
     "payload": "^3.84.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "sharp": "^0.34.0"
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "sharp": "^0.34.5",
+    "@payloadcms/ui": "^3.84.1"
   },
   "devDependencies": {
-    "@types/node": "^22.14.0",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
+    "@cloudflare/workers-types": "^4.20260505.1",
+    "@types/node": "^25.6.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
     "tsx": "^4.21.0",
-    "typescript": "^5.8.0"
+    "typescript": "^6.0.3",
+    "wrangler": "^4.50.0"
   }
 }

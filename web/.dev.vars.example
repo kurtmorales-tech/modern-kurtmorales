@@ -1,0 +1,11 @@
+# CMS
+PAYLOAD_SECRET=your-payload-secret-here
+PUBLIC_CMS_URL=http://localhost:3001
+
+# Cloudflare Email Sending
+CLOUDFLARE_ACCOUNT_ID=your-cloudflare-account-id
+CLOUDFLARE_API_TOKEN=your-cloudflare-api-token
+NEWSLETTER_FROM=Newsletter <news@yourdomain.com>
+
+# CMS Auth (for newsletter send endpoint)
+ADMIN_SECRET=your-admin-secret-here

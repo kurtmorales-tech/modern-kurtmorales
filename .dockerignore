@@ -1,0 +1,17 @@
+.git
+.gitignore
+node_modules
+web/node_modules
+cms/node_modules
+web/dist
+web/.astro
+cms/.next
+cms/data
+cms/public/media
+.logs
+.forgeflow
+tasks
+.env
+.env.*
+*.log
+.DS_Store

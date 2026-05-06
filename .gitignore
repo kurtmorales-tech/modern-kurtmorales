@@ -1,5 +1,9 @@
 node_modules/
+bun.lock
 .env
+.env.*
+.logs/
+*.log
 
 # CMS
 cms/.next/
@@ -9,7 +13,10 @@ cms/public/media/
 # Frontend
 web/dist/
 web/.astro/
+web/.wrangler/
 
 # OS / Editor
 .DS_Store
 *.swp
+.forgeflow/run/
+tasks/

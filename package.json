@@ -1,7 +1,11 @@
 {
   "name": "kurtmorales-modern",
   "private": true,
-  "workspaces": ["web", "cms"],
+  "packageManager": "bun@1.3.13",
+  "workspaces": [
+    "web",
+    "cms"
+  ],
   "scripts": {
     "dev": "npm run dev:cms & npm run dev:web",
     "dev:cms": "cd cms && npm run dev",
@@ -13,11 +17,30 @@
     "clean": "rm -rf web/dist cms/.next",
     "agent": "tsx scripts/pi-sdk.ts",
     "agent:health": "tsx scripts/pi-sdk.ts 'check CMS health and list all posts'",
-    "agent:deploy": "tsx scripts/pi-sdk.ts 'build and deploy the frontend to Cloudflare'"
+    "agent:deploy": "tsx scripts/pi-sdk.ts 'build and deploy the frontend to Cloudflare'",
+    "tools:status": "bash scripts/build-tools.sh status",
+    "tools:sync": "bash scripts/build-tools.sh sync",
+    "cf:whoami": "bash scripts/build-tools.sh cf-whoami",
+    "cf:deploy": "bash scripts/build-tools.sh cf-deploy",
+    "cf:preview": "bash scripts/build-tools.sh cf-preview",
+    "d1:create": "bash scripts/build-tools.sh d1-create",
+    "d1:migrate": "bash scripts/build-tools.sh d1-migrate",
+    "d1:migrate:local": "bash scripts/build-tools.sh d1-migrate-local",
+    "d1:query": "bash scripts/build-tools.sh d1-query",
+    "d1:query:local": "bash scripts/build-tools.sh d1-query-local",
+    "dns:list": "bash scripts/build-tools.sh dns-list",
+    "docker:web": "bash scripts/build-tools.sh docker-web",
+    "docker:cms": "bash scripts/build-tools.sh docker-cms",
+    "rss:dev": "cd cms && bun run rss:dev",
+    "rss:deploy": "cd cms && bun run rss:deploy",
+    "rss:trigger": "cd cms && bun run rss:trigger",
+    "rss:batch": "cd cms && bun run rss:batch",
+    "rss:delete-generated": "cd cms && bun run rss:delete-generated",
+    "rss:typecheck": "cd cms && bun run rss:typecheck"
   },
   "devDependencies": {
     "@mariozechner/pi-coding-agent": "*",
     "tsx": "^4.21.0",
-    "@sinclair/typebox": "^0.34.0"
+    "@sinclair/typebox": "^0.34.49"
   }
 }

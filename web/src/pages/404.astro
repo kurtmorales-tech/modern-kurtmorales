@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Page Not Found — KurtMorales"
+  description="The page you are looking for could not be found. Return to KurtMorales resources, templates, portfolio, or contact."
+  canonical="/404"
+  noindex={true}
+>
+  <Header />
+  <main id="main-content">
+    <section class="relative min-h-[70vh] pt-32 pb-24 overflow-hidden border-b border-gray-100 mesh-gradient grain">
+      <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+        <span class="inline-flex items-center gap-3 mb-8 px-4 py-2 bg-white/70 backdrop-blur-sm border border-gray-200/60 rounded-full">
+          <span class="w-2 h-2 bg-brand rounded-full pulse-dot"></span>
+          <span class="text-[10px] font-black tracking-[0.3em] uppercase text-gray-500">404</span>
+        </span>
+        <h1 class="text-5xl md:text-[5.5rem] font-display font-medium leading-[0.92] tracking-tight mb-8 text-gray-900">
+          Page not<br/><span class="text-brand">found.</span>
+        </h1>
+        <p class="text-lg text-gray-500 max-w-xl mx-auto leading-relaxed mb-12">
+          This page may have moved, been renamed, or never existed. Here are the fastest ways back to useful content.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/" class="px-10 py-5 bg-brand text-white font-bold hover:bg-brand-dark transition-all duration-300 active:scale-[0.97]">Go Home</a>
+          <a href="/templates" class="px-10 py-5 border border-brand text-brand font-bold hover:bg-brand hover:text-white transition-all duration-300 active:scale-[0.97]">View Templates</a>
+          <a href="/resources" class="px-10 py-5 border border-gray-200 text-gray-700 font-bold hover:border-brand hover:text-brand transition-all duration-300 active:scale-[0.97]">Resources</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

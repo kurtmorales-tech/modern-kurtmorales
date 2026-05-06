@@ -6,13 +6,16 @@ import Hero from '../components/sections/Hero.astro';
 import Metrics from '../components/sections/Metrics.astro';
 import Services from '../components/sections/Services.astro';
 import Projects from '../components/sections/Projects.astro';
+import Templates from '../components/sections/Templates.astro';
 import Skills from '../components/sections/Skills.astro';
 import DigitalFootprint from '../components/sections/DigitalFootprint.astro';
-import { getProjects } from '../lib/payload';
-import { fallbackProjects } from '../data/fallback';
+import { getProjects, getTemplates } from '../lib/payload';
+import { fallbackProjects, fallbackTemplates } from '../data/fallback';
 
 const cmsProjects = await getProjects();
 const projects = cmsProjects.length > 0 ? cmsProjects : fallbackProjects;
+const cmsTemplates = await getTemplates();
+const templates = cmsTemplates.length > 0 ? cmsTemplates : fallbackTemplates;
 ---
 <BaseLayout
   title="KurtMorales | Web Designer & Developer Las Vegas NV"
@@ -20,11 +23,12 @@ const projects = cmsProjects.length > 0 ? cmsProjects : fallbackProjects;
   canonical="/"
 >
   <Header />
-  <main>
+  <main id="main-content">
     <Hero />
     <Metrics />
     <Services />
     <Projects projects={projects} />
+    <Templates templates={templates.slice(0, 3)} />
     <Skills />
     <DigitalFootprint />
 

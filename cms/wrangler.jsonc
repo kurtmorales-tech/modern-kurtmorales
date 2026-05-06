@@ -1,0 +1,33 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "kurtmorales-rss-blog-workflow",
+  "main": "src/worker/rss-blog-workflow.ts",
+  "compatibility_date": "2026-05-05",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
+  "triggers": {
+    "crons": ["0 */6 * * *"]
+  },
+  "ai": {
+    "binding": "AI"
+  },
+  "workflows": [
+    {
+      "name": "kurtmorales-rss-blog-workflow",
+      "binding": "RSS_BLOG_WORKFLOW",
+      "class_name": "RssBlogWorkflow",
+      "limits": {
+        "steps": 1024
+      }
+    }
+  ],
+  "vars": {
+    "PAYLOAD_API_URL": "https://cms.kurtmorales.com",
+    "PUBLIC_SITE_URL": "https://kurtmorales.com",
+    "MAX_ITEMS_PER_RUN": "3",
+    "MAX_ITEMS_PER_FEED": "2"
+  }
+}

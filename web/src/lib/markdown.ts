@@ -6,6 +6,8 @@ export function markdownToHtml(md: string): string {
     .replace(/^### (.+)$/gm, '<h3>$1</h3>')
     .replace(/^## (.+)$/gm, '<h2>$1</h2>')
     .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+    // Images
+    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" loading="lazy" decoding="async" />')
     // Bold + italic
     .replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>')
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
@@ -26,7 +28,7 @@ export function markdownToHtml(md: string): string {
   html = html.split('\n\n').map(block => {
     const trimmed = block.trim();
     if (!trimmed) return '';
-    if (/^<[hupol]/.test(trimmed)) return trimmed;
+    if (/^<(h|u|p|o|l|pre|img|figure|blockquote)/.test(trimmed)) return trimmed;
     return `<p>${trimmed}</p>`;
   }).join('\n');
 
