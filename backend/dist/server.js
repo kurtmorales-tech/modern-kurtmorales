@@ -1102,78 +1102,6 @@ The best CMS experience gives non-developer users confidence. They know where to
 That is the difference between handing over a website and handing over a working content system.`
   }
 ];
-var seedProjects = [
-  { id: "p1", title: "Braids by Jaira", type: "Client Concept", tech: "React / Vite", description: "Boutique hair styling site with booking flow, gallery, and AI-powered consult.", link: "https://github.com/Kacmnetworkk/Braids-by-jairah", order: 1 },
-  { id: "p2", title: "RavFia Platform", type: "Platform", tech: "Cloudflare", description: "Open-source platform focused on AI tooling and serverless deployment.", link: "https://github.com/Kacmnetworkk/ravfia", order: 2 },
-  { id: "p3", title: "QuickCart", type: "Ecommerce", tech: "Next / Tailwind", description: "Minimal e-commerce starter template made for fast online store launches.", link: "https://github.com/Kacmnetworkk/QuickCart", order: 3 },
-  { id: "p4", title: "Cuepal Directory", type: "Directory", tech: "TypeScript", description: "A pool league finder concept connecting players with local game communities.", link: "https://github.com/Kacmnetworkk/Cuepal-Directory", order: 4 },
-  { id: "p5", title: "RavFia SecurePass", type: "Tooling", tech: "API Concept", description: "Cryptographic password generation and privacy-first tooling direction.", link: "https://github.com/Kacmnetworkk", order: 5 },
-  { id: "p6", title: "KurtMorales Design", type: "Studio", tech: "Web Design", description: "Brand focused on modern, fast, SEO-conscious websites for local companies.", link: "https://kurtmorales.com", order: 6 }
-];
-var seedTemplates = [
-  {
-    id: "t1",
-    title: "SaaS Dashboard",
-    description: "Modern SaaS dashboard template with dark mode, charts, and responsive layout.",
-    tech: "React / Tailwind / Vite",
-    demoUrl: "https://saas-dashboard-demo.kurtmorales.com",
-    sourceUrl: "https://github.com/Kacmnetworkk/saas-dashboard",
-    tags: [{ tag: "SaaS" }, { tag: "Dashboard" }, { tag: "React" }],
-    featured: true,
-    price: 49,
-    order: 1
-  },
-  {
-    id: "t2",
-    title: "Ecommerce Starter",
-    description: "Clean e-commerce starter with product grid, cart, and checkout flow.",
-    tech: "Next.js / Stripe",
-    demoUrl: "https://ecommerce-starter-demo.kurtmorales.com",
-    sourceUrl: "https://github.com/Kacmnetworkk/ecommerce-starter",
-    tags: [{ tag: "Ecommerce" }, { tag: "Next.js" }, { tag: "Stripe" }],
-    featured: false,
-    price: 0,
-    order: 2
-  },
-  {
-    id: "t3",
-    title: "Portfolio Minimal",
-    description: "Minimal portfolio template for creatives with smooth animations.",
-    tech: "Astro / Tailwind",
-    demoUrl: "https://portfolio-minimal-demo.kurtmorales.com",
-    sourceUrl: "https://github.com/Kacmnetworkk/portfolio-minimal",
-    tags: [{ tag: "Portfolio" }, { tag: "Astro" }, { tag: "Minimal" }],
-    featured: true,
-    price: 29,
-    order: 3
-  },
-  {
-    id: "t4",
-    title: "SecurePass",
-    description: "AI-assisted password security template with generator flows, encrypted vault patterns, QR tools, and master-password strength checks.",
-    tech: "React / Vite / Gemini",
-    sourceUrl: "https://github.com/Kacmnetworkk/SecurePass",
-    tags: [{ tag: "Security" }, { tag: "React" }, { tag: "AI" }],
-    featured: false,
-    price: 0,
-    order: 4
-  }
-];
-var seedNewsletters = [
-  {
-    id: "n1",
-    title: "KurtMorales Launch Update",
-    subject: "New work, templates, and fresh articles from KurtMorales",
-    preheader: "Studio updates, new templates, and the latest writing.",
-    contentMarkdown: "A short studio update with new projects, templates, and recent writing.",
-    html: "<h1>KurtMorales Studio Update</h1><p>New projects, templates, and fresh writing are live.</p>",
-    text: `KurtMorales Studio Update
-
-New projects, templates, and fresh writing are live.`,
-    status: "draft",
-    recipientsCount: 0
-  }
-];
 
 // src/db.ts
 var dataDir = join(import.meta.dir, "..", "data");
@@ -1272,7 +1200,6 @@ db.exec(`
   CREATE INDEX IF NOT EXISTS idx_subscribers_email ON subscribers(email);
   CREATE INDEX IF NOT EXISTS idx_newsletters_status ON newsletters(status);
 `);
-seedDatabase();
 function parseTags(value) {
   if (!value)
     return [];
@@ -1291,9 +1218,6 @@ function parseTags(value) {
   } catch {
     return [];
   }
-}
-function serializeTags(tags) {
-  return JSON.stringify(tags ?? []);
 }
 function toPost(row) {
   return {
@@ -1358,64 +1282,6 @@ function toNewsletter(row) {
     recipientsCount: Number(row.recipients_count ?? 0)
   };
 }
-function seedPostsTable(posts) {
-  const insert = db.prepare(`
-    INSERT OR IGNORE INTO posts (
-      id, slug, title, excerpt, content_markdown, date, read_time, tags, cover_url, cover_alt, status
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-  `);
-  const tx = db.transaction((items) => {
-    for (const post of items) {
-      insert.run(post.id, post.slug, post.title, post.excerpt, post.contentMarkdown ?? null, post.date, post.readTime ?? null, serializeTags(post.tags), post.cover?.url ?? null, post.cover?.alt ?? null, post.status);
-    }
-  });
-  tx(posts);
-}
-function seedProjectsTable(projects) {
-  const insert = db.prepare(`
-    INSERT OR IGNORE INTO projects (
-      id, title, type, tech, description, link, image_url, image_alt, sort_order
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-  `);
-  const tx = db.transaction((items) => {
-    for (const project of items) {
-      insert.run(project.id, project.title, project.type ?? null, project.tech ?? null, project.description ?? null, project.link ?? null, project.image?.url ?? null, project.image?.alt ?? null, project.order ?? 0);
-    }
-  });
-  tx(projects);
-}
-function seedTemplatesTable(templates) {
-  const insert = db.prepare(`
-    INSERT OR IGNORE INTO templates (
-      id, title, description, thumbnail_url, thumbnail_alt, demo_url, source_url, tech, tags, featured, price, sort_order
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-  `);
-  const tx = db.transaction((items) => {
-    for (const template of items) {
-      insert.run(template.id, template.title, template.description, template.thumbnail?.url ?? null, template.thumbnail?.alt ?? null, template.demoUrl ?? null, template.sourceUrl ?? null, template.tech ?? null, serializeTags(template.tags), template.featured ? 1 : 0, template.price ?? 0, template.order ?? 0);
-    }
-  });
-  tx(templates);
-}
-function seedNewslettersTable(newsletters) {
-  const insert = db.prepare(`
-    INSERT OR IGNORE INTO newsletters (
-      id, title, subject, preheader, content_markdown, html, text, status, sent_at, recipients_count
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-  `);
-  const tx = db.transaction((items) => {
-    for (const newsletter of items) {
-      insert.run(newsletter.id, newsletter.title, newsletter.subject, newsletter.preheader ?? null, newsletter.contentMarkdown ?? null, newsletter.html ?? null, newsletter.text ?? null, newsletter.status, newsletter.sentAt ?? null, newsletter.recipientsCount ?? 0);
-    }
-  });
-  tx(newsletters);
-}
-function seedDatabase() {
-  seedPostsTable(seedPosts);
-  seedProjectsTable(seedProjects);
-  seedTemplatesTable(seedTemplates);
-  seedNewslettersTable(seedNewsletters);
-}
 function getDbPath() {
   return dbPath;
 }
@@ -1449,8 +1315,15 @@ function listPosts(options = {}) {
   if (clauses.length > 0) {
     sql += ` WHERE ${clauses.join(" AND ")}`;
   }
-  const sort = options.sort === "date" ? "ASC" : "DESC";
-  sql += ` ORDER BY date ${sort}, created_at ${sort}`;
+  if (options.sort) {
+    const sortField = options.sort.startsWith("-") ? options.sort.slice(1) : options.sort;
+    const sortDirection = options.sort.startsWith("-") ? "DESC" : "ASC";
+    const validFields = ["date", "created_at", "title", "slug"];
+    const field = validFields.includes(sortField) ? sortField : "date";
+    sql += ` ORDER BY ${field} ${sortDirection}`;
+  } else {
+    sql += " ORDER BY date DESC";
+  }
   sql += " LIMIT ?";
   params.push(options.limit ?? 150);
   return db.prepare(sql).all(...params).map(toPost);
@@ -1473,7 +1346,7 @@ function createSubscriber(input) {
     INSERT INTO subscribers (id, email, name, status, created_at, updated_at)
     VALUES (?, ?, ?, 'subscribed', ?, ?)
     ON CONFLICT(email) DO UPDATE SET
-      name = COALESCE(excluded.name, subscribers.name),
+      name = excluded.name,
       status = 'subscribed',
       updated_at = excluded.updated_at
   `).run(id, email, name, now, now);
@@ -1558,11 +1431,11 @@ function parseLimit(value, fallback) {
   if (!value)
     return fallback;
   const parsed = Number.parseInt(value, 10);
-  return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
+  return Number.isFinite(parsed) && parsed >= 1 ? parsed : fallback;
 }
 function isAuthorized(request) {
   if (!adminSecret)
-    return true;
+    return false;
   return request.headers.get("authorization") === `Bearer ${adminSecret}`;
 }
 async function readJson(request) {

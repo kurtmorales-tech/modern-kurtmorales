@@ -1,27 +1,17 @@
 name = "kurtmorales-modern"
+main = "src/worker.ts"
 compatibility_date = "2026-05-05"
-pages_build_output_dir = "dist"
+compatibility_flags = ["nodejs_compat"]
+
+assets = { directory = "dist", binding = "ASSETS", html_handling = "auto-trailing-slash" }
+
+routes = [
+  { pattern = "kurtmorales.com", custom_domain = true }
+]
 
 [vars]
 ENVIRONMENT = "production"
 SITE_URL = "https://kurtmorales.com"
 
-# Newsletter secrets (set via `wrangler secret put` for sensitive values):
-# NEWSLETTER_FROM        — Sender address (e.g. "Newsletter <news@kurtmorales.com>")
-# BACKEND_ADMIN_SECRET   — Optional backend bearer token for protected PATCH routes
-# CLOUDFLARE_API_TOKEN   — Cloudflare API token (Account Token with Email Sending scope)
-# CLOUDFLARE_ACCOUNT_ID  — Cloudflare account ID
-
-# Create with:
-#   bunx wrangler d1 create kurtmorales-modern-db
-# Then replace database_id below.
-[[d1_databases]]
-binding = "DB"
-database_name = "kurtmorales-modern-db"
-database_id = "00000000-0000-0000-0000-000000000000"
-migrations_dir = "migrations"
-
-# Worker AI binding for future Pages Functions that need AI inference.
-# Example usage in a Pages Function: env.AI.run('@cf/meta/llama-3.1-8b-instruct', { messages })
-[ai]
-binding = "AI"
+[placement]
+mode = "smart"
