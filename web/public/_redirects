@@ -1,8 +1,4 @@
-# Redirect www → non-www
-https://www.kurtmorales.com/* https://kurtmorales.com/:splat 301!
+# Only relative URLs allowed in Workers + Assets _redirects
+# www → non-www and blogs subdomain handled by Worker
 
-# Blog subdomain entry point
-https://blogs.kurtmorales.com/ https://blogs.kurtmorales.com/blog 302
-
-# Redirect /home → /
 /home / 301
