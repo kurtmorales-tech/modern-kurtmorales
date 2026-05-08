@@ -1,56 +1,104 @@
 ---
 ---
 <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-brand focus:px-4 focus:py-3 focus:text-sm focus:font-bold focus:text-white">Skip to content</a>
-<header class="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-100 transition-all duration-300" id="site-header">
-  <nav class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between" aria-label="Main navigation">
-    <a href="/" class="text-xl font-bold tracking-tight hover:text-brand transition-colors duration-300 group">
-      Kurt<span class="text-brand group-hover:text-brand-dark transition-colors duration-300">Morales</span>
+<header class="sticky top-0 z-50 border-b km-border-soft km-glass transition-all duration-300" id="site-header">
+  <nav class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between gap-4" aria-label="Main navigation">
+    <a href="/" class="group inline-flex items-center gap-3 text-xl font-bold tracking-tight km-text-strong transition-colors duration-300 hover:text-brand">
+      <span class="inline-flex h-3 w-3 rounded-full bg-brand/80 shadow-[0_0_0_6px_rgba(244,129,32,0.12)]"></span>
+      Kurt<span class="text-brand transition-colors duration-300 group-hover:text-brand-dark">Morales</span>
     </a>
-    <div class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-widest text-gray-500">
+
+    <div class="hidden lg:flex items-center gap-4 xl:gap-6 text-[10px] xl:text-[11px] font-black uppercase tracking-[0.2em] xl:tracking-[0.24em] km-text-muted">
       <a href="/#services" class="link-underline hover:text-brand transition-colors duration-300">Services</a>
       <a href="/#projects" class="link-underline hover:text-brand transition-colors duration-300">Projects</a>
       <a href="/blog" class="link-underline hover:text-brand transition-colors duration-300">Blog</a>
       <a href="/templates" class="link-underline hover:text-brand transition-colors duration-300">Templates</a>
+      <a href="/products" class="link-underline hover:text-brand transition-colors duration-300">Products</a>
       <a href="/resources" class="link-underline hover:text-brand transition-colors duration-300">Resources</a>
       <a href="/about" class="link-underline hover:text-brand transition-colors duration-300">About</a>
-      <a href="/contact" class="px-6 py-2.5 bg-brand text-white hover:bg-brand-dark transition-all duration-300 active:scale-95">Contact</a>
+      <a href="/contact" class="km-button km-button-primary px-5 py-3 text-[10px]">
+        Contact
+      </a>
     </div>
-    <button id="mobile-toggle" class="md:hidden p-2 text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
-      <svg class="w-6 h-6" id="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-      <svg class="w-6 h-6 hidden" id="close-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-    </button>
+
+    <div class="flex items-center gap-3">
+      <button id="theme-toggle" class="theme-toggle live-card inline-flex h-11 w-11 items-center justify-center rounded-full border km-border-strong km-glass km-text-strong transition-all duration-300 hover:border-brand hover:text-brand focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2" type="button" aria-label="Switch to dark mode" aria-pressed="false" data-live-card>
+        <svg id="theme-icon-sun" class="h-4 w-4 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364-6.364-1.414 1.414M7.05 16.95l-1.414 1.414m12.728 0-1.414-1.414M7.05 7.05 5.636 5.636"/><circle cx="12" cy="12" r="4"/></svg>
+        <svg id="theme-icon-moon" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+        <span class="sr-only" id="theme-label">Switch to dark mode</span>
+      </button>
+
+      <button id="mobile-toggle" class="live-card lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-full border km-border-strong km-glass km-text-strong transition-all duration-300 hover:border-brand hover:text-brand focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu" data-live-card>
+        <svg class="w-5 h-5" id="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg class="w-5 h-5 hidden" id="close-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
   </nav>
-  <div id="mobile-menu" class="hidden absolute top-20 left-0 right-0 bg-white/95 backdrop-blur-lg border-b border-gray-100 p-6 flex flex-col gap-4 md:hidden shadow-xl">
-    <a href="/#services" class="text-lg font-semibold py-2 hover:text-brand transition-colors">Services</a>
-    <a href="/#projects" class="text-lg font-semibold py-2 hover:text-brand transition-colors">Projects</a>
-    <a href="/blog" class="text-lg font-semibold py-2 hover:text-brand transition-colors">Blog</a>
-    <a href="/templates" class="text-lg font-semibold py-2 hover:text-brand transition-colors">Templates</a>
-    <a href="/resources" class="text-lg font-semibold py-2 hover:text-brand transition-colors">Resources</a>
-    <a href="/about" class="text-lg font-semibold py-2 hover:text-brand transition-colors">About</a>
-    <a href="/contact" class="text-lg font-semibold py-2 text-brand">Contact</a>
+
+  <div id="mobile-menu" class="hidden absolute top-[calc(100%+0.75rem)] left-4 right-4 rounded-[1.75rem] p-5 lg:hidden km-panel shadow-xl">
+    <div class="flex flex-col gap-2 text-sm font-semibold km-text-muted">
+      <a href="/#services" class="rounded-2xl px-4 py-3 hover:bg-brand/5 hover:text-brand transition-colors">Services</a>
+      <a href="/#projects" class="rounded-2xl px-4 py-3 hover:bg-brand/5 hover:text-brand transition-colors">Projects</a>
+      <a href="/blog" class="rounded-2xl px-4 py-3 hover:bg-brand/5 hover:text-brand transition-colors">Blog</a>
+      <a href="/templates" class="rounded-2xl px-4 py-3 hover:bg-brand/5 hover:text-brand transition-colors">Templates</a>
+      <a href="/products" class="rounded-2xl px-4 py-3 hover:bg-brand/5 hover:text-brand transition-colors">Products</a>
+      <a href="/resources" class="rounded-2xl px-4 py-3 hover:bg-brand/5 hover:text-brand transition-colors">Resources</a>
+      <a href="/about" class="rounded-2xl px-4 py-3 hover:bg-brand/5 hover:text-brand transition-colors">About</a>
+      <a href="/contact" class="km-button km-button-primary mt-2 w-full">Contact</a>
+    </div>
   </div>
 </header>
 
 <script>
-  // Mobile menu toggle
+  const storageKey = 'kurtmorales-theme';
+  const themeToggle = document.getElementById('theme-toggle');
+  const sunIcon = document.getElementById('theme-icon-sun');
+  const moonIcon = document.getElementById('theme-icon-moon');
+  const themeLabel = document.getElementById('theme-label');
+
+  const getSystemTheme = () => window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  const getTheme = () => localStorage.getItem(storageKey) || document.documentElement.dataset.theme || getSystemTheme();
+  const setTheme = (theme) => {
+    const normalized = theme === 'dark' ? 'dark' : 'light';
+    document.documentElement.dataset.theme = normalized;
+    document.documentElement.style.colorScheme = normalized;
+    themeToggle?.setAttribute('aria-pressed', String(normalized === 'dark'));
+    themeToggle?.setAttribute('aria-label', `Switch to ${normalized === 'dark' ? 'light' : 'dark'} mode`);
+    if (themeLabel) themeLabel.textContent = `Switch to ${normalized === 'dark' ? 'light' : 'dark'} mode`;
+    sunIcon?.classList.toggle('hidden', normalized !== 'dark');
+    moonIcon?.classList.toggle('hidden', normalized === 'dark');
+  };
+
+  setTheme(getTheme());
+  themeToggle?.addEventListener('click', () => {
+    const next = getTheme() === 'dark' ? 'light' : 'dark';
+    localStorage.setItem(storageKey, next);
+    setTheme(next);
+  });
+
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    if (!localStorage.getItem(storageKey)) setTheme(getSystemTheme());
+  });
+
   const toggle = document.getElementById('mobile-toggle');
   const menu = document.getElementById('mobile-menu');
   const menuIcon = document.getElementById('menu-icon');
   const closeIcon = document.getElementById('close-icon');
+
   toggle?.addEventListener('click', () => {
     menu?.classList.toggle('hidden');
     menuIcon?.classList.toggle('hidden');
     closeIcon?.classList.toggle('hidden');
     toggle.setAttribute('aria-expanded', String(!menu?.classList.contains('hidden')));
   });
-  menu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+
+  menu?.querySelectorAll('a').forEach((anchor) => anchor.addEventListener('click', () => {
     menu?.classList.add('hidden');
     menuIcon?.classList.remove('hidden');
     closeIcon?.classList.add('hidden');
     toggle?.setAttribute('aria-expanded', 'false');
   }));
 
-  // Header scroll effect — shrink + shadow on scroll
   const header = document.getElementById('site-header');
   let ticking = false;
   window.addEventListener('scroll', () => {

@@ -2,58 +2,123 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import BlogEndcap from '../../components/BlogEndcap.astro';
 import { getPosts } from '../../lib/payload';
 import { fallbackPosts } from '../../data/fallback';
 
 const cmsPosts = await getPosts();
 const posts = cmsPosts.length > 0 ? cmsPosts : fallbackPosts;
+const latestPost = posts[0];
+const featuredTags = [...new Set(posts.flatMap((post) => post.tags?.map((tag) => tag.tag) ?? []))].slice(0, 4);
 ---
 <BaseLayout title="Blog — KurtMorales" description="Thoughts on web development, freelancing, AI integration, and building for the modern web.">
   <Header />
-  <main id="main-content" class="pt-12 pb-32">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="max-w-2xl mb-20">
-        <span class="text-gray-400 font-bold text-[10px] tracking-widest uppercase block mb-6">Blog</span>
-        <h1 class="text-4xl md:text-6xl font-display font-medium leading-tight text-brand mb-6">
-          Writing & insights.
-        </h1>
-        <p class="text-gray-500 text-lg leading-relaxed">
-          Notes on web development, freelancing, AI, and building for the modern web.
-        </p>
-      </div>
-
-      {posts.length === 0 ? (
-        <p class="text-gray-400 text-center py-20">No posts yet. Check back soon.</p>
-      ) : (
-        <div class="grid gap-px bg-gray-200 border border-gray-200 overflow-hidden">
-          {posts.map((post) => (
-            <a href={`/blog/${post.slug}`} class="block bg-white p-10 md:p-14 hover:bg-gray-50 transition-colors group">
-              <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
-                <div class="flex-1">
-                  <div class="flex flex-wrap gap-3 mb-4">
-                    {post.tags?.map((t) => (
-                      <span class="text-[9px] font-black uppercase tracking-widest text-gray-400 border border-gray-200 px-3 py-1">
-                        {t.tag}
-                      </span>
-                    ))}
-                  </div>
-                  <h2 class="text-xl md:text-2xl font-bold text-black tracking-tight mb-3 group-hover:text-brand transition-colors">
-                    {post.title}
-                  </h2>
-                  <p class="text-gray-500 text-sm leading-relaxed max-w-2xl">{post.excerpt}</p>
-                </div>
-                <div class="flex items-center gap-6 text-[10px] font-black uppercase tracking-widest text-gray-400 shrink-0 md:pt-2">
-                  <time datetime={post.date}>
-                    {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                  </time>
-                  {post.readTime && <span>{post.readTime}</span>}
-                </div>
+  <main id="main-content" class="pt-12 pb-24">
+    <section class="pb-16">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+          <div class="max-w-3xl">
+            <span class="km-pill km-text-muted mb-6 text-[10px] font-black uppercase tracking-[0.28em]">
+              <span class="h-2 w-2 rounded-full bg-brand pulse-dot"></span>
+              Blog archive
+            </span>
+            <h1 class="text-4xl md:text-6xl font-display font-medium leading-[0.94] km-text-strong mb-6">
+              Cloudflare-fast notes for <span class="text-brand">modern web work.</span>
+            </h1>
+            <p class="km-text-muted text-lg leading-relaxed max-w-2xl">
+              Writing on web development, freelancing, AI, delivery workflows, and the small design decisions that make a site feel sharper in motion.
+            </p>
+            {featuredTags.length > 0 && (
+              <div class="mt-8 flex flex-wrap gap-3">
+                {featuredTags.map((tag) => (
+                  <span class="rounded-full border km-border-strong km-surface-soft px-4 py-2 text-[10px] font-black uppercase tracking-[0.24em] km-text-muted backdrop-blur-sm">
+                    {tag}
+                  </span>
+                ))}
               </div>
-            </a>
-          ))}
+            )}
+          </div>
+
+          <aside class="km-panel live-card rounded-[2rem] p-7 md:p-9" data-live-card>
+            <div class="flex items-center justify-between gap-4 mb-8">
+              <div>
+                <span class="text-[10px] font-black uppercase tracking-[0.28em] km-text-soft block mb-2">Live archive</span>
+                <p class="text-sm km-text-muted">Fresh writing plus evergreen how-to content.</p>
+              </div>
+              <span class="number-chip">{String(posts.length).padStart(2, '0')}</span>
+            </div>
+
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+              <div class="rounded-[1.5rem] border km-border-strong km-surface-soft p-5 backdrop-blur-sm">
+                <span class="text-[10px] font-black uppercase tracking-[0.24em] text-brand/70 block mb-3">Latest</span>
+                {latestPost ? (
+                  <a href={`/blog/${latestPost.slug}`} class="text-lg font-display font-medium km-text-strong hover:text-brand transition-colors duration-300">
+                    {latestPost.title}
+                  </a>
+                ) : (
+                  <p class="text-lg font-display font-medium km-text-strong">Publishing soon</p>
+                )}
+              </div>
+              <div class="rounded-[1.5rem] border km-border-strong km-surface-soft p-5 backdrop-blur-sm">
+                <span class="text-[10px] font-black uppercase tracking-[0.24em] text-brand/70 block mb-3">Focus</span>
+                <p class="text-sm leading-relaxed km-text-muted">Design systems, launch workflows, local SEO, CMS structure, and AI-assisted delivery.</p>
+              </div>
+            </div>
+          </aside>
         </div>
-      )}
-    </div>
+      </div>
+    </section>
+
+    <section class="pb-12">
+      <div class="max-w-6xl mx-auto px-6">
+        {posts.length === 0 ? (
+          <div class="km-panel rounded-[2rem] px-8 py-16 text-center">
+            <p class="km-text-soft">No posts yet. Check back soon.</p>
+          </div>
+        ) : (
+          <div class="grid gap-4">
+            {posts.map((post, index) => (
+              <a href={`/blog/${post.slug}`} class="km-panel live-card group block rounded-[2rem] p-7 md:p-10" data-live-card>
+                <div class="flex flex-col gap-8 xl:flex-row xl:items-start xl:justify-between">
+                  <div class="flex flex-col sm:flex-row gap-6 flex-1">
+                    <span class="number-chip shrink-0 self-start">{String(index + 1).padStart(2, '0')}</span>
+
+                    <div class="flex-1">
+                      <div class="flex flex-wrap gap-3 mb-4">
+                        {post.tags?.map((tag) => (
+                          <span class="text-[10px] font-black uppercase tracking-[0.22em] km-text-soft border km-border-strong km-surface-soft px-3 py-2 rounded-full">
+                            {tag.tag}
+                          </span>
+                        ))}
+                      </div>
+
+                      <h2 class="text-2xl md:text-[2rem] font-display font-medium km-text-strong tracking-tight mb-4 group-hover:text-brand transition-colors duration-300">
+                        {post.title}
+                      </h2>
+                      <p class="km-text-muted text-sm md:text-base leading-relaxed max-w-3xl">{post.excerpt}</p>
+
+                      <div class="mt-7 inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.24em] text-brand/70">
+                        <span>Read article</span>
+                        <svg class="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-7-7 7 7-7 7"/></svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center gap-6 text-[10px] font-black uppercase tracking-[0.24em] km-text-soft shrink-0 xl:pt-2">
+                    <time datetime={post.date}>
+                      {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                    </time>
+                    {post.readTime && <span>{post.readTime}</span>}
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+
+    <BlogEndcap latestHref={latestPost ? `/blog/${latestPost.slug}` : '/blog'} latestLabel={latestPost ? `Continue with “${latestPost.title}”.` : 'Jump into the newest article in the archive.'} />
   </main>
   <Footer />
 </BaseLayout>

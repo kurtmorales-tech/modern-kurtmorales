@@ -6,11 +6,12 @@ import Hero from '../components/sections/Hero.astro';
 import Metrics from '../components/sections/Metrics.astro';
 import Services from '../components/sections/Services.astro';
 import Projects from '../components/sections/Projects.astro';
+import ClientReviews from '../components/sections/ClientReviews.astro';
 import Templates from '../components/sections/Templates.astro';
 import Skills from '../components/sections/Skills.astro';
 import DigitalFootprint from '../components/sections/DigitalFootprint.astro';
 import { getProjects, getTemplates } from '../lib/payload';
-import { fallbackProjects, fallbackTemplates } from '../data/fallback';
+import { fallbackProjects, fallbackTemplates } from '../data/fallback.ts';
 
 const cmsProjects = await getProjects();
 const projects = cmsProjects.length > 0 ? cmsProjects : fallbackProjects;
@@ -27,6 +28,7 @@ const templates = cmsTemplates.length > 0 ? cmsTemplates : fallbackTemplates;
     <Hero />
     <Metrics />
     <Services />
+    <ClientReviews />
     <Projects projects={projects} />
     <Templates templates={templates.slice(0, 3)} />
     <Skills />
@@ -52,11 +54,11 @@ const templates = cmsTemplates.length > 0 ? cmsTemplates : fallbackTemplates;
           Ready to start a project? Reach out and let's discuss how I can help grow your online presence.
         </p>
         <div class="reveal flex flex-wrap justify-center gap-4" style="transition-delay:300ms">
-          <a href="mailto:email@kurtmorales.com" class="group inline-flex items-center gap-3 px-10 py-5 bg-brand text-white font-bold hover:bg-brand-light transition-all duration-300 active:scale-[0.97]">
+          <a href="mailto:email@kurtmorales.com" class="km-button km-button-primary group">
             Start a Conversation
             <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-7-7 7 7-7 7"/></svg>
           </a>
-          <a href="https://www.linkedin.com/in/kurtanthonymorales/" target="_blank" rel="noreferrer" class="inline-flex items-center gap-3 px-10 py-5 border border-white/20 text-white font-bold hover:bg-white/10 transition-all duration-300 active:scale-[0.97]">
+          <a href="https://www.linkedin.com/in/kurtanthonymorales/" target="_blank" rel="noreferrer" class="km-button km-button-dark">
             Connect on LinkedIn
           </a>
         </div>

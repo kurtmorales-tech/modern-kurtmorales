@@ -3,20 +3,17 @@
   "pages_build_output_dir": "dist",
   "compatibility_date": "2025-01-01",
   "compatibility_flags": ["nodejs_compat"],
-
   "d1_databases": [
     {
       "binding": "DB",
-      "database_name": "kurtmorales-cms",
+      "database_name": "kurtmorales-modern-db",
       "database_id": "3e049316-9e3f-472c-8370-81b38905893c"
     }
   ],
-
   "vars": {
     "ENVIRONMENT": "production",
     "SITE_URL": "https://kurtmorales.com"
   },
-
   "placement": {
     "mode": "smart"
   }

@@ -4,20 +4,21 @@
   "packageManager": "bun@1.3.13",
   "workspaces": [
     "web",
-    "cms"
+    "backend"
   ],
   "scripts": {
-    "test": "bun test web/src/lib/payload.test.ts cms/src/automation/rssSources.test.ts",
-    "dev": "npm run dev:cms & npm run dev:web",
-    "dev:cms": "cd cms && npm run dev",
-    "dev:web": "cd web && npm run dev",
-    "build": "npm run build:cms && npm run build:web",
-    "build:cms": "cd cms && npm run build",
-    "build:web": "cd web && npm run build",
-    "seed": "cd cms && npm run seed",
-    "clean": "rm -rf web/dist cms/.next",
+    "test": "bun test web/src/lib/payload.test.ts scripts/rss-sources.test.ts",
+    "dev": "bun run dev:backend & bun run dev:web",
+    "dev:backend": "cd backend && bun run dev",
+    "dev:web": "cd web && bun run dev",
+    "build": "bun run build:backend && bun run build:web",
+    "build:backend": "cd backend && bun run build",
+    "build:web": "cd web && bun run build",
+    "seed": "bun run seed:backend",
+    "seed:backend": "cd backend && bun run seed",
+    "clean": "rm -rf web/dist backend/dist",
     "agent": "tsx scripts/pi-sdk.ts",
-    "agent:health": "tsx scripts/pi-sdk.ts 'check CMS health and list all posts'",
+    "agent:health": "tsx scripts/pi-sdk.ts 'check backend health and list all posts'",
     "agent:deploy": "tsx scripts/pi-sdk.ts 'build and deploy the frontend to Cloudflare'",
     "tools:status": "bash scripts/build-tools.sh status",
     "tools:sync": "bash scripts/build-tools.sh sync",
@@ -31,13 +32,8 @@
     "d1:query:local": "bash scripts/build-tools.sh d1-query-local",
     "dns:list": "bash scripts/build-tools.sh dns-list",
     "docker:web": "bash scripts/build-tools.sh docker-web",
-    "docker:cms": "bash scripts/build-tools.sh docker-cms",
-    "rss:dev": "cd cms && bun run rss:dev",
-    "rss:deploy": "cd cms && bun run rss:deploy",
-    "rss:trigger": "cd cms && bun run rss:trigger",
-    "rss:batch": "cd cms && bun run rss:batch",
-    "rss:delete-generated": "cd cms && bun run rss:delete-generated",
-    "rss:typecheck": "cd cms && bun run rss:typecheck"
+    "rss:publish-local": "bun scripts/rss-blog-cron.ts",
+    "rss:cron": "bash scripts/rss-blog-cron.sh"
   },
   "devDependencies": {
     "@mariozechner/pi-coding-agent": "*",

@@ -2,6 +2,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+
+const backendUrl = (
+  import.meta.env.PUBLIC_BACKEND_URL ||
+  'http://localhost:3001'
+).replace(/\/$/, '');
 ---
 <BaseLayout
   title="Contact — KurtMorales"
@@ -43,7 +48,7 @@ import Footer from '../components/Footer.astro';
           <div class="absolute top-0 left-0 w-12 h-[2px] bg-brand"></div>
           <div class="absolute top-0 left-0 w-[2px] h-12 bg-brand"></div>
 
-          <form id="contact-form" class="space-y-6">
+          <form id="contact-form" class="space-y-6" data-api-base={backendUrl}>
             <div class="grid md:grid-cols-2 gap-6">
               <div>
                 <label for="name" class="block text-[9px] font-black uppercase tracking-widest text-gray-500 mb-2">Name *</label>
@@ -125,6 +130,7 @@ import Footer from '../components/Footer.astro';
   // Form submit
   const form = document.getElementById('contact-form') as HTMLFormElement;
   const btn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const apiBase = form.dataset.apiBase || '';
   const btnText = document.getElementById('btn-text')!;
   const btnIcon = document.getElementById('btn-icon')!;
   const btnSpinner = document.getElementById('btn-spinner')!;
@@ -141,7 +147,7 @@ import Footer from '../components/Footer.astro';
     error.classList.add('hidden');
 
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch(`${apiBase}/api/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(Object.fromEntries(new FormData(form))),

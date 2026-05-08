@@ -1,9 +1,9 @@
-// PayloadCMS API client — web reads CMS content at build/dev time.
-// Falls back to static data in pages when CMS is unavailable.
+// Content API client — web reads the Bun backend at build/dev time.
+// Falls back to static data in pages when the backend is unavailable.
 
 const CMS_URL = (
-  import.meta.env.PUBLIC_CMS_URL ||
-  import.meta.env.PUBLIC_PAYLOAD_URL ||
+  import.meta.env.PUBLIC_BACKEND_URL ||
+  import.meta.env.BACKEND_URL ||
   "http://localhost:3001"
 ).replace(/\/$/, "");
 
@@ -69,7 +69,7 @@ type PayloadList<T> = {
   docs?: T[];
 };
 
-// Keep PayloadCMS interface aliases for backward compat
+// Legacy aliases kept to avoid wider refactors
 export type PayloadPost = Post;
 export type PayloadProject = Project;
 export type PayloadTemplate = Template;

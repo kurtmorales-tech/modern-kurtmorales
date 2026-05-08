@@ -19,7 +19,8 @@ const { projects } = Astro.props;
           href={p.link}
           target="_blank"
           rel="noreferrer"
-          class="reveal group relative bg-white border border-gray-100 p-10 card-lift block overflow-hidden"
+          class="reveal group relative bg-white border border-gray-100 p-10 card-lift live-card block overflow-hidden"
+          data-live-card
           style={`transition-delay: ${i * 80}ms`}
         >
           <!-- Project number -->

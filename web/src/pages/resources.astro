@@ -22,6 +22,12 @@ const resources = [
     body: 'Directories, partner pages, guest posts, community mentions, social profiles, and portfolio citations.',
     href: '#backlinks',
   },
+  {
+    eyebrow: 'Products',
+    title: 'Marketplace roundup page',
+    body: 'Dedicated sections for Temu, Amazon, TikTok Shop, and Alibaba with placeholder links ready for manual updates.',
+    href: '/products',
+  },
 ];
 
 const metaChecklist = [
@@ -66,7 +72,7 @@ const backlinkTargets = [
     </section>
 
     <section class="py-24 bg-white border-b border-gray-100">
-      <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-6">
+      <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 xl:grid-cols-4 gap-6">
         {resources.map((item, i) => (
           <a href={item.href} class="reveal group bg-white border border-gray-100 p-8 card-lift relative overflow-hidden" style={`transition-delay:${i * 90}ms`}>
             <span class="text-[9px] font-black uppercase tracking-widest text-gray-400 block mb-4">{item.eyebrow}</span>

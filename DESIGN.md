@@ -74,7 +74,7 @@ Use white background, subtle border, no heavy shadow by default.
 
 - Every page should use `BaseLayout` title, description, and canonical.
 - Use `/resources` for docs, meta-tag guidance, backlink planning, and launch support.
-- Keep `/templates` dynamic via PayloadCMS with fallback data.
+- Keep `/templates` dynamic via the Bun backend API with fallback data.
 
 ## Don'ts
 

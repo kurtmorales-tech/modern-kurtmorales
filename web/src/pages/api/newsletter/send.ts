@@ -1,7 +1,6 @@
-kurtmorales_modern/web/functions/api/newsletter/send/route.ts#L1-118
 import type { APIRoute } from 'astro';
-import { createEmailClient, CloudflareEmailClient } from '../../../../lib/email';
-import { getSubscribers } from '../../../../lib/payload';
+import { createEmailClient } from '../../../lib/email';
+import { getSubscribers } from '../../../lib/payload';
 
 /**
  * POST /api/newsletter/send
@@ -11,9 +10,9 @@ import { getSubscribers } from '../../../../lib/payload';
  * Required env vars:
  *   CLOUDFLARE_ACCOUNT_ID  — Cloudflare account ID
  *   CLOUDFLARE_API_TOKEN   — Cloudflare API token with Email Sending scope
- *   NEWSLETTER_FROM       — Sender email address (e.g. "Newsletter <news@kurtmorales.com>")
- *   PAYLOAD_URL           — CMS base URL (default: http://localhost:3001)
- *   PAYLOAD_SECRET        — CMS secret for authentication
+ *   NEWSLETTER_FROM        — Sender email address (e.g. "Newsletter <news@kurtmorales.com>")
+ *   BACKEND_URL            — Backend base URL (default: http://localhost:3001)
+ *   BACKEND_ADMIN_SECRET   — Optional backend bearer token for protected PATCH routes
  */
 
 export const POST: APIRoute = async ({ request }) => {
@@ -48,9 +47,14 @@ export const POST: APIRoute = async ({ request }) => {
     );
   }
 
-  // 1. Fetch the newsletter campaign from CMS
-  const cmsUrl = import.meta.env.PAYLOAD_URL || import.meta.env.PUBLIC_CMS_URL || 'http://localhost:3001';
-  const payloadSecret = import.meta.env.PAYLOAD_SECRET || 'PLEASE-CHANGE-THIS-SECRET';
+  // 1. Fetch the newsletter campaign from the backend
+  const backendUrl =
+    import.meta.env.BACKEND_URL ||
+    import.meta.env.PUBLIC_BACKEND_URL ||
+    'http://localhost:3001';
+  const backendSecret =
+    import.meta.env.BACKEND_ADMIN_SECRET ||
+    '';
 
   let newsletterData: {
     id: string;
@@ -62,9 +66,9 @@ export const POST: APIRoute = async ({ request }) => {
   } | null = null;
 
   try {
-    const res = await fetch(`${cmsUrl}/api/newsletters/${newsletterId}`, {
+    const res = await fetch(`${backendUrl}/api/newsletters/${newsletterId}`, {
       headers: {
-        Authorization: `Bearer ${payloadSecret}`,
+        ...(backendSecret ? { Authorization: `Bearer ${backendSecret}` } : {}),
         'Content-Type': 'application/json',
       },
     });
@@ -80,7 +84,7 @@ export const POST: APIRoute = async ({ request }) => {
     newsletterData = json.doc ?? null;
   } catch (err) {
     return new Response(
-      JSON.stringify({ error: 'Failed to fetch newsletter from CMS', details: String(err) }),
+      JSON.stringify({ error: 'Failed to fetch newsletter from backend', details: String(err) }),
       { status: 502, headers: { 'Content-Type': 'application/json' } }
     );
   }
@@ -99,10 +103,12 @@ export const POST: APIRoute = async ({ request }) => {
     );
   }
 
-  // 2. Fetch subscribed recipients from CMS
+  // 2. Fetch subscribed recipients from the backend
   let recipients: string[] = [];
   try {
-    recipients = await getSubscribers();
+    recipients = (await getSubscribers())
+      .filter((subscriber) => subscriber.status === 'subscribed')
+      .map((subscriber) => subscriber.email);
   } catch (err) {
     return new Response(
       JSON.stringify({ error: 'Failed to fetch subscribers', details: String(err) }),
@@ -147,12 +153,12 @@ export const POST: APIRoute = async ({ request }) => {
     );
   }
 
-  // 5. Mark newsletter as sent in CMS
+  // 5. Mark newsletter as sent in the backend
   try {
-    await fetch(`${cmsUrl}/api/newsletters/${newsletterId}`, {
+    await fetch(`${backendUrl}/api/newsletters/${newsletterId}`, {
       method: 'PATCH',
       headers: {
-        Authorization: `Bearer ${payloadSecret}`,
+        ...(backendSecret ? { Authorization: `Bearer ${backendSecret}` } : {}),
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
@@ -162,7 +168,7 @@ export const POST: APIRoute = async ({ request }) => {
       }),
     });
   } catch (err) {
-    console.warn('[newsletter/send] Failed to update CMS status:', err);
+    console.warn('[newsletter/send] Failed to update backend status:', err);
   }
 
   return new Response(

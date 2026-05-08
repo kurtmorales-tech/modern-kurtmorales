@@ -16,23 +16,21 @@ Usage:
   scripts/build-tools.sh <command>
 
 Commands:
-  status          Show git, docker, bun, wrangler status
-  build           Build CMS + web
-  build-web       Build Astro frontend
-  build-cms       Build Payload/Next CMS
-  seed            Seed local PayloadCMS
-  cf-whoami       Check Cloudflare auth
-  cf-deploy       Build web and deploy to Cloudflare Pages
-  cf-preview      Build web and deploy preview to Cloudflare Pages
-  d1-create       Create Cloudflare D1 database
-  d1-migrate      Apply D1 migrations remotely
+  status           Show git, docker, bun, wrangler status
+  build            Build Bun backend + Astro frontend
+  build-web        Build Astro frontend
+  seed             Seed local Bun backend data
+  cf-whoami        Check Cloudflare auth
+  cf-deploy        Build web and deploy to Cloudflare Pages
+  cf-preview       Build web and deploy preview to Cloudflare Pages
+  d1-create        Create Cloudflare D1 database
+  d1-migrate       Apply D1 migrations remotely
   d1-migrate-local Apply D1 migrations locally
-  d1-query SQL    Run remote D1 SQL query
+  d1-query SQL     Run remote D1 SQL query
   d1-query-local SQL Run local D1 SQL query
-  dns-list        List DNS records for CF_ZONE_ID
-  docker-web      Build frontend Docker image
-  docker-cms      Build CMS Docker image
-  sync            git status + fetch + branch summary
+  dns-list         List DNS records for CF_ZONE_ID
+  docker-web       Build frontend Docker image
+  sync             git status + fetch + branch summary
 
 Env:
   CF_PAGES_PROJECT=$PAGES_PROJECT
@@ -60,15 +58,14 @@ case "${1:-}" in
     ;;
   build) (cd "$ROOT_DIR" && bun run build) ;;
   build-web) (cd "$ROOT_DIR" && bun run build:web) ;;
-  build-cms) (cd "$ROOT_DIR" && bun run build:cms) ;;
   seed) (cd "$ROOT_DIR" && bun run seed) ;;
   cf-whoami) wrangler whoami ;;
   cf-deploy)
-    (cd "$ROOT_DIR" && bun run build:web)
+    (cd "$ROOT_DIR/web" && bun run build)
     wrangler pages deploy dist --project-name "$PAGES_PROJECT" --branch main
     ;;
   cf-preview)
-    (cd "$ROOT_DIR" && bun run build:web)
+    (cd "$ROOT_DIR/web" && bun run build)
     wrangler pages deploy dist --project-name "$PAGES_PROJECT"
     ;;
   d1-create) wrangler d1 create "$DB_NAME" ;;
@@ -89,7 +86,6 @@ case "${1:-}" in
     wrangler dns record list --zone-id "$ZONE_ID" --name "$DOMAIN"
     ;;
   docker-web) docker build -f "$ROOT_DIR/Dockerfile.web" -t kurtmorales-web:latest "$ROOT_DIR" ;;
-  docker-cms) docker build -f "$ROOT_DIR/Dockerfile.cms" -t kurtmorales-cms:latest "$ROOT_DIR" ;;
   sync)
     (cd "$ROOT_DIR" && git fetch --all --prune && git status --short && git log --oneline -5)
     ;;

@@ -1,6 +1,10 @@
 import type { PayloadPost, PayloadProject, Template } from '../lib/payload';
+import generatedRssPosts from './generated-rss-posts.json';
+import howToPosts from './how-to-posts.json';
 
 export const fallbackPosts: PayloadPost[] = [
+  ...(howToPosts as PayloadPost[]),
+  ...(generatedRssPosts as PayloadPost[]),
   {
     id: 'f1',
     slug: 'building-cms-for-non-developer-team-members-and-users',
@@ -21,7 +25,7 @@ export const fallbackProjects: PayloadProject[] = [
   { id: 'p4', title: 'Cuepal Directory', type: 'Directory', tech: 'TypeScript', description: 'A pool league finder concept connecting players with local game communities.', link: 'https://github.com/Kacmnetworkk/Cuepal-Directory', order: 4 },
   { id: 'p5', title: 'RavFia SecurePass', type: 'Tooling', tech: 'API Concept', description: 'Cryptographic password generation and privacy-first tooling direction.', link: 'https://github.com/Kacmnetworkk', order: 5 },
   { id: 'p6', title: 'KurtMorales Design', type: 'Studio', tech: 'Web Design', description: 'Brand focused on modern, fast, SEO-conscious websites for local companies.', link: 'https://kurtmorales.com', order: 6 },
-]
+];
 
 export const fallbackTemplates: Template[] = [
   {
@@ -59,5 +63,27 @@ export const fallbackTemplates: Template[] = [
     featured: true,
     price: 29,
     order: 3,
+  },
+  {
+    id: 't4',
+    title: 'SecurePass',
+    description: 'AI-assisted password security template with generator flows, encrypted vault patterns, QR tools, and master-password strength checks.',
+    tech: 'React / Vite / Gemini',
+    sourceUrl: 'https://github.com/Kacmnetworkk/SecurePass',
+    tags: [{ tag: 'Security' }, { tag: 'React' }, { tag: 'AI' }],
+    featured: false,
+    price: 0,
+    order: 4,
+  },
+  {
+    id: 't5',
+    title: 'Portfolio Theme',
+    description: 'Clean, responsive portfolio template for freelancers and creatives. Built with semantic HTML, CSS, and vanilla JS — ready for Cloudflare Pages deploy.',
+    tech: 'HTML / CSS / JS',
+    sourceUrl: 'https://github.com/kurtmorales-tech/km-portfolio-themed',
+    tags: [{ tag: 'Portfolio' }, { tag: 'Static' }, { tag: 'Freelance' }],
+    featured: false,
+    price: 0,
+    order: 5,
   },
 ];

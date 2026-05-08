@@ -5,13 +5,12 @@ pages_build_output_dir = "dist"
 [vars]
 ENVIRONMENT = "production"
 SITE_URL = "https://kurtmorales.com"
-PUBLIC_CMS_URL = "https://cms.kurtmorales.com"
 
-# Newsletter (set via `wrangler secret put` for sensitive values):
-# NEWSLETTER_FROM      — Sender address (e.g. "Newsletter <news@kurtmorales.com>")
-# PAYLOAD_SECRET       — PayloadCMS auth secret
-# CLOUDFLARE_API_TOKEN — Cloudflare API token (Account Token with Email Sending scope)
-# CLOUDFLARE_ACCOUNT_ID — Cloudflare account ID
+# Newsletter secrets (set via `wrangler secret put` for sensitive values):
+# NEWSLETTER_FROM        — Sender address (e.g. "Newsletter <news@kurtmorales.com>")
+# BACKEND_ADMIN_SECRET   — Optional backend bearer token for protected PATCH routes
+# CLOUDFLARE_API_TOKEN   — Cloudflare API token (Account Token with Email Sending scope)
+# CLOUDFLARE_ACCOUNT_ID  — Cloudflare account ID
 
 # Create with:
 #   bunx wrangler d1 create kurtmorales-modern-db

@@ -4,11 +4,7 @@ bun.lock
 .env.*
 .logs/
 *.log
-
-# CMS
-cms/.next/
-cms/data/
-cms/public/media/
+content/generated-rss-posts.json
 
 # Frontend
 web/dist/

@@ -8,9 +8,9 @@ Operational workflow for KurtMorales Modern.
 - Cloudflare Pages Functions bindings: D1 `DB`, Worker AI `AI`
 - D1 seed/migration/query helpers
 - DNS helper command
-- Docker packaging for web and CMS
+- Docker packaging for web
 - Git sync/push workflow
-- PayloadCMS remains the backend/source of truth
+- Bun backend remains the content API source of truth
 
 ## Commands
 
@@ -21,9 +21,8 @@ bun run tools:status
 # Build
 bun run build
 bun run build:web
-bun run build:cms
 
-# Payload seed
+# Seed
 bun run seed
 
 # Cloudflare auth
@@ -45,7 +44,6 @@ CF_ZONE_ID=your_zone_id bun run dns:list
 
 # Docker
 bun run docker:web
-bun run docker:cms
 ```
 
 ## Cloudflare Setup
@@ -83,15 +81,14 @@ CF_PAGES_PROJECT=kurtmorales-modern bun run cf:deploy
 - `DB` — Cloudflare D1 database
 - `AI` — Cloudflare Worker AI
 - `SITE_URL` — production URL
-- `PUBLIC_CMS_URL` — deployed PayloadCMS URL
 
 ## Git Push Workflow
 
 ```bash
 git status --short
 git add .
-git commit -m "chore: add cloudflare buildtools workflow"
+git commit -m "chore: simplify bun + astro workflow"
 git push origin main
 ```
 
-Review `.env`, `.logs/`, `cms/data/`, `web/dist/`, and `cms/.next/` stay ignored before pushing.
+Review `.env`, `.logs/`, `content/generated-rss-posts.json`, and `web/dist/` stay ignored before pushing.
