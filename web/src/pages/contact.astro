@@ -2,11 +2,6 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-
-const backendUrl = (
-  import.meta.env.PUBLIC_BACKEND_URL ||
-  'http://localhost:3001'
-).replace(/\/$/, '');
 ---
 <BaseLayout
   title="Contact — KurtMorales"
@@ -48,7 +43,7 @@ const backendUrl = (
           <div class="absolute top-0 left-0 w-12 h-[2px] bg-brand"></div>
           <div class="absolute top-0 left-0 w-[2px] h-12 bg-brand"></div>
 
-          <form id="contact-form" class="space-y-6" data-api-base={backendUrl}>
+          <form id="contact-form" class="space-y-6" action="mailto:email@kurtmorales.com" method="post" enctype="text/plain">
             <div class="grid md:grid-cols-2 gap-6">
               <div>
                 <label for="name" class="block text-[9px] font-black uppercase tracking-widest text-gray-500 mb-2">Name *</label>
@@ -127,10 +122,9 @@ const backendUrl = (
   );
   document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => obs.observe(el));
 
-  // Form submit
+  // Form submit — try Worker endpoint first, then mailto fallback
   const form = document.getElementById('contact-form') as HTMLFormElement;
   const btn = document.getElementById('submit-btn') as HTMLButtonElement;
-  const apiBase = form.dataset.apiBase || '';
   const btnText = document.getElementById('btn-text')!;
   const btnIcon = document.getElementById('btn-icon')!;
   const btnSpinner = document.getElementById('btn-spinner')!;
@@ -147,7 +141,7 @@ const backendUrl = (
     error.classList.add('hidden');
 
     try {
-      const res = await fetch(`${apiBase}/api/contact`, {
+      const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(Object.fromEntries(new FormData(form))),
@@ -160,7 +154,13 @@ const backendUrl = (
         error.classList.remove('hidden');
       }
     } catch {
-      error.classList.remove('hidden');
+      // Fallback: open mailto with form data
+      const data = Object.fromEntries(new FormData(form));
+      const subject = encodeURIComponent(`Contact from ${data['name'] || 'visitor'}`);
+      const body = encodeURIComponent(
+        `Name: ${data['name'] || ''}\nEmail: ${data['email'] || ''}\nProject: ${data['project'] || ''}\nBudget: ${data['budget'] || ''}\nMessage: ${data['message'] || ''}`
+      );
+      window.location.href = `mailto:email@kurtmorales.com?subject=${subject}&body=${body}`;
     } finally {
       btn.disabled = false;
       btnText.textContent = 'Send Message';

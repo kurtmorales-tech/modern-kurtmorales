@@ -126,6 +126,7 @@ export const seedTemplates: SeedTemplate[] = [
     description: 'AI-assisted password security template with generator flows, encrypted vault patterns, QR tools, and master-password strength checks.',
     tech: 'React / Vite / Gemini',
     thumbnail: { url: '/template-previews/securepass.png', alt: 'SecurePass template preview' },
+    demoUrl: 'https://securepass.ravfia.online/',
     sourceUrl: 'https://github.com/Kacmnetworkk/SecurePass',
     tags: [{ tag: 'Security' }, { tag: 'React' }, { tag: 'AI' }],
     featured: false,
