@@ -1,89 +1,125 @@
 # KurtMorales — Portfolio & Blog
 
-Monorepo for [kurtmorales.com](https://kurtmorales.com): Astro frontend + Bun backend.
+Monorepo for [kurtmorales.com](https://kurtmorales.com), with:
 
-## Quick Start
+- `apps/web/`: React + Vite frontend (canonical website)
+- `backend/`: Bun + SQLite content API
+
+## Prerequisites
+
+- [Bun](https://bun.sh) `1.3.13+`
+- Node is not required for normal dev flow
+
+## Quick start
 
 ```bash
 bun install
-bun run seed          # initialize SQLite content data
-bun run dev           # start backend (3001) + frontend (3000)
+bun run seed
+bun run dev
 ```
 
-## Architecture
+Local URLs:
 
-| Package | Stack | Port |
-|---------|-------|------|
-| `web/` | Astro 6, React 19, Tailwind v4 | 3000 |
-| `backend/` | Bun, Bun.serve, SQLite (`bun:sqlite`) | 3001 |
+- Frontend: `http://localhost:3000`
+- Backend API: `http://localhost:3001`
+
+## Repository architecture
+
+- `apps/web/` — React 19 + Vite site, Tailwind v4 visual system, static build output in `apps/web/dist`
+- `backend/` — Bun HTTP server (`backend/src/server.ts`) with SQLite DB layer (`backend/src/db.ts`)
+- `scripts/` — deployment + RSS automation scripts
+- `content/` — generated RSS content artifacts
 
 ## Commands
 
-| Command | Description |
-|---------|-------------|
-| `bun run dev` | Start Bun backend + frontend |
-| `bun run dev:backend` | Backend only |
-| `bun run dev:web` | Frontend only |
-| `bun run build` | Build backend bundle + frontend |
-| `bun run seed` | Initialize backend SQLite data |
-| `bun run clean` | Remove build artifacts |
-| `bun run rss:publish-local` | Generate RSS-driven blog content locally |
-| `bun run rss:cron` | Generate RSS content, build, and deploy the frontend |
+| Command                     | Description                                           |
+| --------------------------- | ----------------------------------------------------- |
+| `bun run dev`               | Run backend + frontend together                       |
+| `bun run dev:backend`       | Run backend only                                      |
+| `bun run dev:web`           | Run frontend only                                     |
+| `bun run seed`              | Seed local backend SQLite data                        |
+| `bun run build`             | Build backend bundle + React frontend static site     |
+| `bun run clean`             | Remove build artifacts                                |
+| `bun run format`            | Format repo with Prettier                             |
+| `bun run format:check`      | CI-style Prettier check (no writes)                   |
+| `bun run rss:publish-local` | Pull RSS content and update local generated blog data |
+| `bun run rss:cron`          | Run RSS pipeline + build + deploy web                 |
 
-## Frontend Design Notes
+## Environment variables
 
-The current frontend theme is Cloudflare-inspired:
-- primary accent: warm orange (`--color-brand`)
-- secondary accent: restrained purple (`--color-accent`)
-- glass/panel surfaces via `km-panel`, `km-pill`, and `km-button*`
-- shared live hover interaction via `data-live-card` in `BaseLayout.astro`
-- global reveal observer also lives in `BaseLayout.astro`
+### Root / scripts
 
-### Blog Endcap
+| Variable              | Default                 | Used for                                    |
+| --------------------- | ----------------------- | ------------------------------------------- |
+| `CF_PAGES_PROJECT`    | `kurtmorales-modern`    | Cloudflare Pages project for deploy scripts |
+| `CF_D1_DATABASE_NAME` | `kurtmorales-modern-db` | D1 helper commands                          |
+| `CF_ZONE_ID`          | _unset_                 | DNS helper command                          |
+| `CF_DOMAIN`           | `kurtmorales.com`       | DNS helper command                          |
+| `RSS_BLOG_LIMIT`      | `1`                     | RSS cron generation limit                   |
+| `BLOG_DOMAIN`         | `blogs.kurtmorales.com` | RSS cron output URL                         |
 
-The `/blog` archive now ends with a reusable CTA + numbered navigation component:
-- component: `web/src/components/BlogEndcap.astro`
-- page usage: `web/src/pages/blog/index.astro`
-- numbered quick-nav: `01` to `08`
+### Frontend (`apps/web/`)
 
-## Data Binding
+| Variable             | Default                 | Notes                                                  |
+| -------------------- | ----------------------- | ------------------------------------------------------ |
+| `VITE_API_BASE_URL`  | `http://localhost:3001` | Primary API base URL used by `apps/web/src/lib/api.ts` |
+| `PUBLIC_BACKEND_URL` | none                    | Compatibility fallback API base URL                    |
+| `BACKEND_URL`        | none                    | Secondary compatibility fallback API base URL          |
 
-The Astro frontend reads the Bun API via `web/src/lib/payload.ts`.
+If backend requests fail, frontend pages fall back to static data in `apps/web/src/lib/fallback.ts`.
 
-Local env:
+### Backend (`backend/`)
 
-```bash
-PUBLIC_BACKEND_URL=http://localhost:3001
-```
-
-If the backend is unavailable, the frontend falls back to static content in `web/src/data/fallback.ts`.
-
-RSS source definitions live in `scripts/rss-sources.ts`.
-Generated RSS store lives in `content/generated-rss-posts.json`.
-Public generated blog data lives in `web/src/data/generated-rss-posts.json`.
+| Variable               | Default                                         | Notes                                         |
+| ---------------------- | ----------------------------------------------- | --------------------------------------------- |
+| `PORT`                 | `3001`                                          | Backend listen port                           |
+| `DATABASE_PATH`        | `backend/data/kurtmorales.db`                   | SQLite file location                          |
+| `CORS_ORIGINS`         | `http://localhost:3000,https://kurtmorales.com` | Comma-separated allow list                    |
+| `BACKEND_ADMIN_SECRET` | _unset_                                         | Enables auth for `PATCH /api/newsletters/:id` |
 
 ## Backend API
 
-Primary endpoints:
-- `GET /health`
+Base URL (local): `http://localhost:3001`
+
+- `GET /health` (also available as `GET /api/health`)
 - `GET /api/posts`
-- `GET /api/projects`
-- `GET /api/templates`
-- `GET /api/subscribers`
+  - supports `where[status][equals]=published|draft`
+  - supports `where[slug][equals]=...`
+  - supports `sort=-date` and `limit`
+- `GET /api/projects?limit=50`
+- `GET /api/templates?limit=50`
+- `GET /api/subscribers?limit=1000`
 - `POST /api/subscribers`
-- `GET /api/newsletters`
+- `GET /api/newsletters?limit=50`
 - `GET /api/newsletters/:id`
-- `PATCH /api/newsletters/:id`
+- `PATCH /api/newsletters/:id` (requires `Authorization: Bearer <secret>` when secret is configured)
 - `POST /api/contact`
 
-## BuildTools / Cloudflare Workflow
+## Deployment notes
 
-See [`BUILDTOOLS.md`](./BUILDTOOLS.md) for Cloudflare Pages deploy, D1 seed/query/migrations, Docker packaging, and Git sync workflow.
-
-Quick commands:
+### Cloudflare Pages (React web)
 
 ```bash
-bun run tools:status
 bun run build
 bun run cf:deploy
 ```
+
+Helpful ops commands:
+
+```bash
+bun run tools:status
+bun run cf:whoami
+bun run cf:preview
+```
+
+More detail: [`BUILDTOOLS.md`](./BUILDTOOLS.md).
+
+### RSS automation
+
+`bun run rss:cron` runs:
+
+1. RSS generation (`bun run rss:publish-local`)
+2. frontend build
+3. `wrangler pages deploy`
+
+Script location: `scripts/rss-blog-cron.sh`.

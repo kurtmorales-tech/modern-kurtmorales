@@ -17,7 +17,7 @@ const allowedOrigins = (process.env.CORS_ORIGINS || 'http://localhost:3000,https
   .split(',')
   .map((value) => value.trim())
   .filter(Boolean);
-const adminSecret = process.env.BACKEND_ADMIN_SECRET || process.env.PAYLOAD_SECRET || '';
+const adminSecret = process.env.BACKEND_ADMIN_SECRET || '';
 
 function corsHeaders(request: Request) {
   const origin = request.headers.get('origin');
@@ -96,28 +96,46 @@ const server = Bun.serve({
 
       if (pathname === '/api/posts' && request.method === 'GET') {
         const docs = listPosts({
-          status: (searchParams.get('where[status][equals]') as 'draft' | 'published' | null) ?? undefined,
+          status:
+            (searchParams.get('where[status][equals]') as 'draft' | 'published' | null) ??
+            undefined,
           slug: searchParams.get('where[slug][equals]') ?? undefined,
           limit: parseLimit(searchParams.get('limit'), 150),
           sort: searchParams.get('sort') ?? '-date',
         });
 
-        return json(request, { docs, totalDocs: docs.length, limit: docs.length });
+        return json(request, {
+          docs,
+          totalDocs: docs.length,
+          limit: docs.length,
+        });
       }
 
       if (pathname === '/api/projects' && request.method === 'GET') {
         const docs = listProjects(parseLimit(searchParams.get('limit'), 50));
-        return json(request, { docs, totalDocs: docs.length, limit: docs.length });
+        return json(request, {
+          docs,
+          totalDocs: docs.length,
+          limit: docs.length,
+        });
       }
 
       if (pathname === '/api/templates' && request.method === 'GET') {
         const docs = listTemplates(parseLimit(searchParams.get('limit'), 50));
-        return json(request, { docs, totalDocs: docs.length, limit: docs.length });
+        return json(request, {
+          docs,
+          totalDocs: docs.length,
+          limit: docs.length,
+        });
       }
 
       if (pathname === '/api/subscribers' && request.method === 'GET') {
         const docs = listSubscribers(parseLimit(searchParams.get('limit'), 1000));
-        return json(request, { docs, totalDocs: docs.length, limit: docs.length });
+        return json(request, {
+          docs,
+          totalDocs: docs.length,
+          limit: docs.length,
+        });
       }
 
       if (pathname === '/api/subscribers' && request.method === 'POST') {
@@ -165,7 +183,11 @@ const server = Bun.serve({
 
       if (pathname === '/api/newsletters' && request.method === 'GET') {
         const docs = listNewsletters(parseLimit(searchParams.get('limit'), 50));
-        return json(request, { docs, totalDocs: docs.length, limit: docs.length });
+        return json(request, {
+          docs,
+          totalDocs: docs.length,
+          limit: docs.length,
+        });
       }
 
       const newsletterMatch = pathname.match(/^\/api\/newsletters\/([^/]+)$/);
@@ -201,10 +223,12 @@ const server = Bun.serve({
             title: typeof body.title === 'string' ? body.title : undefined,
             subject: typeof body.subject === 'string' ? body.subject : undefined,
             preheader: typeof body.preheader === 'string' ? body.preheader : undefined,
-            contentMarkdown: typeof body.contentMarkdown === 'string' ? body.contentMarkdown : undefined,
+            contentMarkdown:
+              typeof body.contentMarkdown === 'string' ? body.contentMarkdown : undefined,
             html: typeof body.html === 'string' ? body.html : undefined,
             text: typeof body.text === 'string' ? body.text : undefined,
-            status: typeof status === 'string' ? (status as 'draft' | 'sending' | 'sent') : undefined,
+            status:
+              typeof status === 'string' ? (status as 'draft' | 'sending' | 'sent') : undefined,
             sentAt: typeof body.sentAt === 'string' ? body.sentAt : undefined,
             recipientsCount:
               typeof body.recipientsCount === 'number' ? body.recipientsCount : undefined,

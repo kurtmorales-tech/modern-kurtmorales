@@ -1,31 +1,63 @@
-# Bun Backend
+# KurtMorales Backend (Bun + SQLite)
 
-Lightweight content API for the KurtMorales frontend.
+HTTP API used by the React frontend.
 
-## Run
+## Run locally
+
+From repo root:
+
+```bash
+bun run dev:backend
+```
+
+Or from this directory:
 
 ```bash
 cd backend
 bun run dev
 ```
 
-Server defaults:
-- `PORT=3001`
-- `DATABASE_PATH=./data/kurtmorales.db`
+## Scripts
 
-Optional env:
-- `BACKEND_ADMIN_SECRET` — protects newsletter mutation routes when set
-- `CORS_ORIGINS` — comma-separated allowed origins
+| Command            | Description                                                  |
+| ------------------ | ------------------------------------------------------------ |
+| `bun run dev`      | Start backend with watch mode                                |
+| `bun run start`    | Start backend once                                           |
+| `bun run build`    | Build Bun bundle to `backend/dist`                           |
+| `bun run seed`     | Seed SQLite with bundled content (`INSERT OR IGNORE`)        |
+| `bun run db:reset` | Delete SQLite + WAL/SHM files, then seed (stop server first) |
 
-## Endpoints
+## Environment variables
 
-- `GET /health`
+| Variable               | Default                                         | Notes                                                   |
+| ---------------------- | ----------------------------------------------- | ------------------------------------------------------- |
+| `PORT`                 | `3001`                                          | Server port                                             |
+| `DATABASE_PATH`        | `backend/data/kurtmorales.db`                   | SQLite file path (set to use a different database file) |
+| `CORS_ORIGINS`         | `http://localhost:3000,https://kurtmorales.com` | Comma-separated origins                                 |
+| `BACKEND_ADMIN_SECRET` | _unset_                                         | Protects `PATCH /api/newsletters/:id`                   |
+
+## API endpoints
+
+- `GET /` — status text including DB path
+- `GET /health` and `GET /api/health` — health summary + table counts
 - `GET /api/posts`
+  - query: `where[status][equals]`, `where[slug][equals]`, `sort`, `limit`
 - `GET /api/projects`
 - `GET /api/templates`
 - `GET /api/subscribers`
 - `POST /api/subscribers`
+- `POST /api/contact`
 - `GET /api/newsletters`
 - `GET /api/newsletters/:id`
-- `PATCH /api/newsletters/:id`
-- `POST /api/contact`
+- `PATCH /api/newsletters/:id` (Bearer auth required if admin secret is configured)
+
+## Data model tables
+
+- `posts`
+- `projects`
+- `templates`
+- `subscribers`
+- `newsletters`
+- `contact_messages`
+
+Schema + query implementation: `backend/src/db.ts`.

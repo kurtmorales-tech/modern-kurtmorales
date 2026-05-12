@@ -4,7 +4,7 @@ Operational workflow for KurtMorales Modern.
 
 ## Scope
 
-- Cloudflare Pages deploy for `web/`
+- Cloudflare Pages deploy for React app in `apps/web/`
 - Cloudflare Pages Functions bindings: D1 `DB`, Worker AI `AI`
 - D1 seed/migration/query helpers
 - DNS helper command
@@ -60,7 +60,7 @@ bunx wrangler login
 bun run d1:create
 ```
 
-3. Copy returned database ID into `web/wrangler.toml`.
+3. Copy returned database ID into `apps/web/wrangler.toml` if deploying Worker/Page bindings.
 
 4. Apply migrations:
 
@@ -76,19 +76,15 @@ CF_PAGES_PROJECT=kurtmorales-modern bun run cf:deploy
 
 ## Bindings
 
-`web/wrangler.toml` defines:
-
-- `DB` — Cloudflare D1 database
-- `AI` — Cloudflare Worker AI
-- `SITE_URL` — production URL
+`apps/web/wrangler.toml` defines the React Pages output path. Worker/API bindings for the browser blog studio still need to be re-added if editor routes are deployed from Workers.
 
 ## Git Push Workflow
 
 ```bash
 git status --short
 git add .
-git commit -m "chore: simplify bun + astro workflow"
+git commit -m "chore: migrate website frontend to react"
 git push origin main
 ```
 
-Review `.env`, `.logs/`, `content/generated-rss-posts.json`, and `web/dist/` stay ignored before pushing.
+Review `.env`, `.logs/`, `content/generated-rss-posts.json`, and `apps/web/dist/` stay ignored before pushing.

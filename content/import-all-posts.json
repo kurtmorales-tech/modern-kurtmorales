@@ -1,102 +1,902 @@
 [
-  {"title": "Font Pairing Mastery: Creating Harmonious Type Combinations", "slug": "font-pairing-mastery", "excerpt": "Learn the art of combining fonts to create visually compelling designs. Discover proven pairing strategies, contrast techniques, and real-world examples.", "content": "Font pairing is one of the most transformative skills in a designer's toolkit. When done well, it creates visual hierarchy, establishes brand personality, and guides users through content effortlessly.\n\n## The Foundation: Understanding Font Categories\n\nBefore pairing fonts, you need to understand the five main categories: Serif, Sans-serif, Script, Monospace, and Display. The most successful pairings combine two different categories to create visual contrast.\n\n## The Classic Approach: Serif + Sans-serif\n\nThis is the gold standard for professional design. Popular combinations include Playfair Display + Source Sans Pro, Merriweather + Open Sans, and Libre Baskerville + Lato.\n\n## Creating Contrast Through Weight and Style\n\nBeyond category, create hierarchy through weight contrast, size contrast, style contrast, and case contrast. Limit to 2-3 fonts, match x-heights, and test at multiple sizes.", "tags": ["typography", "font-pairing"], "readTime": 8, "status": "published"},
-  {"title": "Variable Fonts: The Future of Responsive Typography", "slug": "variable-fonts-future", "excerpt": "Discover how variable fonts are revolutionizing responsive design with single font files for fluid typography.", "content": "Variable fonts allow multiple variations—weight, width, slant—to exist in a single font file, reducing file size by 40-60%. Use CSS like `font-weight: clamp(600, 3vw + 200, 900)` for fluid scaling. All modern browsers support them. Popular options include Inter, Roboto Flex, and DM Sans.", "tags": ["typography", "variable-fonts"], "readTime": 6, "status": "published"},
-  {"title": "Vertical Rhythm: Building Consistent Reading Experiences", "slug": "vertical-rhythm-consistency", "excerpt": "Master vertical rhythm to create harmonious, readable layouts that feel professionally crafted.", "content": "Vertical rhythm is the consistent spacing between elements that creates visual harmony. Set a base line height (typically 1.5), use a modular scale, and ensure all spacing is a multiple of your base unit. This creates cohesive, scannable layouts.", "tags": ["typography", "layout", "design"], "readTime": 7, "status": "published"},
-  {"title": "Fluid Typography: Scaling Text Across All Viewports", "slug": "fluid-typography-scaling", "excerpt": "Learn to use CSS clamp() and viewport units to create typography that elegantly scales between devices.", "content": "Fluid typography uses calc() and clamp() to smoothly transition font sizes between minimum and maximum values. Example: `font-size: clamp(1rem, 0.5rem + 2vw, 1.5rem)`. This eliminates discrete breakpoints and creates natural scaling.", "tags": ["typography", "responsive", "css"], "readTime": 6, "status": "published"},
-  {"title": "Type Scale Systems: From Modular Scales to Golden Ratio", "slug": "type-scale-systems", "excerpt": "Use mathematical type scales to create harmonious font size relationships across your design.", "content": "A type scale is a ratio that determines size relationships between headings. Common ratios include Major Third (1.25), Perfect Fourth (1.333), and Golden Ratio (1.618). Use online tools like Type Scale Calculator to generate consistent sizes.", "tags": ["typography", "design-systems"], "readTime": 6, "status": "published"},
-  {"title": "Web Font Optimization: Faster Loading Without Sacrificing Style", "slug": "web-font-optimization", "excerpt": "Techniques for reducing font file sizes, optimizing delivery, and preventing layout shifts.", "content": "Optimize fonts by subsetting (removing unused glyphs), using WOFF2 format, implementing font-display: swap, preloading critical fonts, and using variable fonts. Tools like Fonttools and google-webfonts-helper help automate these optimizations.", "tags": ["typography", "performance"], "readTime": 7, "status": "published"},
-  {"title": "Legibility vs Readability: What's the Difference and Why It Matters", "slug": "legibility-vs-readability", "excerpt": "Understanding the crucial distinction between legibility and readability for better typography decisions.", "content": "Legibility is how easily individual characters are distinguished. Readability is how easily text blocks are processed. Good design requires both. Legibility depends on letterform design; readability depends on spacing, line length, and contrast.", "tags": ["typography", "accessibility"], "readTime": 5, "status": "published"},
-  {"title": "Chinese Typography: Unique Challenges and Best Practices", "slug": "chinese-typography-guide", "excerpt": "Navigate the complexities of designing for Chinese web typography with proper fonts and spacing.", "content": "Chinese typography requires careful font selection (Noto Sans SC, Source Han Sans), proper line height (1.8-2x), and appropriate character spacing. Avoid common issues like incorrect fallback fonts or incompatible glyphs.", "tags": ["typography", "internationalization"], "readTime": 6, "status": "published"},
-  {"title": "Typography Accessibility: Ensuring Readability for All Users", "slug": "typography-accessibility", "excerpt": "Make typography accessible by following WCAG guidelines for size, contrast, and spacing.", "content": "Accessible typography requires minimum 16px base size, 4.5:1 contrast ratio for body text, 60-75 characters per line, 1.5 line height, and adequate paragraph spacing. Allow users to resize text without horizontal scrolling.", "tags": ["typography", "accessibility"], "readTime": 6, "status": "published"},
-  {"title": "Micro-Typography: The Details That Make Type Feel Professional", "slug": "micro-typography-details", "excerpt": "Refine your designs with proper punctuation, spacing, and typographic fineprint.", "content": "Micro-typography covers optical margin alignment, proper quote marks, hanging punctuation, proper ellipses (…), kerning adjustments, and text figures vs lining figures. These details distinguish amateur from professional typography.", "tags": ["typography", "design"], "readTime": 5, "status": "published"},
-  {"title": "Color Psychology in Web Design: How Colors Influence User Behavior", "slug": "color-psychology-web-design", "excerpt": "Understand how color choices affect emotions, trust, and conversions on your website.", "content": "Colors trigger psychological responses: Blue conveys trust (banks, tech), Red creates urgency (sales), Green suggests growth (finance, environment), Yellow attracts attention but causes fatigue. Test colors A/B to find what works for your specific audience.", "tags": ["color-theory", "conversion", "psychology"], "readTime": 7, "status": "published"},
-  {"title": "Building Accessible Color Palettes: WCAG Contrast Guidelines", "slug": "accessible-color-palettes", "excerpt": "Create color schemes that meet WCAG accessibility standards for all users.", "content": "WCAG requires 4.5:1 contrast ratio for normal text and 3:1 for large text. Use tools like WebAIM Contrast Checker, Stark, or use OKLCH color space for perceptually uniform colors. Test with color blindness simulators to ensure inclusivity.", "tags": ["color-theory", "accessibility", "wcag"], "readTime": 6, "status": "published"},
-  {"title": "Dark Mode Design: Creating Effective Dark Color Schemes", "slug": "dark-mode-design-guide", "excerpt": "Design beautiful dark themes that reduce eye strain and save battery on OLED screens.", "content": "Dark mode isn't just inverting colors. Use true black (#000000) sparingly—prefer dark grays (#121212) to reduce smearing on OLED. Reduce text brightness to 70-80% to prevent halation. Preserve accent colors but desaturate them.", "tags": ["color-theory", "dark-mode", "mobile"], "readTime": 6, "status": "published"},
-  {"title": "Color Naming Systems: Organizing Palette for Scalable Design", "slug": "color-naming-systems", "excerpt": "Establish consistent color naming conventions for design systems and team collaboration.", "content": "Use semantic naming (primary, secondary, success) for theme layers, functional naming (text-primary, background-surface) for components, and reference naming (blue-500) for base tokens. Tools like Coolors and Adobe Color help build systematic palettes.", "tags": ["color-theory", "design-systems"], "readTime": 5, "status": "published"},
-  {"title": "Gradients in Modern UI: Trends and Implementation Techniques", "slug": "gradients-modern-ui", "excerpt": "Create modern gradient designs with mesh gradients, conic gradients, and CSS techniques.", "content": "Modern gradients include mesh gradients (organic, colorful backgrounds), conic gradients (pie charts, loaders), and linear gradients with transparency. Use backdrop-filter for glass effects and gradient text with background-clip.", "tags": ["color-theory", "css", "ui-design"], "readTime": 6, "status": "published"},
-  {"title": "Semantic Colors: Using Meaning to Organize Your Palette", "slug": "semantic-colors-design", "excerpt": "Build semantic color systems that communicate meaning rather than arbitrary shades.", "content": "Semantic colors map to meaning: error/danger, warning, success, info. Keep semantic colors stable while allowing theme adaptation. Use semantic layering: surface colors override base colors, which override semantic colors.", "tags": ["color-theory", "design-systems"], "readTime": 5, "status": "published"},
-  {"title": "Color Temperature: Creating Mood Through Warm and Cool Tones", "slug": "color-temperature-mood", "excerpt": "Use color temperature intentionally to set mood and guide user emotions.", "content": "Warm colors (red, orange, yellow) convey energy, urgency, and warmth. Cool colors (blue, green, purple) suggest calm, trust, and professionalism. Shift temperature for context: warmer shadows in sunset themes, cooler in tech themes.", "tags": ["color-theory", "psychology"], "readTime": 5, "status": "published"},
-  {"title": "Dynamic Color Theming with CSS Variables and JavaScript", "slug": "dynamic-color-theming", "excerpt": "Implement runtime theme switching with CSS custom properties and JS detection.", "content": "Use CSS variables for theme colors: `:root { --primary: #0066cc; }`. Change with JS: `document.documentElement.style.setProperty('--primary', newColor)`. Detect system preference with `matchMedia('(prefers-color-scheme: dark)')`. Store in localStorage for persistence.", "tags": ["color-theory", "css", "javascript"], "readTime": 6, "status": "published"},
-  {"title": "Brand Color Adaptation: Maintaining Identity Across Contexts", "slug": "brand-color-adaptation", "excerpt": "Adapt brand colors for different contexts while preserving recognition and impact.", "content": "Create color variations: primary (brand), secondary (complementary), surface (backgrounds), and functional (UI states). Test brand colors against different backgrounds and in grayscale to ensure recognition. Maintain accessibility across variations.", "tags": ["color-theory", "branding"], "readTime": 5, "status": "published"},
-  {"title": "Color Blindness Simulation: Testing Your Design for All Users", "slug": "color-blindness-testing", "excerpt": "Test designs for color blindness to ensure accessible and effective visual communication.", "content": "Types: Protanopia (red-blind), Deuteranopia (green-blind), Tritanopia (blue-blind), and Achromatopsia (total color blindness). Test with Chrome DevTools, Figma plugins, or tools like Coblis. Never rely solely on color—add patterns, labels, or icons.", "tags": ["color-theory", "accessibility", "testing"], "readTime": 5, "status": "published"},
-  {"title": "CSS Container Queries: The Future of Component-Based Responsive Design", "slug": "css-container-queries", "excerpt": "Learn how container queries enable truly responsive components that adapt to their container, not viewport.", "content": "Container queries let components respond to their parent container size. Set containment: `@container` and query: `@container (min-width: 400px)`. This enables reusable components that adapt to any context—sidebar, main content, or modal.", "tags": ["responsive-design", "css", "components"], "readTime": 7, "status": "published"},
-  {"title": "Mobile-First vs Desktop-First: Choosing Your Responsive Strategy", "slug": "mobile-first-vs-desktop-first", "excerpt": "Compare responsive design approaches and determine which fits your project best.", "content": "Mobile-first starts with mobile styles, adds complexity with min-width queries. Desktop-first starts with desktop, removes/changes with max-width queries. Mobile-first generally leads to cleaner code and better performance—start simple, enhance up.", "tags": ["responsive-design", "mobile-first"], "readTime": 6, "status": "published"},
-  {"title": "Breakpoint Strategies: When and How to Define Responsive Thresholds", "slug": "responsive-breakpoint-strategies", "excerpt": "Define breakpoints based on content, not devices, for more maintainable responsive designs.", "content": "Content-driven breakpoints: let content dictate when it breaks, not device lists. Common patterns: 320px (small phones), 480px (large phones), 768px (tablets), 1024px (small laptops), 1440px (desktops). Use relative units (em, rem) for breakpoint values.", "tags": ["responsive-design", "css"], "readTime": 6, "status": "published"},
-  {"title": "Responsive Images: srcset, sizes, and Modern Picture Techniques", "slug": "responsive-images-techniques", "excerpt": "Serve optimal images for every device using modern HTML and CSS image techniques.", "content": "Use srcset for resolution switching: `<img srcset=\"img-400.jpg 400w, img-800.jpg 800w\" sizes=\"(max-width: 600px) 400px, 800px\">`. Use <picture> for art direction and format switching (WebP, AVIF). Implement lazy loading with loading=\"lazy\" and decoding=\"async\".", "tags": ["responsive-design", "images", "performance"], "readTime": 7, "status": "published"},
-  {"title": "Touch Target Sizing: Building Mobile-Friendly Interactive Elements", "slug": "touch-target-sizing-guide", "excerpt": "Ensure all interactive elements meet minimum touch target size requirements for usability.", "content": "WCAG recommends 44x44px minimum touch targets, Apple recommends 44x44pt, Google recommends 48x48dp. Space targets at least 8px apart to prevent accidental taps. Test on real devices—not all emulators simulate touch accurately.", "tags": ["responsive-design", "mobile", "usability"], "readTime": 5, "status": "published"},
-  {"title": "Responsive Typography: Fluid Type Across All Screen Sizes", "slug": "responsive-typography-guide", "excerpt": "Scale typography fluidly using clamp(), viewport units, and CSS custom properties.", "content": "Fluid typography uses calculations: `font-size: calc(1rem + ((1vw - 0.5rem) * 2))`. Clamp syntax simplifies: `font-size: clamp(1rem, 1.5rem + 1vw, 2rem)`. Test at extreme screen sizes to ensure readability at both minimum and maximum.", "tags": ["responsive-design", "typography", "css"], "readTime": 6, "status": "published"},
-  {"title": "Progressive Enhancement vs Graceful Degradation: Modern Approaches", "slug": "progressive-enhancement-guide", "excerpt": "Build robust experiences that work everywhere by prioritizing core functionality.", "content": "Progressive enhancement: build core experience first, enhance with advanced features. Graceful degradation: build full experience, provide fallbacks. Modern approach: use feature detection (`@supports`), modern CSS first, not these as opposites but complementary strategies.", "tags": ["responsive-design", "best-practices"], "readTime": 6, "status": "published"},
-  {"title": "Responsive Navigation Patterns: Mobile Menu Solutions That Work", "slug": "responsive-navigation-patterns", "excerpt": "Compare mobile navigation patterns and choose the best for your user experience.", "content": "Patterns: Hamburger menu (flexible but hidden), Bottom navigation (accessible thumb zone), Tiered menu (visible hierarchy), Full-screen overlay (dramatic, good for few links). Test navigation discoverability and ease of closing.", "tags": ["responsive-design", "navigation", "ui"], "readTime": 6, "status": "published"},
-  {"title": "Performance Budgets for Responsive Sites: Keeping Fast on All Devices", "slug": "responsive-performance-budgets", "excerpt": "Set and enforce performance budgets to ensure responsive sites load quickly everywhere.", "content": "Set budgets: JS < 170KB, CSS < 100KB, Images < 1000KB, Time to Interactive < 3s on 3G. Use Lighthouse CI to fail builds exceeding budgets. Monitor Core Web Vitals: LCP < 2.5s, INP < 200ms, CLS < 0.1. Optimize based on real user metrics.", "tags": ["responsive-design", "performance", "optimization"], "readTime": 6, "status": "published"},
-  {"title": "Testing Responsive Designs: Tools and Techniques for All Viewports", "slug": "responsive-testing-tools", "excerpt": "Test responsive designs across devices using browser tools, emulators, and real device labs.", "content": "Browser DevTools: Chrome Device Mode, Firefox Responsive Design Mode. Emulators: Xcode Simulator, Android Emulator. Real devices: BrowserStack, LambdaTest. Don't rely solely on tools—test on actual devices your audience uses. Check orientation changes and input types.", "tags": ["responsive-design", "testing"], "readTime": 5, "status": "published"},
-  {"title": "WCAG 2.1 AA Compliance: A Complete Implementation Guide", "slug": "wcag-2-1-aa-compliance", "excerpt": "Meet WCAG 2.1 AA standards with this comprehensive accessibility implementation guide.", "content": "WCAG 2.1 has 4 principles: Perceivable, Operable, Understandable, Robust. Level AA requires: 4.5:1 contrast for text, 3:1 for large text, keyboard access for all functions, visible focus indicators, alt text for images, captions for video. Use axe DevTools to audit.", "tags": ["accessibility", "wcag", "standards"], "readTime": 8, "status": "published"},
-  {"title": "Semantic HTML: The Foundation of Accessible Websites", "slug": "semantic-html-accessibility", "excerpt": "Use semantic HTML elements to create accessible, well-structured web pages.", "content": "Semantic elements: <header>, <nav>, <main>, <article>, <section>, <aside>, <footer>. Use <button> for actions, <a> for links. Avoid <div> for everything—each semantic element tells screen readers about structure. Use heading hierarchy (h1-h6) in order.", "tags": ["accessibility", "html", "semantics"], "readTime": 6, "status": "published"},
-  {"title": "ARIA Roles and Attributes: When and How to Use Them Correctly", "slug": "aria-roles-attributes-guide", "excerpt": "Master ARIA to enhance accessibility when native HTML isn't sufficient.", "content": "ARIA roles add meaning: role=\"navigation\", role=\"dialog\", role=\"alert\". ARIA states: aria-expanded, aria-pressed, aria-checked. ARIA properties: aria-label, aria-describedby, aria-labelledby. Remember: ARIA doesn't add behavior, only accessibility semantics. Don't override native semantics.", "tags": ["accessibility", "aria", "wcag"], "readTime": 7, "status": "published"},
-  {"title": "Keyboard Navigation: Ensuring Full Site Usability Without a Mouse", "slug": "keyboard-navigation-accessibility", "excerpt": "Test and improve keyboard navigation so all users can access your site effectively.", "content": "Ensure logical tab order (tabindex=\"0\" for custom focus, -1 to remove). Visible focus styles (outline, background change). Skip links to main content. Escape closes modals. Arrow keys navigate within components. Test with Tab, Shift+Tab, Enter, Space, Escape.", "tags": ["accessibility", "keyboard", "navigation"], "readTime": 6, "status": "published"},
-  {"title": "Screen Reader Compatibility: Testing and Optimization Strategies", "slug": "screen-reader-testing-guide", "excerpt": "Test your site with screen readers and optimize for the most popular assistive technologies.", "content": "Popular screen readers: NVDA (Windows, free), JAWS (Windows), VoiceOver (Mac/iOS), TalkBack (Android). Test in Incognito mode to avoid cached state. Listen to how content reads. Check reading order, alt text, form labels, and dynamic content announcements.", "tags": ["accessibility", "screen-readers", "testing"], "readTime": 7, "status": "published"},
-  {"title": "Focus Management: Creating Logical Focus Order and Visible States", "slug": "focus-management-accessibility", "excerpt": "Control focus to guide users through complex interfaces and modals.", "content": "Focus order should match visual order. Move focus to modals when opened: modal.focus(). Return focus to trigger when closed. Use roving tabindex for widget navigation. Ensure focus never gets trapped or lost. Visible focus is required by WCAG.", "tags": ["accessibility", "focus", "javascript"], "readTime": 6, "status": "published"},
-  {"title": "Color Contrast Ratios: Meeting WCAG Requirements for Text Visibility", "slug": "color-contrast-wcag-requirements", "excerpt": "Achieve proper contrast ratios for accessible text across your design.", "content": "WCAG AA requires 4.5:1 for normal text (under 18pt or 14pt bold) and 3:1 for large text (18pt+ or 14pt+ bold). AAA requires 7:1 and 4.5:1. Test with WebAIM Contrast Checker, Stark plugin, or in browser DevTools. Consider dark text on light backgrounds or vice versa.", "tags": ["accessibility", "contrast", "wcag"], "readTime": 5, "status": "published"},
-  {"title": "Accessible Forms: Labels, Instructions, and Error Handling", "slug": "accessible-forms-guide", "excerpt": "Build forms that are accessible with proper labels, instructions, and error messaging.", "content": "Every input needs <label for=\"id\">. Group with <fieldset> and <legend>. Instructions via aria-describedby. Required fields marked visually and with aria-required=\"true\". Errors: role=\"alert\", clear message, associated with input. Autocomplete attributes help users fill forms faster.", "tags": ["accessibility", "forms", "ux"], "readTime": 7, "status": "published"},
-  {"title": "Animated Content and Motion: Respecting User Preferences for Reduced Motion", "slug": "accessible-animations-reduced-motion", "excerpt": "Implement prefers-reduced-motion to respect users who are sensitive to motion.", "content": "CSS: `@media (prefers-reduced-motion: reduce) { * { animation: none; transition: none; } }`. JS: check `window.matchMedia('(prefers-reduced-motion: reduce)')`. Pause animations of moving content. Don't auto-play videos. Eliminate parallax effects.", "tags": ["accessibility", "animation", "css"], "readTime": 5, "status": "published"},
-  {"title": "Accessibility Automation: Tools That Catch Common Issues Automatically", "slug": "accessibility-automation-tools", "excerpt": "Use automated testing tools to identify and fix accessibility issues early.", "content": "Tools: axe DevTools, Lighthouse, WAVE, ARC Toolkit. Automated testing catches ~30-40% of issues (contrast, missing labels, heading order). Manual testing required for rest. Integrate into CI: axe-core with Jest, pa11y in pipelines. Run early and often.", "tags": ["accessibility", "automation", "testing"], "readTime": 6, "status": "published"},
-  {"title": "React Server Components: Understanding the New Architecture", "slug": "react-server-components-guide", "excerpt": "Master React Server Components to build faster, more efficient React applications.", "content": "Server Components (RSC) render on server, send to client as serialized data—no JS sent to client. Use 'use client' for interactivity. Benefits: zero bundle size for server components, direct backend access, automatic code splitting. Next.js 13+ implements RSC by default.", "tags": ["frameworks", "react", "server-components"], "readTime": 8, "status": "published"},
-  {"title": "Vue 3 Composition API: Building Flexible and Maintainable Components", "slug": "vue-3-composition-api", "excerpt": "Learn the Vue 3 Composition API for better code organization and reusability.", "content": "Composition API uses setup() function for reactive state with ref() and reactive(). Computed(), watch(), watchEffect() for logic. Extract composables for reusable logic. <script setup> provides compile-time syntactic sugar. Compare Options API vs Composition API for your use case.", "tags": ["frameworks", "vue", "javascript"], "readTime": 7, "status": "published"},
-  {"title": "Svelte vs React vs Vue: Choosing the Right Framework for Your Project", "slug": "svelte-vs-react-vs-vue", "excerpt": "Compare Svelte, React, and Vue to choose the best framework for your specific needs.", "content": "React: largest ecosystem, flexible, JSX learning curve. Vue: gentle learning, great docs, Vuex/Pinia for state. Svelte: smallest bundles, no virtual DOM, smaller community. Consider: team experience, project size, performance requirements, ecosystem needs.", "tags": ["frameworks", "react", "vue", "svelte"], "readTime": 7, "status": "published"},
-  {"title": "Next.js 14 App Router: File-Based Routing and Server Components", "slug": "nextjs-14-app-router", "excerpt": "Build with Next.js 14 App Router using file-based routing and React Server Components.", "content": "App Router uses app/ directory with page.js, layout.js, loading.js, error.js. Route groups with (folder). Dynamic routes with [param]. Server Components by default, 'use client' for interactivity. Server actions for form handling. Streaming and Suspense built in.", "tags": ["frameworks", "nextjs", "react"], "readTime": 8, "status": "published"},
-  {"title": "Tailwind CSS v4: New Features and Migration Strategies", "slug": "tailwind-css-v4-features", "excerpt": "Explore Tailwind CSS v4 features and plan your migration from v3.", "content": "Tailwind v4 brings CSS-first configuration, @theme directive, native CSS nesting, improved performance with LightningCSS. Migration: update @tailwindcss/postcss, move config to CSS with @theme. New features: extended color palette, better dark mode, improved arbitrary values.", "tags": ["frameworks", "tailwind", "css"], "readTime": 6, "status": "published"},
-  {"title": "State Management in 2024: Zustand, Jotai, and Modern Alternatives", "slug": "state-management-modern-frameworks", "excerpt": "Compare modern state management solutions for React applications.", "content": "Zustand: minimal boilerplate, hook-based, great TypeScript support. Jotai: atomic state, great for derived state. Recoil: Facebook's (deprecated). Redux Toolkit: standard for large apps. Jotai for fine-grained, Zustand for simplicity, Redux for complex enterprise. Consider server state: TanStack Query.", "tags": ["frameworks", "react", "state-management"], "readTime": 7, "status": "published"},
-  {"title": "Component Library Architecture: Building Reusable UI Systems", "slug": "component-library-architecture", "excerpt": "Design and build component libraries that scale across teams and products.", "content": "Structure: atoms (buttons, inputs), molecules (forms), organisms (cards, headers). Document with Storybook. Version with semantic versioning. TypeScript for type safety. Test with Vitest and Playwright. Consider: Shadcn/ui for copy-paste, Storybook for full library, or Design Tokens.", "tags": ["frameworks", "components", "design-systems"], "readTime": 7, "status": "published"},
-  {"title": "Server-Side Rendering vs Static Site Generation: Performance Trade-offs", "slug": "ssr-vs-ssg-performance", "excerpt": "Understand when to use SSR, SSG, or hybrid rendering for optimal performance.", "content": "SSG: pre-build HTML, fastest initial load, good for content. SSR: render on request, dynamic content, slower TTFB. ISR: static with incremental updates (Next.js). Edge: render at edge for global performance. Choose based on content freshness needs and performance requirements.", "tags": ["frameworks", "performance", "ssr"], "readTime": 7, "status": "published"},
-  {"title": "Framework Performance Benchmarks: Real-World Metrics Comparison", "slug": "framework-performance-benchmarks", "excerpt": "Compare framework performance with real-world metrics and benchmark data.", "content": "Metrics: Bundle size, Time to Interactive, Lighthouse scores. React: flexible but larger bundles. Vue: smaller, similar performance. Svelte: smallest bundles, fastest runtime. Astro: islands architecture for minimal JS. Consider real user metrics, not just synthetic benchmarks.", "tags": ["frameworks", "performance", "benchmark"], "readTime": 6, "status": "published"},
-  {"title": "Micro-Frontends: Scaling Development Teams with Modular Architectures", "slug": "micro-frontends-architecture", "excerpt": "Implement micro-frontends to enable independent team deployment and development.", "content": "Approaches: Module Federation (Webpack), iframe isolation, Web Components. Benefits: independent deployment, team autonomy, technology flexibility. Challenges: shared state, routing, consistent UX, testing. Start with small experiments, establish patterns, then scale. Single-spa framework helps.", "tags": ["frameworks", "architecture", "microservices"], "readTime": 8, "status": "published"},
-  {"title": "Design Tokens: The Single Source of Truth for Visual Design", "slug": "design-tokens-guide", "excerpt": "Implement design tokens to maintain consistency across design and development.", "content": "Design tokens are style values (colors, spacing, typography) in a platform-agnostic format. Structure: primitive tokens (blue-500), semantic tokens (primary-color), component tokens (button-background). Export from Figma with Tokens Studio, use in code with Style Dictionary.", "tags": ["design-systems", "design-tokens", "figma"], "readTime": 7, "status": "published"},
-  {"title": "Building a Component Library: From Figma to Production Code", "slug": "component-library-figma-to-code", "excerpt": "Bridge the gap between Figma designs and production component libraries.", "content": "Workflow: Design in Figma, create components, export to code with Anima or similar. Better: create coded components in Storybook, sync with Figma via Tokens Studio. Document props, variants, usage. Version and publish. Automate visual regression testing with Chromatic.", "tags": ["design-systems", "components", "figma"], "readTime": 7, "status": "published"},
-  {"title": "Design System Documentation: Tools and Best Practices", "slug": "design-system-documentation", "excerpt": "Create effective design system documentation that teams actually use.", "content": "Tools: Storybook (component docs), Notion/Confluence (policies), ZeroHeight (living docs). Content: intro, foundations (colors, type), components (states, props, code), patterns (usage), resources. Update with every release. Include real examples, not just specs.", "tags": ["design-systems", "documentation", "storybook"], "readTime": 6, "status": "published"},
-  {"title": "Atomic Design in Practice: Organizing Components for Scalability", "slug": "atomic-design-practice", "excerpt": "Apply Atomic Design methodology to build scalable, maintainable component systems.", "content": "Atomic Design levels: Atoms (buttons, inputs), Molecules (search form), Organisms (header), Templates (page layout), Pages (complete). Don't take literally—adapt to your needs. Focus on composition and reusability. Test at each level. Some teams skip levels, use simpler 2-tier (components, patterns).", "tags": ["design-systems", "components", "atomic-design"], "readTime": 6, "status": "published"},
-  {"title": "Version Control for Design Systems: Managing Changes and Breaking Updates", "slug": "design-system-version-control", "excerpt": "Version design systems for safe updates and backward compatibility.", "content": "Semantic versioning: major (breaking), minor (new features), patch (fixes). Deprecation path: announce, provide alternative, remove in next major. Changelog for every release. Use canary releases. Automate migrations with codemods. Document breaking changes prominently.", "tags": ["design-systems", "version-control", "semantic-versioning"], "readTime": 6, "status": "published"},
-  {"title": "Design System Governance: Processes for Maintaining Consistency at Scale", "slug": "design-system-governance", "excerpt": "Establish governance processes to maintain design system quality and adoption.", "content": "Roles: Design System Team (core), Component Maintainers (domain), Community Contributors. Processes: RFC for new components, review cycles, accessibility review, performance budgets. Metrics: adoption rate, contribution rate, issue count. Governance is about enabling, not blocking.", "tags": ["design-systems", "governance", "process"], "readTime": 6, "status": "published"},
-  {"title": "Figma-to-Code Workflows: Bridging Design and Development Handoff", "slug": "figma-to-code-workflows", "excerpt": "Streamline Figma to code with modern handoff tools and processes.", "content": "Tools: Anima (direct export), Figma Dev Mode (inspect), Tokens Studio (design tokens), Locofy (AI conversion). Process: accurate specs, design files organized, component names match code, shared language between design and dev. Test exported code, don't just trust tools.", "tags": ["design-systems", "figma", "workflows"], "readTime": 6, "status": "published"},
-  {"title": "Theming Architecture: Supporting Multiple Brands and Platforms", "slug": "theming-architecture-design-system", "excerpt": "Build theming support for multiple brands, products, or platforms in your design system.", "content": "Architecture: design tokens with themeable values, theme provider components, CSS variables for runtime switching. Support dark/light mode, brand variations, platform-specific overrides. Test themes thoroughly—colors that work in one theme may fail in another.", "tags": ["design-systems", "theming", "architecture"], "readTime": 7, "status": "published"},
-  {"title": "Design System Metrics: Measuring Adoption and Consistency Impact", "slug": "design-system-metrics", "excerpt": "Track design system success with meaningful metrics and dashboards.", "content": "Metrics: adoption (% of products using), contribution (PRs, issues), velocity (time to add component), quality (bugs, accessibility), developer satisfaction. Tools: npm stats, analytics, surveys. Share metrics with stakeholders. Let data drive prioritization.", "tags": ["design-systems", "metrics", "analytics"], "readTime": 5, "status": "published"},
-  {"title": "Contributing to Design Systems: Onboarding Developers and Designers", "slug": "design-system-contribution-guide", "excerpt": "Create smooth onboarding for contributors to your design system.", "content": "Onboarding: clear contribution guide, code of conduct, first-issue标签, mentorship program. Process: RFC, design review, implementation, testing, documentation, release. Tools: GitHub templates, Storybook, automated tests. Celebrate contributors publicly.", "tags": ["design-systems", "contribution", "onboarding"], "readTime": 5, "status": "published"},
-  {"title": "User Journey Mapping: Visualizing the Path to Conversion", "slug": "user-journey-mapping-guide", "excerpt": "Create user journey maps to understand and optimize the user experience.", "content": "Journey mapping steps: define scope, identify user personas, map stages (awareness, consideration, decision, retention), list actions, thoughts, emotions at each stage, identify pain points and opportunities. Output: visual diagram with narrative. Use for stakeholder alignment and prioritization.", "tags": ["ux", "user-research", "journey-mapping"], "readTime": 7, "status": "published"},
-  {"title": "Information Architecture: Organizing Content for Better Discovery", "slug": "information-architecture-guide", "excerpt": "Structure content with information architecture for intuitive navigation and findability.", "content": "IA elements: organization schemes (category, task, time), labeling systems, navigation design, search systems. Methods: card sorting (how users group), tree testing (findability), content audit. Tools: Miro, Figma, Optimal Workshop. Test with real users before building.", "tags": ["ux", "information-architecture", "content"], "readTime": 7, "status": "published"},
-  {"title": "Usability Testing Methods: From Quick Iterations to Formal Studies", "slug": "usability-testing-methods", "excerpt": "Choose and execute usability testing methods appropriate for your project stage.", "content": "Methods: Moderated (real-time guidance), Unmoderated (recorded, scalable), A/B testing (quantitative), Expert review (heuristic evaluation). Guerrilla testing: quick hallway tests. Remote testing: UserTesting, Maze. Frequency: test early (paper prototypes), test often (live product). Budget determines method.", "tags": ["ux", "usability-testing", "user-research"], "readTime": 7, "status": "published"},
-  {"title": "Cognitive Load in UX: Designing for Mental Effort and Attention", "slug": "cognitive-load-ux-design", "excerpt": "Reduce cognitive load to make your interfaces easier to understand and use.", "content": "Cognitive load types: intrinsic (complexity of task), extraneous (how info presented), germane (useful processing). Design strategies: progressive disclosure, chunking (group related items), clear visual hierarchy, remove unnecessary elements, provide defaults, minimize memory demands.", "tags": ["ux", "cognitive-load", "usability"], "readTime": 7, "status": "published"},
-  {"title": "User Research on a Budget: Lean Methods for Validation", "slug": "user-research-lean-methods", "excerpt": "Conduct valuable user research without large budgets or formal labs.", "content": "Lean methods: 5-second tests (first impressions), click tests (navigation), tree testing (findability), hallway testing (quick feedback), survey polls. Tools: UsabilityHub, Maze, Optimal Workshop. Cost: free to $500. Frequency: every sprint. Recruit from your users, Twitter, or Reddit.", "tags": ["ux", "user-research", "budget"], "readTime": 6, "status": "published"},
-  {"title": "Interaction Design Patterns: Solutions for Common User Problems", "slug": "interaction-design-patterns", "excerpt": "Apply proven interaction design patterns to solve recurring UX challenges.", "content": "Patterns: infinite scroll (content feeds), lazy loading (performance), skeleton screens (loading), empty states (first use), undo (mistake recovery), smart defaults (speed), progressive onboarding (complexity). Pattern libraries: UI Patterns, Mobbin, Dribbble. Customize, don't just copy.", "tags": ["ux", "interaction-design", "patterns"], "readTime": 6, "status": "published"},
-  {"title": "Onboarding UX: First Impressions That Drive Retention", "slug": "onboarding-ux-best-practices", "excerpt": "Design onboarding experiences that engage users and drive long-term retention.", "content": "Onboarding types: tours (point out features), checklists (show progress), interactive tutorials (teach by doing), progressive (reveal over time). Best: show value quickly, minimal required fields, skip option, clear progress indicator. Measure: activation rate, time to value.", "tags": ["ux", "onboarding", "retention"], "readTime": 6, "status": "published"},
-  {"title": "Micro-Interactions: Delightful Details That Improve Usability", "slug": "micro-interactions-ux", "excerpt": "Add meaningful micro-interactions to enhance user experience and feedback.", "content": "Micro-interactions: button press feedback, loading states, success/error feedback, toggle animations, pull-to-refresh. Functions: provide feedback, indicate state change, enhance affordance. Don't overdo—every animation should serve a purpose. Use motion design principles: ease, natural timing.", "tags": ["ux", "micro-interactions", "animation"], "readTime": 5, "status": "published"},
-  {"title": "Accessibility as UX: Why Inclusive Design Benefits Everyone", "slug": "accessibility-ux-benefits", "excerpt": "Understand how accessibility improvements enhance experience for all users.", "content": "Accessibility benefits: keyboard navigation helps power users, captions help in sound-off environments, high contrast helps in bright sunlight, clear labels help non-native speakers. Business case: 15% of world population has disabilities, legal compliance, SEO benefits, better for all users.", "tags": ["ux", "accessibility", "inclusive-design"], "readTime": 6, "status": "published"},
-  {"title": "UX Metrics That Matter: Measuring User Satisfaction and Task Success", "slug": "ux-metrics-guide", "excerpt": "Track UX metrics that provide actionable insights into user experience quality.", "content": "Metrics: SUS (satisfaction), NPS (loyalty), CSAT (satisfaction), CES (ease of use), Time on Task, Success Rate, Error Rate, System Usability Scale. Tools: Hotjar (session recordings), FullStory, Mixpanel. Focus on metrics tied to business goals. Set benchmarks before improvements.", "tags": ["ux", "metrics", "analytics"], "readTime": 6, "status": "published"},
-  {"title": "Conversion-Rate Optimization: Data-Driven Approaches to Better Results", "slug": "conversion-rate-optimization", "excerpt": "Use data-driven CRO methods to systematically improve conversion rates.", "content": "CRO process: research (analytics, heatmaps), hypothesize (why users drop), prioritize (impact vs effort), test (A/B, multivariate), analyze, iterate. Metrics: conversion rate, revenue per visitor, funnel drop-off. Tools: Google Optimize (sunset), Optimizely, VWO. Test one thing at a time.", "tags": ["conversion", "optimization", " CRO"], "readTime": 8, "status": "published"},
-  {"title": "Above the Fold Optimization: Making Your First Impression Count", "slug": "above-the-fold-optimization", "excerpt": "Optimize the visible content area for maximum engagement and conversion.", "content": "Above the fold (ATF): the area visible without scrolling. Must include: headline (value prop), CTA (primary action), social proof (optional), hero image (optional). Don't: bury CTA, use unclear images, slow load. Test different headlines, CTA text, and visual arrangements.", "tags": ["conversion", "landing-pages", "ux"], "readTime": 6, "status": "published"},
-  {"title": "CTA Design Best Practices: Buttons That Drive Action", "slug": "cta-design-best-practices", "excerpt": "Design CTAs that attract attention and drive users to click.", "content": "CTA best practices: action verb (Get, Start, Join), clear value, contrasting color, adequate size (44px+), visible whitespace around, consistent placement. A/B test: 'Get Started' vs 'Start Free Trial', color variations, button shape, with vs without arrow. Avoid generic 'Submit'.", "tags": ["conversion", "cta", "design"], "readTime": 5, "status": "published"},
-  {"title": "Landing Page Copywriting: Persuading Visitors in Seconds", "slug": "landing-page-copywriting", "excerpt": "Write compelling copy that converts visitors into customers quickly.", "content": "Copy framework: headline (hook), subheadline (elaborate), benefit bullets (key value), body paragraphs (detail), social proof (trust), CTA (action). Write for scanners: short paragraphs, bullet points, bold key phrases. Focus on benefits, not features. Test different hooks.", "tags": ["conversion", "copywriting", "landing-pages"], "readTime": 7, "status": "published"},
-  {"title": "A/B Testing Landing Pages: Statistical Significance and Iteration", "slug": "ab-testing-landing-pages", "excerpt": "Run statistically valid A/B tests and iterate based on results.", "content": "A/B testing: split traffic 50/50, test one variable, measure conversion. Statistical significance: 95% confidence minimum, 1000+ visitors per variation. Iteration: winner becomes new baseline, test next hypothesis. Don't: test too many variants, stop early, ignore segment results. Tools: VWO, Optimizely.", "tags": ["conversion", "ab-testing", "statistics"], "readTime": 7, "status": "published"},
-  {"title": "Social Proof Implementation: Building Trust Through Evidence", "slug": "social-proof-implementation", "excerpt": "Add social proof elements that build trust and increase conversions.", "content": "Social proof types: customer testimonials, case studies, user counts, ratings/reviews, logos of companies, expert endorsements, live activity feeds. Placement: near CTA, in header, in footer. Authenticity matters—real quotes with real names and photos. Video testimonials convert well.", "tags": ["conversion", "social-proof", "trust"], "readTime": 6, "status": "published"},
-  {"title": "Form Optimization: Reducing Friction in Lead Capture", "slug": "form-optimization-conversion", "excerpt": "Optimize forms to increase completion rates and reduce abandonment.", "content": "Form optimization: reduce fields (only required), inline validation, smart defaults, auto-fill support, logical field order, clear labels above inputs, show progress for multi-step forms, remove distractions on page. Test: field count, default values, help text placement. Consider progressive profiling.", "tags": ["conversion", "forms", "optimization"], "readTime": 6, "status": "published"},
-  {"title": "Loading Performance and Conversions: The Speed-Trust Connection", "slug": "page-speed-conversion-impact", "excerpt": "Understand how page speed affects conversion rates and user trust.", "content": "Performance impact: 1s delay = 7% conversion drop, 53% mobile users leave after 3s load. Core Web Vitals: LCP < 2.5s, INP < 200ms, CLS < 0.1. Speed optimizations: optimize images, minify CSS/JS, lazy load, CDN, server-side rendering. Test: Lighthouse, PageSpeed Insights, Real User Monitoring.", "tags": ["conversion", "performance", "speed"], "readTime": 6, "status": "published"},
-  {"title": "Mobile Landing Page Optimization: Converting On Small Screens", "slug": "mobile-landing-page-optimization", "excerpt": "Optimize landing pages for mobile conversions with responsive design and UX best practices.", "content": "Mobile optimization: thumb-friendly CTAs (bottom), large tap targets (44px+), vertical layouts, streamlined forms, fast load (AMP, optimized images), readable text (no zoom required), simplified navigation. Test on real devices. Mobile-first index means mobile experience affects SEO.", "tags": ["conversion", "mobile", "landing-pages"], "readTime": 6, "status": "published"},
-  {"title": "Landing Page Analytics: Key Metrics and Dashboard Setup", "slug": "landing-page-analytics-guide", "excerpt": "Set up analytics to track and optimize landing page performance.", "content": "Key metrics: conversion rate, bounce rate, time on page, exit rate, revenue per visitor, cost per acquisition. Tools: Google Analytics, Mixpanel, Amplitude. Set up: goals, events, funnel, dashboards. Track: traffic sources, device breakdown, geographic performance. A/B test results in analytics.", "tags": ["conversion", "analytics", "data"], "readTime": 6, "status": "published"},
-  {"title": "Modern CSS Techniques: Container Queries, Nesting, and More", "slug": "modern-css-techniques", "excerpt": "Use modern CSS features like container queries, nesting, and subgrid for powerful layouts.", "content": "Modern CSS: container queries (@container), native CSS nesting, subgrid, :has() selector, @layer for cascade control, color functions (oklch, lab), trigonometric functions. Use @supports for progressive enhancement. Check Can I Use for support. These replace many JavaScript solutions.", "tags": ["frontend", "css", "modern-css"], "readTime": 8, "status": "published"},
-  {"title": "JavaScript Performance Optimization: Reducing Main Thread Work", "slug": "javascript-performance-optimization", "excerpt": "Optimize JavaScript to reduce main thread blocking and improve interactivity.", "content": "JS optimization: code splitting (dynamic imports), tree shaking (remove unused), minification, lazy load non-critical. Use Chrome DevTools Performance tab to identify long tasks. Use requestIdleCallback for non-critical work. Web Workers for heavy computation. Measure impact on INP.", "tags": ["frontend", "javascript", "performance"], "readTime": 8, "status": "published"},
-  {"title": "Image Optimization Strategies: Formats, Lazy Loading, and CDNs", "slug": "image-optimization-strategies", "excerpt": "Optimize images for fast loading with modern formats and delivery strategies.", "content": "Optimization: use WebP/AVIF, responsive images (srcset, sizes), lazy load (loading=\"lazy\"), proper sizing (don't serve 2000px for 400px), CDN delivery (Cloudflare, Cloudinary), blur-up placeholders. Tools: Squoosh, ImageMagick, Sharp. Automate in build process.", "tags": ["frontend", "images", "performance"], "readTime": 7, "status": "published"},
-  {"title": "Critical Rendering Path: Understanding and Optimizing Page Load", "slug": "critical-rendering-path", "excerpt": "Optimize the critical rendering path to speed up initial page display.", "content": "Critical rendering path: HTML → DOM → CSSOM → Render Tree → Layout → Paint. Optimize: inline critical CSS, defer non-critical JS, preload critical resources, optimize fonts, reduce render-blocking resources. Measure: Lighthouse, WebPageTest. Goal: LCP under 2.5s.", "tags": ["frontend", "performance", "critical-rendering"], "readTime": 7, "status": "published"},
-  {"title": "Code Splitting and Lazy Loading: Splitting Bundles for Better Performance", "slug": "code-splitting-lazy-loading", "excerpt": "Implement code splitting and lazy loading to deliver less JavaScript initially.", "content": "Code splitting: dynamic imports (`import('./module')`), route-based splitting, component-level splitting. Lazy loading: images (loading=\"lazy\"), components (React.lazy), routes. Tools: webpack, Vite, Rollup. Monitor bundle size with source-map-explorer. Balance—too many chunks hurts.", "tags": ["frontend", "performance", "bundling"], "readTime": 7, "status": "published"},
-  {"title": "CSS-in-JS vs CSS Modules: Choosing Your Styling Strategy", "slug": "css-in-js-vs-css-modules", "excerpt": "Compare CSS-in-JS solutions and CSS Modules to choose the right approach.", "content": "CSS-in-JS: styled-components, emotion, zero-runtime (Googled). Pros: colocation, dynamic styles, theming. Cons: runtime overhead, learning curve. CSS Modules: scoped by default, native, no runtime. Pros: performance, familiar syntax. Cons: requires tooling setup. Choose based on team and scale.", "tags": ["frontend", "css", "styling"], "readTime": 7, "status": "published"},
-  {"title": "Progressive Web Apps: Service Workers and Offline Capabilities", "slug": "pwa-service-workers-guide", "excerpt": "Build PWAs with service workers for offline support and app-like experiences.", "content": "PWA essentials: manifest.json (name, icons, display), service worker (cache strategies), HTTPS required. Service worker strategies: cache-first (assets), network-first (API), stale-while-revalidate (hybrid). Offline support with IndexedDB. Tools: Workbox, PWA Builder. Test in DevTools Application tab.", "tags": ["frontend", "pwa", "service-worker"], "readTime": 8, "status": "published"},
-  {"title": "Cross-Browser Testing: Ensuring Compatibility Across Browsers", "slug": "cross-browser-testing-guide", "excerpt": "Test across browsers to ensure consistent experience for all users.", "content": "Key browsers: Chrome, Safari, Firefox, Edge (90%+ coverage). Use BrowserStack or LambdaTest for multi-browser testing. Test: layout, JavaScript features, CSS support, forms, animations. Use feature detection (@supports) over browser detection. Automate with Playwright or Cypress for regression testing.", "tags": ["frontend", "testing", "cross-browser"], "readTime": 6, "status": "published"},
-  {"title": "DevTools Mastery: Debugging and Profiling Frontend Performance", "slug": "devtools-frontend-debugging", "excerpt": "Master Chrome DevTools for debugging JavaScript, CSS, and performance issues.", "content": "DevTools sections: Elements (DOM/CSS), Console (logs, errors), Network (requests, timing), Performance (FPS, CPU), Memory (leaks), Application (storage, service workers). Tips: blackbox scripts, console.group, copy as cURL, local overrides, performance markers. Use for debugging and profiling.", "tags": ["frontend", "devtools", "debugging"], "readTime": 8, "status": "published"},
-  {"title": "Web Vitals Optimization: LCP, FID, and CLS Improvement Strategies", "slug": "web-vitals-optimization-guide", "excerpt": "Optimize Core Web Vitals for better user experience and SEO performance.", "content": "LCP (Largest Contentful Paint): optimize images, server response, render-blocking resources. INP (Interaction to Next Paint): reduce JS main thread work, use requestIdleCallback. CLS (Cumulative Layout Shift): set explicit image dimensions, reserve space for ads, font-display: swap. Measure in PageSpeed Insights.", "tags": ["frontend", "web-vitals", "performance"], "readTime": 8, "status": "published"},
-  {"title": "Typography Trends 2024: What's Hot in Web Typography", "slug": "typography-trends-2024", "excerpt": "Explore the latest typography trends shaping modern web design.", "content": "2024 trends: kinetic typography (animated text), retro fonts (70s-80s revival), augmented serifs (hybrid styles), expressive monospace (coding aesthetics), maximalist display (bold, decorative), minimal sans (clean, geometric). Mix high-contrast pairings with experimental type.", "tags": ["typography", "trends", "design"], "readTime": 5, "status": "published"},
-  {"title": "Color Trends 2024: Popular Palettes and Design Directions", "slug": "color-trends-2024", "excerpt": "Discover the color trends dominating web design in 2024.", "content": "2024 trends: synthetic colors (vibrant neons), warm neutrals (terracotta, cream), digital purples (gradients), sustainable greens (earth tones), monochromatic depth (single hue, multiple values), hyper-real gradients. Use color to create emotional impact and brand distinction.", "tags": ["color-theory", "trends", "design"], "readTime": 5, "status": "published"},
-  {"title": "Responsive Design Trends: Modern Approaches to Adaptivity", "slug": "responsive-design-trends-2024", "excerpt": "Explore modern responsive design trends and techniques.", "content": "Modern trends: fluid everything (not just text), foldable device support, container queries adoption, CSS scroll-driven animations, aspect-ratio media queries, multi-device experiences (watch to TV). Design beyond breakpoints—think continuous scaling.", "tags": ["responsive-design", "trends", "css"], "readTime": 5, "status": "published"},
-  {"title": "Accessibility Trends: Inclusive Design Best Practices", "slug": "accessibility-trends-2024", "excerpt": "Stay current with accessibility trends and inclusive design practices.", "content": "2024 trends: AI-powered accessibility testing, auto-generated alt text improvements, voice interface design, gesture-based navigation support, ARIA 1.2 adoption, accessibility-first design workflows. WCAG 2.2 introduces new requirements (drag movements, consistent help).", "tags": ["accessibility", "trends", "inclusive-design"], "readTime": 5, "status": "published"},
-  {"title": "Framework Trends: What's Next in Frontend Development", "slug": "framework-trends-2024", "excerpt": "Explore emerging trends in frontend frameworks and tooling.", "content": "Trends: server components everywhere, edge rendering (Cloudflare, Vercel), signals-based reactivity (Solid, Preact signals), AI-assisted coding (GitHub Copilot, Cursor), Rust-based tooling (SWC, Turbopack), WebAssembly expansion. Hybrid rendering is the norm.", "tags": ["frameworks", "trends", "frontend"], "readTime": 6, "status": "published"},
-  {"title": "Design System Trends: Building for Scale and Flexibility", "slug": "design-system-trends-2024", "excerpt": "Discover trends in design system architecture and management.", "content": "Trends: AI-generated component variants, design-to-code pipelines, token-based theming at scale, multi-brand orchestration, contribution automation, component lifecycle management. Design ops is a distinct discipline. Focus on developer experience and governance.", "tags": ["design-systems", "trends", "architecture"], "readTime": 5, "status": "published"},
-  {"title": "UX Trends: Emerging User Experience Patterns", "slug": "ux-trends-2024", "excerpt": "Explore emerging UX patterns and methodologies shaping digital experiences.", "content": "Trends: AI-powered personalization, voice-first interfaces, spatial computing (AR/VR), ambient computing (multiple surfaces), emotion-aware interfaces, behavior-triggered experiences. Focus on reducing friction while increasing delight. Measurement shifts to engagement depth.", "tags": ["ux", "trends", "emerging-tech"], "readTime": 6, "status": "published"},
-  {"title": "Landing Page Trends: High-Converting Design Patterns", "slug": "landing-page-trends-2024", "excerpt": "Discover the latest landing page design trends that drive conversions.", "content": "2024 trends: interactive demos (product previews), video backgrounds (optimized), personalized CTAs (based on behavior), scarcity signals (real-time availability), chat-assisted conversion, zero-click content (value before ask). Movement away from generic templates toward custom experiences.", "tags": ["conversion", "landing-pages", "trends"], "readTime": 5, "status": "published"},
-  {"title": "Frontend Trends: What Developers Need to Know", "slug": "frontend-trends-2024", "excerpt": "Stay ahead with the frontend development trends shaping the industry.", "content": "Trends: edge functions everywhere, view transitions API, CSS math functions (round, mod, rem), container queries production-ready, signals for state, AI-assisted debugging, WebGPU emergence, micro-frontends maturity, performance as feature. Stack decisions matter more than ever.", "tags": ["frontend", "trends", "development"], "readTime": 6, "status": "published"},
-  {"title": "Typography for Developers: Essential Type Skills", "slug": "typography-for-developers", "excerpt": "Every developer should know these typography fundamentals for better web design.", "content": "Devs need: font loading strategies (display: swap), fluid typography basics, CSS units (em vs rem vs ch), text rendering optimization, vertical rhythm understanding, accessible contrast checking, line-length guidelines (60-75 chars), paragraph spacing rules, font file formats (WOFF2 preference).", "tags": ["typography", "developers", "frontend"], "readTime": 5, "status": "published"}
+  {
+    "title": "Font Pairing Mastery: Creating Harmonious Type Combinations",
+    "slug": "font-pairing-mastery",
+    "excerpt": "Learn the art of combining fonts to create visually compelling designs. Discover proven pairing strategies, contrast techniques, and real-world examples.",
+    "content": "Font pairing is one of the most transformative skills in a designer's toolkit. When done well, it creates visual hierarchy, establishes brand personality, and guides users through content effortlessly.\n\n## The Foundation: Understanding Font Categories\n\nBefore pairing fonts, you need to understand the five main categories: Serif, Sans-serif, Script, Monospace, and Display. The most successful pairings combine two different categories to create visual contrast.\n\n## The Classic Approach: Serif + Sans-serif\n\nThis is the gold standard for professional design. Popular combinations include Playfair Display + Source Sans Pro, Merriweather + Open Sans, and Libre Baskerville + Lato.\n\n## Creating Contrast Through Weight and Style\n\nBeyond category, create hierarchy through weight contrast, size contrast, style contrast, and case contrast. Limit to 2-3 fonts, match x-heights, and test at multiple sizes.",
+    "tags": ["typography", "font-pairing"],
+    "readTime": 8,
+    "status": "published"
+  },
+  {
+    "title": "Variable Fonts: The Future of Responsive Typography",
+    "slug": "variable-fonts-future",
+    "excerpt": "Discover how variable fonts are revolutionizing responsive design with single font files for fluid typography.",
+    "content": "Variable fonts allow multiple variations—weight, width, slant—to exist in a single font file, reducing file size by 40-60%. Use CSS like `font-weight: clamp(600, 3vw + 200, 900)` for fluid scaling. All modern browsers support them. Popular options include Inter, Roboto Flex, and DM Sans.",
+    "tags": ["typography", "variable-fonts"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "Vertical Rhythm: Building Consistent Reading Experiences",
+    "slug": "vertical-rhythm-consistency",
+    "excerpt": "Master vertical rhythm to create harmonious, readable layouts that feel professionally crafted.",
+    "content": "Vertical rhythm is the consistent spacing between elements that creates visual harmony. Set a base line height (typically 1.5), use a modular scale, and ensure all spacing is a multiple of your base unit. This creates cohesive, scannable layouts.",
+    "tags": ["typography", "layout", "design"],
+    "readTime": 7,
+    "status": "published"
+  },
+  {
+    "title": "Fluid Typography: Scaling Text Across All Viewports",
+    "slug": "fluid-typography-scaling",
+    "excerpt": "Learn to use CSS clamp() and viewport units to create typography that elegantly scales between devices.",
+    "content": "Fluid typography uses calc() and clamp() to smoothly transition font sizes between minimum and maximum values. Example: `font-size: clamp(1rem, 0.5rem + 2vw, 1.5rem)`. This eliminates discrete breakpoints and creates natural scaling.",
+    "tags": ["typography", "responsive", "css"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "Type Scale Systems: From Modular Scales to Golden Ratio",
+    "slug": "type-scale-systems",
+    "excerpt": "Use mathematical type scales to create harmonious font size relationships across your design.",
+    "content": "A type scale is a ratio that determines size relationships between headings. Common ratios include Major Third (1.25), Perfect Fourth (1.333), and Golden Ratio (1.618). Use online tools like Type Scale Calculator to generate consistent sizes.",
+    "tags": ["typography", "design-systems"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "Web Font Optimization: Faster Loading Without Sacrificing Style",
+    "slug": "web-font-optimization",
+    "excerpt": "Techniques for reducing font file sizes, optimizing delivery, and preventing layout shifts.",
+    "content": "Optimize fonts by subsetting (removing unused glyphs), using WOFF2 format, implementing font-display: swap, preloading critical fonts, and using variable fonts. Tools like Fonttools and google-webfonts-helper help automate these optimizations.",
+    "tags": ["typography", "performance"],
+    "readTime": 7,
+    "status": "published"
+  },
+  {
+    "title": "Legibility vs Readability: What's the Difference and Why It Matters",
+    "slug": "legibility-vs-readability",
+    "excerpt": "Understanding the crucial distinction between legibility and readability for better typography decisions.",
+    "content": "Legibility is how easily individual characters are distinguished. Readability is how easily text blocks are processed. Good design requires both. Legibility depends on letterform design; readability depends on spacing, line length, and contrast.",
+    "tags": ["typography", "accessibility"],
+    "readTime": 5,
+    "status": "published"
+  },
+  {
+    "title": "Chinese Typography: Unique Challenges and Best Practices",
+    "slug": "chinese-typography-guide",
+    "excerpt": "Navigate the complexities of designing for Chinese web typography with proper fonts and spacing.",
+    "content": "Chinese typography requires careful font selection (Noto Sans SC, Source Han Sans), proper line height (1.8-2x), and appropriate character spacing. Avoid common issues like incorrect fallback fonts or incompatible glyphs.",
+    "tags": ["typography", "internationalization"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "Typography Accessibility: Ensuring Readability for All Users",
+    "slug": "typography-accessibility",
+    "excerpt": "Make typography accessible by following WCAG guidelines for size, contrast, and spacing.",
+    "content": "Accessible typography requires minimum 16px base size, 4.5:1 contrast ratio for body text, 60-75 characters per line, 1.5 line height, and adequate paragraph spacing. Allow users to resize text without horizontal scrolling.",
+    "tags": ["typography", "accessibility"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "Micro-Typography: The Details That Make Type Feel Professional",
+    "slug": "micro-typography-details",
+    "excerpt": "Refine your designs with proper punctuation, spacing, and typographic fineprint.",
+    "content": "Micro-typography covers optical margin alignment, proper quote marks, hanging punctuation, proper ellipses (…), kerning adjustments, and text figures vs lining figures. These details distinguish amateur from professional typography.",
+    "tags": ["typography", "design"],
+    "readTime": 5,
+    "status": "published"
+  },
+  {
+    "title": "Color Psychology in Web Design: How Colors Influence User Behavior",
+    "slug": "color-psychology-web-design",
+    "excerpt": "Understand how color choices affect emotions, trust, and conversions on your website.",
+    "content": "Colors trigger psychological responses: Blue conveys trust (banks, tech), Red creates urgency (sales), Green suggests growth (finance, environment), Yellow attracts attention but causes fatigue. Test colors A/B to find what works for your specific audience.",
+    "tags": ["color-theory", "conversion", "psychology"],
+    "readTime": 7,
+    "status": "published"
+  },
+  {
+    "title": "Building Accessible Color Palettes: WCAG Contrast Guidelines",
+    "slug": "accessible-color-palettes",
+    "excerpt": "Create color schemes that meet WCAG accessibility standards for all users.",
+    "content": "WCAG requires 4.5:1 contrast ratio for normal text and 3:1 for large text. Use tools like WebAIM Contrast Checker, Stark, or use OKLCH color space for perceptually uniform colors. Test with color blindness simulators to ensure inclusivity.",
+    "tags": ["color-theory", "accessibility", "wcag"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "Dark Mode Design: Creating Effective Dark Color Schemes",
+    "slug": "dark-mode-design-guide",
+    "excerpt": "Design beautiful dark themes that reduce eye strain and save battery on OLED screens.",
+    "content": "Dark mode isn't just inverting colors. Use true black (#000000) sparingly—prefer dark grays (#121212) to reduce smearing on OLED. Reduce text brightness to 70-80% to prevent halation. Preserve accent colors but desaturate them.",
+    "tags": ["color-theory", "dark-mode", "mobile"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "Color Naming Systems: Organizing Palette for Scalable Design",
+    "slug": "color-naming-systems",
+    "excerpt": "Establish consistent color naming conventions for design systems and team collaboration.",
+    "content": "Use semantic naming (primary, secondary, success) for theme layers, functional naming (text-primary, background-surface) for components, and reference naming (blue-500) for base tokens. Tools like Coolors and Adobe Color help build systematic palettes.",
+    "tags": ["color-theory", "design-systems"],
+    "readTime": 5,
+    "status": "published"
+  },
+  {
+    "title": "Gradients in Modern UI: Trends and Implementation Techniques",
+    "slug": "gradients-modern-ui",
+    "excerpt": "Create modern gradient designs with mesh gradients, conic gradients, and CSS techniques.",
+    "content": "Modern gradients include mesh gradients (organic, colorful backgrounds), conic gradients (pie charts, loaders), and linear gradients with transparency. Use backdrop-filter for glass effects and gradient text with background-clip.",
+    "tags": ["color-theory", "css", "ui-design"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "Semantic Colors: Using Meaning to Organize Your Palette",
+    "slug": "semantic-colors-design",
+    "excerpt": "Build semantic color systems that communicate meaning rather than arbitrary shades.",
+    "content": "Semantic colors map to meaning: error/danger, warning, success, info. Keep semantic colors stable while allowing theme adaptation. Use semantic layering: surface colors override base colors, which override semantic colors.",
+    "tags": ["color-theory", "design-systems"],
+    "readTime": 5,
+    "status": "published"
+  },
+  {
+    "title": "Color Temperature: Creating Mood Through Warm and Cool Tones",
+    "slug": "color-temperature-mood",
+    "excerpt": "Use color temperature intentionally to set mood and guide user emotions.",
+    "content": "Warm colors (red, orange, yellow) convey energy, urgency, and warmth. Cool colors (blue, green, purple) suggest calm, trust, and professionalism. Shift temperature for context: warmer shadows in sunset themes, cooler in tech themes.",
+    "tags": ["color-theory", "psychology"],
+    "readTime": 5,
+    "status": "published"
+  },
+  {
+    "title": "Dynamic Color Theming with CSS Variables and JavaScript",
+    "slug": "dynamic-color-theming",
+    "excerpt": "Implement runtime theme switching with CSS custom properties and JS detection.",
+    "content": "Use CSS variables for theme colors: `:root { --primary: #0066cc; }`. Change with JS: `document.documentElement.style.setProperty('--primary', newColor)`. Detect system preference with `matchMedia('(prefers-color-scheme: dark)')`. Store in localStorage for persistence.",
+    "tags": ["color-theory", "css", "javascript"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "Brand Color Adaptation: Maintaining Identity Across Contexts",
+    "slug": "brand-color-adaptation",
+    "excerpt": "Adapt brand colors for different contexts while preserving recognition and impact.",
+    "content": "Create color variations: primary (brand), secondary (complementary), surface (backgrounds), and functional (UI states). Test brand colors against different backgrounds and in grayscale to ensure recognition. Maintain accessibility across variations.",
+    "tags": ["color-theory", "branding"],
+    "readTime": 5,
+    "status": "published"
+  },
+  {
+    "title": "Color Blindness Simulation: Testing Your Design for All Users",
+    "slug": "color-blindness-testing",
+    "excerpt": "Test designs for color blindness to ensure accessible and effective visual communication.",
+    "content": "Types: Protanopia (red-blind), Deuteranopia (green-blind), Tritanopia (blue-blind), and Achromatopsia (total color blindness). Test with Chrome DevTools, Figma plugins, or tools like Coblis. Never rely solely on color—add patterns, labels, or icons.",
+    "tags": ["color-theory", "accessibility", "testing"],
+    "readTime": 5,
+    "status": "published"
+  },
+  {
+    "title": "CSS Container Queries: The Future of Component-Based Responsive Design",
+    "slug": "css-container-queries",
+    "excerpt": "Learn how container queries enable truly responsive components that adapt to their container, not viewport.",
+    "content": "Container queries let components respond to their parent container size. Set containment: `@container` and query: `@container (min-width: 400px)`. This enables reusable components that adapt to any context—sidebar, main content, or modal.",
+    "tags": ["responsive-design", "css", "components"],
+    "readTime": 7,
+    "status": "published"
+  },
+  {
+    "title": "Mobile-First vs Desktop-First: Choosing Your Responsive Strategy",
+    "slug": "mobile-first-vs-desktop-first",
+    "excerpt": "Compare responsive design approaches and determine which fits your project best.",
+    "content": "Mobile-first starts with mobile styles, adds complexity with min-width queries. Desktop-first starts with desktop, removes/changes with max-width queries. Mobile-first generally leads to cleaner code and better performance—start simple, enhance up.",
+    "tags": ["responsive-design", "mobile-first"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "Breakpoint Strategies: When and How to Define Responsive Thresholds",
+    "slug": "responsive-breakpoint-strategies",
+    "excerpt": "Define breakpoints based on content, not devices, for more maintainable responsive designs.",
+    "content": "Content-driven breakpoints: let content dictate when it breaks, not device lists. Common patterns: 320px (small phones), 480px (large phones), 768px (tablets), 1024px (small laptops), 1440px (desktops). Use relative units (em, rem) for breakpoint values.",
+    "tags": ["responsive-design", "css"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "Responsive Images: srcset, sizes, and Modern Picture Techniques",
+    "slug": "responsive-images-techniques",
+    "excerpt": "Serve optimal images for every device using modern HTML and CSS image techniques.",
+    "content": "Use srcset for resolution switching: `<img srcset=\"img-400.jpg 400w, img-800.jpg 800w\" sizes=\"(max-width: 600px) 400px, 800px\">`. Use <picture> for art direction and format switching (WebP, AVIF). Implement lazy loading with loading=\"lazy\" and decoding=\"async\".",
+    "tags": ["responsive-design", "images", "performance"],
+    "readTime": 7,
+    "status": "published"
+  },
+  {
+    "title": "Touch Target Sizing: Building Mobile-Friendly Interactive Elements",
+    "slug": "touch-target-sizing-guide",
+    "excerpt": "Ensure all interactive elements meet minimum touch target size requirements for usability.",
+    "content": "WCAG recommends 44x44px minimum touch targets, Apple recommends 44x44pt, Google recommends 48x48dp. Space targets at least 8px apart to prevent accidental taps. Test on real devices—not all emulators simulate touch accurately.",
+    "tags": ["responsive-design", "mobile", "usability"],
+    "readTime": 5,
+    "status": "published"
+  },
+  {
+    "title": "Responsive Typography: Fluid Type Across All Screen Sizes",
+    "slug": "responsive-typography-guide",
+    "excerpt": "Scale typography fluidly using clamp(), viewport units, and CSS custom properties.",
+    "content": "Fluid typography uses calculations: `font-size: calc(1rem + ((1vw - 0.5rem) * 2))`. Clamp syntax simplifies: `font-size: clamp(1rem, 1.5rem + 1vw, 2rem)`. Test at extreme screen sizes to ensure readability at both minimum and maximum.",
+    "tags": ["responsive-design", "typography", "css"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "Progressive Enhancement vs Graceful Degradation: Modern Approaches",
+    "slug": "progressive-enhancement-guide",
+    "excerpt": "Build robust experiences that work everywhere by prioritizing core functionality.",
+    "content": "Progressive enhancement: build core experience first, enhance with advanced features. Graceful degradation: build full experience, provide fallbacks. Modern approach: use feature detection (`@supports`), modern CSS first, not these as opposites but complementary strategies.",
+    "tags": ["responsive-design", "best-practices"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "Responsive Navigation Patterns: Mobile Menu Solutions That Work",
+    "slug": "responsive-navigation-patterns",
+    "excerpt": "Compare mobile navigation patterns and choose the best for your user experience.",
+    "content": "Patterns: Hamburger menu (flexible but hidden), Bottom navigation (accessible thumb zone), Tiered menu (visible hierarchy), Full-screen overlay (dramatic, good for few links). Test navigation discoverability and ease of closing.",
+    "tags": ["responsive-design", "navigation", "ui"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "Performance Budgets for Responsive Sites: Keeping Fast on All Devices",
+    "slug": "responsive-performance-budgets",
+    "excerpt": "Set and enforce performance budgets to ensure responsive sites load quickly everywhere.",
+    "content": "Set budgets: JS < 170KB, CSS < 100KB, Images < 1000KB, Time to Interactive < 3s on 3G. Use Lighthouse CI to fail builds exceeding budgets. Monitor Core Web Vitals: LCP < 2.5s, INP < 200ms, CLS < 0.1. Optimize based on real user metrics.",
+    "tags": ["responsive-design", "performance", "optimization"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "Testing Responsive Designs: Tools and Techniques for All Viewports",
+    "slug": "responsive-testing-tools",
+    "excerpt": "Test responsive designs across devices using browser tools, emulators, and real device labs.",
+    "content": "Browser DevTools: Chrome Device Mode, Firefox Responsive Design Mode. Emulators: Xcode Simulator, Android Emulator. Real devices: BrowserStack, LambdaTest. Don't rely solely on tools—test on actual devices your audience uses. Check orientation changes and input types.",
+    "tags": ["responsive-design", "testing"],
+    "readTime": 5,
+    "status": "published"
+  },
+  {
+    "title": "WCAG 2.1 AA Compliance: A Complete Implementation Guide",
+    "slug": "wcag-2-1-aa-compliance",
+    "excerpt": "Meet WCAG 2.1 AA standards with this comprehensive accessibility implementation guide.",
+    "content": "WCAG 2.1 has 4 principles: Perceivable, Operable, Understandable, Robust. Level AA requires: 4.5:1 contrast for text, 3:1 for large text, keyboard access for all functions, visible focus indicators, alt text for images, captions for video. Use axe DevTools to audit.",
+    "tags": ["accessibility", "wcag", "standards"],
+    "readTime": 8,
+    "status": "published"
+  },
+  {
+    "title": "Semantic HTML: The Foundation of Accessible Websites",
+    "slug": "semantic-html-accessibility",
+    "excerpt": "Use semantic HTML elements to create accessible, well-structured web pages.",
+    "content": "Semantic elements: <header>, <nav>, <main>, <article>, <section>, <aside>, <footer>. Use <button> for actions, <a> for links. Avoid <div> for everything—each semantic element tells screen readers about structure. Use heading hierarchy (h1-h6) in order.",
+    "tags": ["accessibility", "html", "semantics"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "ARIA Roles and Attributes: When and How to Use Them Correctly",
+    "slug": "aria-roles-attributes-guide",
+    "excerpt": "Master ARIA to enhance accessibility when native HTML isn't sufficient.",
+    "content": "ARIA roles add meaning: role=\"navigation\", role=\"dialog\", role=\"alert\". ARIA states: aria-expanded, aria-pressed, aria-checked. ARIA properties: aria-label, aria-describedby, aria-labelledby. Remember: ARIA doesn't add behavior, only accessibility semantics. Don't override native semantics.",
+    "tags": ["accessibility", "aria", "wcag"],
+    "readTime": 7,
+    "status": "published"
+  },
+  {
+    "title": "Keyboard Navigation: Ensuring Full Site Usability Without a Mouse",
+    "slug": "keyboard-navigation-accessibility",
+    "excerpt": "Test and improve keyboard navigation so all users can access your site effectively.",
+    "content": "Ensure logical tab order (tabindex=\"0\" for custom focus, -1 to remove). Visible focus styles (outline, background change). Skip links to main content. Escape closes modals. Arrow keys navigate within components. Test with Tab, Shift+Tab, Enter, Space, Escape.",
+    "tags": ["accessibility", "keyboard", "navigation"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "Screen Reader Compatibility: Testing and Optimization Strategies",
+    "slug": "screen-reader-testing-guide",
+    "excerpt": "Test your site with screen readers and optimize for the most popular assistive technologies.",
+    "content": "Popular screen readers: NVDA (Windows, free), JAWS (Windows), VoiceOver (Mac/iOS), TalkBack (Android). Test in Incognito mode to avoid cached state. Listen to how content reads. Check reading order, alt text, form labels, and dynamic content announcements.",
+    "tags": ["accessibility", "screen-readers", "testing"],
+    "readTime": 7,
+    "status": "published"
+  },
+  {
+    "title": "Focus Management: Creating Logical Focus Order and Visible States",
+    "slug": "focus-management-accessibility",
+    "excerpt": "Control focus to guide users through complex interfaces and modals.",
+    "content": "Focus order should match visual order. Move focus to modals when opened: modal.focus(). Return focus to trigger when closed. Use roving tabindex for widget navigation. Ensure focus never gets trapped or lost. Visible focus is required by WCAG.",
+    "tags": ["accessibility", "focus", "javascript"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "Color Contrast Ratios: Meeting WCAG Requirements for Text Visibility",
+    "slug": "color-contrast-wcag-requirements",
+    "excerpt": "Achieve proper contrast ratios for accessible text across your design.",
+    "content": "WCAG AA requires 4.5:1 for normal text (under 18pt or 14pt bold) and 3:1 for large text (18pt+ or 14pt+ bold). AAA requires 7:1 and 4.5:1. Test with WebAIM Contrast Checker, Stark plugin, or in browser DevTools. Consider dark text on light backgrounds or vice versa.",
+    "tags": ["accessibility", "contrast", "wcag"],
+    "readTime": 5,
+    "status": "published"
+  },
+  {
+    "title": "Accessible Forms: Labels, Instructions, and Error Handling",
+    "slug": "accessible-forms-guide",
+    "excerpt": "Build forms that are accessible with proper labels, instructions, and error messaging.",
+    "content": "Every input needs <label for=\"id\">. Group with <fieldset> and <legend>. Instructions via aria-describedby. Required fields marked visually and with aria-required=\"true\". Errors: role=\"alert\", clear message, associated with input. Autocomplete attributes help users fill forms faster.",
+    "tags": ["accessibility", "forms", "ux"],
+    "readTime": 7,
+    "status": "published"
+  },
+  {
+    "title": "Animated Content and Motion: Respecting User Preferences for Reduced Motion",
+    "slug": "accessible-animations-reduced-motion",
+    "excerpt": "Implement prefers-reduced-motion to respect users who are sensitive to motion.",
+    "content": "CSS: `@media (prefers-reduced-motion: reduce) { * { animation: none; transition: none; } }`. JS: check `window.matchMedia('(prefers-reduced-motion: reduce)')`. Pause animations of moving content. Don't auto-play videos. Eliminate parallax effects.",
+    "tags": ["accessibility", "animation", "css"],
+    "readTime": 5,
+    "status": "published"
+  },
+  {
+    "title": "Accessibility Automation: Tools That Catch Common Issues Automatically",
+    "slug": "accessibility-automation-tools",
+    "excerpt": "Use automated testing tools to identify and fix accessibility issues early.",
+    "content": "Tools: axe DevTools, Lighthouse, WAVE, ARC Toolkit. Automated testing catches ~30-40% of issues (contrast, missing labels, heading order). Manual testing required for rest. Integrate into CI: axe-core with Jest, pa11y in pipelines. Run early and often.",
+    "tags": ["accessibility", "automation", "testing"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "React Server Components: Understanding the New Architecture",
+    "slug": "react-server-components-guide",
+    "excerpt": "Master React Server Components to build faster, more efficient React applications.",
+    "content": "Server Components (RSC) render on server, send to client as serialized data—no JS sent to client. Use 'use client' for interactivity. Benefits: zero bundle size for server components, direct backend access, automatic code splitting. Next.js 13+ implements RSC by default.",
+    "tags": ["frameworks", "react", "server-components"],
+    "readTime": 8,
+    "status": "published"
+  },
+  {
+    "title": "Vue 3 Composition API: Building Flexible and Maintainable Components",
+    "slug": "vue-3-composition-api",
+    "excerpt": "Learn the Vue 3 Composition API for better code organization and reusability.",
+    "content": "Composition API uses setup() function for reactive state with ref() and reactive(). Computed(), watch(), watchEffect() for logic. Extract composables for reusable logic. <script setup> provides compile-time syntactic sugar. Compare Options API vs Composition API for your use case.",
+    "tags": ["frameworks", "vue", "javascript"],
+    "readTime": 7,
+    "status": "published"
+  },
+  {
+    "title": "Svelte vs React vs Vue: Choosing the Right Framework for Your Project",
+    "slug": "svelte-vs-react-vs-vue",
+    "excerpt": "Compare Svelte, React, and Vue to choose the best framework for your specific needs.",
+    "content": "React: largest ecosystem, flexible, JSX learning curve. Vue: gentle learning, great docs, Vuex/Pinia for state. Svelte: smallest bundles, no virtual DOM, smaller community. Consider: team experience, project size, performance requirements, ecosystem needs.",
+    "tags": ["frameworks", "react", "vue", "svelte"],
+    "readTime": 7,
+    "status": "published"
+  },
+  {
+    "title": "Next.js 14 App Router: File-Based Routing and Server Components",
+    "slug": "nextjs-14-app-router",
+    "excerpt": "Build with Next.js 14 App Router using file-based routing and React Server Components.",
+    "content": "App Router uses app/ directory with page.js, layout.js, loading.js, error.js. Route groups with (folder). Dynamic routes with [param]. Server Components by default, 'use client' for interactivity. Server actions for form handling. Streaming and Suspense built in.",
+    "tags": ["frameworks", "nextjs", "react"],
+    "readTime": 8,
+    "status": "published"
+  },
+  {
+    "title": "Tailwind CSS v4: New Features and Migration Strategies",
+    "slug": "tailwind-css-v4-features",
+    "excerpt": "Explore Tailwind CSS v4 features and plan your migration from v3.",
+    "content": "Tailwind v4 brings CSS-first configuration, @theme directive, native CSS nesting, improved performance with LightningCSS. Migration: update @tailwindcss/postcss, move config to CSS with @theme. New features: extended color palette, better dark mode, improved arbitrary values.",
+    "tags": ["frameworks", "tailwind", "css"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "State Management in 2024: Zustand, Jotai, and Modern Alternatives",
+    "slug": "state-management-modern-frameworks",
+    "excerpt": "Compare modern state management solutions for React applications.",
+    "content": "Zustand: minimal boilerplate, hook-based, great TypeScript support. Jotai: atomic state, great for derived state. Recoil: Facebook's (deprecated). Redux Toolkit: standard for large apps. Jotai for fine-grained, Zustand for simplicity, Redux for complex enterprise. Consider server state: TanStack Query.",
+    "tags": ["frameworks", "react", "state-management"],
+    "readTime": 7,
+    "status": "published"
+  },
+  {
+    "title": "Component Library Architecture: Building Reusable UI Systems",
+    "slug": "component-library-architecture",
+    "excerpt": "Design and build component libraries that scale across teams and products.",
+    "content": "Structure: atoms (buttons, inputs), molecules (forms), organisms (cards, headers). Document with Storybook. Version with semantic versioning. TypeScript for type safety. Test with Vitest and Playwright. Consider: Shadcn/ui for copy-paste, Storybook for full library, or Design Tokens.",
+    "tags": ["frameworks", "components", "design-systems"],
+    "readTime": 7,
+    "status": "published"
+  },
+  {
+    "title": "Server-Side Rendering vs Static Site Generation: Performance Trade-offs",
+    "slug": "ssr-vs-ssg-performance",
+    "excerpt": "Understand when to use SSR, SSG, or hybrid rendering for optimal performance.",
+    "content": "SSG: pre-build HTML, fastest initial load, good for content. SSR: render on request, dynamic content, slower TTFB. ISR: static with incremental updates (Next.js). Edge: render at edge for global performance. Choose based on content freshness needs and performance requirements.",
+    "tags": ["frameworks", "performance", "ssr"],
+    "readTime": 7,
+    "status": "published"
+  },
+  {
+    "title": "Framework Performance Benchmarks: Real-World Metrics Comparison",
+    "slug": "framework-performance-benchmarks",
+    "excerpt": "Compare framework performance with real-world metrics and benchmark data.",
+    "content": "Metrics: Bundle size, Time to Interactive, Lighthouse scores. React: flexible but larger bundles. Vue: smaller, similar performance. Svelte: smallest bundles, fastest runtime. Astro: islands architecture for minimal JS. Consider real user metrics, not just synthetic benchmarks.",
+    "tags": ["frameworks", "performance", "benchmark"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "Micro-Frontends: Scaling Development Teams with Modular Architectures",
+    "slug": "micro-frontends-architecture",
+    "excerpt": "Implement micro-frontends to enable independent team deployment and development.",
+    "content": "Approaches: Module Federation (Webpack), iframe isolation, Web Components. Benefits: independent deployment, team autonomy, technology flexibility. Challenges: shared state, routing, consistent UX, testing. Start with small experiments, establish patterns, then scale. Single-spa framework helps.",
+    "tags": ["frameworks", "architecture", "microservices"],
+    "readTime": 8,
+    "status": "published"
+  },
+  {
+    "title": "Design Tokens: The Single Source of Truth for Visual Design",
+    "slug": "design-tokens-guide",
+    "excerpt": "Implement design tokens to maintain consistency across design and development.",
+    "content": "Design tokens are style values (colors, spacing, typography) in a platform-agnostic format. Structure: primitive tokens (blue-500), semantic tokens (primary-color), component tokens (button-background). Export from Figma with Tokens Studio, use in code with Style Dictionary.",
+    "tags": ["design-systems", "design-tokens", "figma"],
+    "readTime": 7,
+    "status": "published"
+  },
+  {
+    "title": "Building a Component Library: From Figma to Production Code",
+    "slug": "component-library-figma-to-code",
+    "excerpt": "Bridge the gap between Figma designs and production component libraries.",
+    "content": "Workflow: Design in Figma, create components, export to code with Anima or similar. Better: create coded components in Storybook, sync with Figma via Tokens Studio. Document props, variants, usage. Version and publish. Automate visual regression testing with Chromatic.",
+    "tags": ["design-systems", "components", "figma"],
+    "readTime": 7,
+    "status": "published"
+  },
+  {
+    "title": "Design System Documentation: Tools and Best Practices",
+    "slug": "design-system-documentation",
+    "excerpt": "Create effective design system documentation that teams actually use.",
+    "content": "Tools: Storybook (component docs), Notion/Confluence (policies), ZeroHeight (living docs). Content: intro, foundations (colors, type), components (states, props, code), patterns (usage), resources. Update with every release. Include real examples, not just specs.",
+    "tags": ["design-systems", "documentation", "storybook"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "Atomic Design in Practice: Organizing Components for Scalability",
+    "slug": "atomic-design-practice",
+    "excerpt": "Apply Atomic Design methodology to build scalable, maintainable component systems.",
+    "content": "Atomic Design levels: Atoms (buttons, inputs), Molecules (search form), Organisms (header), Templates (page layout), Pages (complete). Don't take literally—adapt to your needs. Focus on composition and reusability. Test at each level. Some teams skip levels, use simpler 2-tier (components, patterns).",
+    "tags": ["design-systems", "components", "atomic-design"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "Version Control for Design Systems: Managing Changes and Breaking Updates",
+    "slug": "design-system-version-control",
+    "excerpt": "Version design systems for safe updates and backward compatibility.",
+    "content": "Semantic versioning: major (breaking), minor (new features), patch (fixes). Deprecation path: announce, provide alternative, remove in next major. Changelog for every release. Use canary releases. Automate migrations with codemods. Document breaking changes prominently.",
+    "tags": ["design-systems", "version-control", "semantic-versioning"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "Design System Governance: Processes for Maintaining Consistency at Scale",
+    "slug": "design-system-governance",
+    "excerpt": "Establish governance processes to maintain design system quality and adoption.",
+    "content": "Roles: Design System Team (core), Component Maintainers (domain), Community Contributors. Processes: RFC for new components, review cycles, accessibility review, performance budgets. Metrics: adoption rate, contribution rate, issue count. Governance is about enabling, not blocking.",
+    "tags": ["design-systems", "governance", "process"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "Figma-to-Code Workflows: Bridging Design and Development Handoff",
+    "slug": "figma-to-code-workflows",
+    "excerpt": "Streamline Figma to code with modern handoff tools and processes.",
+    "content": "Tools: Anima (direct export), Figma Dev Mode (inspect), Tokens Studio (design tokens), Locofy (AI conversion). Process: accurate specs, design files organized, component names match code, shared language between design and dev. Test exported code, don't just trust tools.",
+    "tags": ["design-systems", "figma", "workflows"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "Theming Architecture: Supporting Multiple Brands and Platforms",
+    "slug": "theming-architecture-design-system",
+    "excerpt": "Build theming support for multiple brands, products, or platforms in your design system.",
+    "content": "Architecture: design tokens with themeable values, theme provider components, CSS variables for runtime switching. Support dark/light mode, brand variations, platform-specific overrides. Test themes thoroughly—colors that work in one theme may fail in another.",
+    "tags": ["design-systems", "theming", "architecture"],
+    "readTime": 7,
+    "status": "published"
+  },
+  {
+    "title": "Design System Metrics: Measuring Adoption and Consistency Impact",
+    "slug": "design-system-metrics",
+    "excerpt": "Track design system success with meaningful metrics and dashboards.",
+    "content": "Metrics: adoption (% of products using), contribution (PRs, issues), velocity (time to add component), quality (bugs, accessibility), developer satisfaction. Tools: npm stats, analytics, surveys. Share metrics with stakeholders. Let data drive prioritization.",
+    "tags": ["design-systems", "metrics", "analytics"],
+    "readTime": 5,
+    "status": "published"
+  },
+  {
+    "title": "Contributing to Design Systems: Onboarding Developers and Designers",
+    "slug": "design-system-contribution-guide",
+    "excerpt": "Create smooth onboarding for contributors to your design system.",
+    "content": "Onboarding: clear contribution guide, code of conduct, first-issue标签, mentorship program. Process: RFC, design review, implementation, testing, documentation, release. Tools: GitHub templates, Storybook, automated tests. Celebrate contributors publicly.",
+    "tags": ["design-systems", "contribution", "onboarding"],
+    "readTime": 5,
+    "status": "published"
+  },
+  {
+    "title": "User Journey Mapping: Visualizing the Path to Conversion",
+    "slug": "user-journey-mapping-guide",
+    "excerpt": "Create user journey maps to understand and optimize the user experience.",
+    "content": "Journey mapping steps: define scope, identify user personas, map stages (awareness, consideration, decision, retention), list actions, thoughts, emotions at each stage, identify pain points and opportunities. Output: visual diagram with narrative. Use for stakeholder alignment and prioritization.",
+    "tags": ["ux", "user-research", "journey-mapping"],
+    "readTime": 7,
+    "status": "published"
+  },
+  {
+    "title": "Information Architecture: Organizing Content for Better Discovery",
+    "slug": "information-architecture-guide",
+    "excerpt": "Structure content with information architecture for intuitive navigation and findability.",
+    "content": "IA elements: organization schemes (category, task, time), labeling systems, navigation design, search systems. Methods: card sorting (how users group), tree testing (findability), content audit. Tools: Miro, Figma, Optimal Workshop. Test with real users before building.",
+    "tags": ["ux", "information-architecture", "content"],
+    "readTime": 7,
+    "status": "published"
+  },
+  {
+    "title": "Usability Testing Methods: From Quick Iterations to Formal Studies",
+    "slug": "usability-testing-methods",
+    "excerpt": "Choose and execute usability testing methods appropriate for your project stage.",
+    "content": "Methods: Moderated (real-time guidance), Unmoderated (recorded, scalable), A/B testing (quantitative), Expert review (heuristic evaluation). Guerrilla testing: quick hallway tests. Remote testing: UserTesting, Maze. Frequency: test early (paper prototypes), test often (live product). Budget determines method.",
+    "tags": ["ux", "usability-testing", "user-research"],
+    "readTime": 7,
+    "status": "published"
+  },
+  {
+    "title": "Cognitive Load in UX: Designing for Mental Effort and Attention",
+    "slug": "cognitive-load-ux-design",
+    "excerpt": "Reduce cognitive load to make your interfaces easier to understand and use.",
+    "content": "Cognitive load types: intrinsic (complexity of task), extraneous (how info presented), germane (useful processing). Design strategies: progressive disclosure, chunking (group related items), clear visual hierarchy, remove unnecessary elements, provide defaults, minimize memory demands.",
+    "tags": ["ux", "cognitive-load", "usability"],
+    "readTime": 7,
+    "status": "published"
+  },
+  {
+    "title": "User Research on a Budget: Lean Methods for Validation",
+    "slug": "user-research-lean-methods",
+    "excerpt": "Conduct valuable user research without large budgets or formal labs.",
+    "content": "Lean methods: 5-second tests (first impressions), click tests (navigation), tree testing (findability), hallway testing (quick feedback), survey polls. Tools: UsabilityHub, Maze, Optimal Workshop. Cost: free to $500. Frequency: every sprint. Recruit from your users, Twitter, or Reddit.",
+    "tags": ["ux", "user-research", "budget"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "Interaction Design Patterns: Solutions for Common User Problems",
+    "slug": "interaction-design-patterns",
+    "excerpt": "Apply proven interaction design patterns to solve recurring UX challenges.",
+    "content": "Patterns: infinite scroll (content feeds), lazy loading (performance), skeleton screens (loading), empty states (first use), undo (mistake recovery), smart defaults (speed), progressive onboarding (complexity). Pattern libraries: UI Patterns, Mobbin, Dribbble. Customize, don't just copy.",
+    "tags": ["ux", "interaction-design", "patterns"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "Onboarding UX: First Impressions That Drive Retention",
+    "slug": "onboarding-ux-best-practices",
+    "excerpt": "Design onboarding experiences that engage users and drive long-term retention.",
+    "content": "Onboarding types: tours (point out features), checklists (show progress), interactive tutorials (teach by doing), progressive (reveal over time). Best: show value quickly, minimal required fields, skip option, clear progress indicator. Measure: activation rate, time to value.",
+    "tags": ["ux", "onboarding", "retention"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "Micro-Interactions: Delightful Details That Improve Usability",
+    "slug": "micro-interactions-ux",
+    "excerpt": "Add meaningful micro-interactions to enhance user experience and feedback.",
+    "content": "Micro-interactions: button press feedback, loading states, success/error feedback, toggle animations, pull-to-refresh. Functions: provide feedback, indicate state change, enhance affordance. Don't overdo—every animation should serve a purpose. Use motion design principles: ease, natural timing.",
+    "tags": ["ux", "micro-interactions", "animation"],
+    "readTime": 5,
+    "status": "published"
+  },
+  {
+    "title": "Accessibility as UX: Why Inclusive Design Benefits Everyone",
+    "slug": "accessibility-ux-benefits",
+    "excerpt": "Understand how accessibility improvements enhance experience for all users.",
+    "content": "Accessibility benefits: keyboard navigation helps power users, captions help in sound-off environments, high contrast helps in bright sunlight, clear labels help non-native speakers. Business case: 15% of world population has disabilities, legal compliance, SEO benefits, better for all users.",
+    "tags": ["ux", "accessibility", "inclusive-design"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "UX Metrics That Matter: Measuring User Satisfaction and Task Success",
+    "slug": "ux-metrics-guide",
+    "excerpt": "Track UX metrics that provide actionable insights into user experience quality.",
+    "content": "Metrics: SUS (satisfaction), NPS (loyalty), CSAT (satisfaction), CES (ease of use), Time on Task, Success Rate, Error Rate, System Usability Scale. Tools: Hotjar (session recordings), FullStory, Mixpanel. Focus on metrics tied to business goals. Set benchmarks before improvements.",
+    "tags": ["ux", "metrics", "analytics"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "Conversion-Rate Optimization: Data-Driven Approaches to Better Results",
+    "slug": "conversion-rate-optimization",
+    "excerpt": "Use data-driven CRO methods to systematically improve conversion rates.",
+    "content": "CRO process: research (analytics, heatmaps), hypothesize (why users drop), prioritize (impact vs effort), test (A/B, multivariate), analyze, iterate. Metrics: conversion rate, revenue per visitor, funnel drop-off. Tools: Google Optimize (sunset), Optimizely, VWO. Test one thing at a time.",
+    "tags": ["conversion", "optimization", " CRO"],
+    "readTime": 8,
+    "status": "published"
+  },
+  {
+    "title": "Above the Fold Optimization: Making Your First Impression Count",
+    "slug": "above-the-fold-optimization",
+    "excerpt": "Optimize the visible content area for maximum engagement and conversion.",
+    "content": "Above the fold (ATF): the area visible without scrolling. Must include: headline (value prop), CTA (primary action), social proof (optional), hero image (optional). Don't: bury CTA, use unclear images, slow load. Test different headlines, CTA text, and visual arrangements.",
+    "tags": ["conversion", "landing-pages", "ux"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "CTA Design Best Practices: Buttons That Drive Action",
+    "slug": "cta-design-best-practices",
+    "excerpt": "Design CTAs that attract attention and drive users to click.",
+    "content": "CTA best practices: action verb (Get, Start, Join), clear value, contrasting color, adequate size (44px+), visible whitespace around, consistent placement. A/B test: 'Get Started' vs 'Start Free Trial', color variations, button shape, with vs without arrow. Avoid generic 'Submit'.",
+    "tags": ["conversion", "cta", "design"],
+    "readTime": 5,
+    "status": "published"
+  },
+  {
+    "title": "Landing Page Copywriting: Persuading Visitors in Seconds",
+    "slug": "landing-page-copywriting",
+    "excerpt": "Write compelling copy that converts visitors into customers quickly.",
+    "content": "Copy framework: headline (hook), subheadline (elaborate), benefit bullets (key value), body paragraphs (detail), social proof (trust), CTA (action). Write for scanners: short paragraphs, bullet points, bold key phrases. Focus on benefits, not features. Test different hooks.",
+    "tags": ["conversion", "copywriting", "landing-pages"],
+    "readTime": 7,
+    "status": "published"
+  },
+  {
+    "title": "A/B Testing Landing Pages: Statistical Significance and Iteration",
+    "slug": "ab-testing-landing-pages",
+    "excerpt": "Run statistically valid A/B tests and iterate based on results.",
+    "content": "A/B testing: split traffic 50/50, test one variable, measure conversion. Statistical significance: 95% confidence minimum, 1000+ visitors per variation. Iteration: winner becomes new baseline, test next hypothesis. Don't: test too many variants, stop early, ignore segment results. Tools: VWO, Optimizely.",
+    "tags": ["conversion", "ab-testing", "statistics"],
+    "readTime": 7,
+    "status": "published"
+  },
+  {
+    "title": "Social Proof Implementation: Building Trust Through Evidence",
+    "slug": "social-proof-implementation",
+    "excerpt": "Add social proof elements that build trust and increase conversions.",
+    "content": "Social proof types: customer testimonials, case studies, user counts, ratings/reviews, logos of companies, expert endorsements, live activity feeds. Placement: near CTA, in header, in footer. Authenticity matters—real quotes with real names and photos. Video testimonials convert well.",
+    "tags": ["conversion", "social-proof", "trust"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "Form Optimization: Reducing Friction in Lead Capture",
+    "slug": "form-optimization-conversion",
+    "excerpt": "Optimize forms to increase completion rates and reduce abandonment.",
+    "content": "Form optimization: reduce fields (only required), inline validation, smart defaults, auto-fill support, logical field order, clear labels above inputs, show progress for multi-step forms, remove distractions on page. Test: field count, default values, help text placement. Consider progressive profiling.",
+    "tags": ["conversion", "forms", "optimization"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "Loading Performance and Conversions: The Speed-Trust Connection",
+    "slug": "page-speed-conversion-impact",
+    "excerpt": "Understand how page speed affects conversion rates and user trust.",
+    "content": "Performance impact: 1s delay = 7% conversion drop, 53% mobile users leave after 3s load. Core Web Vitals: LCP < 2.5s, INP < 200ms, CLS < 0.1. Speed optimizations: optimize images, minify CSS/JS, lazy load, CDN, server-side rendering. Test: Lighthouse, PageSpeed Insights, Real User Monitoring.",
+    "tags": ["conversion", "performance", "speed"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "Mobile Landing Page Optimization: Converting On Small Screens",
+    "slug": "mobile-landing-page-optimization",
+    "excerpt": "Optimize landing pages for mobile conversions with responsive design and UX best practices.",
+    "content": "Mobile optimization: thumb-friendly CTAs (bottom), large tap targets (44px+), vertical layouts, streamlined forms, fast load (AMP, optimized images), readable text (no zoom required), simplified navigation. Test on real devices. Mobile-first index means mobile experience affects SEO.",
+    "tags": ["conversion", "mobile", "landing-pages"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "Landing Page Analytics: Key Metrics and Dashboard Setup",
+    "slug": "landing-page-analytics-guide",
+    "excerpt": "Set up analytics to track and optimize landing page performance.",
+    "content": "Key metrics: conversion rate, bounce rate, time on page, exit rate, revenue per visitor, cost per acquisition. Tools: Google Analytics, Mixpanel, Amplitude. Set up: goals, events, funnel, dashboards. Track: traffic sources, device breakdown, geographic performance. A/B test results in analytics.",
+    "tags": ["conversion", "analytics", "data"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "Modern CSS Techniques: Container Queries, Nesting, and More",
+    "slug": "modern-css-techniques",
+    "excerpt": "Use modern CSS features like container queries, nesting, and subgrid for powerful layouts.",
+    "content": "Modern CSS: container queries (@container), native CSS nesting, subgrid, :has() selector, @layer for cascade control, color functions (oklch, lab), trigonometric functions. Use @supports for progressive enhancement. Check Can I Use for support. These replace many JavaScript solutions.",
+    "tags": ["frontend", "css", "modern-css"],
+    "readTime": 8,
+    "status": "published"
+  },
+  {
+    "title": "JavaScript Performance Optimization: Reducing Main Thread Work",
+    "slug": "javascript-performance-optimization",
+    "excerpt": "Optimize JavaScript to reduce main thread blocking and improve interactivity.",
+    "content": "JS optimization: code splitting (dynamic imports), tree shaking (remove unused), minification, lazy load non-critical. Use Chrome DevTools Performance tab to identify long tasks. Use requestIdleCallback for non-critical work. Web Workers for heavy computation. Measure impact on INP.",
+    "tags": ["frontend", "javascript", "performance"],
+    "readTime": 8,
+    "status": "published"
+  },
+  {
+    "title": "Image Optimization Strategies: Formats, Lazy Loading, and CDNs",
+    "slug": "image-optimization-strategies",
+    "excerpt": "Optimize images for fast loading with modern formats and delivery strategies.",
+    "content": "Optimization: use WebP/AVIF, responsive images (srcset, sizes), lazy load (loading=\"lazy\"), proper sizing (don't serve 2000px for 400px), CDN delivery (Cloudflare, Cloudinary), blur-up placeholders. Tools: Squoosh, ImageMagick, Sharp. Automate in build process.",
+    "tags": ["frontend", "images", "performance"],
+    "readTime": 7,
+    "status": "published"
+  },
+  {
+    "title": "Critical Rendering Path: Understanding and Optimizing Page Load",
+    "slug": "critical-rendering-path",
+    "excerpt": "Optimize the critical rendering path to speed up initial page display.",
+    "content": "Critical rendering path: HTML → DOM → CSSOM → Render Tree → Layout → Paint. Optimize: inline critical CSS, defer non-critical JS, preload critical resources, optimize fonts, reduce render-blocking resources. Measure: Lighthouse, WebPageTest. Goal: LCP under 2.5s.",
+    "tags": ["frontend", "performance", "critical-rendering"],
+    "readTime": 7,
+    "status": "published"
+  },
+  {
+    "title": "Code Splitting and Lazy Loading: Splitting Bundles for Better Performance",
+    "slug": "code-splitting-lazy-loading",
+    "excerpt": "Implement code splitting and lazy loading to deliver less JavaScript initially.",
+    "content": "Code splitting: dynamic imports (`import('./module')`), route-based splitting, component-level splitting. Lazy loading: images (loading=\"lazy\"), components (React.lazy), routes. Tools: webpack, Vite, Rollup. Monitor bundle size with source-map-explorer. Balance—too many chunks hurts.",
+    "tags": ["frontend", "performance", "bundling"],
+    "readTime": 7,
+    "status": "published"
+  },
+  {
+    "title": "CSS-in-JS vs CSS Modules: Choosing Your Styling Strategy",
+    "slug": "css-in-js-vs-css-modules",
+    "excerpt": "Compare CSS-in-JS solutions and CSS Modules to choose the right approach.",
+    "content": "CSS-in-JS: styled-components, emotion, zero-runtime (Googled). Pros: colocation, dynamic styles, theming. Cons: runtime overhead, learning curve. CSS Modules: scoped by default, native, no runtime. Pros: performance, familiar syntax. Cons: requires tooling setup. Choose based on team and scale.",
+    "tags": ["frontend", "css", "styling"],
+    "readTime": 7,
+    "status": "published"
+  },
+  {
+    "title": "Progressive Web Apps: Service Workers and Offline Capabilities",
+    "slug": "pwa-service-workers-guide",
+    "excerpt": "Build PWAs with service workers for offline support and app-like experiences.",
+    "content": "PWA essentials: manifest.json (name, icons, display), service worker (cache strategies), HTTPS required. Service worker strategies: cache-first (assets), network-first (API), stale-while-revalidate (hybrid). Offline support with IndexedDB. Tools: Workbox, PWA Builder. Test in DevTools Application tab.",
+    "tags": ["frontend", "pwa", "service-worker"],
+    "readTime": 8,
+    "status": "published"
+  },
+  {
+    "title": "Cross-Browser Testing: Ensuring Compatibility Across Browsers",
+    "slug": "cross-browser-testing-guide",
+    "excerpt": "Test across browsers to ensure consistent experience for all users.",
+    "content": "Key browsers: Chrome, Safari, Firefox, Edge (90%+ coverage). Use BrowserStack or LambdaTest for multi-browser testing. Test: layout, JavaScript features, CSS support, forms, animations. Use feature detection (@supports) over browser detection. Automate with Playwright or Cypress for regression testing.",
+    "tags": ["frontend", "testing", "cross-browser"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "DevTools Mastery: Debugging and Profiling Frontend Performance",
+    "slug": "devtools-frontend-debugging",
+    "excerpt": "Master Chrome DevTools for debugging JavaScript, CSS, and performance issues.",
+    "content": "DevTools sections: Elements (DOM/CSS), Console (logs, errors), Network (requests, timing), Performance (FPS, CPU), Memory (leaks), Application (storage, service workers). Tips: blackbox scripts, console.group, copy as cURL, local overrides, performance markers. Use for debugging and profiling.",
+    "tags": ["frontend", "devtools", "debugging"],
+    "readTime": 8,
+    "status": "published"
+  },
+  {
+    "title": "Web Vitals Optimization: LCP, FID, and CLS Improvement Strategies",
+    "slug": "web-vitals-optimization-guide",
+    "excerpt": "Optimize Core Web Vitals for better user experience and SEO performance.",
+    "content": "LCP (Largest Contentful Paint): optimize images, server response, render-blocking resources. INP (Interaction to Next Paint): reduce JS main thread work, use requestIdleCallback. CLS (Cumulative Layout Shift): set explicit image dimensions, reserve space for ads, font-display: swap. Measure in PageSpeed Insights.",
+    "tags": ["frontend", "web-vitals", "performance"],
+    "readTime": 8,
+    "status": "published"
+  },
+  {
+    "title": "Typography Trends 2024: What's Hot in Web Typography",
+    "slug": "typography-trends-2024",
+    "excerpt": "Explore the latest typography trends shaping modern web design.",
+    "content": "2024 trends: kinetic typography (animated text), retro fonts (70s-80s revival), augmented serifs (hybrid styles), expressive monospace (coding aesthetics), maximalist display (bold, decorative), minimal sans (clean, geometric). Mix high-contrast pairings with experimental type.",
+    "tags": ["typography", "trends", "design"],
+    "readTime": 5,
+    "status": "published"
+  },
+  {
+    "title": "Color Trends 2024: Popular Palettes and Design Directions",
+    "slug": "color-trends-2024",
+    "excerpt": "Discover the color trends dominating web design in 2024.",
+    "content": "2024 trends: synthetic colors (vibrant neons), warm neutrals (terracotta, cream), digital purples (gradients), sustainable greens (earth tones), monochromatic depth (single hue, multiple values), hyper-real gradients. Use color to create emotional impact and brand distinction.",
+    "tags": ["color-theory", "trends", "design"],
+    "readTime": 5,
+    "status": "published"
+  },
+  {
+    "title": "Responsive Design Trends: Modern Approaches to Adaptivity",
+    "slug": "responsive-design-trends-2024",
+    "excerpt": "Explore modern responsive design trends and techniques.",
+    "content": "Modern trends: fluid everything (not just text), foldable device support, container queries adoption, CSS scroll-driven animations, aspect-ratio media queries, multi-device experiences (watch to TV). Design beyond breakpoints—think continuous scaling.",
+    "tags": ["responsive-design", "trends", "css"],
+    "readTime": 5,
+    "status": "published"
+  },
+  {
+    "title": "Accessibility Trends: Inclusive Design Best Practices",
+    "slug": "accessibility-trends-2024",
+    "excerpt": "Stay current with accessibility trends and inclusive design practices.",
+    "content": "2024 trends: AI-powered accessibility testing, auto-generated alt text improvements, voice interface design, gesture-based navigation support, ARIA 1.2 adoption, accessibility-first design workflows. WCAG 2.2 introduces new requirements (drag movements, consistent help).",
+    "tags": ["accessibility", "trends", "inclusive-design"],
+    "readTime": 5,
+    "status": "published"
+  },
+  {
+    "title": "Framework Trends: What's Next in Frontend Development",
+    "slug": "framework-trends-2024",
+    "excerpt": "Explore emerging trends in frontend frameworks and tooling.",
+    "content": "Trends: server components everywhere, edge rendering (Cloudflare, Vercel), signals-based reactivity (Solid, Preact signals), AI-assisted coding (GitHub Copilot, Cursor), Rust-based tooling (SWC, Turbopack), WebAssembly expansion. Hybrid rendering is the norm.",
+    "tags": ["frameworks", "trends", "frontend"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "Design System Trends: Building for Scale and Flexibility",
+    "slug": "design-system-trends-2024",
+    "excerpt": "Discover trends in design system architecture and management.",
+    "content": "Trends: AI-generated component variants, design-to-code pipelines, token-based theming at scale, multi-brand orchestration, contribution automation, component lifecycle management. Design ops is a distinct discipline. Focus on developer experience and governance.",
+    "tags": ["design-systems", "trends", "architecture"],
+    "readTime": 5,
+    "status": "published"
+  },
+  {
+    "title": "UX Trends: Emerging User Experience Patterns",
+    "slug": "ux-trends-2024",
+    "excerpt": "Explore emerging UX patterns and methodologies shaping digital experiences.",
+    "content": "Trends: AI-powered personalization, voice-first interfaces, spatial computing (AR/VR), ambient computing (multiple surfaces), emotion-aware interfaces, behavior-triggered experiences. Focus on reducing friction while increasing delight. Measurement shifts to engagement depth.",
+    "tags": ["ux", "trends", "emerging-tech"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "Landing Page Trends: High-Converting Design Patterns",
+    "slug": "landing-page-trends-2024",
+    "excerpt": "Discover the latest landing page design trends that drive conversions.",
+    "content": "2024 trends: interactive demos (product previews), video backgrounds (optimized), personalized CTAs (based on behavior), scarcity signals (real-time availability), chat-assisted conversion, zero-click content (value before ask). Movement away from generic templates toward custom experiences.",
+    "tags": ["conversion", "landing-pages", "trends"],
+    "readTime": 5,
+    "status": "published"
+  },
+  {
+    "title": "Frontend Trends: What Developers Need to Know",
+    "slug": "frontend-trends-2024",
+    "excerpt": "Stay ahead with the frontend development trends shaping the industry.",
+    "content": "Trends: edge functions everywhere, view transitions API, CSS math functions (round, mod, rem), container queries production-ready, signals for state, AI-assisted debugging, WebGPU emergence, micro-frontends maturity, performance as feature. Stack decisions matter more than ever.",
+    "tags": ["frontend", "trends", "development"],
+    "readTime": 6,
+    "status": "published"
+  },
+  {
+    "title": "Typography for Developers: Essential Type Skills",
+    "slug": "typography-for-developers",
+    "excerpt": "Every developer should know these typography fundamentals for better web design.",
+    "content": "Devs need: font loading strategies (display: swap), fluid typography basics, CSS units (em vs rem vs ch), text rendering optimization, vertical rhythm understanding, accessible contrast checking, line-length guidelines (60-75 chars), paragraph spacing rules, font file formats (WOFF2 preference).",
+    "tags": ["typography", "developers", "frontend"],
+    "readTime": 5,
+    "status": "published"
+  }
 ]

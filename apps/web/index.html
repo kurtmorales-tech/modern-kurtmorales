@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>KurtMorales | Web Designer & Developer Las Vegas NV</title>
+    <meta
+      name="description"
+      content="KurtMorales — Las Vegas freelance web designer & developer building clean, fast, SEO-optimized websites for small businesses and service providers."
+    />
+    <meta name="theme-color" content="#fff7ed" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#120f1f" media="(prefers-color-scheme: dark)" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="KurtMorales" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script>
+      (() => {
+        const storageKey = 'kurtmorales-theme';
+        const saved = localStorage.getItem(storageKey);
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = saved || (prefersDark ? 'dark' : 'light');
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
+  </head>
+  <body
+    class="min-h-screen font-sans selection:bg-brand selection:text-white transition-colors duration-300"
+  >
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -1,10 +1,9 @@
 .git
 .gitignore
 node_modules
-web/node_modules
+apps/web/node_modules
+apps/web/dist
 cms/node_modules
-web/dist
-web/.astro
 cms/.next
 cms/data
 cms/public/media
