@@ -4,7 +4,7 @@ import { Database } from "bun:sqlite";
 import { mkdirSync } from "fs";
 import { dirname, join } from "path";
 
-// ../web/src/data/generated-rss-posts.json
+// ../apps/web/src/data/generated-rss-posts.json
 var generated_rss_posts_default = [
   {
     id: "rss-9apsqt",
@@ -75,7 +75,7 @@ Source: [Cloudflare Blog \u2014 When DNSSEC goes wrong: how we responded to the 
   }
 ];
 
-// ../web/src/data/how-to-posts.json
+// ../apps/web/src/data/how-to-posts.json
 var how_to_posts_default = [
   {
     id: "h1",
@@ -1397,7 +1397,7 @@ function updateNewsletter(id, patch) {
 // src/server.ts
 var port = Number(process.env.PORT || 3001);
 var allowedOrigins = (process.env.CORS_ORIGINS || "http://localhost:3000,https://kurtmorales.com").split(",").map((value) => value.trim()).filter(Boolean);
-var adminSecret = process.env.BACKEND_ADMIN_SECRET || process.env.PAYLOAD_SECRET || "";
+var adminSecret = process.env.BACKEND_ADMIN_SECRET || "";
 function corsHeaders(request) {
   const origin = request.headers.get("origin");
   const allowOrigin = origin && allowedOrigins.includes(origin) ? origin : "*";

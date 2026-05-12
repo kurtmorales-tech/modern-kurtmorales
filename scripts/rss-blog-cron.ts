@@ -42,7 +42,7 @@ type CmsGeneratedStore = {
 const dirname = path.dirname(fileURLToPath(import.meta.url))
 const rootDir = path.resolve(dirname, '..')
 const storeOut = path.join(rootDir, 'content/generated-rss-posts.json')
-const webOut = path.join(rootDir, 'web/src/data/generated-rss-posts.json')
+const webOut = path.join(rootDir, 'apps/web/src/data/generated-rss-posts.json')
 const maxFeedBytes = 1_500_000
 
 const targetCount = clamp(Number(argValue('limit') ?? 1), 1, 10)
@@ -307,7 +307,7 @@ function titleCase(value: string): string {
 }
 
 function escapeMarkdown(value: string): string {
-  return value.replace(/([\[\]])/g, '\\$1')
+  return value.replace(/([[\]])/g, '\\$1')
 }
 
 function argValue(name: string): string | undefined {

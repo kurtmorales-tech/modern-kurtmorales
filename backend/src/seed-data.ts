@@ -1,5 +1,5 @@
-import generatedRssPosts from '../../web/src/data/generated-rss-posts.json';
-import howToPosts from '../../web/src/data/how-to-posts.json';
+import generatedRssPosts from '../../apps/web/src/data/generated-rss-posts.json';
+import howToPosts from '../../apps/web/src/data/how-to-posts.json';
 
 export type Tag = { tag: string };
 
@@ -111,11 +111,11 @@ export const seedTemplates: SeedTemplate[] = [
     id: 't3',
     title: 'Portfolio Minimal',
     description: 'Minimal portfolio template for creatives with smooth animations.',
-    tech: 'Astro / Tailwind',
+    tech: 'React / Tailwind',
     thumbnail: { url: '/template-previews/portfolio-minimal.png', alt: 'Portfolio Minimal template preview' },
     demoUrl: 'https://portfolio-minimal-demo.kurtmorales.com',
     sourceUrl: 'https://github.com/Kacmnetworkk/portfolio-minimal',
-    tags: [{ tag: 'Portfolio' }, { tag: 'Astro' }, { tag: 'Minimal' }],
+    tags: [{ tag: 'Portfolio' }, { tag: 'React' }, { tag: 'Minimal' }],
     featured: true,
     price: 29,
     order: 3,

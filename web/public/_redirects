@@ -1,4 +1,0 @@
-# Only relative URLs allowed in Workers + Assets _redirects
-# www → non-www and blogs subdomain handled by Worker
-
-/home / 301

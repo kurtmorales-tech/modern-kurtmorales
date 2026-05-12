@@ -2,7 +2,7 @@
 
 ## Architecture
 Monorepo with active app packages:
-- `web/` — Astro frontend, Tailwind v4, React islands, Cloudflare Pages
+- `apps/web/` — React + Vite frontend, Tailwind v4, Cloudflare Pages
 - `backend/` — Bun API, Bun.serve, SQLite content store
 
 ## Backend Data Domains
@@ -43,26 +43,26 @@ bun run rss:cron     # Generate RSS content, build, deploy web
 - `backend/src/server.ts` — Bun HTTP API
 - `backend/src/db.ts` — schema, seed, and query layer
 - `backend/src/seed-data.ts` — bundled content seed data
-- `web/astro.config.mjs` — Astro config
-- `web/src/lib/payload.ts` — frontend API client
-- `web/src/data/fallback.ts` — static fallback data
-- `web/src/layouts/BaseLayout.astro` — shared SEO shell, theme bootstrap, reveal observer, live-card interaction
-- `web/src/styles/global.css` — design tokens, Cloudflare-inspired theme, button/panel utilities
-- `web/src/components/BlogEndcap.astro` — `/blog` CTA + numbered quick navigation (01–08)
-- `web/src/pages/blog/index.astro` — blog archive layout using the endcap component
+- `apps/web/vite.config.ts` — React/Vite frontend config
+- `apps/web/src/lib/api.ts` — frontend API client
+- `apps/web/src/lib/fallback.ts` — static fallback data
+- `apps/web/src/components/Layout.tsx` — shared reveal/live-card interaction wrapper
+- `apps/web/src/styles.css` — design tokens, Cloudflare-inspired theme, button/panel utilities
+- `apps/web/src/components/BlogEndcap.tsx` — `/blog` CTA + numbered quick navigation (01–08)
+- `apps/web/src/pages/BlogPage.tsx` — blog archive layout using the endcap component
 - `scripts/rss-blog-cron.ts` — RSS content generation pipeline
 - `scripts/rss-sources.ts` — RSS source registry
 - `scripts/pi-sdk.ts` — Pi SDK integration
 
 ## UI / Theme Rules
 - Current visual direction is Cloudflare-inspired: orange primary, restrained purple accent, glass panels, crisp borders.
-- Prefer shared utility classes from `web/src/styles/global.css`: `km-button`, `km-button-primary`, `km-button-secondary`, `km-pill`, `km-panel`.
-- Use `data-live-card` for subtle pointer-reactive cards; interaction is initialized globally in `BaseLayout.astro`.
+- Prefer shared utility classes from `apps/web/src/styles.css`: `km-button`, `km-button-primary`, `km-button-secondary`, `km-pill`, `km-panel`.
+- Use `data-live-card` for subtle pointer-reactive cards; interaction is initialized globally in `apps/web/src/components/Layout.tsx`.
 - Keep motion subtle and functional. Respect reduced-motion users.
 - `/blog` should keep the CTA + numbered navigation block before the footer.
 
 ## Rules
 - Bun backend is the default source of truth for content APIs.
-- Frontend should tolerate backend downtime by falling back to `web/src/data/fallback.ts`.
+- Frontend should tolerate backend downtime by falling back to `apps/web/src/lib/fallback.ts`.
 - RSS automation lives under `scripts/` and `content/`, not a separate CMS package.
-- Frontend is static-generated, so set `PUBLIC_BACKEND_URL` for builds that should consume live backend data.
+- Frontend is static-generated, so set `VITE_API_BASE_URL` or `PUBLIC_BACKEND_URL` for builds that should consume live backend data.

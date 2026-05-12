@@ -13,9 +13,9 @@ The script:
 1. Reads RSS sources from `scripts/rss-sources.ts`.
 2. Generates one original attributed blog post per run.
 3. Writes the internal generated-content store to `content/generated-rss-posts.json`.
-4. Mirrors public fallback content to `web/src/data/generated-rss-posts.json`.
-5. Builds `web/`.
-6. Deploys `web/dist` to Cloudflare Pages project `kurtmorales-modern`.
+4. Mirrors public fallback content to `apps/web/src/data/generated-rss-posts.json`.
+5. Builds the React app in `apps/web/`.
+6. Deploys `apps/web/dist` to Cloudflare Pages project `kurtmorales-modern`.
 
 Logs:
 

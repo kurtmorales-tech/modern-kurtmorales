@@ -2,7 +2,7 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-WEB_DIR="$ROOT_DIR/web"
+WEB_DIR="$ROOT_DIR/apps/web"
 DB_NAME="${CF_D1_DATABASE_NAME:-kurtmorales-modern-db}"
 PAGES_PROJECT="${CF_PAGES_PROJECT:-kurtmorales-modern}"
 ZONE_ID="${CF_ZONE_ID:-}"
@@ -17,12 +17,12 @@ Usage:
 
 Commands:
   status           Show git, docker, bun, wrangler status
-  build            Build Bun backend + Astro frontend
-  build-web        Build Astro frontend
+  build            Build Bun backend + React frontend
+  build-web        Build React frontend
   seed             Seed local Bun backend data
   cf-whoami        Check Cloudflare auth
-  cf-deploy        Build web and deploy to Cloudflare Pages
-  cf-preview       Build web and deploy preview to Cloudflare Pages
+  cf-deploy        Build React web and deploy to Cloudflare Pages
+  cf-preview       Build React web and deploy preview to Cloudflare Pages
   d1-create        Create Cloudflare D1 database
   d1-migrate       Apply D1 migrations remotely
   d1-migrate-local Apply D1 migrations locally
@@ -61,11 +61,11 @@ case "${1:-}" in
   seed) (cd "$ROOT_DIR" && bun run seed) ;;
   cf-whoami) wrangler whoami ;;
   cf-deploy)
-    (cd "$ROOT_DIR/web" && bun run build)
+    (cd "$WEB_DIR" && bun run build)
     wrangler pages deploy dist --project-name "$PAGES_PROJECT" --branch main
     ;;
   cf-preview)
-    (cd "$ROOT_DIR/web" && bun run build)
+    (cd "$WEB_DIR" && bun run build)
     wrangler pages deploy dist --project-name "$PAGES_PROJECT"
     ;;
   d1-create) wrangler d1 create "$DB_NAME" ;;

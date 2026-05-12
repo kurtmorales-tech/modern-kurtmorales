@@ -7,9 +7,8 @@ bun.lock
 content/generated-rss-posts.json
 
 # Frontend
-web/dist/
-web/.astro/
-web/.wrangler/
+apps/web/dist/
+apps/web/.wrangler/
 
 # OS / Editor
 .DS_Store
