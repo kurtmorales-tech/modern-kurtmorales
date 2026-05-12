@@ -19,6 +19,8 @@
     "build:api": "cd apps/api && bun run build",
     "seed": "bun run seed:backend",
     "seed:backend": "cd backend && bun run seed",
+    "db:reset": "bun run db:reset:backend",
+    "db:reset:backend": "cd backend && bun run db:reset",
     "clean": "rm -rf apps/web/dist backend/dist apps/api/dist",
     "agent": "tsx scripts/pi-sdk.ts",
     "agent:health": "tsx scripts/pi-sdk.ts 'check backend health and list all posts'",
@@ -36,12 +38,15 @@
     "dns:list": "bash scripts/build-tools.sh dns-list",
     "docker:web": "bash scripts/build-tools.sh docker-web",
     "rss:publish-local": "bun scripts/rss-blog-cron.ts",
-    "rss:cron": "bash scripts/rss-blog-cron.sh"
+    "rss:cron": "bash scripts/rss-blog-cron.sh",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
     "@mariozechner/pi-coding-agent": "*",
     "@sinclair/typebox": "^0.34.49",
     "@types/node": "^24.10.0",
-    "tsx": "^4.21.0"
+    "tsx": "^4.21.0",
+    "prettier": "^3.6.2"
   }
 }

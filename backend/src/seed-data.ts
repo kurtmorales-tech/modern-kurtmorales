@@ -72,12 +72,60 @@ export const seedPosts: SeedPost[] = [
 ];
 
 export const seedProjects: SeedProject[] = [
-  { id: 'p1', title: 'Braids by Jaira', type: 'Client Concept', tech: 'React / Vite', description: 'Boutique hair styling site with booking flow, gallery, and AI-powered consult.', link: 'https://github.com/Kacmnetworkk/Braids-by-jairah', order: 1 },
-  { id: 'p2', title: 'RavFia Platform', type: 'Platform', tech: 'Cloudflare', description: 'Open-source platform focused on AI tooling and serverless deployment.', link: 'https://github.com/Kacmnetworkk/ravfia', order: 2 },
-  { id: 'p3', title: 'QuickCart', type: 'Ecommerce', tech: 'Next / Tailwind', description: 'Minimal e-commerce starter template made for fast online store launches.', link: 'https://github.com/Kacmnetworkk/QuickCart', order: 3 },
-  { id: 'p4', title: 'Cuepal Directory', type: 'Directory', tech: 'TypeScript', description: 'A pool league finder concept connecting players with local game communities.', link: 'https://github.com/Kacmnetworkk/Cuepal-Directory', order: 4 },
-  { id: 'p5', title: 'RavFia SecurePass', type: 'Tooling', tech: 'API Concept', description: 'Cryptographic password generation and privacy-first tooling direction.', link: 'https://github.com/Kacmnetworkk', order: 5 },
-  { id: 'p6', title: 'KurtMorales Design', type: 'Studio', tech: 'Web Design', description: 'Brand focused on modern, fast, SEO-conscious websites for local companies.', link: 'https://kurtmorales.com', order: 6 },
+  {
+    id: 'p1',
+    title: 'Braids by Jaira',
+    type: 'Client Concept',
+    tech: 'React / Vite',
+    description: 'Boutique hair styling site with booking flow, gallery, and AI-powered consult.',
+    link: 'https://github.com/Kacmnetworkk/Braids-by-jairah',
+    order: 1,
+  },
+  {
+    id: 'p2',
+    title: 'RavFia Platform',
+    type: 'Platform',
+    tech: 'Cloudflare',
+    description: 'Open-source platform focused on AI tooling and serverless deployment.',
+    link: 'https://github.com/Kacmnetworkk/ravfia',
+    order: 2,
+  },
+  {
+    id: 'p3',
+    title: 'QuickCart',
+    type: 'Ecommerce',
+    tech: 'Next / Tailwind',
+    description: 'Minimal e-commerce starter template made for fast online store launches.',
+    link: 'https://github.com/Kacmnetworkk/QuickCart',
+    order: 3,
+  },
+  {
+    id: 'p4',
+    title: 'Cuepal Directory',
+    type: 'Directory',
+    tech: 'TypeScript',
+    description: 'A pool league finder concept connecting players with local game communities.',
+    link: 'https://github.com/Kacmnetworkk/Cuepal-Directory',
+    order: 4,
+  },
+  {
+    id: 'p5',
+    title: 'RavFia SecurePass',
+    type: 'Tooling',
+    tech: 'API Concept',
+    description: 'Cryptographic password generation and privacy-first tooling direction.',
+    link: 'https://github.com/Kacmnetworkk',
+    order: 5,
+  },
+  {
+    id: 'p6',
+    title: 'KurtMorales Design',
+    type: 'Studio',
+    tech: 'Web Design',
+    description: 'Brand focused on modern, fast, SEO-conscious websites for local companies.',
+    link: 'https://kurtmorales.com',
+    order: 6,
+  },
 ];
 
 export const seedTemplates: SeedTemplate[] = [
@@ -86,7 +134,10 @@ export const seedTemplates: SeedTemplate[] = [
     title: 'SaaS Dashboard',
     description: 'Modern SaaS dashboard template with dark mode, charts, and responsive layout.',
     tech: 'React / Tailwind / Vite',
-    thumbnail: { url: '/template-previews/saas-dashboard.png', alt: 'SaaS Dashboard template preview' },
+    thumbnail: {
+      url: '/template-previews/saas-dashboard.png',
+      alt: 'SaaS Dashboard template preview',
+    },
     demoUrl: 'https://saas-dashboard-demo.kurtmorales.com',
     sourceUrl: 'https://github.com/Kacmnetworkk/saas-dashboard',
     tags: [{ tag: 'SaaS' }, { tag: 'Dashboard' }, { tag: 'React' }],
@@ -99,7 +150,10 @@ export const seedTemplates: SeedTemplate[] = [
     title: 'Ecommerce Starter',
     description: 'Clean e-commerce starter with product grid, cart, and checkout flow.',
     tech: 'Next.js / Stripe',
-    thumbnail: { url: '/template-previews/ecommerce-starter.png', alt: 'Ecommerce Starter template preview' },
+    thumbnail: {
+      url: '/template-previews/ecommerce-starter.png',
+      alt: 'Ecommerce Starter template preview',
+    },
     demoUrl: 'https://ecommerce-starter-demo.kurtmorales.com',
     sourceUrl: 'https://github.com/Kacmnetworkk/ecommerce-starter',
     tags: [{ tag: 'Ecommerce' }, { tag: 'Next.js' }, { tag: 'Stripe' }],
@@ -112,7 +166,10 @@ export const seedTemplates: SeedTemplate[] = [
     title: 'Portfolio Minimal',
     description: 'Minimal portfolio template for creatives with smooth animations.',
     tech: 'React / Tailwind',
-    thumbnail: { url: '/template-previews/portfolio-minimal.png', alt: 'Portfolio Minimal template preview' },
+    thumbnail: {
+      url: '/template-previews/portfolio-minimal.png',
+      alt: 'Portfolio Minimal template preview',
+    },
     demoUrl: 'https://portfolio-minimal-demo.kurtmorales.com',
     sourceUrl: 'https://github.com/Kacmnetworkk/portfolio-minimal',
     tags: [{ tag: 'Portfolio' }, { tag: 'React' }, { tag: 'Minimal' }],
@@ -123,7 +180,8 @@ export const seedTemplates: SeedTemplate[] = [
   {
     id: 't4',
     title: 'SecurePass',
-    description: 'AI-assisted password security template with generator flows, encrypted vault patterns, QR tools, and master-password strength checks.',
+    description:
+      'AI-assisted password security template with generator flows, encrypted vault patterns, QR tools, and master-password strength checks.',
     tech: 'React / Vite / Gemini',
     thumbnail: { url: '/template-previews/securepass.png', alt: 'SecurePass template preview' },
     demoUrl: 'https://securepass.ravfia.online/',
@@ -136,9 +194,13 @@ export const seedTemplates: SeedTemplate[] = [
   {
     id: 't5',
     title: 'Portfolio Theme',
-    description: 'Clean, responsive portfolio template for freelancers and creatives. Built with semantic HTML, CSS, and vanilla JS — ready for Cloudflare Pages deploy.',
+    description:
+      'Clean, responsive portfolio template for freelancers and creatives. Built with semantic HTML, CSS, and vanilla JS — ready for Cloudflare Pages deploy.',
     tech: 'HTML / CSS / JS',
-    thumbnail: { url: '/template-previews/portfolio-theme.png', alt: 'Portfolio Theme template preview' },
+    thumbnail: {
+      url: '/template-previews/portfolio-theme.png',
+      alt: 'Portfolio Theme template preview',
+    },
     sourceUrl: 'https://github.com/kurtmorales-tech/km-portfolio-themed',
     tags: [{ tag: 'Portfolio' }, { tag: 'Static' }, { tag: 'Freelance' }],
     featured: false,

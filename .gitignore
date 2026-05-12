@@ -6,6 +6,16 @@ bun.lock
 *.log
 content/generated-rss-posts.json
 
+# Local SQLite (regenerate with `bun run seed` or `bun run db:reset`)
+backend/data/*.db
+backend/data/*.db-wal
+backend/data/*.db-shm
+
+# Accidental IDE / agent dumps at repo root
+/.html
+/pi-session-*.html
+/*.jsonl
+
 # Frontend
 apps/web/dist/
 apps/web/.wrangler/

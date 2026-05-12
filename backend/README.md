@@ -19,21 +19,22 @@ bun run dev
 
 ## Scripts
 
-| Command         | Description                        |
-| --------------- | ---------------------------------- |
-| `bun run dev`   | Start backend with watch mode      |
-| `bun run start` | Start backend once                 |
-| `bun run build` | Build Bun bundle to `backend/dist` |
-| `bun run seed`  | Seed SQLite with bundled content   |
+| Command            | Description                                                  |
+| ------------------ | ------------------------------------------------------------ |
+| `bun run dev`      | Start backend with watch mode                                |
+| `bun run start`    | Start backend once                                           |
+| `bun run build`    | Build Bun bundle to `backend/dist`                           |
+| `bun run seed`     | Seed SQLite with bundled content (`INSERT OR IGNORE`)        |
+| `bun run db:reset` | Delete SQLite + WAL/SHM files, then seed (stop server first) |
 
 ## Environment variables
 
-| Variable               | Default                                         | Notes                                 |
-| ---------------------- | ----------------------------------------------- | ------------------------------------- |
-| `PORT`                 | `3001`                                          | Server port                           |
-| `DATABASE_PATH`        | `backend/data/kurtmorales.db`                   | SQLite file path                      |
-| `CORS_ORIGINS`         | `http://localhost:3000,https://kurtmorales.com` | Comma-separated origins               |
-| `BACKEND_ADMIN_SECRET` | _unset_                                         | Protects `PATCH /api/newsletters/:id` |
+| Variable               | Default                                         | Notes                                                   |
+| ---------------------- | ----------------------------------------------- | ------------------------------------------------------- |
+| `PORT`                 | `3001`                                          | Server port                                             |
+| `DATABASE_PATH`        | `backend/data/kurtmorales.db`                   | SQLite file path (set to use a different database file) |
+| `CORS_ORIGINS`         | `http://localhost:3000,https://kurtmorales.com` | Comma-separated origins                                 |
+| `BACKEND_ADMIN_SECRET` | _unset_                                         | Protects `PATCH /api/newsletters/:id`                   |
 
 ## API endpoints
 

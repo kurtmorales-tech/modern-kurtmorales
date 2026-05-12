@@ -173,9 +173,8 @@ db.exec(`
   CREATE INDEX IF NOT EXISTS idx_newsletters_status ON newsletters(status);
 `);
 
-// NOTE: seedDatabase() is now called explicitly via `bun run seed`
-// Do not auto-run on module import to avoid duplicate data on restarts
-// function seedDatabase() is exported and can be called from seed.ts
+// NOTE: seedDatabase() is called explicitly via `bun run seed` (see src/seed.ts).
+// Do not auto-run on module import to avoid duplicate data on restarts.
 
 function parseTags(value: string | null | undefined): Tag[] {
   if (!value) return [];
@@ -212,7 +211,9 @@ function toPost(row: Record<string, unknown>): Post {
     date: String(row.date),
     readTime: row.read_time ? String(row.read_time) : undefined,
     tags: parseTags(row.tags ? String(row.tags) : '[]'),
-    cover: row.cover_url ? { url: String(row.cover_url), alt: row.cover_alt ? String(row.cover_alt) : undefined } : undefined,
+    cover: row.cover_url
+      ? { url: String(row.cover_url), alt: row.cover_alt ? String(row.cover_alt) : undefined }
+      : undefined,
     status: String(row.status) as Post['status'],
   };
 }
@@ -225,7 +226,9 @@ function toProject(row: Record<string, unknown>): Project {
     tech: row.tech ? String(row.tech) : undefined,
     description: row.description ? String(row.description) : undefined,
     link: row.link ? String(row.link) : undefined,
-    image: row.image_url ? { url: String(row.image_url), alt: row.image_alt ? String(row.image_alt) : undefined } : undefined,
+    image: row.image_url
+      ? { url: String(row.image_url), alt: row.image_alt ? String(row.image_alt) : undefined }
+      : undefined,
     order: row.sort_order ? Number(row.sort_order) : 0,
   };
 }
@@ -235,7 +238,12 @@ function toTemplate(row: Record<string, unknown>): Template {
     id: String(row.id),
     title: String(row.title),
     description: String(row.description),
-    thumbnail: row.thumbnail_url ? { url: String(row.thumbnail_url), alt: row.thumbnail_alt ? String(row.thumbnail_alt) : undefined } : undefined,
+    thumbnail: row.thumbnail_url
+      ? {
+          url: String(row.thumbnail_url),
+          alt: row.thumbnail_alt ? String(row.thumbnail_alt) : undefined,
+        }
+      : undefined,
     demoUrl: row.demo_url ? String(row.demo_url) : undefined,
     sourceUrl: row.source_url ? String(row.source_url) : undefined,
     tech: row.tech ? String(row.tech) : undefined,
@@ -380,7 +388,7 @@ function seedNewslettersTable(newsletters: SeedNewsletter[]) {
   tx(newsletters);
 }
 
-function seedDatabase() {
+export function seedDatabase() {
   seedPostsTable(seedPosts);
   seedProjectsTable(seedProjects);
   seedTemplatesTable(seedTemplates);
@@ -393,7 +401,8 @@ export function getDbPath() {
 
 export function getHealthSummary() {
   const counts = db
-    .query(`
+    .query(
+      `
       SELECT
         (SELECT COUNT(*) FROM posts) AS posts,
         (SELECT COUNT(*) FROM projects) AS projects,
@@ -401,15 +410,16 @@ export function getHealthSummary() {
         (SELECT COUNT(*) FROM subscribers) AS subscribers,
         (SELECT COUNT(*) FROM newsletters) AS newsletters,
         (SELECT COUNT(*) FROM contact_messages) AS contactMessages
-    `)
+    `,
+    )
     .get() as {
-      posts: number;
-      projects: number;
-      templates: number;
-      subscribers: number;
-      newsletters: number;
-      contactMessages: number;
-    };
+    posts: number;
+    projects: number;
+    templates: number;
+    subscribers: number;
+    newsletters: number;
+    contactMessages: number;
+  };
 
   return {
     dbPath,
@@ -417,12 +427,14 @@ export function getHealthSummary() {
   };
 }
 
-export function listPosts(options: {
-  status?: Post['status'];
-  slug?: string;
-  limit?: number;
-  sort?: string;
-} = {}) {
+export function listPosts(
+  options: {
+    status?: Post['status'];
+    slug?: string;
+    limit?: number;
+    sort?: string;
+  } = {},
+) {
   let sql = 'SELECT * FROM posts';
   const clauses: string[] = [];
   const params: Array<string | number> = [];
@@ -459,21 +471,28 @@ export function listPosts(options: {
 }
 
 export function listProjects(limit = 50) {
-  return (db
-    .prepare('SELECT * FROM projects ORDER BY sort_order ASC, created_at ASC LIMIT ?')
-    .all(limit) as Record<string, unknown>[]).map(toProject);
+  return (
+    db
+      .prepare('SELECT * FROM projects ORDER BY sort_order ASC, created_at ASC LIMIT ?')
+      .all(limit) as Record<string, unknown>[]
+  ).map(toProject);
 }
 
 export function listTemplates(limit = 50) {
-  return (db
-    .prepare('SELECT * FROM templates ORDER BY sort_order ASC, created_at ASC LIMIT ?')
-    .all(limit) as Record<string, unknown>[]).map(toTemplate);
+  return (
+    db
+      .prepare('SELECT * FROM templates ORDER BY sort_order ASC, created_at ASC LIMIT ?')
+      .all(limit) as Record<string, unknown>[]
+  ).map(toTemplate);
 }
 
 export function listSubscribers(limit = 1000) {
-  return (db
-    .prepare('SELECT * FROM subscribers ORDER BY created_at DESC LIMIT ?')
-    .all(limit) as Record<string, unknown>[]).map(toSubscriber);
+  return (
+    db.prepare('SELECT * FROM subscribers ORDER BY created_at DESC LIMIT ?').all(limit) as Record<
+      string,
+      unknown
+    >[]
+  ).map(toSubscriber);
 }
 
 export function createSubscriber(input: { email: string; name?: string }) {
@@ -482,16 +501,21 @@ export function createSubscriber(input: { email: string; name?: string }) {
   const id = crypto.randomUUID();
   const now = new Date().toISOString();
 
-  db.prepare(`
+  db.prepare(
+    `
     INSERT INTO subscribers (id, email, name, status, created_at, updated_at)
     VALUES (?, ?, ?, 'subscribed', ?, ?)
     ON CONFLICT(email) DO UPDATE SET
       name = excluded.name,
       status = 'subscribed',
       updated_at = excluded.updated_at
-  `).run(id, email, name, now, now);
+  `,
+  ).run(id, email, name, now, now);
 
-  const row = db.prepare('SELECT * FROM subscribers WHERE email = ? LIMIT 1').get(email) as Record<string, unknown>;
+  const row = db.prepare('SELECT * FROM subscribers WHERE email = ? LIMIT 1').get(email) as Record<
+    string,
+    unknown
+  >;
   return toSubscriber(row);
 }
 
@@ -505,10 +529,12 @@ export function createContactMessage(input: {
   const id = crypto.randomUUID();
   const now = new Date().toISOString();
 
-  db.prepare(`
+  db.prepare(
+    `
     INSERT INTO contact_messages (id, name, email, project, budget, message, created_at)
     VALUES (?, ?, ?, ?, ?, ?, ?)
-  `).run(
+  `,
+  ).run(
     id,
     input.name.trim(),
     input.email.trim().toLowerCase(),
@@ -525,24 +551,44 @@ export function createContactMessage(input: {
 }
 
 export function listNewsletters(limit = 50) {
-  return (db
-    .prepare('SELECT * FROM newsletters ORDER BY created_at DESC LIMIT ?')
-    .all(limit) as Record<string, unknown>[]).map(toNewsletter);
+  return (
+    db.prepare('SELECT * FROM newsletters ORDER BY created_at DESC LIMIT ?').all(limit) as Record<
+      string,
+      unknown
+    >[]
+  ).map(toNewsletter);
 }
 
 export function getNewsletterById(id: string) {
-  const row = db.prepare('SELECT * FROM newsletters WHERE id = ? LIMIT 1').get(id) as Record<string, unknown> | null;
+  const row = db.prepare('SELECT * FROM newsletters WHERE id = ? LIMIT 1').get(id) as Record<
+    string,
+    unknown
+  > | null;
   return row ? toNewsletter(row) : null;
 }
 
 export function updateNewsletter(
   id: string,
-  patch: Partial<Pick<Newsletter, 'title' | 'subject' | 'preheader' | 'contentMarkdown' | 'html' | 'text' | 'status' | 'sentAt' | 'recipientsCount'>>,
+  patch: Partial<
+    Pick<
+      Newsletter,
+      | 'title'
+      | 'subject'
+      | 'preheader'
+      | 'contentMarkdown'
+      | 'html'
+      | 'text'
+      | 'status'
+      | 'sentAt'
+      | 'recipientsCount'
+    >
+  >,
 ) {
   const current = getNewsletterById(id);
   if (!current) return null;
 
-  db.prepare(`
+  db.prepare(
+    `
     UPDATE newsletters
     SET
       title = ?,
@@ -556,7 +602,8 @@ export function updateNewsletter(
       recipients_count = ?,
       updated_at = ?
     WHERE id = ?
-  `).run(
+  `,
+  ).run(
     patch.title ?? current.title,
     patch.subject ?? current.subject,
     patch.preheader ?? current.preheader ?? null,

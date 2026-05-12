@@ -40,6 +40,8 @@ Local URLs:
 | `bun run seed`              | Seed local backend SQLite data                        |
 | `bun run build`             | Build backend bundle + React frontend static site     |
 | `bun run clean`             | Remove build artifacts                                |
+| `bun run format`            | Format repo with Prettier                             |
+| `bun run format:check`      | CI-style Prettier check (no writes)                   |
 | `bun run rss:publish-local` | Pull RSS content and update local generated blog data |
 | `bun run rss:cron`          | Run RSS pipeline + build + deploy web                 |
 

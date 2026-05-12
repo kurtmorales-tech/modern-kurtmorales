@@ -1,0 +1,29 @@
+[
+  {
+    "id": "rss-9apsqt",
+    "slug": "when-dnssec-goes-wrong-how-we-responded-to-the-de-tld-outage-9apsqt",
+    "title": "When DNSSEC goes wrong: how we responded to the .de TLD outage",
+    "excerpt": "On May 5, 2026, DENIC published broken DNSSEC signatures for the .de TLD, making millions of domains unreachable. Here's what 1.1.1.1 saw, how serve. A practical take on modern publishing.",
+    "date": "2026-05-06T17:00:00.000Z",
+    "readTime": "3 min read",
+    "status": "published",
+    "tags": [
+      {
+        "tag": "Security"
+      },
+      {
+        "tag": "Ai Infrastructure"
+      },
+      {
+        "tag": "Edge Computing"
+      },
+      {
+        "tag": "Workers"
+      },
+      {
+        "tag": "Cloudflare"
+      }
+    ],
+    "contentMarkdown": "## Quick read\n\nOn May 5, 2026, DENIC published broken DNSSEC signatures for the .de TLD, making millions of domains unreachable. Here's what 1.1.1.1 saw, how serve stale cushioned the impact, and how we restored.\n\nThe useful part of this story is not just the headline. It is how small businesses can turn the signal into a clearer, faster digital workflow. When technology shifts, the teams that benefit most are usually the ones that connect the update to one practical improvement.\n\n## What happened\n\nWhen DNSSEC goes wrong: how we responded to the .de TLD outage is a reminder that modern websites, AI tools, cloud platforms, and customer expectations now move together. A product announcement can affect content strategy. A browser or platform update can affect performance. A new AI capability can change how teams publish, support customers, or analyze demand.\n\nThat makes RSS monitoring valuable for a business website. Instead of waiting for trends to become obvious, you can watch credible sources and turn the best signals into timely, useful content.\n\n## Why it matters\n\nFor small businesses, speed matters. A relevant update can become a blog post, an internal checklist, a landing page improvement, or a small automation. The goal is not to chase every news cycle. The goal is to build a system that notices useful changes and turns them into action.\n\nThe same principle applies to a CMS. A good publishing workflow should keep source material, editorial notes, metadata, and the public website connected. When that pipeline is working, publishing becomes repeatable instead of chaotic.\n\n## Practical takeaway\n\nUse this update as a prompt to prototype one part of your automation stack. Look for a place where visitors need clearer information, where staff repeat a manual step, or where a small content improvement could answer common customer questions.\n\nA focused response could include:\n\n- Turning a recurring customer question into an evergreen article\n- Refreshing an outdated service page with clearer positioning\n- Testing one AI-assisted workflow before changing the whole process\n- Checking Core Web Vitals and accessibility after any major content change\n- Keeping source attribution so readers can verify the original context\n\n## What to watch next\n\nThe risk is overreacting. Not every update needs a rebuild, subscription, or strategy change. The better filter is simple: does this improve speed, trust, clarity, cost, or revenue? If the answer is yes, turn it into a small test. If not, save it as background context.\n\n## Bottom line\n\nAutomated RSS-to-blog publishing works best when it adds judgment instead of noise. The pipeline should surface relevant stories, create original commentary, preserve attribution, and rebuild the site so readers see fresh content quickly.\n\n---\n\nSource: [Cloudflare Blog — When DNSSEC goes wrong: how we responded to the .de TLD outage](https://blog.cloudflare.com/de-tld-outage-dnssec/)"
+  }
+]

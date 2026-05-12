@@ -8,16 +8,16 @@ Modern, sharp, fast, editorial portfolio style for a Las Vegas web designer/deve
 
 Defined in `apps/web/src/styles.css` using Tailwind v4 `@theme`.
 
-| Token | Value | Use |
-|---|---:|---|
-| `--font-sans` | Inter | Body text, forms, navigation |
-| `--font-display` | Space Grotesk | Hero headings and section titles |
-| `--color-brand` | `#827169` | Primary CTA, accents, section emphasis |
-| `--color-brand-light` | `#a08e84` | Dark-section accent, hover emphasis |
-| `--color-brand-dark` | `#5e4f47` | Primary CTA hover |
-| `--color-surface` | `#ffffff` | Cards and main surfaces |
-| `--color-surface-alt` | `#fafaf9` | Alternating sections |
-| `--color-steel` | `#64748b` | Muted copy |
+| Token                 |         Value | Use                                    |
+| --------------------- | ------------: | -------------------------------------- |
+| `--font-sans`         |         Inter | Body text, forms, navigation           |
+| `--font-display`      | Space Grotesk | Hero headings and section titles       |
+| `--color-brand`       |     `#827169` | Primary CTA, accents, section emphasis |
+| `--color-brand-light` |     `#a08e84` | Dark-section accent, hover emphasis    |
+| `--color-brand-dark`  |     `#5e4f47` | Primary CTA hover                      |
+| `--color-surface`     |     `#ffffff` | Cards and main surfaces                |
+| `--color-surface-alt` |     `#fafaf9` | Alternating sections                   |
+| `--color-steel`       |     `#64748b` | Muted copy                             |
 
 ## Layout Rules
 
@@ -41,13 +41,17 @@ Use white background, subtle border, no heavy shadow by default.
 ### Primary CTA
 
 ```html
-<a class="px-10 py-5 bg-brand text-white font-bold hover:bg-brand-dark transition-all duration-300 active:scale-[0.97]"></a>
+<a
+  class="px-10 py-5 bg-brand text-white font-bold hover:bg-brand-dark transition-all duration-300 active:scale-[0.97]"
+></a>
 ```
 
 ### Secondary CTA
 
 ```html
-<a class="px-10 py-5 border border-brand text-brand font-bold hover:bg-brand hover:text-white transition-all duration-300 active:scale-[0.97]"></a>
+<a
+  class="px-10 py-5 border border-brand text-brand font-bold hover:bg-brand hover:text-white transition-all duration-300 active:scale-[0.97]"
+></a>
 ```
 
 ### Eyebrows

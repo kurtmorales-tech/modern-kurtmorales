@@ -1,0 +1,212 @@
+[
+  {
+    "id": "h1",
+    "slug": "how-to-build-a-small-business-website-that-actually-converts",
+    "title": "How to Build a Small Business Website That Actually Converts",
+    "excerpt": "A practical guide to planning, writing, and launching a small business website that brings in calls, bookings, and qualified leads.",
+    "date": "2026-05-08T09:00:00Z",
+    "readTime": "7 min read",
+    "status": "published",
+    "tags": [
+      {
+        "tag": "Web Design"
+      },
+      {
+        "tag": "Small Business"
+      },
+      {
+        "tag": "Conversion"
+      }
+    ],
+    "contentMarkdown": "## Why most small business websites underperform\n\nA lot of business websites look decent, but they do not help the owner get more calls, bookings, or leads. The issue is usually not the logo or the color palette. It is that the site was built like a brochure instead of a sales tool.\n\nWhen I work on service-business websites, I start with one simple question: what should the visitor do next? If that answer is not obvious on the page, the site will leak attention and lose conversions.\n\n## Step 1: Start with one clear goal\n\nBefore you design anything, define the main conversion goal. For most local businesses, that is one of these:\n\n- book a call\n- request a quote\n- send a message\n- make a purchase\n- visit a location\n\nPick one primary goal for the homepage. You can support secondary actions later, but the main action should drive the structure, copy, and layout.\n\n## Step 2: Lead with a strong hero section\n\nYour hero section should explain three things in a few seconds:\n\n1. what you do\n2. who you do it for\n3. what the visitor should do next\n\nA strong example looks like this:\n\n**Fast, modern websites for Las Vegas small businesses.**\nGet a clean site built to generate more leads, load faster, and rank better locally.\n\nThen add a button with a direct action such as **Book a Call** or **Get a Quote**.\n\n## Step 3: Build trust early\n\nPeople do not hire a business website. They hire the business behind it. That means your site needs proof.\n\nAdd trust signals near the top of the page:\n\n- testimonials\n- past projects\n- before-and-after results\n- business location\n- response-time promise\n- recognizable tools or partners\n\nEven a simple line like **Usually replies within 24 hours** reduces hesitation.\n\n## Step 4: Make the offer easy to understand\n\nMany small business websites bury the actual offer under vague copy. Instead of trying to sound clever, be specific.\n\nExplain:\n\n- what is included\n- how long it takes\n- who it is best for\n- what result the client can expect\n\nThe more clearly you frame the offer, the easier it is for a visitor to decide whether they are in the right place.\n\n## Step 5: Remove friction from contact\n\nIf someone wants to reach out, do not make them work for it. Keep your form short. Put contact buttons in the header, hero, and footer. Make sure the site works on mobile, because that is where a huge share of local traffic comes from.\n\nA good contact form usually needs:\n\n- name\n- email\n- project type\n- message\n\nThat is enough to start the conversation.\n\n## Common mistakes to avoid\n\nHere are the mistakes I see most often:\n\n- too much text before the call to action\n- weak or generic headlines\n- slow pages with oversized images\n- no proof of quality or trust\n- confusing navigation\n- too many different offers on one page\n\n## Quick launch checklist\n\nBefore publishing, make sure your site:\n\n- has one clear primary action\n- loads fast on mobile\n- includes trust signals\n- uses plain, specific copy\n- has a working contact form\n- includes local SEO basics such as title tags and service-area mentions\n\n## Final thought\n\nThe best small business website is not the one with the most effects. It is the one that makes the next step obvious and easy. If your site can clearly explain the offer, build trust, and guide people to act, it will do its job."
+  },
+  {
+    "id": "h2",
+    "slug": "how-to-make-your-website-load-faster-without-a-full-redesign",
+    "title": "How to Make Your Website Load Faster Without a Full Redesign",
+    "excerpt": "Improve site speed with practical fixes for images, fonts, scripts, and hosting before you commit to a complete rebuild.",
+    "date": "2026-05-07T09:00:00Z",
+    "readTime": "6 min read",
+    "status": "published",
+    "tags": [
+      {
+        "tag": "Performance"
+      },
+      {
+        "tag": "Web Development"
+      },
+      {
+        "tag": "Core Web Vitals"
+      }
+    ],
+    "contentMarkdown": "## Faster websites usually win more attention\n\nWhen a website feels slow, visitors leave before the content has a chance to do its job. That is true for portfolios, ecommerce stores, and local service sites. The good news is that you do not always need a full redesign to improve performance.\n\nIn many cases, a few focused changes can noticeably reduce load time and improve the user experience.\n\n## Start with the biggest offenders\n\nMost slow websites are dragged down by a familiar set of problems:\n\n- oversized images\n- too many third-party scripts\n- unnecessary font files\n- bloated page builders\n- poor hosting or caching\n\nInstead of changing everything at once, fix the parts with the highest impact first.\n\n## Step 1: Compress and resize images\n\nLarge images are one of the most common performance problems. Uploading a 4 MB homepage image when the browser only displays it at 1200 pixels is wasted weight.\n\nA better workflow is:\n\n- resize images to their real display size\n- export as WebP or AVIF where possible\n- lazy-load images below the fold\n- use responsive image sizes\n\nThis one change can remove seconds from load time.\n\n## Step 2: Reduce font overhead\n\nCustom fonts look great, but too many weights and families can slow down the first render. Try limiting your site to one or two families and only the weights you actually use.\n\nAlso ask whether every decorative font is worth the cost. On many business sites, clarity matters more than novelty.\n\n## Step 3: Audit third-party scripts\n\nChat widgets, trackers, heatmaps, popups, social embeds, and booking tools all add overhead. Some are useful. Some are just baggage.\n\nReview each script and ask:\n\n- does it help conversion or operations?\n- can it load later?\n- can it be removed completely?\n\nIf a script is not earning its place, cut it.\n\n## Step 4: Improve caching and delivery\n\nHosting and delivery matter. Modern platforms like Cloudflare Pages can reduce latency, cache static assets globally, and simplify deployment.\n\nEven if you do not change your whole stack, you can still improve:\n\n- cache headers\n- asset fingerprinting\n- CDN usage\n- minified CSS and JavaScript\n\n## Step 5: Simplify the layout where needed\n\nSome pages are slow because they are trying to do too much visually. Heavy sliders, stacked animations, video backgrounds, and oversized sections all add cost.\n\nA cleaner layout is often both faster and more effective. A site that gets to the point quickly tends to perform better in both speed tests and conversion tests.\n\n## What to measure\n\nFocus on real user experience, not just vanity scores. Pay attention to:\n\n- Largest Contentful Paint\n- Interaction to Next Paint\n- Cumulative Layout Shift\n- mobile load time on average connections\n\nThese numbers tell you more than whether your Lighthouse score moved from 88 to 91.\n\n## Quick wins checklist\n\n- compress images\n- remove unused scripts\n- cut unused font weights\n- lazy-load below-the-fold assets\n- enable caching\n- reduce visual clutter\n\n## Final thought\n\nSpeed optimization does not have to start with a redesign. In many projects, the fastest way to improve the experience is to remove weight, simplify the page, and ship cleaner assets. Start there before rebuilding the entire site."
+  },
+  {
+    "id": "h3",
+    "slug": "how-to-choose-the-right-cms-for-a-service-business-website",
+    "title": "How to Choose the Right CMS for a Service Business Website",
+    "excerpt": "Compare the tradeoffs between simple editors, headless CMS setups, and fully custom builds for a service business website.",
+    "date": "2026-05-06T09:00:00Z",
+    "readTime": "7 min read",
+    "status": "published",
+    "tags": [
+      {
+        "tag": "CMS"
+      },
+      {
+        "tag": "Content Strategy"
+      },
+      {
+        "tag": "Small Business"
+      }
+    ],
+    "contentMarkdown": "## The right CMS depends on who needs to use it\n\nChoosing a CMS is not just a technical decision. It is an operations decision. The best system is the one your team can actually use without getting stuck, breaking layouts, or depending on a developer for every tiny change.\n\nFor most service businesses, the right CMS is the one that matches the real editing workflow.\n\n## Step 1: Identify what the team needs to change\n\nStart by listing the kinds of content that will change regularly:\n\n- blog posts\n- testimonials\n- services\n- project case studies\n- team bios\n- homepage offers\n\nIf the business only updates content once every few months, a very simple setup may be enough. If the team publishes weekly, the editing experience matters much more.\n\n## Step 2: Decide how much flexibility editors need\n\nSome teams need a clean form-based editor. Others need drag-and-drop freedom. Those are not the same thing.\n\nIn practice, too much freedom can create inconsistency. That is why structured content often works better for professional sites. Instead of letting editors design every section, give them controlled fields that keep content clean and on-brand.\n\n## Step 3: Compare the main options\n\nHere is a simple way to think about it:\n\n### Basic page builder CMS\nGood for fast edits and non-technical teams, but can become slow or messy over time.\n\n### Headless CMS\nGreat when you want content flexibility and a fast custom frontend. Better for long-term structure, SEO control, and performance.\n\n### Fully custom admin or lightweight content layer\nBest when the content model is specific and you want tight control, but it takes more setup.\n\n## Step 4: Think beyond editing\n\nA CMS also affects:\n\n- site speed\n- SEO control\n- security updates\n- hosting workflow\n- content governance\n\nA system that is easy to edit but hard to maintain may cost more in the long run.\n\n## Step 5: Test the editing experience before committing\n\nIf possible, create a sample workflow before you decide. Add a test blog post. Update a service page. Upload an image. Ask a non-technical user to try it.\n\nThat simple exercise often reveals more than a long feature comparison page.\n\n## Signs you are choosing the wrong CMS\n\nWatch for these warning signs:\n\n- every edit requires developer help\n- editors are afraid to publish\n- the frontend becomes slower with every plugin\n- content fields are confusing or too technical\n- design consistency breaks after routine updates\n\n## My rule of thumb\n\nFor modern service-business sites, I usually prefer a structured setup with a fast frontend and a predictable content model. It gives the client control without sacrificing performance.\n\nThat does not mean every site needs a complex headless stack. It means the system should be selected on purpose, not because it was the default.\n\n## Final thought\n\nThe best CMS is not the one with the most features. It is the one that keeps publishing simple, content structured, and the site fast. If the team can update the right things confidently, the CMS is doing its job."
+  },
+  {
+    "id": "h4",
+    "slug": "how-to-write-homepage-copy-that-turns-visitors-into-leads",
+    "title": "How to Write Homepage Copy That Turns Visitors Into Leads",
+    "excerpt": "Use clear messaging, trust signals, and strong calls to action to make your homepage easier to understand and easier to convert from.",
+    "date": "2026-05-05T15:00:00Z",
+    "readTime": "6 min read",
+    "status": "published",
+    "tags": [
+      {
+        "tag": "Copywriting"
+      },
+      {
+        "tag": "Conversion"
+      },
+      {
+        "tag": "Marketing"
+      }
+    ],
+    "contentMarkdown": "## Clear copy beats clever copy\n\nHomepage copy has one main job: help the right visitor understand the offer and take the next step. Too many homepages try to sound impressive instead of useful. The result is vague messaging, weak calls to action, and lower conversion.\n\nStrong copy is simple, specific, and focused on the reader.\n\n## Start with the headline\n\nYour headline should answer what you do and who it is for. If it needs too much explanation, it is probably too vague.\n\nBetter homepage headlines usually:\n\n- name the service clearly\n- mention the audience or outcome\n- avoid generic phrases like innovative solutions\n\nThink clarity first.\n\n## Add a short supporting paragraph\n\nThe line under your headline should explain the benefit. Not a life story. Not a manifesto. Just a practical summary of why someone should keep reading.\n\nA good supporting line often explains:\n\n- what the result looks like\n- how the process feels\n- what makes the offer different\n\n## Use sections that answer real buying questions\n\nVisitors usually want to know a few predictable things:\n\n- what do you offer?\n- is this right for me?\n- can I trust you?\n- what should I do next?\n\nBuild sections that answer those questions directly. This usually includes:\n\n- a services section\n- proof or portfolio\n- testimonials or trust signals\n- a process summary\n- a call to action\n\n## Write like a person, not a pitch deck\n\nNatural language works better than inflated language. If a sentence sounds like it belongs in a corporate presentation, simplify it.\n\nCompare:\n\n- **We provide innovative digital transformation solutions**\n- **We build fast, modern websites that help small businesses get more leads**\n\nThe second version is easier to understand and easier to trust.\n\n## Make the call to action specific\n\nGeneric buttons like **Learn More** often underperform because they do not set expectations. Stronger calls to action tell the visitor what happens next.\n\nBetter examples:\n\n- Book a Discovery Call\n- Get a Quote\n- Start Your Project\n- See Recent Work\n\n## Add proof near points of hesitation\n\nGood homepage copy is not just about persuasion. It is also about reducing doubt. Add proof where someone might hesitate.\n\nUseful proof can include:\n\n- testimonials\n- client results\n- response time\n- project examples\n- years of experience\n\n## Quick editing checklist\n\nReview your homepage and ask:\n\n- is the offer clear in the first screen?\n- does the copy sound human?\n- are the benefits specific?\n- is the next step obvious?\n- is there proof on the page?\n\n## Final thought\n\nGreat homepage copy is not about saying more. It is about removing confusion. When the message is clear, relevant, and grounded in real business value, more visitors turn into leads."
+  },
+  {
+    "id": "h5",
+    "slug": "how-to-create-a-landing-page-for-a-local-service-offer",
+    "title": "How to Create a Landing Page for a Local Service Offer",
+    "excerpt": "Plan a focused landing page for one service, one audience, and one action without turning it into a mini homepage.",
+    "date": "2026-05-04T09:00:00Z",
+    "readTime": "6 min read",
+    "status": "published",
+    "tags": [
+      {
+        "tag": "Landing Pages"
+      },
+      {
+        "tag": "Local SEO"
+      },
+      {
+        "tag": "Leads"
+      }
+    ],
+    "contentMarkdown": "## A landing page should stay focused\n\nOne of the fastest ways to improve conversions is to create a dedicated landing page for a specific service instead of sending every visitor to the homepage. A good landing page speaks to one audience, one offer, and one next step.\n\nThat focus is what makes it work.\n\n## Step 1: Define the exact offer\n\nStart with one service, not your whole business. If you are a web designer, the offer might be:\n\n- website redesign for restaurants\n- landing pages for local service businesses\n- ecommerce setup for small brands\n\nThe narrower the page goal, the easier it is to write and optimize.\n\n## Step 2: Match the page to the traffic source\n\nThink about where the visitor is coming from:\n\n- Google search\n- social ad\n- email campaign\n- referral link\n\nThe message on the page should feel like a continuation of that click. If the visitor searched for a specific need, the landing page should confirm they are in the right place immediately.\n\n## Step 3: Use a simple structure\n\nA solid local service landing page usually includes:\n\n- a clear headline\n- a short supporting statement\n- one main call to action\n- benefits or outcomes\n- proof or examples\n- a process section\n- FAQs\n- final CTA\n\nYou do not need a complicated layout. You need a logical one.\n\n## Step 4: Include local context naturally\n\nIf local SEO matters, add geographic relevance in a useful way. Mention service areas where appropriate, but do not stuff city names everywhere.\n\nBetter local signals include:\n\n- mentioning the city in the title and intro\n- including local examples or case studies\n- using location-aware FAQ content\n- keeping contact details consistent\n\n## Step 5: Reduce decision fatigue\n\nLanding pages perform better when they remove extra options. Avoid large navigation menus, unrelated offers, or too many buttons competing for attention.\n\nIf the goal is to get someone to request a quote, let the page support that goal from top to bottom.\n\n## Common mistakes\n\n- using homepage-style navigation and distractions\n- making the page too general\n- leading with features instead of outcomes\n- hiding the contact action too low on the page\n- forgetting trust signals\n\n## Final thought\n\nA local service landing page works best when it is tight, specific, and relevant to the click that brought the visitor there. Keep the message focused, build trust quickly, and make the next step easy."
+  },
+  {
+    "id": "h6",
+    "slug": "how-to-use-cloudflare-pages-to-deploy-a-fast-static-website",
+    "title": "How to Use Cloudflare Pages to Deploy a Fast Static Website",
+    "excerpt": "A practical workflow for deploying static websites with Cloudflare Pages, cleaner builds, and simpler global delivery.",
+    "date": "2026-05-03T09:00:00Z",
+    "readTime": "7 min read",
+    "status": "published",
+    "tags": [
+      {
+        "tag": "Cloudflare"
+      },
+      {
+        "tag": "Deployment"
+      },
+      {
+        "tag": "Static Sites"
+      }
+    ],
+    "contentMarkdown": "## Why I like static deployment for modern business sites\n\nFor many business websites, a static frontend is a great fit. It is fast, predictable, secure, and easier to deploy globally. Cloudflare Pages makes that workflow even better because the deployment experience is simple and the edge delivery is strong.\n\nIf you want a clean path from build to production, this is one of the setups worth learning.\n\n## Step 1: Build your site locally\n\nStart with a frontend that can generate a production-ready output directory, usually something like `dist/`.\n\nBefore deploying, always check:\n\n- the production build succeeds\n- environment variables are set correctly\n- forms and links still work\n- SEO basics are present\n\nA deployment platform does not fix a broken build.\n\n## Step 2: Keep the project structure clean\n\nStatic site deployments go smoother when the project is organized clearly. Keep source files, public assets, and build output predictable. That makes it easier to debug and easier to hand off later.\n\nIn practice, I also keep deployment commands simple so there is less room for drift between local and production workflows.\n\n## Step 3: Connect the project to Cloudflare Pages\n\nYou can deploy from Git integration or by pushing a built directory. Both work. The important thing is knowing where your final build output lives and making sure the environment variables match your build needs.\n\nA clean deployment flow usually includes:\n\n- a reproducible build command\n- a known output directory\n- project-level environment variables\n- a custom domain after the first successful deploy\n\n## Step 4: Optimize the static build\n\nA static site can still be slow if the assets are heavy or the structure is messy. Before deploying, optimize:\n\n- images\n- font loading\n- unnecessary JavaScript\n- metadata and sitemap generation\n- caching behavior where applicable\n\nFast hosting helps, but it does not replace good frontend hygiene.\n\n## Step 5: Validate after deploy\n\nAfter deployment, check the real site, not just the deploy log. I usually verify:\n\n- homepage loads correctly\n- internal pages resolve\n- forms or API routes still behave as expected\n- canonical tags and OG tags exist\n- the custom domain returns the new version\n\n## Where Cloudflare Pages fits best\n\nThis setup is especially good for:\n\n- portfolio websites\n- local business sites\n- landing pages\n- marketing sites\n- content-focused sites with static builds\n\nIt is a strong option when performance and deployment simplicity matter.\n\n## Final thought\n\nCloudflare Pages is not just useful because it is fast. It is useful because it encourages a cleaner deployment workflow. When your site builds predictably and publishes globally with minimal friction, you spend more time improving the product instead of babysitting hosting."
+  },
+  {
+    "id": "h7",
+    "slug": "how-to-improve-local-seo-for-your-website-and-google-business-profile",
+    "title": "How to Improve Local SEO for Your Website and Google Business Profile",
+    "excerpt": "Use your website and Google Business Profile together so local customers can find you, trust you, and contact you faster.",
+    "date": "2026-05-02T09:00:00Z",
+    "readTime": "7 min read",
+    "status": "published",
+    "tags": [
+      {
+        "tag": "SEO"
+      },
+      {
+        "tag": "Local Business"
+      },
+      {
+        "tag": "Google Business Profile"
+      }
+    ],
+    "contentMarkdown": "## Local SEO works best when your website and profile support each other\n\nA lot of local businesses treat their website and Google Business Profile like separate assets. They are not. They should reinforce the same trust signals, service focus, and location relevance.\n\nWhen both are aligned, local search visibility usually gets stronger.\n\n## Step 1: Keep business details consistent\n\nMake sure your business name, phone number, service area, and core offer are consistent everywhere. This applies to your website, business profile, contact page, footer, and directory listings.\n\nInconsistency creates confusion for users and weakens local trust signals.\n\n## Step 2: Build better service pages\n\nYour website needs more than a generic homepage. Create focused service pages that explain:\n\n- what you offer\n- who it is for\n- where you provide it\n- how people can contact you\n\nThese pages give search engines and visitors much clearer context.\n\n## Step 3: Improve the Google Business Profile itself\n\nToo many profiles are half-finished. Complete the basics:\n\n- correct categories\n- clear service description\n- updated hours\n- real photos\n- recent posts or updates\n- active review collection\n\nA strong profile increases click-through and trust even before someone reaches the website.\n\n## Step 4: Add local proof on your site\n\nLocal businesses benefit from visible context. That can include:\n\n- city or region references\n- local case studies\n- neighborhood-specific service pages where appropriate\n- testimonials from local clients\n- maps or service-area details\n\nThe goal is to make the site feel grounded in the place you serve.\n\n## Step 5: Make contact effortless\n\nLocal intent is often high intent. People searching locally may be ready to call now. Make sure your site supports that behavior with:\n\n- obvious phone and email links\n- short forms\n- mobile-friendly contact buttons\n- a clear response-time expectation\n\n## What to avoid\n\n- stuffing city names into every sentence\n- creating thin duplicate location pages\n- neglecting reviews\n- using vague service descriptions\n- hiding contact info\n\n## Final thought\n\nBetter local SEO is usually not about tricks. It is about alignment. When your website, service pages, and Google Business Profile all reinforce the same offer and location signals, you make it easier for the right customers to find and trust you."
+  },
+  {
+    "id": "h8",
+    "slug": "how-to-turn-an-ai-website-idea-into-a-feature-customers-will-use",
+    "title": "How to Turn an AI Website Idea Into a Feature Customers Will Use",
+    "excerpt": "Move past the hype by defining a real user problem, a narrow workflow, and a simple AI feature with measurable value.",
+    "date": "2026-05-01T09:00:00Z",
+    "readTime": "6 min read",
+    "status": "published",
+    "tags": [
+      {
+        "tag": "AI"
+      },
+      {
+        "tag": "Product Strategy"
+      },
+      {
+        "tag": "Web Apps"
+      }
+    ],
+    "contentMarkdown": "## Start with the problem, not the model\n\nA lot of teams say they want to add AI to their website, but what they really have is a vague idea, not a product feature. That usually leads to demos that look interesting but do not help customers do anything faster or better.\n\nThe strongest AI features solve one clear problem inside an existing workflow.\n\n## Step 1: Define the user job\n\nAsk what the visitor is trying to do. Some examples:\n\n- choose the right service\n- get a faster answer\n- compare options\n- summarize complex information\n- generate a starting point\n\nIf the AI feature does not help with a real job, it is probably unnecessary.\n\n## Step 2: Keep the first version narrow\n\nThe best first AI features are small and specific. Instead of building a general assistant for everything, build one tool for one high-friction task.\n\nExamples:\n\n- a style recommendation tool\n- a quote-prep assistant\n- a content brief generator\n- a support FAQ summarizer\n\nNarrow scope is easier to test and easier to improve.\n\n## Step 3: Design the input and output carefully\n\nAI features live or die on framing. The user should know what to enter and what kind of result to expect. Good UX matters as much as model quality.\n\nUseful design questions include:\n\n- what should the user type or select?\n- how much context is needed?\n- what should the output look like?\n- what happens when the result is weak or uncertain?\n\n## Step 4: Add guardrails\n\nAI should not become a trust problem. Add boundaries around the output. Be clear when something is a suggestion, not a guarantee. Avoid pretending the tool is more accurate than it is.\n\nGuardrails can include:\n\n- limited scope\n- fixed prompt templates\n- review steps\n- disclaimers where appropriate\n- fallback paths when the output fails\n\n## Step 5: Measure whether it actually helps\n\nOnce the feature is live, track behavior that matters. Useful signals might be:\n\n- completion rate\n- follow-up conversions\n- time saved\n- repeat usage\n- support reduction\n\nIf nobody uses it or it does not improve a real outcome, refine or remove it.\n\n## Final thought\n\nThe right AI feature does not need to feel magical. It needs to feel useful. When you connect it to a real customer task, keep the scope tight, and design it with clear expectations, the feature has a much better chance of becoming part of the product instead of a temporary novelty."
+  },
+  {
+    "id": "h9",
+    "slug": "how-to-build-a-portfolio-website-that-wins-better-clients",
+    "title": "How to Build a Portfolio Website That Wins Better Clients",
+    "excerpt": "Position your work, process, and offer so your portfolio attracts stronger-fit projects instead of random low-intent inquiries.",
+    "date": "2026-04-30T09:00:00Z",
+    "readTime": "6 min read",
+    "status": "published",
+    "tags": [
+      {
+        "tag": "Portfolio"
+      },
+      {
+        "tag": "Freelancing"
+      },
+      {
+        "tag": "Web Design"
+      }
+    ],
+    "contentMarkdown": "## A portfolio should qualify, not just impress\n\nMany portfolio sites focus only on showing visuals. That matters, but it is not enough. A strong portfolio should also help the right client understand what kind of work you do, who you help, and why they should trust you.\n\nIn other words, it should attract better-fit inquiries.\n\n## Step 1: Show the type of work you want more of\n\nIf your portfolio is full of mixed, unrelated work, potential clients may struggle to place you. Lead with projects that reflect the kind of work you want going forward.\n\nThat might mean prioritizing:\n\n- service-business websites\n- ecommerce work\n- SaaS landing pages\n- brand refreshes\n- conversion-focused redesigns\n\n## Step 2: Add context, not just screenshots\n\nGood case studies explain the business problem, the approach, and the result. Even a short project summary is better than a gallery with no explanation.\n\nHelpful case study sections include:\n\n- client or project type\n- challenge\n- solution\n- tools used\n- result or outcome\n\n## Step 3: Clarify your process\n\nClients feel more confident when they understand how the work will move. A simple process section helps reduce uncertainty.\n\nIt can be as simple as:\n\n1. discovery\n2. strategy and scope\n3. design and build\n4. launch and support\n\n## Step 4: Make the offer easy to understand\n\nYour site should explain whether you offer one-off builds, ongoing support, strategy, or productized packages. If everything is vague, inquiries often stay vague too.\n\nStrong positioning helps the client self-select.\n\n## Step 5: Use calls to action that match buyer intent\n\nA portfolio visitor is often evaluating fit. Give them a clear next step such as:\n\n- Book a Discovery Call\n- Start a Project Inquiry\n- View More Case Studies\n\nAvoid making them hunt for how to contact you.\n\n## Final thought\n\nThe best portfolio website is not the one with the fanciest transitions. It is the one that helps the right client quickly say, this is exactly the kind of person I want to work with. Clear positioning and strong project context do more for that than visual effects alone."
+  },
+  {
+    "id": "h10",
+    "slug": "how-to-plan-monthly-website-maintenance-without-guesswork",
+    "title": "How to Plan Monthly Website Maintenance Without Guesswork",
+    "excerpt": "Create a simple monthly website maintenance routine for content, performance, SEO, forms, and security checks.",
+    "date": "2026-04-29T09:00:00Z",
+    "readTime": "5 min read",
+    "status": "published",
+    "tags": [
+      {
+        "tag": "Website Maintenance"
+      },
+      {
+        "tag": "SEO"
+      },
+      {
+        "tag": "Operations"
+      }
+    ],
+    "contentMarkdown": "## Maintenance is easier when it becomes a repeatable system\n\nA website should not be treated like a one-time deliverable. Once it is live, it needs regular review. That does not mean constant redesign. It means having a simple monthly routine that keeps the site healthy, accurate, and useful.\n\nThe goal is consistency, not complexity.\n\n## What monthly maintenance should cover\n\nA good maintenance checklist usually touches five areas:\n\n- content accuracy\n- lead flow or conversions\n- performance\n- SEO basics\n- technical health\n\nYou do not need a huge audit every month. You need a reliable habit.\n\n## Step 1: Review core pages for accuracy\n\nStart with the pages that matter most:\n\n- homepage\n- service pages\n- contact page\n- pricing or offer pages\n- top blog posts\n\nCheck whether anything is outdated, unclear, or inconsistent.\n\n## Step 2: Test the lead path\n\nMake sure the site still does the job it was built to do. Submit the contact form. Click the main CTA buttons. Check email delivery. Review analytics if you have them.\n\nIt is easy for small issues to go unnoticed when nobody is actively testing the path.\n\n## Step 3: Check speed and broken experiences\n\nReview the site on mobile and desktop. Look for:\n\n- slow image-heavy sections\n- broken layouts\n- missing assets\n- dead links\n- outdated embeds or scripts\n\nA quick manual pass catches problems that dashboards often miss.\n\n## Step 4: Refresh SEO basics\n\nReview titles, descriptions, internal links, and new content opportunities. If the business has recent work, a new offer, or a seasonal push, the site should reflect that.\n\nSEO is not only about ranking. It is also about keeping the site aligned with what the business is actively selling.\n\n## Step 5: Track changes in one place\n\nKeep a simple monthly log of what changed. That can include:\n\n- pages updated\n- issues fixed\n- performance observations\n- content ideas\n- next actions\n\nThis makes maintenance easier to manage over time and easier to explain to clients or teammates.\n\n## Final thought\n\nWebsite maintenance becomes manageable when it is operationalized. A short monthly routine keeps small issues from turning into larger problems and helps the website stay useful long after launch."
+  }
+]

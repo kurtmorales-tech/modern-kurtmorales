@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Block admin and API
+Disallow: /api/
+Disallow: /admin/
+
+# Sitemap
+Sitemap: https://kurtmorales.com/sitemap-index.xml
+
+# Crawl-delay for polite bots
+Crawl-delay: 1
