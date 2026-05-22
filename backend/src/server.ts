@@ -11,6 +11,7 @@ import {
   listTemplates,
   updateNewsletter,
 } from './db';
+import { Value, SubscriberSchema, ContactMessageSchema } from '@kurtmorales/schema';
 
 const port = Number(process.env.PORT || 3001);
 const allowedOrigins = (process.env.CORS_ORIGINS || 'http://localhost:3000,https://kurtmorales.com')
@@ -69,6 +70,14 @@ async function readJson<T>(request: Request): Promise<T | null> {
   } catch {
     return null;
   }
+}
+
+function validateRequest(request: Request, schema: any) {
+  const body = readJson(request);
+  return {
+    data: Value.Check(schema, body), // Simplified for this example, ideally use Value.Errors
+    error: Value.Errors(schema, body),
+  };
 }
 
 const server = Bun.serve({
@@ -139,43 +148,34 @@ const server = Bun.serve({
       }
 
       if (pathname === '/api/subscribers' && request.method === 'POST') {
-        const body = await readJson<{ email?: string; name?: string }>(request);
+        const body = await readJson(request);
+        const errors = Value.Errors(SubscriberSchema, body);
 
-        if (!body?.email || !/^\S+@\S+\.\S+$/.test(body.email)) {
-          return json(request, { error: 'A valid email is required' }, 400);
+        if (errors) {
+          return json(request, { error: 'Invalid input', details: errors }, 400);
         }
 
-        const doc = createSubscriber({ email: body.email, name: body.name });
+        const doc = createSubscriber({
+          email: (body as any).email,
+          name: (body as any).name,
+        });
         return json(request, { doc }, 201);
       }
 
       if (pathname === '/api/contact' && request.method === 'POST') {
-        const body = await readJson<{
-          name?: string;
-          email?: string;
-          project?: string;
-          budget?: string;
-          message?: string;
-        }>(request);
+        const body = await readJson(request);
+        const errors = Value.Errors(ContactMessageSchema, body);
 
-        if (!body?.name?.trim()) {
-          return json(request, { error: 'Name is required' }, 400);
-        }
-
-        if (!body?.email || !/^\S+@\S+\.\S+$/.test(body.email)) {
-          return json(request, { error: 'A valid email is required' }, 400);
-        }
-
-        if (!body?.message?.trim()) {
-          return json(request, { error: 'Message is required' }, 400);
+        if (errors) {
+          return json(request, { error: 'Invalid input', details: errors }, 400);
         }
 
         const doc = createContactMessage({
-          name: body.name,
-          email: body.email,
-          project: body.project,
-          budget: body.budget,
-          message: body.message,
+          name: (body as any).name,
+          email: (body as any).email,
+          project: (body as any).project,
+          budget: (body as any).budget,
+          message: (body as any).message,
         });
 
         return json(request, { success: true, doc }, 201);
