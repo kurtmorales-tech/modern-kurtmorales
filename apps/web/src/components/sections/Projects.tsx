@@ -1,3 +1,4 @@
+import { KMImage } from '../KMImage';
 import type { Project } from '../../types';
 
 export function Projects({ projects }: { projects: Project[] }) {
@@ -27,6 +28,13 @@ export function Projects({ projects }: { projects: Project[] }) {
                 {String(index + 1).padStart(2, '0')}
               </span>
               <div className="flex flex-col h-full relative z-10">
+                <KMImage
+                  src={project.image}
+                  alt={project.title}
+                  aspect="aspect-[4/3]"
+                  width={600}
+                  className="mb-8 rounded-xl border border-gray-100 group-hover:scale-[1.02] transition-transform duration-500"
+                />
                 <div className="flex items-center gap-3 mb-8">
                   <span className="text-[9px] font-black uppercase tracking-widest text-gray-400 bg-gray-50 px-3 py-1.5 group-hover:bg-brand/5 group-hover:text-brand/70 transition-all duration-300">
                     {project.type}
