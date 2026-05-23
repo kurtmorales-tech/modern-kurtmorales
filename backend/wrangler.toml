@@ -1,0 +1,11 @@
+name = "kurtmorales-backend"
+compatibility_date = "2026-05-11"
+main = "src/server.ts"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "kurtmorales-modern-db"
+database_id = "4d48a833-f6c0-4f94-9eb8-408aac524118"
+
+[vars]
+CORS_ORIGINS = "http://localhost:3000,https://kurtmorales.com"
