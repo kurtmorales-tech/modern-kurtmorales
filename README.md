@@ -97,7 +97,29 @@ Base URL (local): `http://localhost:3001`
 
 ## Deployment notes
 
-### Cloudflare Pages (React web)
+### GitHub Actions CI/CD
+
+The repository includes GitHub Actions workflows for validation and Cloudflare Pages deployment:
+
+- `.github/workflows/ci.yml` runs Bun install, Prettier check, tests, and the full backend + frontend build on pull requests and selected branch pushes.
+- `.github/workflows/deploy-web.yml` builds the frontend, deploys preview builds for pull requests, and deploys production when `main` is pushed.
+
+Required GitHub secrets:
+
+| Secret | Purpose |
+| ------ | ------- |
+| `CLOUDFLARE_API_TOKEN` | Cloudflare API token with Pages deploy access |
+| `CLOUDFLARE_ACCOUNT_ID` | Cloudflare account ID |
+
+Optional GitHub repository variables:
+
+| Variable | Default | Purpose |
+| -------- | ------- | ------- |
+| `CF_PAGES_PROJECT` | `kurtmorales-modern` | Cloudflare Pages project name |
+| `VITE_API_BASE_URL` | `https://kurtmorales.com` | Frontend API URL for production builds |
+| `PUBLIC_BACKEND_URL` | `https://kurtmorales.com` | Compatibility backend URL fallback |
+
+### Cloudflare Pages (manual React web deploy)
 
 ```bash
 bun run build

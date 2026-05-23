@@ -8,5 +8,16 @@
     "build": "bun build src/server.ts --target bun --outdir dist",
     "seed": "bun src/seed.ts",
     "db:reset": "bun src/reset-db.ts"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.10"
+  },
+  "dependencies": {
+    "@hono/zod-openapi": "^1.4.0",
+    "@kurtmorales/schema": "workspace:*",
+    "@scalar/hono-api-reference": "^0.10.14",
+    "drizzle-orm": "^0.45.2",
+    "hono": "^4.12.18",
+    "zod": "^4.4.3"
   }
 }

@@ -11,7 +11,8 @@ import {
   listTemplates,
   updateNewsletter,
 } from './db';
-import { Value, SubscriberSchema, ContactMessageSchema } from '@kurtmorales/schema';
+import { Value } from '@sinclair/typebox/value';
+import { SubscriberSchema, ContactMessageSchema } from '@kurtmorales/schema';
 
 const port = Number(process.env.PORT || 3001);
 const allowedOrigins = (process.env.CORS_ORIGINS || 'http://localhost:3000,https://kurtmorales.com')

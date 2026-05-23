@@ -13,10 +13,10 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-gray-100 km-glass py-24">
+    <footer className="km-glass py-24">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid gap-6 md:grid-cols-[1.35fr_1fr_1fr] items-start">
-          <div className="km-panel live-card rounded-[2rem] p-8 md:p-10" data-live-card>
+          <div className="km-panel live-card p-8 md:p-10" data-live-card>
             <Link
               to="/"
               className="text-2xl font-bold tracking-tight mb-6 inline-flex items-center gap-3 group km-text-strong"
@@ -41,9 +41,9 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="km-panel live-card rounded-[2rem] p-8 md:p-10" data-live-card>
-            <span className="text-[10px] font-black uppercase tracking-[0.28em] km-text-soft block mb-6">
-              Navigation
+          <div className="km-panel live-card p-8 md:p-10" data-live-card>
+            <span className="font-mono text-[10px] font-black uppercase tracking-[0.18em] km-text-soft block mb-6">
+              $ navigation
             </span>
             <ul className="space-y-4 text-sm km-text-muted font-medium">
               <li>
@@ -121,9 +121,9 @@ export function Footer() {
             </ul>
           </div>
 
-          <div className="km-panel live-card rounded-[2rem] p-8 md:p-10" data-live-card>
-            <span className="text-[10px] font-black uppercase tracking-[0.28em] km-text-soft block mb-6">
-              Legal & Meta
+          <div className="km-panel live-card p-8 md:p-10" data-live-card>
+            <span className="font-mono text-[10px] font-black uppercase tracking-[0.18em] km-text-soft block mb-6">
+              $ legal --meta
             </span>
             <ul className="space-y-4 text-sm km-text-muted font-medium">
               <li>
@@ -164,7 +164,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="mt-10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-[10px] font-black uppercase tracking-[0.24em] km-text-soft">
             © {year} KurtMorales Studio. All rights reserved.
           </p>

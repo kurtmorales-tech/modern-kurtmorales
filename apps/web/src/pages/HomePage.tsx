@@ -40,15 +40,15 @@ export function HomePage() {
       <Templates templates={templates} />
       <Skills />
       <DigitalFootprint />
-      <section id="contact" className="relative py-32 bg-gray-950 text-white overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-brand/5 rounded-full blur-2xl pointer-events-none" />
+      <section id="contact" className="relative py-32 km-surface-tint overflow-hidden">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand/10 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-[var(--km-surface-muted)] blur-2xl pointer-events-none" />
         <div className="max-w-6xl mx-auto px-6 text-center relative z-10">
           <div className="reveal">
-            <span className="inline-flex items-center gap-3 px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full mb-8">
-              <span className="w-2 h-2 bg-green-400 rounded-full pulse-dot" />
-              <span className="text-[10px] font-black tracking-[0.3em] uppercase text-gray-400">
-                Open to New Projects
+            <span className="km-pill mb-8">
+              <span className="w-2 h-2 bg-green-400 pulse-dot" />
+              <span className="font-mono text-[10px] font-black tracking-[0.18em] uppercase km-text-muted">
+                $ open --to-new-projects
               </span>
             </span>
           </div>
@@ -61,7 +61,7 @@ export function HomePage() {
             <span className="text-brand-light">great together.</span>
           </h2>
           <p
-            className="reveal text-gray-400 text-lg max-w-xl mx-auto mb-12 leading-relaxed"
+            className="reveal km-text-muted text-lg max-w-xl mx-auto mb-12 leading-relaxed"
             style={{ transitionDelay: '200ms' }}
           >
             Send a short note with your business, goals, and ideal launch timeline. I&apos;ll reply

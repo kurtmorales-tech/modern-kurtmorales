@@ -3,11 +3,11 @@ import type { Project } from '../../types';
 
 export function Projects({ projects }: { projects: Project[] }) {
   return (
-    <section id="projects" className="py-32 bg-surface-alt border-y border-gray-100">
+    <section id="projects" className="py-32 km-surface-tint">
       <div className="max-w-6xl mx-auto px-6">
         <div className="max-w-2xl mb-24 reveal-left">
-          <span className="text-gray-400 font-bold text-[10px] tracking-widest uppercase block mb-6">
-            Portfolio
+          <span className="font-mono km-text-soft font-bold text-[10px] tracking-widest uppercase block mb-6">
+            $ portfolio
           </span>
           <h2 className="text-4xl md:text-6xl font-display font-medium leading-tight text-brand text-pretty">
             Selected works and digital experiments.
@@ -20,11 +20,11 @@ export function Projects({ projects }: { projects: Project[] }) {
               href={project.link ?? '#'}
               target="_blank"
               rel="noreferrer"
-              className="reveal group relative bg-white border border-gray-100 p-10 card-lift live-card block overflow-hidden"
+              className="reveal group relative km-panel p-10 card-lift live-card block overflow-hidden"
               data-live-card
               style={{ transitionDelay: `${index * 80}ms` }}
             >
-              <span className="absolute top-6 right-6 text-[10px] font-black text-gray-200 tabular-nums group-hover:text-brand/40 transition-colors duration-300">
+              <span className="absolute top-6 right-6 font-mono text-[10px] font-black km-text-soft tabular-nums group-hover:text-brand/60 transition-colors duration-300">
                 {String(index + 1).padStart(2, '0')}
               </span>
               <div className="flex flex-col h-full relative z-10">
@@ -36,20 +36,20 @@ export function Projects({ projects }: { projects: Project[] }) {
                   className="mb-8 rounded-xl border border-gray-100 group-hover:scale-[1.02] transition-transform duration-500"
                 />
                 <div className="flex items-center gap-3 mb-8">
-                  <span className="text-[9px] font-black uppercase tracking-widest text-gray-400 bg-gray-50 px-3 py-1.5 group-hover:bg-brand/5 group-hover:text-brand/70 transition-all duration-300">
+                  <span className="font-mono text-[9px] font-black uppercase tracking-widest km-text-muted bg-[var(--km-surface-muted)] px-3 py-1.5 group-hover:bg-brand/10 group-hover:text-brand transition-all duration-300">
                     {project.type}
                   </span>
                   <span className="text-[9px] font-black uppercase tracking-widest text-brand/50">
                     {project.tech}
                   </span>
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-black tracking-tight group-hover:text-brand transition-colors duration-300">
+                <h3 className="text-xl font-bold mb-3 km-text-strong tracking-tight group-hover:text-brand transition-colors duration-300">
                   {project.title}
                 </h3>
-                <p className="text-gray-500 text-sm leading-relaxed mb-8 flex-grow">
+                <p className="km-text-muted text-sm leading-relaxed mb-8 flex-grow">
                   {project.description}
                 </p>
-                <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-gray-300 group-hover:text-brand transition-all duration-300">
+                <div className="flex items-center gap-2 font-mono text-[10px] font-black uppercase tracking-widest km-text-soft group-hover:text-brand transition-all duration-300">
                   <span>View Project</span>
                   <span aria-hidden>→</span>
                 </div>

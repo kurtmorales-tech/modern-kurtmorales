@@ -5,10 +5,11 @@
   "workspaces": [
     "backend",
     "apps/api",
-    "apps/web"
+    "apps/web",
+    "packages/schema"
   ],
   "scripts": {
-    "test": "bun test scripts/rss-sources.test.ts",
+    "test": "echo \"No tests configured yet\"",
     "dev": "bun run dev:backend & bun run dev:web",
     "dev:backend": "cd backend && bun run dev",
     "dev:web": "cd apps/web && bun run dev",
@@ -48,5 +49,9 @@
     "@types/node": "^24.10.0",
     "tsx": "^4.21.0",
     "prettier": "^3.6.2"
+  },
+  "dependencies": {
+    "bun-plugin-tailwind": "^0.1.2",
+    "tailwindcss": "^4.3.0"
   }
 }

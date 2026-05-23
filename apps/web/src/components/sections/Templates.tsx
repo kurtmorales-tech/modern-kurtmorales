@@ -10,16 +10,16 @@ export function Templates({
   showBrowseLink?: boolean;
 }) {
   return (
-    <section id="templates" className="py-32 bg-white border-y border-gray-100">
+    <section id="templates" className="py-32 km-surface-soft">
       <div className="max-w-6xl mx-auto px-6">
         <div className="max-w-2xl mb-24 reveal-left">
-          <span className="text-gray-400 font-bold text-[10px] tracking-widest uppercase block mb-6">
-            Templates
+          <span className="font-mono km-text-soft font-bold text-[10px] tracking-widest uppercase block mb-6">
+            $ templates
           </span>
           <h2 className="text-4xl md:text-6xl font-display font-medium leading-tight text-brand text-pretty">
             Ready-to-use website templates.
           </h2>
-          <p className="mt-6 text-gray-500 leading-relaxed">
+          <p className="mt-6 km-text-muted leading-relaxed">
             Professionally designed templates to kickstart your next project. Dynamic previews,
             clean code, and full documentation included.
           </p>
@@ -29,15 +29,15 @@ export function Templates({
             return (
               <div
                 key={template.id}
-                className="reveal group relative bg-white border border-gray-100 overflow-hidden card-lift"
+                className="reveal group relative km-panel overflow-hidden card-lift"
                 style={{ transitionDelay: `${index * 80}ms` }}
               >
                 {template.featured && (
-                  <span className="absolute top-4 right-4 z-10 text-[9px] font-black uppercase tracking-widest bg-brand text-white px-3 py-1.5">
+                  <span className="absolute top-4 right-4 z-10 font-mono text-[9px] font-black uppercase tracking-widest bg-brand text-white px-3 py-1.5">
                     Featured
                   </span>
                 )}
-                <div className="aspect-[4/3] overflow-hidden bg-gray-50">
+                <div className="aspect-[4/3] overflow-hidden bg-[var(--km-surface-muted)]">
                   <KMImage
                     src={template.thumbnail}
                     alt={template.title}
@@ -49,7 +49,7 @@ export function Templates({
                 <div className="p-8">
                   <div className="flex items-center gap-3 mb-4">
                     {template.tech && (
-                      <span className="text-[9px] font-black uppercase tracking-widest text-gray-400 bg-gray-50 px-3 py-1.5">
+                      <span className="font-mono text-[9px] font-black uppercase tracking-widest km-text-muted bg-[var(--km-surface-muted)] px-3 py-1.5">
                         {template.tech}
                       </span>
                     )}
@@ -59,10 +59,10 @@ export function Templates({
                       </span>
                     )}
                   </div>
-                  <h3 className="text-xl font-bold mb-3 text-black tracking-tight group-hover:text-brand transition-colors duration-300">
+                  <h3 className="text-xl font-bold mb-3 km-text-strong tracking-tight group-hover:text-brand transition-colors duration-300">
                     {template.title}
                   </h3>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-6 line-clamp-3">
+                  <p className="km-text-muted text-sm leading-relaxed mb-6 line-clamp-3">
                     {template.description}
                   </p>
                   <div className="flex items-center gap-4">
@@ -81,7 +81,7 @@ export function Templates({
                         href={template.sourceUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="text-[10px] font-black uppercase tracking-widest text-gray-400 hover:text-brand transition-colors duration-300"
+                        className="font-mono text-[10px] font-black uppercase tracking-widest km-text-soft hover:text-brand transition-colors duration-300"
                       >
                         Source
                       </a>
@@ -97,7 +97,7 @@ export function Templates({
           <div className="text-center mt-16">
             <Link
               to="/templates"
-              className="inline-flex items-center gap-3 px-10 py-5 border border-brand text-brand font-bold hover:bg-brand hover:text-white transition-all duration-300 active:scale-[0.97]"
+              className="km-button km-button-secondary inline-flex items-center gap-3"
             >
               Browse All Templates <span aria-hidden>→</span>
             </Link>
