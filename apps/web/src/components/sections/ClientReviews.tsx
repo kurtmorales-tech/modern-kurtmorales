@@ -2,35 +2,37 @@ const reviews = [
   {
     label: 'Fast turnaround',
     quote:
-      'Swap this with a real client quote about speed, clarity, or delivery. The carousel is built and ready for production copy.',
-    name: 'Client Name',
-    role: 'Business / Role',
+      'Launch-focused builds with clean milestones, quick feedback loops, and production-ready delivery.',
+    name: 'Built for',
+    role: 'Small businesses & founders',
   },
   {
     label: 'Clear process',
     quote:
-      'Use this card for feedback about communication, clean handoff, or how smooth the project felt from start to launch.',
-    name: 'Client Name',
-    role: 'Founder / Owner',
+      'Every project starts with goals, audience, pages, content needs, and conversion actions before design begins.',
+    name: 'Built for',
+    role: 'Structured project planning',
   },
   {
     label: 'Better results',
     quote:
-      'Drop in a short review that highlights stronger conversions, a cleaner brand presence, or a faster website experience.',
-    name: 'Client Name',
-    role: 'Marketing Lead',
+      'Pages are designed around trust, speed, mobile usability, and clear calls-to-action—not just visuals.',
+    name: 'Built for',
+    role: 'Lead generation & growth',
   },
   {
     label: 'Reliable partner',
-    quote: 'Dependable timelines, quick revisions, and confidence after launch.',
-    name: 'Client Name',
-    role: 'Startup Team',
+    quote:
+      'Deployment, responsive QA, performance checks, and post-launch support keep handoff simple.',
+    name: 'Built for',
+    role: 'Long-term website ownership',
   },
   {
     label: 'Modern build',
-    quote: 'Polished design, mobile responsiveness, and overall quality of the finished site.',
-    name: 'Client Name',
-    role: 'Creative Brand',
+    quote:
+      'TypeScript-friendly workflows, Cloudflare/Vercel hosting, reusable components, and SEO-conscious structure.',
+    name: 'Built for',
+    role: 'Scalable digital foundations',
   },
 ];
 
@@ -40,14 +42,14 @@ export function ClientReviews() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="max-w-2xl mb-16 reveal-left">
           <span className="text-gray-400 font-bold text-[10px] tracking-widest uppercase block mb-6">
-            Client Reviews
+            Client Proof
           </span>
           <h2 className="text-4xl md:text-6xl font-display font-medium leading-tight text-brand text-pretty">
-            Fast-moving social proof.
+            Built for clear handoff, faster launches, and measurable business value.
           </h2>
           <p className="text-gray-500 text-lg leading-relaxed mt-6">
-            Auto-sliding review cards. Hover to pause. Replace the starter copy with real
-            testimonials anytime.
+            Real testimonials can be added as projects go live. For now, these cards highlight the
+            outcomes and working experience clients can expect.
           </p>
         </div>
         <div className="reviews-shell reveal relative overflow-hidden">
@@ -69,11 +71,8 @@ export function ClientReviews() {
                       <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">
                         {review.label}
                       </span>
-                      <div
-                        className="flex items-center gap-1 text-brand"
-                        aria-label="5 star review"
-                      >
-                        ★★★★★
+                      <div className="text-brand text-lg" aria-hidden="true">
+                        ✦
                       </div>
                     </div>
                     <p className="text-base leading-relaxed text-gray-600 mb-8">“{review.quote}”</p>

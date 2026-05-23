@@ -3,6 +3,8 @@ import { DigitalFootprint } from '../components/sections/DigitalFootprint';
 import { ClientReviews } from '../components/sections/ClientReviews';
 import { Hero } from '../components/sections/Hero';
 import { Metrics } from '../components/sections/Metrics';
+import { Packages } from '../components/sections/Packages';
+import { Process } from '../components/sections/Process';
 import { Projects } from '../components/sections/Projects';
 import { Services } from '../components/sections/Services';
 import { Skills } from '../components/sections/Skills';
@@ -31,8 +33,10 @@ export function HomePage() {
       <Hero />
       <Metrics />
       <Services />
+      <Process />
       <ClientReviews />
       <Projects projects={projects} />
+      <Packages />
       <Templates templates={templates} />
       <Skills />
       <DigitalFootprint />
@@ -60,23 +64,21 @@ export function HomePage() {
             className="reveal km-text-muted text-lg max-w-xl mx-auto mb-12 leading-relaxed"
             style={{ transitionDelay: '200ms' }}
           >
-            Ready to start a project? Reach out and let&apos;s discuss how I can help grow your
-            online presence.
+            Send a short note with your business, goals, and ideal launch timeline. I&apos;ll reply
+            with the best next step.
           </p>
           <div
             className="reveal flex flex-wrap justify-center gap-4"
             style={{ transitionDelay: '300ms' }}
           >
             <a href="mailto:email@kurtmorales.com" className="km-button km-button-primary group">
-              Start a Conversation <span aria-hidden>→</span>
+              Start a Project <span aria-hidden>→</span>
             </a>
             <a
-              href="https://www.linkedin.com/in/kurtanthonymorales/"
-              target="_blank"
-              rel="noreferrer"
+              href="#projects"
               className="km-button km-button-dark"
             >
-              Connect on LinkedIn
+              View Portfolio
             </a>
           </div>
         </div>

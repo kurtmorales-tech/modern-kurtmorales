@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getPostBySlug } from '../lib/api';
 import { useSeo } from '../lib/seo';
+import { KMImage } from '../components/KMImage';
 import type { Post, Upload } from '../types';
 
 function coverUrl(post: Post) {
@@ -129,6 +130,13 @@ export function PostPage() {
           <h1 className="text-3xl md:text-5xl font-display font-medium leading-tight text-brand mb-6">
             {post.title}
           </h1>
+          <KMImage
+            src={post.cover}
+            alt={post.title}
+            aspect="aspect-video"
+            width={1200}
+            className="mb-8 rounded-2xl border border-gray-100 shadow-sm"
+          />
           <p className="text-gray-500 text-lg leading-relaxed mb-8">{post.excerpt}</p>
           <div className="flex items-center gap-6 text-[10px] font-black uppercase tracking-widest text-gray-400 border-t border-gray-100 pt-6">
             <time dateTime={post.date}>

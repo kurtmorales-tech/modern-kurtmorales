@@ -1,11 +1,6 @@
+import { KMImage } from '../KMImage';
 import { Link } from 'react-router-dom';
-import type { Template, Upload } from '../../types';
-
-function uploadUrl(upload: Template['thumbnail']) {
-  return upload && typeof upload === 'object' && 'url' in upload
-    ? (upload as Upload).url
-    : undefined;
-}
+import type { Template } from '../../types';
 
 export function Templates({
   templates,
@@ -31,7 +26,6 @@ export function Templates({
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {templates.map((template, index) => {
-            const image = uploadUrl(template.thumbnail);
             return (
               <div
                 key={template.id}
@@ -44,17 +38,13 @@ export function Templates({
                   </span>
                 )}
                 <div className="aspect-[4/3] overflow-hidden bg-[var(--km-surface-muted)]">
-                  {image ? (
-                    <img
-                      src={image}
-                      alt={template.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center km-text-soft text-sm">
-                      No preview
-                    </div>
-                  )}
+                  <KMImage
+                    src={template.thumbnail}
+                    alt={template.title}
+                    aspect="aspect-[4/3]"
+                    width={600}
+                    className="group-hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
                 <div className="p-8">
                   <div className="flex items-center gap-3 mb-4">

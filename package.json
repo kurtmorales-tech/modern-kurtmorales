@@ -5,7 +5,8 @@
   "workspaces": [
     "backend",
     "apps/api",
-    "apps/web"
+    "apps/web",
+    "packages/schema"
   ],
   "scripts": {
     "test": "echo \"No tests configured yet\"",
