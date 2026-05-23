@@ -1,0 +1,1110 @@
+[
+  {
+    "path": "/",
+    "label": "01 - Home — Hero & Services",
+    "screenshot": "/home/thisgonnabreak/Work/modern-kurtmorales/scripts/showcase-output/screenshots/index.png",
+    "metrics": {
+      "Timestamp": 14427.81,
+      "AudioHandlers": 0,
+      "AudioWorkletProcessors": 0,
+      "Documents": 8,
+      "Frames": 6,
+      "JSEventListeners": 268,
+      "LayoutObjects": 1109,
+      "MediaKeySessions": 0,
+      "MediaKeys": 0,
+      "Nodes": 1150,
+      "Resources": 43,
+      "ContextLifecycleStateObservers": 18,
+      "V8PerContextDatas": 4,
+      "WorkerGlobalScopes": 0,
+      "UACSSResources": 0,
+      "RTCPeerConnections": 0,
+      "ResourceFetchers": 8,
+      "AdSubframes": 0,
+      "DetachedScriptStates": 2,
+      "ArrayBufferContents": 0,
+      "LayoutCount": 4,
+      "RecalcStyleCount": 65,
+      "LayoutDuration": 0.08,
+      "RecalcStyleDuration": 0.1,
+      "DevToolsCommandDuration": 0,
+      "ScriptDuration": 0.16,
+      "V8CompileDuration": 0,
+      "TaskDuration": 0.54,
+      "TaskOtherDuration": 0.2,
+      "ThreadTime": 0.37,
+      "ProcessTime": 1.63,
+      "JSHeapUsedSize": 6711116,
+      "JSHeapTotalSize": 10895360,
+      "FirstMeaningfulPaint": 14423.62,
+      "DomContentLoaded": 14423.37,
+      "NavigationStart": 14423.25,
+      "domComplete": 121.5,
+      "loadEventEnd": 121.59999999962747,
+      "domContentLoaded": 119.79999999888241
+    },
+    "network": [
+      {
+        "url": "http://localhost:5173/",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/@vite/client",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/main.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/@react-refresh",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/@fs/home/thisgonnabreak/Work/modern-kurtmorales/node_modules/.bun/vite@7.3.3+2c644c05e6318c72/node_modules/vite/dist/client/env.mjs",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/App.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/styles.css",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/chunk-HEHVAEW6.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/chunk-EYE24JN2.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/components/Layout.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/pages/HomePage.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/routes/lazy-pages.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/routes/route-fallback.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/components/Footer.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/components/Header.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/components/sections/DigitalFootprint.tsx",
+        "method": "GET"
+      }
+    ],
+    "consoleLogs": [
+      "[vite] connecting...",
+      "[vite] connected.",
+      "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold",
+      "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "[vite] connecting...",
+      "[vite] connected.",
+      "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold",
+      "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "Failed to load resource: net::ERR_CONNECTION_REFUSED"
+    ]
+  },
+  {
+    "path": "/products",
+    "label": "02 - Products — Marketplace Picks",
+    "screenshot": "/home/thisgonnabreak/Work/modern-kurtmorales/scripts/showcase-output/screenshots/products.png",
+    "metrics": {
+      "Timestamp": 14434.23,
+      "AudioHandlers": 0,
+      "AudioWorkletProcessors": 0,
+      "Documents": 8,
+      "Frames": 6,
+      "JSEventListeners": 250,
+      "LayoutObjects": 920,
+      "MediaKeySessions": 0,
+      "MediaKeys": 0,
+      "Nodes": 846,
+      "Resources": 38,
+      "ContextLifecycleStateObservers": 18,
+      "V8PerContextDatas": 4,
+      "WorkerGlobalScopes": 0,
+      "UACSSResources": 0,
+      "RTCPeerConnections": 0,
+      "ResourceFetchers": 8,
+      "AdSubframes": 0,
+      "DetachedScriptStates": 2,
+      "ArrayBufferContents": 0,
+      "LayoutCount": 4,
+      "RecalcStyleCount": 24,
+      "LayoutDuration": 0.03,
+      "RecalcStyleDuration": 0.03,
+      "DevToolsCommandDuration": 0,
+      "ScriptDuration": 0.12,
+      "V8CompileDuration": 0,
+      "TaskDuration": 0.29,
+      "TaskOtherDuration": 0.1,
+      "ThreadTime": 0.22,
+      "ProcessTime": 0.97,
+      "JSHeapUsedSize": 5594644,
+      "JSHeapTotalSize": 9322496,
+      "FirstMeaningfulPaint": 14430.77,
+      "DomContentLoaded": 14430.27,
+      "NavigationStart": 14430.18,
+      "domComplete": 94.30000000074506,
+      "loadEventEnd": 94.30000000074506,
+      "domContentLoaded": 92.80000000074506
+    },
+    "network": [
+      {
+        "url": "http://localhost:5173/products",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/@vite/client",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/main.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/@react-refresh",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/@fs/home/thisgonnabreak/Work/modern-kurtmorales/node_modules/.bun/vite@7.3.3+2c644c05e6318c72/node_modules/vite/dist/client/env.mjs",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/App.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/styles.css",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/chunk-HEHVAEW6.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/chunk-EYE24JN2.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/components/Layout.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/pages/HomePage.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/routes/lazy-pages.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/routes/route-fallback.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/components/Footer.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/components/Header.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/components/sections/DigitalFootprint.tsx",
+        "method": "GET"
+      }
+    ],
+    "consoleLogs": [
+      "[vite] connecting...",
+      "[vite] connected.",
+      "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold",
+      "[vite] connecting...",
+      "[vite] connected.",
+      "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    ]
+  },
+  {
+    "path": "/templates",
+    "label": "03 - Templates — Website Templates",
+    "screenshot": "/home/thisgonnabreak/Work/modern-kurtmorales/scripts/showcase-output/screenshots/templates.png",
+    "metrics": {
+      "Timestamp": 14440.8,
+      "AudioHandlers": 0,
+      "AudioWorkletProcessors": 0,
+      "Documents": 6,
+      "Frames": 5,
+      "JSEventListeners": 258,
+      "LayoutObjects": 331,
+      "MediaKeySessions": 0,
+      "MediaKeys": 0,
+      "Nodes": 412,
+      "Resources": 43,
+      "ContextLifecycleStateObservers": 16,
+      "V8PerContextDatas": 4,
+      "WorkerGlobalScopes": 0,
+      "UACSSResources": 0,
+      "RTCPeerConnections": 0,
+      "ResourceFetchers": 6,
+      "AdSubframes": 0,
+      "DetachedScriptStates": 2,
+      "ArrayBufferContents": 0,
+      "LayoutCount": 5,
+      "RecalcStyleCount": 15,
+      "LayoutDuration": 0.03,
+      "RecalcStyleDuration": 0.03,
+      "DevToolsCommandDuration": 0,
+      "ScriptDuration": 0.11,
+      "V8CompileDuration": 0,
+      "TaskDuration": 0.21,
+      "TaskOtherDuration": 0.05,
+      "ThreadTime": 0.19,
+      "ProcessTime": 0.5,
+      "JSHeapUsedSize": 5730828,
+      "JSHeapTotalSize": 7749632,
+      "FirstMeaningfulPaint": 14437,
+      "DomContentLoaded": 14436.89,
+      "NavigationStart": 14436.79,
+      "domComplete": 94.5,
+      "loadEventEnd": 94.5,
+      "domContentLoaded": 93
+    },
+    "network": [
+      {
+        "url": "http://localhost:5173/templates",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/@vite/client",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/main.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/@react-refresh",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/@fs/home/thisgonnabreak/Work/modern-kurtmorales/node_modules/.bun/vite@7.3.3+2c644c05e6318c72/node_modules/vite/dist/client/env.mjs",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/App.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/styles.css",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/chunk-HEHVAEW6.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/chunk-EYE24JN2.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/components/Layout.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/pages/HomePage.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/routes/lazy-pages.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/routes/route-fallback.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/components/Footer.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/components/Header.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/components/sections/DigitalFootprint.tsx",
+        "method": "GET"
+      }
+    ],
+    "consoleLogs": [
+      "[vite] connecting...",
+      "[vite] connected.",
+      "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold",
+      "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "[vite] connecting...",
+      "[vite] connected.",
+      "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold",
+      "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "Failed to load resource: net::ERR_CONNECTION_REFUSED"
+    ]
+  },
+  {
+    "path": "/projects",
+    "label": "04 - Projects — Portfolio",
+    "screenshot": "/home/thisgonnabreak/Work/modern-kurtmorales/scripts/showcase-output/screenshots/projects.png",
+    "metrics": {
+      "Timestamp": 14446.17,
+      "AudioHandlers": 0,
+      "AudioWorkletProcessors": 0,
+      "Documents": 6,
+      "Frames": 5,
+      "JSEventListeners": 248,
+      "LayoutObjects": 369,
+      "MediaKeySessions": 0,
+      "MediaKeys": 0,
+      "Nodes": 419,
+      "Resources": 38,
+      "ContextLifecycleStateObservers": 16,
+      "V8PerContextDatas": 4,
+      "WorkerGlobalScopes": 0,
+      "UACSSResources": 0,
+      "RTCPeerConnections": 0,
+      "ResourceFetchers": 6,
+      "AdSubframes": 0,
+      "DetachedScriptStates": 2,
+      "ArrayBufferContents": 0,
+      "LayoutCount": 4,
+      "RecalcStyleCount": 16,
+      "LayoutDuration": 0.03,
+      "RecalcStyleDuration": 0.03,
+      "DevToolsCommandDuration": 0,
+      "ScriptDuration": 0.11,
+      "V8CompileDuration": 0,
+      "TaskDuration": 0.2,
+      "TaskOtherDuration": 0.04,
+      "ThreadTime": 0.18,
+      "ProcessTime": 0.45,
+      "JSHeapUsedSize": 5772344,
+      "JSHeapTotalSize": 7487488,
+      "FirstMeaningfulPaint": 14442.37,
+      "DomContentLoaded": 14442.25,
+      "NavigationStart": 14442.16,
+      "domComplete": 91,
+      "loadEventEnd": 91,
+      "domContentLoaded": 89.40000000037253
+    },
+    "network": [
+      {
+        "url": "http://localhost:5173/projects",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/@vite/client",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/main.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/@react-refresh",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/@fs/home/thisgonnabreak/Work/modern-kurtmorales/node_modules/.bun/vite@7.3.3+2c644c05e6318c72/node_modules/vite/dist/client/env.mjs",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/App.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/styles.css",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/chunk-HEHVAEW6.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/chunk-EYE24JN2.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/components/Layout.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/pages/HomePage.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/routes/lazy-pages.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/routes/route-fallback.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/components/Footer.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/components/Header.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/components/sections/DigitalFootprint.tsx",
+        "method": "GET"
+      }
+    ],
+    "consoleLogs": [
+      "[vite] connecting...",
+      "[vite] connected.",
+      "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold",
+      "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "[vite] connecting...",
+      "[vite] connected.",
+      "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold",
+      "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "Failed to load resource: net::ERR_CONNECTION_REFUSED"
+    ]
+  },
+  {
+    "path": "/resources",
+    "label": "05 - Resources — Docs & SEO",
+    "screenshot": "/home/thisgonnabreak/Work/modern-kurtmorales/scripts/showcase-output/screenshots/resources.png",
+    "metrics": {
+      "Timestamp": 14451.59,
+      "AudioHandlers": 0,
+      "AudioWorkletProcessors": 0,
+      "Documents": 8,
+      "Frames": 6,
+      "JSEventListeners": 250,
+      "LayoutObjects": 339,
+      "MediaKeySessions": 0,
+      "MediaKeys": 0,
+      "Nodes": 396,
+      "Resources": 37,
+      "ContextLifecycleStateObservers": 18,
+      "V8PerContextDatas": 4,
+      "WorkerGlobalScopes": 0,
+      "UACSSResources": 0,
+      "RTCPeerConnections": 0,
+      "ResourceFetchers": 8,
+      "AdSubframes": 0,
+      "DetachedScriptStates": 2,
+      "ArrayBufferContents": 0,
+      "LayoutCount": 4,
+      "RecalcStyleCount": 27,
+      "LayoutDuration": 0.03,
+      "RecalcStyleDuration": 0.03,
+      "DevToolsCommandDuration": 0,
+      "ScriptDuration": 0.11,
+      "V8CompileDuration": 0,
+      "TaskDuration": 0.25,
+      "TaskOtherDuration": 0.07,
+      "ThreadTime": 0.21,
+      "ProcessTime": 0.73,
+      "JSHeapUsedSize": 5514940,
+      "JSHeapTotalSize": 8273920,
+      "FirstMeaningfulPaint": 14447.81,
+      "DomContentLoaded": 14447.68,
+      "NavigationStart": 14447.58,
+      "domComplete": 94,
+      "loadEventEnd": 94,
+      "domContentLoaded": 92.5
+    },
+    "network": [
+      {
+        "url": "http://localhost:5173/resources",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/@vite/client",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/main.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/@react-refresh",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/@fs/home/thisgonnabreak/Work/modern-kurtmorales/node_modules/.bun/vite@7.3.3+2c644c05e6318c72/node_modules/vite/dist/client/env.mjs",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/App.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/styles.css",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/chunk-HEHVAEW6.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/chunk-EYE24JN2.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/components/Layout.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/pages/HomePage.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/routes/lazy-pages.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/routes/route-fallback.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/components/Footer.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/components/Header.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/components/sections/DigitalFootprint.tsx",
+        "method": "GET"
+      }
+    ],
+    "consoleLogs": [
+      "[vite] connecting...",
+      "[vite] connected.",
+      "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold",
+      "[vite] connecting...",
+      "[vite] connected.",
+      "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    ]
+  },
+  {
+    "path": "/contact",
+    "label": "06 - Contact — Get in Touch",
+    "screenshot": "/home/thisgonnabreak/Work/modern-kurtmorales/scripts/showcase-output/screenshots/contact.png",
+    "metrics": {
+      "Timestamp": 14457.43,
+      "AudioHandlers": 0,
+      "AudioWorkletProcessors": 0,
+      "Documents": 6,
+      "Frames": 5,
+      "JSEventListeners": 253,
+      "LayoutObjects": 286,
+      "MediaKeySessions": 0,
+      "MediaKeys": 0,
+      "Nodes": 421,
+      "Resources": 36,
+      "ContextLifecycleStateObservers": 16,
+      "V8PerContextDatas": 4,
+      "WorkerGlobalScopes": 0,
+      "UACSSResources": 0,
+      "RTCPeerConnections": 0,
+      "ResourceFetchers": 6,
+      "AdSubframes": 0,
+      "DetachedScriptStates": 2,
+      "ArrayBufferContents": 0,
+      "LayoutCount": 4,
+      "RecalcStyleCount": 16,
+      "LayoutDuration": 0.03,
+      "RecalcStyleDuration": 0.03,
+      "DevToolsCommandDuration": 0,
+      "ScriptDuration": 0.1,
+      "V8CompileDuration": 0,
+      "TaskDuration": 0.2,
+      "TaskOtherDuration": 0.04,
+      "ThreadTime": 0.18,
+      "ProcessTime": 0.45,
+      "JSHeapUsedSize": 5312764,
+      "JSHeapTotalSize": 7749632,
+      "FirstMeaningfulPaint": 14453.64,
+      "DomContentLoaded": 14453.52,
+      "NavigationStart": 14453.42,
+      "domComplete": 99.09999999962747,
+      "loadEventEnd": 99.09999999962747,
+      "domContentLoaded": 97.5
+    },
+    "network": [
+      {
+        "url": "http://localhost:5173/contact",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/@vite/client",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/main.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/@react-refresh",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/@fs/home/thisgonnabreak/Work/modern-kurtmorales/node_modules/.bun/vite@7.3.3+2c644c05e6318c72/node_modules/vite/dist/client/env.mjs",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/App.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/styles.css",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/chunk-HEHVAEW6.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/chunk-EYE24JN2.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/components/Layout.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/pages/HomePage.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/routes/lazy-pages.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/routes/route-fallback.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/components/Footer.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/components/Header.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/components/sections/DigitalFootprint.tsx",
+        "method": "GET"
+      }
+    ],
+    "consoleLogs": [
+      "[vite] connecting...",
+      "[vite] connected.",
+      "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold",
+      "[vite] connecting...",
+      "[vite] connected.",
+      "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    ]
+  },
+  {
+    "path": "/about",
+    "label": "07 - About",
+    "screenshot": "/home/thisgonnabreak/Work/modern-kurtmorales/scripts/showcase-output/screenshots/about.png",
+    "metrics": {
+      "Timestamp": 14462.54,
+      "AudioHandlers": 0,
+      "AudioWorkletProcessors": 0,
+      "Documents": 6,
+      "Frames": 5,
+      "JSEventListeners": 249,
+      "LayoutObjects": 351,
+      "MediaKeySessions": 0,
+      "MediaKeys": 0,
+      "Nodes": 414,
+      "Resources": 36,
+      "ContextLifecycleStateObservers": 16,
+      "V8PerContextDatas": 4,
+      "WorkerGlobalScopes": 0,
+      "UACSSResources": 0,
+      "RTCPeerConnections": 0,
+      "ResourceFetchers": 6,
+      "AdSubframes": 0,
+      "DetachedScriptStates": 2,
+      "ArrayBufferContents": 0,
+      "LayoutCount": 4,
+      "RecalcStyleCount": 26,
+      "LayoutDuration": 0.04,
+      "RecalcStyleDuration": 0.03,
+      "DevToolsCommandDuration": 0,
+      "ScriptDuration": 0.11,
+      "V8CompileDuration": 0,
+      "TaskDuration": 0.22,
+      "TaskOtherDuration": 0.04,
+      "ThreadTime": 0.2,
+      "ProcessTime": 0.53,
+      "JSHeapUsedSize": 5535380,
+      "JSHeapTotalSize": 7487488,
+      "FirstMeaningfulPaint": 14459.01,
+      "DomContentLoaded": 14458.89,
+      "NavigationStart": 14458.79,
+      "domComplete": 101.09999999962747,
+      "loadEventEnd": 101.09999999962747,
+      "domContentLoaded": 99.40000000037253
+    },
+    "network": [
+      {
+        "url": "http://localhost:5173/about",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/@vite/client",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/main.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/@react-refresh",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/@fs/home/thisgonnabreak/Work/modern-kurtmorales/node_modules/.bun/vite@7.3.3+2c644c05e6318c72/node_modules/vite/dist/client/env.mjs",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/App.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/styles.css",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/chunk-HEHVAEW6.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/chunk-EYE24JN2.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/components/Layout.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/pages/HomePage.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/routes/lazy-pages.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/routes/route-fallback.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/components/Footer.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/components/Header.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/components/sections/DigitalFootprint.tsx",
+        "method": "GET"
+      }
+    ],
+    "consoleLogs": [
+      "[vite] connecting...",
+      "[vite] connected.",
+      "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold",
+      "[vite] connecting...",
+      "[vite] connected.",
+      "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    ]
+  },
+  {
+    "path": "/blog",
+    "label": "08 - Blog",
+    "screenshot": "/home/thisgonnabreak/Work/modern-kurtmorales/scripts/showcase-output/screenshots/blog.png",
+    "metrics": {
+      "Timestamp": 14467.65,
+      "AudioHandlers": 0,
+      "AudioWorkletProcessors": 0,
+      "Documents": 6,
+      "Frames": 5,
+      "JSEventListeners": 275,
+      "LayoutObjects": 883,
+      "MediaKeySessions": 0,
+      "MediaKeys": 0,
+      "Nodes": 863,
+      "Resources": 39,
+      "ContextLifecycleStateObservers": 16,
+      "V8PerContextDatas": 4,
+      "WorkerGlobalScopes": 0,
+      "UACSSResources": 0,
+      "RTCPeerConnections": 0,
+      "ResourceFetchers": 6,
+      "AdSubframes": 0,
+      "DetachedScriptStates": 2,
+      "ArrayBufferContents": 0,
+      "LayoutCount": 4,
+      "RecalcStyleCount": 27,
+      "LayoutDuration": 0.03,
+      "RecalcStyleDuration": 0.03,
+      "DevToolsCommandDuration": 0,
+      "ScriptDuration": 0.15,
+      "V8CompileDuration": 0,
+      "TaskDuration": 0.27,
+      "TaskOtherDuration": 0.05,
+      "ThreadTime": 0.25,
+      "ProcessTime": 0.66,
+      "JSHeapUsedSize": 6006492,
+      "JSHeapTotalSize": 10633216,
+      "FirstMeaningfulPaint": 14464.19,
+      "DomContentLoaded": 14463.74,
+      "NavigationStart": 14463.65,
+      "domComplete": 94.39999999850988,
+      "loadEventEnd": 94.39999999850988,
+      "domContentLoaded": 92.89999999850988
+    },
+    "network": [
+      {
+        "url": "http://localhost:5173/blog",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/@vite/client",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/main.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/@react-refresh",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/@fs/home/thisgonnabreak/Work/modern-kurtmorales/node_modules/.bun/vite@7.3.3+2c644c05e6318c72/node_modules/vite/dist/client/env.mjs",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/App.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/styles.css",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/chunk-HEHVAEW6.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/chunk-EYE24JN2.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=ec416311",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/components/Layout.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/pages/HomePage.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/routes/lazy-pages.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/routes/route-fallback.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/components/Footer.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/components/Header.tsx",
+        "method": "GET"
+      },
+      {
+        "url": "http://localhost:5173/src/components/sections/DigitalFootprint.tsx",
+        "method": "GET"
+      }
+    ],
+    "consoleLogs": [
+      "[vite] connecting...",
+      "[vite] connected.",
+      "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold",
+      "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "[vite] connecting...",
+      "[vite] connected.",
+      "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold",
+      "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "Failed to load resource: net::ERR_CONNECTION_REFUSED"
+    ]
+  }
+]
