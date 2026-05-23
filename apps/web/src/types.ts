@@ -42,3 +42,33 @@ export type Template = {
   price?: number;
   order?: number;
 };
+
+export type ContactMessage = {
+  id: string;
+  name: string;
+  email: string;
+  project?: string;
+  budget?: string;
+  message: string;
+  createdAt: string;
+};
+
+export type Subscriber = {
+  id: string;
+  email: string;
+  name?: string;
+  status: 'subscribed' | 'unsubscribed';
+};
+
+export type Newsletter = {
+  id: string;
+  title: string;
+  subject: string;
+  preheader?: string;
+  contentMarkdown?: string;
+  html?: string;
+  text?: string;
+  status: 'draft' | 'sending' | 'sent';
+  sentAt?: string;
+  recipientsCount?: number;
+};

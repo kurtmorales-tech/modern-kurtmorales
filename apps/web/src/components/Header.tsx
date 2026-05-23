@@ -1,53 +1,28 @@
 import { Link, NavLink } from 'react-router-dom';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const STORAGE_KEY = 'kurtmorales-theme';
 
-type MegaLink = {
+type NavItem = {
   href: string;
   label: string;
-  hint?: string;
+  section: 'pages' | 'admin';
 };
 
-type MegaColumn = {
-  title: string;
-  links: MegaLink[];
-};
+const navItems: NavItem[] = [
+  { href: '/', label: 'Home', section: 'pages' },
+  { href: '/#services', label: 'Services', section: 'pages' },
+  { href: '/projects', label: 'Projects', section: 'pages' },
+  { href: '/blog', label: 'Blog', section: 'pages' },
+  { href: '/templates', label: 'Templates', section: 'pages' },
+  { href: '/products', label: 'Products', section: 'pages' },
+  { href: '/resources', label: 'Resources', section: 'pages' },
+  { href: '/about', label: 'About', section: 'pages' },
+];
 
-const megaColumns: MegaColumn[] = [
-  {
-    title: 'Showcase',
-    links: [
-      { href: '/#services', label: 'Services', hint: 'Home · services strip' },
-      { href: '/#projects', label: 'Featured work', hint: 'Home · projects' },
-      { href: '/projects', label: 'All projects', hint: 'Dedicated archive' },
-    ],
-  },
-  {
-    title: 'Content & build',
-    links: [
-      { href: '/blog', label: 'Blog', hint: 'Articles & playbooks' },
-      { href: '/templates', label: 'Templates', hint: 'Starters & themes' },
-      { href: '/products', label: 'Products', hint: 'Marketplace picks' },
-      { href: '/resources', label: 'Resources', hint: 'SEO & launch hub' },
-    ],
-  },
-  {
-    title: 'Studio',
-    links: [
-      { href: '/dashboard', label: 'API dashboard', hint: 'Health & latency probes' },
-      { href: '/studio/blog', label: 'Blog studio', hint: 'Drafts & editor index' },
-      { href: '/about', label: 'About', hint: 'Background & approach' },
-      { href: '/contact', label: 'Contact', hint: 'Start a project' },
-    ],
-  },
-  {
-    title: 'Legal',
-    links: [
-      { href: '/privacy', label: 'Privacy' },
-      { href: '/terms', label: 'Terms' },
-    ],
-  },
+const adminItems: NavItem[] = [
+  { href: '/dashboard', label: 'Dashboard', section: 'admin' },
+  { href: '/studio/blog', label: 'Blog Studio', section: 'admin' },
 ];
 
 function getInitialTheme(): 'light' | 'dark' {
@@ -56,47 +31,29 @@ function getInitialTheme(): 'light' | 'dark' {
   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
 
-function MegaLinkItem({ link, onNavigate }: { link: MegaLink; onNavigate?: () => void }) {
-  const className =
-    'group block rounded-xl px-3 py-2.5 transition-colors hover:bg-[var(--km-surface-muted)]';
-  const title = link.hint ? `${link.label} — ${link.hint}` : link.label;
-
-  if (link.href.startsWith('/#')) {
+function NavItem({ item, onClick }: { item: NavItem; onClick?: () => void }) {
+  if (item.href.startsWith('/#')) {
     return (
-      <a href={link.href} onClick={onNavigate} className={className} title={title}>
-        <span className="block text-[13px] font-semibold text-[var(--km-text-strong)] group-hover:text-brand">
-          {link.label}
-        </span>
-        {link.hint && (
-          <span className="mt-0.5 block text-[11px] leading-snug text-[var(--km-muted)]">
-            {link.hint}
-          </span>
-        )}
+      <a
+        href={item.href}
+        onClick={onClick}
+        className="block rounded-lg px-3 py-2 text-sm font-semibold km-text-muted hover:text-brand hover:bg-[var(--km-surface-muted)] transition-colors"
+      >
+        {item.label}
       </a>
     );
   }
-
   return (
     <NavLink
-      to={link.href}
-      onClick={onNavigate}
-      className={({ isActive }) => `${className} ${isActive ? 'bg-[var(--km-surface-muted)]' : ''}`}
-      title={title}
+      to={item.href}
+      onClick={onClick}
+      className={({ isActive }) =>
+        `block rounded-lg px-3 py-2 text-sm font-semibold transition-colors ${
+          isActive ? 'text-brand bg-[var(--km-surface-muted)]' : 'km-text-muted hover:text-brand hover:bg-[var(--km-surface-muted)]'
+        }`
+      }
     >
-      {({ isActive }) => (
-        <>
-          <span
-            className={`block text-[13px] font-semibold ${isActive ? 'text-brand' : 'text-[var(--km-text-strong)] group-hover:text-brand'}`}
-          >
-            {link.label}
-          </span>
-          {link.hint && (
-            <span className="mt-0.5 block text-[11px] leading-snug text-[var(--km-muted)]">
-              {link.hint}
-            </span>
-          )}
-        </>
-      )}
+      {item.label}
     </NavLink>
   );
 }
@@ -104,11 +61,9 @@ function MegaLinkItem({ link, onNavigate }: { link: MegaLink; onNavigate?: () =>
 export function Header() {
   const [theme, setTheme] = useState<'light' | 'dark'>(getInitialTheme);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [megaOpen, setMegaOpen] = useState(false);
+  const [navOpen, setNavOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const megaWrapRef = useRef<HTMLDivElement>(null);
-
-  const closeMega = useCallback(() => setMegaOpen(false), []);
+  const navWrapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
@@ -133,23 +88,23 @@ export function Header() {
   }, []);
 
   useEffect(() => {
-    if (!megaOpen) return;
+    if (!navOpen) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setMegaOpen(false);
+      if (e.key === 'Escape') setNavOpen(false);
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [megaOpen]);
+  }, [navOpen]);
 
   useEffect(() => {
-    if (!megaOpen) return;
+    if (!navOpen) return;
     const onDown = (e: MouseEvent) => {
-      const el = megaWrapRef.current;
-      if (el && !el.contains(e.target as Node)) setMegaOpen(false);
+      const el = navWrapRef.current;
+      if (el && !el.contains(e.target as Node)) setNavOpen(false);
     };
     document.addEventListener('mousedown', onDown);
     return () => document.removeEventListener('mousedown', onDown);
-  }, [megaOpen]);
+  }, [navOpen]);
 
   return (
     <>
@@ -167,6 +122,7 @@ export function Header() {
           className={`max-w-6xl mx-auto px-6 flex items-center justify-between gap-4 transition-all duration-300 relative ${scrolled ? 'h-16' : 'h-20'}`}
           aria-label="Main navigation"
         >
+          {/* LEFT: Logo */}
           <Link
             to="/"
             className="group inline-flex items-center gap-3 text-xl font-bold tracking-tight km-text-strong transition-colors duration-300 hover:text-brand shrink-0"
@@ -178,82 +134,72 @@ export function Header() {
             </span>
           </Link>
 
-          <div className="hidden lg:flex items-center gap-3 xl:gap-5 text-[10px] font-black uppercase tracking-[0.2em] km-text-muted">
-            <div ref={megaWrapRef} className="relative">
+          {/* CENTER: Navigation — hidden on mobile, simple links on desktop */}
+          <div className="hidden lg:flex items-center gap-1">
+            {navItems.map((item) => (
+              <NavItem key={item.href + item.label} item={item} />
+            ))}
+          </div>
+
+          {/* RIGHT: Buttons */}
+          <div className="flex items-center gap-2">
+            {/* Desktop admin links */}
+            <div className="hidden lg:flex items-center gap-1">
+              {adminItems.map((item) => (
+                <NavItem key={item.href + item.label} item={item} />
+              ))}
+            </div>
+
+            {/* Desktop: Navigate dropdown */}
+            <div className="hidden lg:flex items-center relative" ref={navWrapRef}>
               <button
                 type="button"
-                className={`link-underline inline-flex items-center gap-1.5 py-2 transition-colors duration-300 hover:text-brand focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 rounded ${megaOpen ? 'text-brand' : ''}`}
-                aria-expanded={megaOpen}
+                className="link-underline inline-flex items-center gap-1.5 py-2 transition-colors duration-300 hover:text-brand focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 rounded text-[10px] font-black uppercase tracking-[0.2em] km-text-muted"
+                aria-expanded={navOpen}
                 aria-haspopup="true"
-                aria-controls="site-mega-menu"
-                id="mega-menu-button"
-                onClick={() => setMegaOpen((v) => !v)}
+                aria-controls="site-nav-dropdown"
+                id="nav-dropdown-button"
+                onClick={() => setNavOpen((v) => !v)}
               >
-                Explore
+                <span className="hidden xl:inline">More</span>
+                <span className="xl:hidden">☰</span>
                 <span className="text-[9px] opacity-70" aria-hidden>
-                  {megaOpen ? '▴' : '▾'}
+                  {navOpen ? '▴' : '▾'}
                 </span>
               </button>
 
-              {megaOpen && (
+              {navOpen && (
                 <div
-                  id="site-mega-menu"
+                  id="site-nav-dropdown"
                   role="region"
-                  aria-labelledby="mega-menu-button"
-                  className="absolute left-1/2 z-50 w-[min(100vw-2rem,56rem)] -translate-x-1/2 pt-3 transition-opacity duration-200"
+                  aria-labelledby="nav-dropdown-button"
+                  className="absolute right-0 top-full z-50 w-56 pt-3"
                 >
-                  <div className="km-panel rounded-[1.75rem] border border-[var(--km-border)] p-6 md:p-8 shadow-xl">
-                    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-                      {megaColumns.map((col) => (
-                        <div key={col.title}>
-                          <p className="mb-3 text-[10px] font-black uppercase tracking-[0.28em] text-brand">
-                            {col.title}
-                          </p>
-                          <ul className="space-y-0.5">
-                            {col.links.map((link) => (
-                              <li key={link.href + link.label}>
-                                <MegaLinkItem link={link} onNavigate={closeMega} />
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
+                  <div className="km-panel rounded-xl border border-[var(--km-border)] p-3 shadow-xl">
+                    <div className="space-y-0.5">
+                      <p className="px-3 pb-1 text-[9px] font-black uppercase tracking-[0.24em] text-brand">Pages</p>
+                      {navItems.map((item) => (
+                        <NavItem key={item.href + item.label} item={item} onClick={() => setNavOpen(false)} />
                       ))}
-                    </div>
-                    <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-[var(--km-border)] pt-6">
-                      <p className="text-xs text-[var(--km-muted)] max-w-md leading-relaxed">
-                        Jump to any section of the site. API dashboard runs live probes against your
-                        Bun content API.
-                      </p>
-                      <Link
-                        to="/contact"
-                        onClick={closeMega}
-                        className="km-button km-button-primary px-5 py-3 text-[10px]"
-                      >
-                        Start a project
-                      </Link>
+                      <hr className="my-2 border-[var(--km-border)]" />
+                      <p className="px-3 pb-1 text-[9px] font-black uppercase tracking-[0.24em] text-brand">Admin</p>
+                      {adminItems.map((item) => (
+                        <NavItem key={item.href + item.label} item={item} onClick={() => setNavOpen(false)} />
+                      ))}
                     </div>
                   </div>
                 </div>
               )}
             </div>
 
-            <NavLink
-              to="/dashboard"
-              className={({ isActive }) =>
-                `link-underline py-2 transition-colors duration-300 hover:text-brand ${isActive ? 'text-brand' : ''}`
-              }
-            >
-              Dashboard
-            </NavLink>
-
-            <Link to="/contact" className="km-button km-button-primary px-5 py-3 text-[10px] ml-1">
+            {/* Contact button */}
+            <Link to="/contact" className="km-button km-button-primary px-5 py-3 text-[10px] hidden lg:inline-flex">
               Contact
             </Link>
-          </div>
 
-          <div className="flex items-center gap-3">
+            {/* Theme toggle */}
             <button
-              className="theme-toggle live-card inline-flex h-11 w-11 items-center justify-center rounded-full border km-border-strong km-glass km-text-strong transition-all duration-300 hover:border-brand hover:text-brand focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+              className="live-card inline-flex h-10 w-10 items-center justify-center rounded-full border km-border-strong km-glass km-text-strong transition-all duration-300 hover:border-brand hover:text-brand focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
               type="button"
               aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
               aria-pressed={theme === 'dark'}
@@ -263,8 +209,9 @@ export function Header() {
               {theme === 'dark' ? '☀' : '☾'}
             </button>
 
+            {/* Mobile hamburger */}
             <button
-              className="live-card lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-full border km-border-strong km-glass km-text-strong transition-all duration-300 hover:border-brand hover:text-brand focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+              className="live-card lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-full border km-border-strong km-glass km-text-strong transition-all duration-300 hover:border-brand hover:text-brand focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
               aria-label="Toggle menu"
               aria-expanded={mobileOpen}
               aria-controls="mobile-menu"
@@ -276,50 +223,30 @@ export function Header() {
           </div>
         </nav>
 
+        {/* Mobile menu */}
         {mobileOpen && (
           <div
             id="mobile-menu"
-            className="absolute top-[calc(100%+0.75rem)] left-4 right-4 rounded-[1.75rem] p-5 lg:hidden km-panel shadow-xl max-h-[min(80vh,32rem)] overflow-y-auto"
+            className="absolute top-full left-4 right-4 rounded-xl p-4 lg:hidden km-panel shadow-xl max-h-[80vh] overflow-y-auto"
           >
-            <div className="space-y-6">
-              {megaColumns.map((col) => (
-                <div key={col.title}>
-                  <p className="text-[10px] font-black uppercase tracking-[0.28em] text-brand mb-2">
-                    {col.title}
-                  </p>
-                  <ul className="space-y-1">
-                    {col.links.map((link) => (
-                      <li key={link.href + link.label}>
-                        {link.href.startsWith('/#') ? (
-                          <a
-                            href={link.href}
-                            onClick={() => setMobileOpen(false)}
-                            className="block rounded-lg px-2 py-2 text-sm font-semibold km-text-muted hover:text-brand"
-                          >
-                            {link.label}
-                          </a>
-                        ) : (
-                          <Link
-                            to={link.href}
-                            onClick={() => setMobileOpen(false)}
-                            className="block rounded-lg px-2 py-2 text-sm font-semibold km-text-muted hover:text-brand"
-                          >
-                            {link.label}
-                          </Link>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+            <div className="space-y-0.5">
+              <p className="px-2 pb-1 text-[9px] font-black uppercase tracking-[0.24em] text-brand">Pages</p>
+              {navItems.map((item) => (
+                <NavItem key={item.href + item.label} item={item} onClick={() => setMobileOpen(false)} />
               ))}
-              <Link
-                to="/contact"
-                className="km-button km-button-primary mt-2 w-full"
-                onClick={() => setMobileOpen(false)}
-              >
-                Contact
-              </Link>
+              <hr className="my-2 border-[var(--km-border)]" />
+              <p className="px-2 pb-1 text-[9px] font-black uppercase tracking-[0.24em] text-brand">Admin</p>
+              {adminItems.map((item) => (
+                <NavItem key={item.href + item.label} item={item} onClick={() => setMobileOpen(false)} />
+              ))}
             </div>
+            <Link
+              to="/contact"
+              className="km-button km-button-primary mt-4 w-full"
+              onClick={() => setMobileOpen(false)}
+            >
+              Contact
+            </Link>
           </div>
         )}
       </header>

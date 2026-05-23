@@ -1,250 +1,131 @@
-import {
-  createContactMessage,
-  createSubscriber,
-  getDbPath,
-  getHealthSummary,
-  getNewsletterById,
-  listNewsletters,
-  listPosts,
-  listProjects,
-  listSubscribers,
-  listTemplates,
-  updateNewsletter,
-} from './db';
+import { Hono } from 'hono';
+import { OpenAPIHono } from '@hono/zod-openapi';
+import { cors } from 'hono/cors';
+import { logger } from 'hono/logger';
 
-const port = Number(process.env.PORT || 3001);
+import { authApp } from './routes/auth';
+import { contactApp } from './routes/contact';
+import { newslettersApp } from './routes/newsletters';
+import { postsApp } from './routes/posts';
+import { projectsApp } from './routes/projects';
+import { subscribersApp } from './routes/subscribers';
+import { templatesApp } from './routes/templates';
+
+const app = new OpenAPIHono();
+
+// ── Middleware ──────────────────────────────────────────────────────
+
 const allowedOrigins = (process.env.CORS_ORIGINS || 'http://localhost:3000,https://kurtmorales.com')
   .split(',')
-  .map((value) => value.trim())
+  .map((v) => v.trim())
   .filter(Boolean);
-const adminSecret = process.env.BACKEND_ADMIN_SECRET || '';
 
-function corsHeaders(request: Request) {
-  const origin = request.headers.get('origin');
-  const allowOrigin = origin && allowedOrigins.includes(origin) ? origin : '*';
+app.use('*', cors({
+  origin: allowedOrigins,
+  allowMethods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowHeaders: ['Content-Type', 'Authorization'],
+  maxAge: 600,
+  credentials: true,
+}));
 
-  return {
-    'Access-Control-Allow-Origin': allowOrigin,
-    'Access-Control-Allow-Methods': 'GET,POST,PATCH,OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-    Vary: 'Origin',
-  };
-}
+app.use('*', logger());
 
-function json(request: Request, body: unknown, status = 200, headers: HeadersInit = {}) {
-  return new Response(JSON.stringify(body), {
-    status,
-    headers: {
-      'Content-Type': 'application/json',
-      ...corsHeaders(request),
-      ...headers,
-    },
-  });
-}
+// ── OpenAPI docs ───────────────────────────────────────────────────
 
-function text(request: Request, body: string, status = 200) {
-  return new Response(body, {
-    status,
-    headers: {
-      'Content-Type': 'text/plain; charset=utf-8',
-      ...corsHeaders(request),
-    },
-  });
-}
-
-function parseLimit(value: string | null, fallback: number) {
-  if (!value) return fallback;
-  const parsed = Number.parseInt(value, 10);
-  return Number.isFinite(parsed) && parsed >= 1 ? parsed : fallback;
-}
-
-function isAuthorized(request: Request) {
-  if (!adminSecret) return false;
-  return request.headers.get('authorization') === `Bearer ${adminSecret}`;
-}
-
-async function readJson<T>(request: Request): Promise<T | null> {
-  try {
-    return (await request.json()) as T;
-  } catch {
-    return null;
-  }
-}
-
-const server = Bun.serve({
-  port,
-  async fetch(request) {
-    const url = new URL(request.url);
-    const { pathname, searchParams } = url;
-
-    if (request.method === 'OPTIONS') {
-      return new Response(null, { status: 204, headers: corsHeaders(request) });
-    }
-
-    try {
-      if (pathname === '/') {
-        return text(request, `KurtMorales Bun backend running on :${port}\nDB: ${getDbPath()}`);
-      }
-
-      if ((pathname === '/health' || pathname === '/api/health') && request.method === 'GET') {
-        return json(request, {
-          ok: true,
-          service: 'kurtmorales-backend',
-          ...getHealthSummary(),
-        });
-      }
-
-      if (pathname === '/api/posts' && request.method === 'GET') {
-        const docs = listPosts({
-          status:
-            (searchParams.get('where[status][equals]') as 'draft' | 'published' | null) ??
-            undefined,
-          slug: searchParams.get('where[slug][equals]') ?? undefined,
-          limit: parseLimit(searchParams.get('limit'), 150),
-          sort: searchParams.get('sort') ?? '-date',
-        });
-
-        return json(request, {
-          docs,
-          totalDocs: docs.length,
-          limit: docs.length,
-        });
-      }
-
-      if (pathname === '/api/projects' && request.method === 'GET') {
-        const docs = listProjects(parseLimit(searchParams.get('limit'), 50));
-        return json(request, {
-          docs,
-          totalDocs: docs.length,
-          limit: docs.length,
-        });
-      }
-
-      if (pathname === '/api/templates' && request.method === 'GET') {
-        const docs = listTemplates(parseLimit(searchParams.get('limit'), 50));
-        return json(request, {
-          docs,
-          totalDocs: docs.length,
-          limit: docs.length,
-        });
-      }
-
-      if (pathname === '/api/subscribers' && request.method === 'GET') {
-        const docs = listSubscribers(parseLimit(searchParams.get('limit'), 1000));
-        return json(request, {
-          docs,
-          totalDocs: docs.length,
-          limit: docs.length,
-        });
-      }
-
-      if (pathname === '/api/subscribers' && request.method === 'POST') {
-        const body = await readJson<{ email?: string; name?: string }>(request);
-
-        if (!body?.email || !/^\S+@\S+\.\S+$/.test(body.email)) {
-          return json(request, { error: 'A valid email is required' }, 400);
-        }
-
-        const doc = createSubscriber({ email: body.email, name: body.name });
-        return json(request, { doc }, 201);
-      }
-
-      if (pathname === '/api/contact' && request.method === 'POST') {
-        const body = await readJson<{
-          name?: string;
-          email?: string;
-          project?: string;
-          budget?: string;
-          message?: string;
-        }>(request);
-
-        if (!body?.name?.trim()) {
-          return json(request, { error: 'Name is required' }, 400);
-        }
-
-        if (!body?.email || !/^\S+@\S+\.\S+$/.test(body.email)) {
-          return json(request, { error: 'A valid email is required' }, 400);
-        }
-
-        if (!body?.message?.trim()) {
-          return json(request, { error: 'Message is required' }, 400);
-        }
-
-        const doc = createContactMessage({
-          name: body.name,
-          email: body.email,
-          project: body.project,
-          budget: body.budget,
-          message: body.message,
-        });
-
-        return json(request, { success: true, doc }, 201);
-      }
-
-      if (pathname === '/api/newsletters' && request.method === 'GET') {
-        const docs = listNewsletters(parseLimit(searchParams.get('limit'), 50));
-        return json(request, {
-          docs,
-          totalDocs: docs.length,
-          limit: docs.length,
-        });
-      }
-
-      const newsletterMatch = pathname.match(/^\/api\/newsletters\/([^/]+)$/);
-      if (newsletterMatch) {
-        const id = decodeURIComponent(newsletterMatch[1]);
-
-        if (request.method === 'GET') {
-          const doc = getNewsletterById(id);
-          return doc ? json(request, { doc }) : json(request, { error: 'Not found' }, 404);
-        }
-
-        if (request.method === 'PATCH') {
-          if (!isAuthorized(request)) {
-            return json(request, { error: 'Unauthorized' }, 401);
-          }
-
-          const body = await readJson<Record<string, unknown>>(request);
-          if (!body) {
-            return json(request, { error: 'Invalid JSON body' }, 400);
-          }
-
-          const status = body.status;
-          if (
-            status !== undefined &&
-            status !== 'draft' &&
-            status !== 'sending' &&
-            status !== 'sent'
-          ) {
-            return json(request, { error: 'Invalid newsletter status' }, 400);
-          }
-
-          const doc = updateNewsletter(id, {
-            title: typeof body.title === 'string' ? body.title : undefined,
-            subject: typeof body.subject === 'string' ? body.subject : undefined,
-            preheader: typeof body.preheader === 'string' ? body.preheader : undefined,
-            contentMarkdown:
-              typeof body.contentMarkdown === 'string' ? body.contentMarkdown : undefined,
-            html: typeof body.html === 'string' ? body.html : undefined,
-            text: typeof body.text === 'string' ? body.text : undefined,
-            status:
-              typeof status === 'string' ? (status as 'draft' | 'sending' | 'sent') : undefined,
-            sentAt: typeof body.sentAt === 'string' ? body.sentAt : undefined,
-            recipientsCount:
-              typeof body.recipientsCount === 'number' ? body.recipientsCount : undefined,
-          });
-
-          return doc ? json(request, { doc }) : json(request, { error: 'Not found' }, 404);
-        }
-      }
-
-      return json(request, { error: 'Not found' }, 404);
-    } catch (error) {
-      console.error('[backend]', error);
-      return json(request, { error: 'Internal server error', details: String(error) }, 500);
-    }
+app.doc('/openapi.json', {
+  openapi: '3.1.0',
+  info: {
+    title: 'KurtMorales API',
+    version: '1.0.0',
+    description: 'KurtMorales portfolio backend API — Bun + Hono + Drizzle + Zod',
+    contact: { name: 'Kurt Morales', url: 'https://kurtmorales.com' },
   },
+  servers: [{ url: 'http://localhost:3001', description: 'Development' }],
+  tags: [
+    { name: 'Health', description: 'Service health checks' },
+    { name: 'Posts', description: 'Blog post management' },
+    { name: 'Projects', description: 'Portfolio project management' },
+    { name: 'Templates', description: 'Template marketplace management' },
+    { name: 'Subscribers', description: 'Newsletter subscriber management' },
+    { name: 'Newsletters', description: 'Newsletter management' },
+    { name: 'Contact', description: 'Contact message submission and management' },
+    { name: 'Auth', description: 'Admin authentication' },
+  ],
 });
 
-console.log(`🚀 KurtMorales backend listening on http://localhost:${server.port}`);
-console.log(`🗄️  SQLite database: ${getDbPath()}`);
+// Serve Scalar API reference at /docs
+app.get('/docs', (c) => {
+  return c.html(`<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KurtMorales API Docs</title>
+  <script src="https://cdn.jsdelivr.net/npm/@scalar/api-reference@latest/dist/cdn.min.js"></script>
+</head>
+<body>
+  <script>
+    const configuration = { spec: { url: '/openapi.json' } };
+    const element = document.createElement('api-reference');
+    element.setAttribute('configuration', JSON.stringify(configuration));
+    document.body.appendChild(element);
+  </script>
+</body>
+</html>`);
+});
+
+// ── Health (public) ───────────────────────────────────────────────
+
+import { getDbPath, getHealthSummary } from './drizzle/db';
+
+app.get('/health', (c) => {
+  return c.json({ ok: true, service: 'kurtmorales-backend', ...getHealthSummary() });
+});
+
+app.get('/api/health', (c) => {
+  return c.json({ ok: true, service: 'kurtmorales-backend', ...getHealthSummary() });
+});
+
+// ── Mount route apps ──────────────────────────────────────────────
+
+// Auth
+app.route('/api/admin', authApp);
+
+// Public content APIs
+app.route('/api/posts', postsApp);
+app.route('/api/projects', projectsApp);
+app.route('/api/templates', templatesApp);
+app.route('/api/subscribers', subscribersApp);
+app.route('/api/newsletters', newslettersApp);
+app.route('/api/contact', contactApp);
+
+// ── 404 fallback ──────────────────────────────────────────────────
+
+app.notFound((c) => {
+  return c.json({ error: 'Not found', path: c.req.path }, 404);
+});
+
+// ── Error handler ─────────────────────────────────────────────────
+
+app.onError((err, c) => {
+  console.error(`[ERROR] ${c.req.method} ${c.req.path}:`, err);
+  return c.json({ error: 'Internal server error', details: process.env.NODE_ENV === 'development' ? String(err) : undefined }, 500);
+});
+
+// ── Start ─────────────────────────────────────────────────────────
+
+const port = Number(process.env.PORT || 3001);
+
+export default app;
+
+if (import.meta.main) {
+  console.log(`🚀 KurtMorales backend listening on http://localhost:${port}`);
+  console.log(`🗄️  SQLite database: ${getDbPath()}`);
+  console.log(`📖 OpenAPI docs:     http://localhost:${port}/swagger`);
+  console.log(`🔑 Admin login:      POST /api/admin/login { secret: "..." }`);
+
+  Bun.serve({
+    fetch: app.fetch,
+    port,
+  });
+}

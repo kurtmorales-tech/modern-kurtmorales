@@ -1,19 +1,16 @@
-/**
- * Deletes the SQLite file (and WAL sidecars) then runs seed.
- * Stop the backend dev server first so the file is not locked.
- */
-import { existsSync, unlinkSync } from 'node:fs';
-import { join } from 'node:path';
+import { migrate } from 'drizzle-orm/bun-sqlite';
+import { Database } from 'bun:sqlite';
+import { mkdirSync, rmSync } from 'node:fs';
+import { join, dirname } from 'node:path';
 
-const dataDir = join(import.meta.dir, '..', 'data');
-const dbPath = process.env.DATABASE_PATH || join(dataDir, 'kurtmorales.db');
+const dbPath = process.env.DATABASE_PATH || join(import.meta.dir, 'data', 'kurtmorales.db');
+mkdirSync(dirname(dbPath), { recursive: true });
 
-const paths = [dbPath, `${dbPath}-wal`, `${dbPath}-shm`];
-for (const p of paths) {
-  if (existsSync(p)) {
-    unlinkSync(p);
-    console.log(`Removed ${p}`);
-  }
-}
+// Delete existing DB file to start fresh
+rmSync(dbPath, { force: true });
 
-await import('./seed.ts');
+// Re-create empty DB and run migrations
+const db = new Database(dbPath);
+migrate(db, { migrationsFolder: join(import.meta.dir, 'drizzle') });
+
+console.log('Database reset complete. Run `bun run seed` to populate seed data.');

@@ -1,4 +1,4 @@
-import type { Post, Project, Template, Upload } from '../types';
+import type { ContactMessage, Newsletter, Post, Project, Subscriber, Template, Upload } from '../types';
 import { fallbackPosts, fallbackProjects, fallbackTemplates } from './fallback';
 
 export function getBackendBaseURL(): string {
@@ -35,8 +35,8 @@ export function absolutizeUpload<T extends Record<string, unknown>>(doc: T): T {
 
   for (const key of uploadKeys) {
     const upload = doc[key];
-    if (isUpload(upload) && typeof upload.url === 'string' && upload.url.startsWith('/')) {
-      upload.url = `${API_BASE}${upload.url}`;
+    if (isUpload(upload) && typeof (upload as any).url === 'string' && (upload as any).url.startsWith('/')) {
+      (upload as any).url = `${API_BASE}${(upload as any).url}`;
     }
   }
 
@@ -57,6 +57,8 @@ async function fetchList<T>(path: string, params?: Record<string, string | numbe
     return [];
   }
 }
+
+// ---- Public APIs ----
 
 export async function getPosts(): Promise<Post[]> {
   const posts = await fetchList<Post>('/api/posts', {
@@ -137,4 +139,160 @@ export async function submitContact(payload: {
   } catch {
     return false;
   }
+}
+
+// ---- Admin API ----
+
+const ADMIN_TOKEN_KEY = 'km-admin-secret';
+
+function getAdminToken(): string | null {
+  return localStorage.getItem(ADMIN_TOKEN_KEY);
+}
+
+function adminHeaders(): Record<string, string> {
+  const token = getAdminToken();
+  return token
+    ? { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` }
+    : { 'Content-Type': 'application/json' };
+}
+
+export async function adminLogin(secret: string): Promise<boolean> {
+  try {
+    const res = await fetch(apiURL('/api/admin/login'), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ secret }),
+    });
+    if (!res.ok) return false;
+    const data = (await res.json()) as { token?: string };
+    if (data.token) {
+      localStorage.setItem(ADMIN_TOKEN_KEY, data.token);
+      return true;
+    }
+    return false;
+  } catch {
+    return false;
+  }
+}
+
+export function adminLogout() {
+  localStorage.removeItem(ADMIN_TOKEN_KEY);
+}
+
+export function isAdminAuthenticated(): boolean {
+  return !!getAdminToken();
+}
+
+async function adminFetch<T>(path: string, options?: RequestInit): Promise<T | null> {
+  try {
+    const res = await fetch(apiURL(path), {
+      ...options,
+      headers: { ...adminHeaders(), ...options?.headers },
+    });
+    if (!res.ok) return null;
+    return (await res.json()) as T;
+  } catch {
+    return null;
+  }
+}
+
+// Posts admin
+export async function adminListPosts() {
+  const data = await adminFetch<{ docs: Post[] }>('/api/admin/posts', { method: 'GET' });
+  return data?.docs ?? [];
+}
+
+export async function adminCreatePost(body: Record<string, unknown>) {
+  const data = await adminFetch<{ doc: Post }>('/api/admin/posts', { method: 'POST', body: JSON.stringify(body) });
+  return data?.doc ?? null;
+}
+
+export async function adminUpdatePost(id: string, body: Record<string, unknown>) {
+  const data = await adminFetch<{ doc: Post }>(`/api/admin/posts/${encodeURIComponent(id)}`, { method: 'PUT', body: JSON.stringify(body) });
+  return data?.doc ?? null;
+}
+
+export async function adminDeletePost(id: string) {
+  const data = await adminFetch<{ success: boolean }>(`/api/admin/posts/${encodeURIComponent(id)}`, { method: 'DELETE' });
+  return data?.success ?? false;
+}
+
+// Projects admin
+export async function adminListProjects() {
+  const data = await adminFetch<{ docs: Project[] }>('/api/admin/projects', { method: 'GET' });
+  return data?.docs ?? [];
+}
+
+export async function adminCreateProject(body: Record<string, unknown>) {
+  const data = await adminFetch<{ doc: Project }>('/api/admin/projects', { method: 'POST', body: JSON.stringify(body) });
+  return data?.doc ?? null;
+}
+
+export async function adminUpdateProject(id: string, body: Record<string, unknown>) {
+  const data = await adminFetch<{ doc: Project }>(`/api/admin/projects/${encodeURIComponent(id)}`, { method: 'PUT', body: JSON.stringify(body) });
+  return data?.doc ?? null;
+}
+
+export async function adminDeleteProject(id: string) {
+  const data = await adminFetch<{ success: boolean }>(`/api/admin/projects/${encodeURIComponent(id)}`, { method: 'DELETE' });
+  return data?.success ?? false;
+}
+
+// Templates admin
+export async function adminListTemplates() {
+  const data = await adminFetch<{ docs: Template[] }>('/api/admin/templates', { method: 'GET' });
+  return data?.docs ?? [];
+}
+
+export async function adminCreateTemplate(body: Record<string, unknown>) {
+  const data = await adminFetch<{ doc: Template }>('/api/admin/templates', { method: 'POST', body: JSON.stringify(body) });
+  return data?.doc ?? null;
+}
+
+export async function adminUpdateTemplate(id: string, body: Record<string, unknown>) {
+  const data = await adminFetch<{ doc: Template }>(`/api/admin/templates/${encodeURIComponent(id)}`, { method: 'PUT', body: JSON.stringify(body) });
+  return data?.doc ?? null;
+}
+
+export async function adminDeleteTemplate(id: string) {
+  const data = await adminFetch<{ success: boolean }>(`/api/admin/templates/${encodeURIComponent(id)}`, { method: 'DELETE' });
+  return data?.success ?? false;
+}
+
+// Subscribers admin — uses the same public endpoint with higher limit, plus individual delete
+export async function adminListSubscribers() {
+  const data = await adminFetch<{ docs: Subscriber[] }>('/api/subscribers', { method: 'GET', limit: 10000 });
+  return data?.docs ?? [];
+}
+
+export async function adminDeleteSubscriber(id: string) {
+  const data = await adminFetch<{ success: boolean }>(`/api/subscribers/${encodeURIComponent(id)}`, { method: 'DELETE' });
+  return data?.success ?? false;
+}
+
+// Contact messages admin
+export async function adminListContactMessages() {
+  const data = await adminFetch<{ docs: ContactMessage[] }>('/api/contact/messages', { method: 'GET' });
+  return data?.docs ?? [];
+}
+
+export async function adminGetContactMessage(id: string) {
+  const data = await adminFetch<{ doc: ContactMessage }>(`/api/contact/messages/${encodeURIComponent(id)}`, { method: 'GET' });
+  return data?.doc ?? null;
+}
+
+export async function adminDeleteContactMessage(id: string) {
+  const data = await adminFetch<{ success: boolean }>(`/api/contact/messages/${encodeURIComponent(id)}`, { method: 'DELETE' });
+  return data?.success ?? false;
+}
+
+// Newsletters admin
+export async function adminListNewsletters() {
+  const data = await adminFetch<{ docs: Newsletter[] }>('/api/newsletters/list', { method: 'GET' });
+  return data?.docs ?? [];
+}
+
+export async function adminDeleteNewsletter(id: string) {
+  const data = await adminFetch<{ success: boolean }>('/api/newsletters', { method: 'DELETE', body: JSON.stringify({ id }) });
+  return data?.success ?? false;
 }

@@ -48,5 +48,9 @@
     "@types/node": "^24.10.0",
     "tsx": "^4.21.0",
     "prettier": "^3.6.2"
+  },
+  "dependencies": {
+    "bun-plugin-tailwind": "^0.1.2",
+    "tailwindcss": "^4.3.0"
   }
 }
