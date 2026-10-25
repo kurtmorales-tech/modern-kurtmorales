@@ -44,14 +44,14 @@ const credentials = [
 export function AboutPage() {
   useSeo(
     'About — KurtMorales',
-    'Kurt Anthony Morales — Las Vegas freelance web designer and developer building clean, fast websites for small businesses and service providers.',
+    'Kurt Morales — Las Vegas freelance web designer and developer building clean, fast websites for small businesses and service providers.',
     { canonical: '/about' },
   );
 
   return (
     <main id="main-content">
       <section className="pt-32 pb-24 border-b border-gray-100">
-        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-[1.2fr_0.8fr] gap-20 items-start">
+        <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 gap-20 items-start">
           <div>
             <span className="text-gray-400 font-bold text-[10px] tracking-widest uppercase block mb-6 reveal">
               About
@@ -68,8 +68,8 @@ export function AboutPage() {
               className="text-gray-500 text-lg leading-relaxed max-w-xl reveal"
               style={{ transitionDelay: '200ms' }}
             >
-              I&apos;m Kurt Anthony Morales — a freelance web designer and developer based in Las
-              Vegas, NV. I specialize in building clean, fast, conversion-focused websites for small
+              I&apos;m Kurt Morales — a freelance web designer and developer based in Las Vegas,
+              Nevada. I specialize in building clean, fast, conversion-focused websites for small
               businesses, service providers, and startups.
             </p>
           </div>
@@ -86,14 +86,14 @@ export function AboutPage() {
               <li>📍 Las Vegas, Nevada</li>
               <li>💼 Freelance since 2025</li>
               <li>🌐 Remote-first, globally active</li>
-              <li>⚡ Cloudflare &amp; Vercel deployment</li>
-              <li>🎓 Google &amp; Microsoft certified</li>
+              <li>⚡ Cloudflare & Vercel deployment</li>
+              <li>🎓 Google & Microsoft certified</li>
             </ul>
           </div>
         </div>
       </section>
       <section className="py-24 border-b border-gray-100 bg-white">
-        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-[0.8fr_1.2fr] gap-20 items-start">
+        <div className="max-w-6xl mx-auto px-6 grid grid-cols-[0.8fr_1.2fr] gap-20 items-start">
           <div className="reveal-left">
             <span className="text-gray-400 font-bold text-[10px] tracking-widest uppercase block mb-4">
               My Story
@@ -207,7 +207,7 @@ export function AboutPage() {
             className="reveal flex flex-wrap justify-center gap-4"
             style={{ transitionDelay: '200ms' }}
           >
-            <a href="mailto:email@kurtmorales.com" className="km-button km-button-primary">
+            <a href="mailto:xkamhype@gmail.com" className="km-button km-button-primary">
               Start a Conversation
             </a>
             <Link to="/#projects" className="km-button km-button-dark">

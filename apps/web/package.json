@@ -8,11 +8,13 @@
     "preview": "bunx --bun vite preview --port 3000"
   },
   "dependencies": {
+    "@kurtmorales/schema": "workspace:*",
+    "lucide-react": "^1.60.0",
+    "motion": "^14.5.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.9.3",
-    "tailwindcss": "^4.2.4",
-    "@kurtmorales/schema": "workspace:*"
+    "tailwindcss": "^4.2.4"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.2.4",

@@ -3,8 +3,8 @@ import { useSeo } from '../lib/seo';
 
 export function NotFoundPage() {
   useSeo(
-    'Page Not Found — KurtMorales',
-    'The page you are looking for could not be found. Return to KurtMorales resources, templates, portfolio, or contact.',
+    'Page Not Found | KM Web Design',
+    'The page you are looking for could not be found. Return to KM Web Design services, restaurant work, blog, or contact.',
     { canonical: '/404', noindex: true },
   );
   return (

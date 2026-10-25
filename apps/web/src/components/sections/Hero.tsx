@@ -1,51 +1,49 @@
 export function Hero() {
   const availability = [
-    'Las Vegas based, globally active',
-    'Cloudflare & Vercel deployment',
-    'Modern TypeScript architecture',
-    'User-centric interface design',
+    'Restaurant-first strategy and design',
+    'Mobile menus built for hungry guests',
+    'Reservations, ordering, and POS integrations',
+    'Fast Cloudflare-ready deployment',
   ];
 
   return (
     <section id="home" className="relative pt-32 pb-40 mesh-gradient grain overflow-hidden">
       <div className="absolute top-20 right-10 w-72 h-72 bg-brand/8 blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-48 h-48 bg-[var(--km-surface-muted)] blur-2xl pointer-events-none" />
-      <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-[1.2fr_0.8fr] gap-20 items-center relative z-10">
+      <div className="max-w-6xl mx-auto px-6 grid gap-12 lg:grid-cols-2 lg:gap-20 items-center relative z-10">
         <div>
           <div className="reveal km-pill mb-8">
             <span className="w-2 h-2 bg-green-500 pulse-dot" />
             <span className="text-[10px] font-black tracking-[0.18em] uppercase km-text-muted">
-              $ available --for-projects
+              Las Vegas restaurant web design
             </span>
           </div>
           <h1
             className="reveal text-5xl md:text-[5.5rem] font-display font-medium leading-[0.92] tracking-tight mb-10"
             style={{ transitionDelay: '100ms' }}
           >
-            <span className="text-brand">Purposeful</span>
-            <span className="km-text-strong"> design.</span>
+            <span className="text-brand">Turn local searches</span>
+            <span className="km-text-strong"> into tables.</span>
             <br />
-            <span className="km-text-strong">Fast </span>
-            <span className="text-brand">performance.</span>
+            <span className="km-text-strong">Websites built for </span>
+            <span className="text-brand">restaurants.</span>
           </h1>
           <p
             className="reveal text-lg md:text-xl km-text-muted mb-12 max-w-xl leading-relaxed"
             style={{ transitionDelay: '200ms' }}
           >
-            KurtMorales builds high-performance web experiences that focus on clarity, conversion,
-            and long-term business growth.
+            KM Web Design is a small Las Vegas team creating custom restaurant websites that make
+            menus easier to browse, reservations easier to book, and your business easier to find.
           </p>
           <div className="reveal flex flex-col gap-6" style={{ transitionDelay: '300ms' }}>
             <div className="flex flex-wrap gap-4">
-              <a href="mailto:email@kurtmorales.com" className="km-button km-button-primary group">
-                Let&apos;s Talk Projects <span aria-hidden>→</span>
-              </a>
+              <a href="/contact" className="km-button km-button-primary group">Book a discovery call</a>
               <a href="#projects" className="km-button km-button-secondary">
                 Explore Portfolio
               </a>
             </div>
             <p className="font-mono text-[10px] font-black uppercase tracking-[0.16em] km-text-soft">
-              preferred contact: email / social media
+              Tell us about your restaurant — we reply within one business day
             </p>
           </div>
         </div>
@@ -55,11 +53,11 @@ export function Hero() {
           <div className="flex items-center gap-3 mb-8">
             <span className="w-2 h-2 bg-brand" />
             <span className="font-mono text-[10px] font-black uppercase tracking-widest km-text-strong">
-              ./current-availability
+              What your new site can do
             </span>
           </div>
           <h2 className="text-2xl font-display font-medium mb-8 leading-tight">
-            Delivering clean solutions for local & global businesses.
+            A practical digital front door for your restaurant.
           </h2>
           <ul className="space-y-5 text-sm km-text-muted">
             {availability.map((item) => (

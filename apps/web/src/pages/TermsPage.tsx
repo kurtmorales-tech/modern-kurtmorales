@@ -1,7 +1,7 @@
 import { useSeo } from '../lib/seo';
 
 export function TermsPage() {
-  useSeo('Terms of Service — KurtMorales', 'KurtMorales terms of service.', {
+  useSeo('Terms of Service | KM Web Design', 'KM Web Design terms of service.', {
     canonical: '/terms',
   });
   return (
@@ -18,8 +18,8 @@ export function TermsPage() {
         </p>
         <div className="prose max-w-none">
           <p>
-            By engaging KurtMorales for web design or development services, you agree to the
-            following terms. These govern the relationship between KurtMorales Studio
+            By engaging KM Web Design for web design or development services, you agree to the
+            following terms. These govern the relationship between KM Web Design
             (&quot;we&quot;, &quot;us&quot;) and the client (&quot;you&quot;).
           </p>
           <h2>01. Service Engagement</h2>
@@ -30,7 +30,7 @@ export function TermsPage() {
           <h2>02. Intellectual Property</h2>
           <p>
             Ownership of produced digital assets is transferred to the client upon receipt of final
-            project payment, unless otherwise specified in writing. KurtMorales retains the right to
+            project payment, unless otherwise specified in writing. KM Web Design retains the right to
             display completed work in its portfolio.
           </p>
           <h2>03. Payment</h2>
@@ -45,7 +45,7 @@ export function TermsPage() {
           </p>
           <h2>05. Limitation of Liability</h2>
           <p>
-            KurtMorales is not liable for indirect, incidental, or consequential damages arising
+            KM Web Design is not liable for indirect, incidental, or consequential damages arising
             from use or inability to use delivered websites or digital assets.
           </p>
           <h2>06. Termination</h2>
@@ -58,7 +58,7 @@ export function TermsPage() {
           <h2>Contact</h2>
           <p>
             Questions about these terms? Contact us at{' '}
-            <a href="mailto:email@kurtmorales.com">email@kurtmorales.com</a>.
+            <a href="mailto:hello@kmwebdesign.xyz">hello@kmwebdesign.xyz</a>.
           </p>
         </div>
       </div>

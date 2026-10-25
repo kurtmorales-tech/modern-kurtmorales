@@ -1,7 +1,7 @@
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
-const STORAGE_KEY = 'kurtmorales-theme';
+const STORAGE_KEY = 'kmwebdesign-theme';
 const HEADER_HIDE_THRESHOLD = 120;
 const HEADER_HIDE_DELAY_MS = 90;
 
@@ -58,10 +58,17 @@ const moreNavItems: NavItem[] = [
 const studioNavItems: NavItem[] = [
   {
     href: '/dashboard',
-    label: 'Dashboard',
+    label: 'Operations',
     section: 'studio',
     icon: 'dashboard',
     description: 'API health and admin tables',
+  },
+  {
+    href: '/owner',
+    label: 'Owner View',
+    section: 'studio',
+    icon: 'dashboard',
+    description: 'Private business snapshot',
   },
   {
     href: '/studio/blog',
@@ -330,12 +337,12 @@ export function Header() {
           <Link
             to="/"
             className="group inline-flex items-center justify-self-start gap-3 text-xl font-bold tracking-tight km-text-strong transition-colors duration-300 hover:text-brand shrink-0"
-            aria-label="Kurt Morales home"
+            aria-label="KM Web Design home"
           >
             <span className="inline-flex h-3 w-3 rounded-full bg-brand/80 shadow-[0_0_0_6px_rgba(244,129,32,0.12)]" />
-            Kurt
+            KM
             <span className="text-brand transition-colors duration-300 group-hover:text-brand-dark">
-              Morales
+              Web Design
             </span>
           </Link>
 

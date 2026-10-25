@@ -1,7 +1,7 @@
 import { useSeo } from '../lib/seo';
 
 export function PrivacyPage() {
-  useSeo('Privacy Policy — KurtMorales', 'KurtMorales privacy policy.', { canonical: '/privacy' });
+  useSeo('Privacy Policy | KM Web Design', 'KM Web Design privacy policy.', { canonical: '/privacy' });
   return (
     <main id="main-content" className="pt-32 pb-32">
       <div className="max-w-3xl mx-auto px-6">
@@ -16,7 +16,7 @@ export function PrivacyPage() {
         </p>
         <div className="prose max-w-none">
           <p>
-            At KurtMorales, your privacy is fundamental. This policy outlines how we handle
+            At KM Web Design, your privacy is fundamental. This policy outlines how we handle
             information collected during digital design engagements.
           </p>
           <h2>01. Data Collection</h2>
@@ -45,7 +45,7 @@ export function PrivacyPage() {
           <h2>05. Your Rights</h2>
           <p>
             You have the right to request deletion of any data you&apos;ve submitted. To do so,
-            contact us at <a href="mailto:email@kurtmorales.com">email@kurtmorales.com</a>.
+            contact us at <a href="mailto:hello@kmwebdesign.xyz">hello@kmwebdesign.xyz</a>.
           </p>
           <h2>06. Changes</h2>
           <p>
@@ -54,7 +54,7 @@ export function PrivacyPage() {
           </p>
           <h2>Contact</h2>
           <p>
-            Questions? Reach out at <a href="mailto:email@kurtmorales.com">email@kurtmorales.com</a>
+            Questions? Reach out at <a href="mailto:hello@kmwebdesign.xyz">hello@kmwebdesign.xyz</a>
             .
           </p>
         </div>

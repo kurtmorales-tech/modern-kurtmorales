@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tenant Dashboard — Harbourview</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cabinet+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f4ef;
+  --surface: #ffffff;
+  --surface2: #f0ece4;
+  --ink: #1a1714;
+  --mid: #7a7060;
+  --border: #e2ddd4;
+  --teal: #1a7a6e;
+  --teal-light: #e8f5f3;
+  --teal-mid: #2a9d8d;
+  --amber: #e07b39;
+  --amber-light: #fdf0e6;
+  --red: #c0392b;
+  --red-light: #fdecea;
+  --green: #2d9b58;
+  --green-light: #edfaf3;
+  --shadow-sm: 0 2px 8px rgba(26,23,20,0.07);
+  --shadow-md: 0 8px 32px rgba(26,23,20,0.10);
+  --shadow-lg: 0 20px 60px rgba(26,23,20,0.15);
+  --tour-accent: #1a7a6e;
+  --tour-bg: #ffffff;
+  --tour-overlay: rgba(26,23,20,0.45);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+
+body {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.5;
+  overflow: hidden;
+}
+
+/* ─── LAYOUT ─── */
+.app { display: grid; grid-template-columns: 240px 1fr; height: 100vh; }
+
+/* ─── SIDEBAR ─── */
+.sidebar {
+  background: var(--ink);
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+}
+
+.sidebar-logo {
+  padding: 24px 20px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-mark {
+  width: 34px; height: 34px;
+  background: var(--teal-mid);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.logo-text {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: 16px;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: 0.02em;
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow-y: auto;
+}
+
+.nav-section-label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  padding: 12px 8px 6px;
+  margin-top: 8px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  color: rgba(255,255,255,0.55);
+  font-size: 13.5px;
+  font-weight: 500;
+  position: relative;
+  text-decoration: none;
+  user-select: none;
+}
+
+.nav-item:hover { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.85); }
+.nav-item.active { background: rgba(42,157,141,0.2); color: #fff; }
+.nav-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 25%; bottom: 25%;
+  width: 3px;
+  background: var(--teal-mid);
+  border-radius: 0 3px 3px 0;
+  left: -12px;
+  border-radius: 0 3px 3px 0;
+}
+
+.nav-icon { font-size: 16px; width: 20px; text-align: center; flex-shrink: 0; }
+
+.nav-badge {
+  margin-left: auto;
+  background: var(--amber);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 10px;
+  line-height: 1.4;
+}
+
+.sidebar-footer {
+  padding: 16px 12px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+
+.tenant-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.tenant-pill:hover { background: rgba(255,255,255,0.1); }
+
+.tenant-avatar {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--teal-mid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  color: #fff;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.tenant-name { font-size: 13px; color: rgba(255,255,255,0.8); font-weight: 500; }
+.tenant-unit { font-size: 11px; color: rgba(255,255,255,0.35); }
+
+/* ─── MAIN ─── */
+.main { display: flex; flex-direction: column; overflow: hidden; }
+
+.topbar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 32px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.topbar-title {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--ink);
+}
+
+.topbar-actions { display: flex; align-items: center; gap: 12px; }
+
+.icon-btn {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: transparent;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  transition: background 0.2s;
+  position: relative;
+}
+
+.icon-btn:hover { background: var(--surface2); }
+
+.notif-dot {
+  position: absolute;
+  top: 6px; right: 6px;
+  width: 7px; height: 7px;
+  background: var(--amber);
+  border-radius: 50%;
+  border: 1.5px solid var(--surface);
+}
+
+.tour-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--teal);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.tour-btn:hover { background: var(--teal-mid); transform: translateY(-1px); }
+
+/* ─── CONTENT ─── */
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Welcome strip */
+.welcome-strip {
+  background: linear-gradient(135deg, var(--teal) 0%, var(--teal-mid) 100%);
+  border-radius: 14px;
+  padding: 24px 28px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  position: relative;
+}
+
+.welcome-strip::after {
+  content: '🏠';
+  position: absolute;
+  right: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 64px;
+  opacity: 0.12;
+}
+
+.welcome-greeting {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-bottom: 4px;
+}
+
+.welcome-name {
+  font-family: 'Fraunces', serif;
+  font-size: 26px;
+  font-weight: 300;
+  letter-spacing: -0.3px;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.welcome-meta { font-size: 13px; opacity: 0.7; }
+
+.welcome-lease {
+  text-align: right;
+}
+
+.lease-label { font-size: 11px; opacity: 0.6; text-transform: uppercase; letter-spacing: 0.08em; }
+.lease-days {
+  font-family: 'Fraunces', serif;
+  font-size: 42px;
+  font-weight: 300;
+  line-height: 1;
+  margin: 4px 0;
+}
+.lease-sub { font-size: 12px; opacity: 0.6; }
+
+/* Stats row */
+.stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  transition: box-shadow 0.2s;
+}
+
+.stat-card:hover { box-shadow: var(--shadow-md); }
+
+.stat-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+
+.stat-icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+}
+
+.stat-icon.teal { background: var(--teal-light); }
+.stat-icon.amber { background: var(--amber-light); }
+.stat-icon.red { background: var(--red-light); }
+.stat-icon.green { background: var(--green-light); }
+
+.stat-status {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.status-good { background: var(--green-light); color: var(--green); }
+.status-warn { background: var(--amber-light); color: var(--amber); }
+.status-due { background: var(--red-light); color: var(--red); }
+
+.stat-value {
+  font-family: 'Fraunces', serif;
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stat-label { font-size: 12px; color: var(--mid); }
+
+/* Main 2-col grid */
+.grid-2 { display: grid; grid-template-columns: 1fr 320px; gap: 20px; }
+
+/* Card base */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.card-head {
+  padding: 18px 22px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+}
+
+.card-title {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--ink);
+}
+
+.card-action {
+  font-size: 12px;
+  color: var(--teal);
+  cursor: pointer;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+}
+
+.card-action:hover { color: var(--teal-mid); }
+
+/* Payments */
+.payment-timeline { padding: 16px 22px; display: flex; flex-direction: column; gap: 12px; }
+
+.payment-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px;
+  border-radius: 9px;
+  background: var(--bg);
+  transition: background 0.2s;
+}
+
+.payment-item:hover { background: var(--surface2); }
+
+.payment-dot-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.payment-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dot-green { background: var(--green); }
+.dot-amber { background: var(--amber); }
+.dot-gray { background: var(--border); }
+
+.payment-info { flex: 1; }
+.payment-name { font-size: 13.5px; font-weight: 700; color: var(--ink); }
+.payment-date { font-size: 12px; color: var(--mid); }
+
+.payment-amount {
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--ink);
+}
+
+.payment-tag {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 20px;
+}
+
+.tag-paid { background: var(--green-light); color: var(--green); }
+.tag-due { background: var(--amber-light); color: var(--amber); }
+.tag-upcoming { background: var(--surface2); color: var(--mid); }
+
+/* Maintenance */
+.maint-list { padding: 16px 22px; display: flex; flex-direction: column; gap: 10px; }
+
+.maint-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.maint-item:hover { border-color: var(--teal-mid); box-shadow: 0 2px 12px rgba(26,122,110,0.1); }
+
+.maint-icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  background: var(--surface2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px;
+  flex-shrink: 0;
+}
+
+.maint-info { flex: 1; }
+.maint-title { font-size: 13.5px; font-weight: 700; margin-bottom: 3px; }
+.maint-desc { font-size: 12px; color: var(--mid); }
+
+.maint-priority {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.priority-high { background: var(--red-light); color: var(--red); }
+.priority-med { background: var(--amber-light); color: var(--amber); }
+.priority-low { background: var(--green-light); color: var(--green); }
+
+/* Quick actions */
+.quick-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 16px 22px; }
+
+.qa-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+}
+
+.qa-btn:hover { border-color: var(--teal-mid); background: var(--teal-light); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+
+.qa-icon { font-size: 22px; }
+.qa-label { font-size: 12.5px; font-weight: 700; color: var(--ink); }
+.qa-desc { font-size: 11px; color: var(--mid); }
+
+/* Notices */
+.notices { padding: 16px 22px; display: flex; flex-direction: column; gap: 10px; }
+
+.notice-item {
+  display: flex;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 10px;
+  border-left: 3px solid;
+}
+
+.notice-info { border-left-color: var(--teal-mid); background: var(--teal-light); }
+.notice-warn { border-left-color: var(--amber); background: var(--amber-light); }
+
+.notice-icon { font-size: 18px; flex-shrink: 0; }
+.notice-title { font-size: 13px; font-weight: 700; margin-bottom: 2px; }
+.notice-body { font-size: 12px; color: var(--mid); }
+
+/* ─── TOUR OVERLAY ─── */
+.tour-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--tour-overlay);
+  z-index: 1000;
+  display: none;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.tour-overlay.active { display: block; }
+
+/* Spotlight cutout using box-shadow */
+.tour-spotlight {
+  position: fixed;
+  border-radius: 12px;
+  box-shadow: 0 0 0 9999px rgba(26,23,20,0.52);
+  z-index: 1001;
+  transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  outline: 2.5px solid var(--teal-mid);
+  outline-offset: 3px;
+}
+
+/* Tour popover */
+.tour-popover {
+  position: fixed;
+  z-index: 1002;
+  background: var(--tour-bg);
+  border-radius: 14px;
+  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(26,23,20,0.06);
+  width: 320px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.popover-header {
+  background: var(--teal);
+  padding: 16px 20px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.popover-step-badge {
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.05em;
+}
+
+.popover-close {
+  margin-left: auto;
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: #fff;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+}
+
+.popover-close:hover { background: rgba(255,255,255,0.3); }
+
+.popover-body { padding: 18px 20px; }
+
+.popover-emoji { font-size: 32px; margin-bottom: 10px; display: block; }
+
+.popover-title {
+  font-family: 'Fraunces', serif;
+  font-size: 19px;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.popover-text {
+  font-size: 13.5px;
+  color: var(--mid);
+  line-height: 1.65;
+}
+
+.popover-footer {
+  padding: 14px 20px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg);
+}
+
+.popover-progress {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.prog-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--border);
+  transition: background 0.3s, transform 0.3s;
+}
+
+.prog-dot.active { background: var(--teal); transform: scale(1.3); }
+.prog-dot.done { background: var(--teal-mid); }
+
+.popover-nav { display: flex; gap: 8px; }
+
+.btn-prev, .btn-next {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.btn-prev {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--mid);
+}
+
+.btn-prev:hover { background: var(--surface2); color: var(--ink); }
+.btn-prev:disabled { opacity: 0.3; cursor: not-allowed; }
+
+.btn-next {
+  background: var(--teal);
+  color: #fff;
+}
+
+.btn-next:hover { background: var(--teal-mid); }
+
+/* Arrow for popover */
+.tour-arrow {
+  position: fixed;
+  z-index: 1003;
+  width: 14px; height: 14px;
+  background: var(--tour-bg);
+  transform: rotate(45deg);
+  transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+/* Tour welcome */
+.tour-welcome {
+  position: fixed;
+  z-index: 1003;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--surface);
+  border-radius: 20px;
+  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(26,23,20,0.06);
+  width: 420px;
+  padding: 40px;
+  text-align: center;
+  display: none;
+}
+
+.tour-welcome.active { display: block; animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+
+@keyframes popIn {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0.85); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+.welcome-emoji { font-size: 52px; margin-bottom: 16px; display: block; }
+.welcome-h { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 400; color: var(--ink); margin-bottom: 10px; letter-spacing: -0.3px; }
+.welcome-p { font-size: 14px; color: var(--mid); line-height: 1.65; margin-bottom: 28px; }
+
+.welcome-actions { display: flex; flex-direction: column; gap: 10px; }
+
+.btn-start-tour {
+  background: var(--teal);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 13px;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 100%;
+}
+
+.btn-start-tour:hover { background: var(--teal-mid); }
+
+.btn-skip-tour {
+  background: transparent;
+  color: var(--mid);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+}
+
+.btn-skip-tour:hover { background: var(--surface2); color: var(--ink); }
+
+/* Confetti on finish */
+.confetti-wrap {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2000;
+  overflow: hidden;
+  display: none;
+}
+
+.confetti-wrap.show { display: block; }
+
+.confetti-piece {
+  position: absolute;
+  width: 8px; height: 10px;
+  top: -10px;
+  animation: fall linear forwards;
+  border-radius: 2px;
+}
+
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+/* Tour finish card */
+.tour-finish {
+  position: fixed;
+  z-index: 1003;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--surface);
+  border-radius: 20px;
+  box-shadow: var(--shadow-lg);
+  width: 380px;
+  padding: 36px;
+  text-align: center;
+  display: none;
+}
+
+.tour-finish.active { display: block; animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+
+/* Highlight effect on tour items */
+.tour-highlight { position: relative; }
+
+/* Responsiveness */
+@media (max-width: 900px) {
+  .app { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── CONFETTI ─── -->
+<div class="confetti-wrap" id="confetti"></div>
+
+<!-- ─── TOUR OVERLAY ─── -->
+<div class="tour-overlay" id="tourOverlay"></div>
+<div class="tour-spotlight" id="tourSpotlight" style="display:none;"></div>
+<div class="tour-arrow" id="tourArrow" style="display:none;"></div>
+
+<!-- ─── TOUR WELCOME ─── -->
+<div class="tour-welcome active" id="tourWelcome">
+  <span class="welcome-emoji">👋</span>
+  <h2 class="welcome-h">Welcome, Jordan!</h2>
+  <p class="welcome-p">We'll give you a quick tour of your tenant dashboard so you can find everything you need — from rent payments to maintenance requests.</p>
+  <div class="welcome-actions">
+    <button class="btn-start-tour" onclick="startTour()">Take the tour (2 min) →</button>
+    <button class="btn-skip-tour" onclick="closeTour()">Skip for now</button>
+  </div>
+</div>
+
+<!-- ─── TOUR POPOVER ─── -->
+<div class="tour-popover" id="tourPopover" style="display:none;">
+  <div class="popover-header">
+    <span class="popover-step-badge" id="stepBadge">Step 1 of 7</span>
+    <button class="popover-close" onclick="closeTour()">✕</button>
+  </div>
+  <div class="popover-body">
+    <span class="popover-emoji" id="popoverEmoji">🏠</span>
+    <h3 class="popover-title" id="popoverTitle">Your Home Base</h3>
+    <p class="popover-text" id="popoverText">This is your tenant dashboard overview.</p>
+  </div>
+  <div class="popover-footer">
+    <div class="popover-progress" id="progressDots"></div>
+    <div class="popover-nav">
+      <button class="btn-prev" id="btnPrev" onclick="prevStep()">← Back</button>
+      <button class="btn-next" id="btnNext" onclick="nextStep()">Next →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ─── TOUR FINISH ─── -->
+<div class="tour-finish" id="tourFinish">
+  <span style="font-size:52px;display:block;margin-bottom:16px;">🎉</span>
+  <h2 style="font-family:'Fraunces',serif;font-size:26px;font-weight:400;margin-bottom:10px;">You're all set!</h2>
+  <p style="font-size:14px;color:var(--mid);line-height:1.65;margin-bottom:24px;">You now know your way around. Tap the <strong>Tour Guide</strong> button any time to revisit this walkthrough.</p>
+  <button class="btn-start-tour" onclick="closeTour()">Start exploring →</button>
+</div>
+
+<!-- ─── APP ─── -->
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-mark">H</div>
+      <div class="logo-text">Harbourview</div>
+    </div>
+
+    <nav class="sidebar-nav" id="sidebarNav">
+      <div class="nav-section-label">Main</div>
+      <div class="nav-item active" id="nav-dashboard">
+        <span class="nav-icon">⊞</span> Dashboard
+      </div>
+      <div class="nav-item" id="nav-payments">
+        <span class="nav-icon">💳</span> Rent & Payments
+        <span class="nav-badge">1</span>
+      </div>
+      <div class="nav-item" id="nav-maintenance">
+        <span class="nav-icon">🔧</span> Maintenance
+        <span class="nav-badge">3</span>
+      </div>
+      <div class="nav-item" id="nav-documents">
+        <span class="nav-icon">📄</span> Documents
+      </div>
+      <div class="nav-section-label">My Lease</div>
+      <div class="nav-item" id="nav-lease">
+        <span class="nav-icon">📋</span> Lease Details
+      </div>
+      <div class="nav-item">
+        <span class="nav-icon">🏘️</span> My Unit
+      </div>
+      <div class="nav-section-label">Community</div>
+      <div class="nav-item" id="nav-notices">
+        <span class="nav-icon">📢</span> Notices
+      </div>
+      <div class="nav-item">
+        <span class="nav-icon">📅</span> Amenity Booking
+      </div>
+      <div class="nav-item">
+        <span class="nav-icon">💬</span> Messages
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="tenant-pill">
+        <div class="tenant-avatar">JM</div>
+        <div>
+          <div class="tenant-name">Jordan Mills</div>
+          <div class="tenant-unit">Unit 4B · Floor 3</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar-title">My Dashboard</div>
+      <div class="topbar-actions">
+        <button class="icon-btn">🔍</button>
+        <button class="icon-btn">
+          🔔
+          <span class="notif-dot"></span>
+        </button>
+        <button class="icon-btn">⚙️</button>
+        <button class="tour-btn" onclick="showWelcome()">
+          🗺️ Tour Guide
+        </button>
+      </div>
+    </header>
+
+    <main class="content" id="mainContent">
+
+      <!-- Welcome strip -->
+      <div class="welcome-strip" id="el-welcome">
+        <div>
+          <div class="welcome-greeting">Good morning</div>
+          <div class="welcome-name">Jordan Mills</div>
+          <div class="welcome-meta">Unit 4B · 321 Harbour Crescent</div>
+        </div>
+        <div class="welcome-lease">
+          <div class="lease-label">Days remaining</div>
+          <div class="lease-days">187</div>
+          <div class="lease-sub">on your current lease</div>
+        </div>
+      </div>
+
+      <!-- Stats row -->
+      <div class="stats-row" id="el-stats">
+        <div class="stat-card">
+          <div class="stat-top">
+            <div class="stat-icon teal">💰</div>
+            <span class="stat-status status-good">Paid</span>
+          </div>
+          <div class="stat-value">$2,400</div>
+          <div class="stat-label">May rent · Due May 1</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-top">
+            <div class="stat-icon amber">📬</div>
+            <span class="stat-status status-warn">Pending</span>
+          </div>
+          <div class="stat-value">$200</div>
+          <div class="stat-label">Parking — overdue</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-top">
+            <div class="stat-icon red">🔧</div>
+          </div>
+          <div class="stat-value">3</div>
+          <div class="stat-label">Open maintenance requests</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-top">
+            <div class="stat-icon green">📄</div>
+            <span class="stat-status status-good">Active</span>
+          </div>
+          <div class="stat-value">Apt 4B</div>
+          <div class="stat-label">Lease ends Nov 30, 2025</div>
+        </div>
+      </div>
+
+      <!-- Main 2-col -->
+      <div class="grid-2">
+        <div style="display:flex;flex-direction:column;gap:20px;">
+
+          <!-- Payments -->
+          <div class="card" id="el-payments">
+            <div class="card-head">
+              <div class="card-title">Payment History</div>
+              <a class="card-action" href="#">View all →</a>
+            </div>
+            <div class="payment-timeline">
+              <div class="payment-item">
+                <div class="payment-dot dot-green"></div>
+                <div class="payment-info">
+                  <div class="payment-name">May Rent</div>
+                  <div class="payment-date">Paid May 1, 2025</div>
+                </div>
+                <div class="payment-amount">$2,400</div>
+                <span class="payment-tag tag-paid">Paid</span>
+              </div>
+              <div class="payment-item">
+                <div class="payment-dot dot-amber"></div>
+                <div class="payment-info">
+                  <div class="payment-name">Parking Fee</div>
+                  <div class="payment-date">Due Apr 28 — Overdue</div>
+                </div>
+                <div class="payment-amount">$200</div>
+                <span class="payment-tag tag-due">Overdue</span>
+              </div>
+              <div class="payment-item">
+                <div class="payment-dot dot-green"></div>
+                <div class="payment-info">
+                  <div class="payment-name">April Rent</div>
+                  <div class="payment-date">Paid Apr 1, 2025</div>
+                </div>
+                <div class="payment-amount">$2,400</div>
+                <span class="payment-tag tag-paid">Paid</span>
+              </div>
+              <div class="payment-item">
+                <div class="payment-dot dot-gray"></div>
+                <div class="payment-info">
+                  <div class="payment-name">June Rent</div>
+                  <div class="payment-date">Upcoming · Jun 1, 2025</div>
+                </div>
+                <div class="payment-amount">$2,400</div>
+                <span class="payment-tag tag-upcoming">Upcoming</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Maintenance -->
+          <div class="card" id="el-maintenance">
+            <div class="card-head">
+              <div class="card-title">Maintenance Requests</div>
+              <a class="card-action" href="#">+ New request</a>
+            </div>
+            <div class="maint-list">
+              <div class="maint-item">
+                <div class="maint-icon">🚿</div>
+                <div class="maint-info">
+                  <div class="maint-title">Shower pressure low</div>
+                  <div class="maint-desc">Submitted May 5 · Assigned to plumber</div>
+                </div>
+                <span class="maint-priority priority-high">High</span>
+              </div>
+              <div class="maint-item">
+                <div class="maint-icon">💡</div>
+                <div class="maint-info">
+                  <div class="maint-title">Hallway light flickering</div>
+                  <div class="maint-desc">Submitted May 3 · Pending review</div>
+                </div>
+                <span class="maint-priority priority-med">Medium</span>
+              </div>
+              <div class="maint-item">
+                <div class="maint-icon">🚪</div>
+                <div class="maint-info">
+                  <div class="maint-title">Closet door off track</div>
+                  <div class="maint-desc">Submitted Apr 29 · In progress</div>
+                </div>
+                <span class="maint-priority priority-low">Low</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right column -->
+        <div style="display:flex;flex-direction:column;gap:20px;">
+
+          <!-- Quick actions -->
+          <div class="card" id="el-quickactions">
+            <div class="card-head">
+              <div class="card-title">Quick Actions</div>
+            </div>
+            <div class="quick-actions">
+              <div class="qa-btn">
+                <span class="qa-icon">💳</span>
+                <span class="qa-label">Pay Rent</span>
+                <span class="qa-desc">Due Jun 1</span>
+              </div>
+              <div class="qa-btn">
+                <span class="qa-icon">🔧</span>
+                <span class="qa-label">Request Repair</span>
+                <span class="qa-desc">Submit a ticket</span>
+              </div>
+              <div class="qa-btn">
+                <span class="qa-icon">📄</span>
+                <span class="qa-label">My Documents</span>
+                <span class="qa-desc">Lease, receipts</span>
+              </div>
+              <div class="qa-btn">
+                <span class="qa-icon">💬</span>
+                <span class="qa-label">Message Manager</span>
+                <span class="qa-desc">Send a message</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notices -->
+          <div class="card" id="el-notices">
+            <div class="card-head">
+              <div class="card-title">Building Notices</div>
+              <a class="card-action" href="#">See all</a>
+            </div>
+            <div class="notices">
+              <div class="notice-item notice-warn">
+                <span class="notice-icon">⚠️</span>
+                <div>
+                  <div class="notice-title">Water Shut-off — May 15</div>
+                  <div class="notice-body">Scheduled maintenance 9am–1pm. Please store water in advance.</div>
+                </div>
+              </div>
+              <div class="notice-item notice-info">
+                <span class="notice-icon">📅</span>
+                <div>
+                  <div class="notice-title">BBQ Area Open — May 20</div>
+                  <div class="notice-body">The rooftop BBQ area reopens for summer. Book via amenities.</div>
+                </div>
+              </div>
+              <div class="notice-item notice-info">
+                <span class="notice-icon">🏗️</span>
+                <div>
+                  <div class="notice-title">Lobby Renovation Update</div>
+                  <div class="notice-body">Lobby works on track. Estimated completion: May 31.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script>
+// ─── TOUR STEPS ───
+const steps = [
+  {
+    id: 'el-welcome',
+    emoji: '🏠',
+    title: 'Your welcome panel',
+    text: 'This banner shows your name, unit number, and how many days remain on your current lease — at a glance, every time you log in.',
+    placement: 'bottom'
+  },
+  {
+    id: 'el-stats',
+    emoji: '📊',
+    title: 'Key stats at a glance',
+    text: 'These four tiles summarise your rent status, any outstanding charges, open maintenance jobs, and your active lease. Green means all good; amber means action needed.',
+    placement: 'bottom'
+  },
+  {
+    id: 'nav-payments',
+    emoji: '💳',
+    title: 'Rent & Payments',
+    text: 'Click here to pay rent, view your full payment history, and download receipts. You can set up autopay so you never miss a due date.',
+    placement: 'right'
+  },
+  {
+    id: 'el-payments',
+    emoji: '🧾',
+    title: 'Payment timeline',
+    text: 'Your recent and upcoming payments are listed here in one place. Overdue items are flagged in amber so nothing slips through the cracks.',
+    placement: 'top'
+  },
+  {
+    id: 'nav-maintenance',
+    emoji: '🔧',
+    title: 'Maintenance requests',
+    text: 'Submit a repair request any time from here. You can attach photos, describe the issue, and track status — from "Submitted" right through to "Resolved".',
+    placement: 'right'
+  },
+  {
+    id: 'el-quickactions',
+    emoji: '⚡',
+    title: 'Quick Actions',
+    text: 'Shortcuts to the things you do most often — pay rent, file a repair request, grab a document, or message your property manager in one tap.',
+    placement: 'left'
+  },
+  {
+    id: 'el-notices',
+    emoji: '📢',
+    title: 'Building Notices',
+    text: 'Important announcements from management — water shut-offs, building events, renovations — all in one spot. Tap "See all" for the full archive.',
+    placement: 'left'
+  }
+];
+
+let currentStep = -1;
+let tourActive = false;
+
+function showWelcome() {
+  closeTour();
+  document.getElementById('tourOverlay').classList.add('active');
+  document.getElementById('tourWelcome').classList.add('active');
+}
+
+function startTour() {
+  document.getElementById('tourWelcome').classList.remove('active');
+  tourActive = true;
+  currentStep = 0;
+  buildProgressDots();
+  showStep(0);
+}
+
+function buildProgressDots() {
+  const wrap = document.getElementById('progressDots');
+  wrap.innerHTML = '';
+  steps.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'prog-dot';
+    d.id = `prog-${i}`;
+    wrap.appendChild(d);
+  });
+}
+
+function showStep(index) {
+  const step = steps[index];
+  const target = document.getElementById(step.id);
+  if (!target) return;
+
+  // Scroll target into view
+  target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+  setTimeout(() => {
+    const rect = target.getBoundingClientRect();
+    const pad = 8;
+
+    // Spotlight
+    const spotlight = document.getElementById('tourSpotlight');
+    spotlight.style.display = 'block';
+    spotlight.style.left = (rect.left - pad) + 'px';
+    spotlight.style.top = (rect.top - pad) + 'px';
+    spotlight.style.width = (rect.width + pad * 2) + 'px';
+    spotlight.style.height = (rect.height + pad * 2) + 'px';
+
+    // Popover
+    const popover = document.getElementById('tourPopover');
+    popover.style.display = 'block';
+    document.getElementById('popoverEmoji').textContent = step.emoji;
+    document.getElementById('popoverTitle').textContent = step.title;
+    document.getElementById('popoverText').textContent = step.text;
+    document.getElementById('stepBadge').textContent = `Step ${index + 1} of ${steps.length}`;
+
+    positionPopover(rect, step.placement);
+    updateProgress(index);
+    updateNavButtons(index);
+  }, 100);
+}
+
+function positionPopover(rect, placement) {
+  const popover = document.getElementById('tourPopover');
+  const pw = 320;
+  const ph = 240; // approx
+  const margin = 18;
+  const arrow = document.getElementById('tourArrow');
+  arrow.style.display = 'block';
+
+  let top, left;
+
+  if (placement === 'bottom') {
+    top = rect.bottom + margin;
+    left = rect.left + rect.width / 2 - pw / 2;
+    arrow.style.top = (rect.bottom + margin - 7) + 'px';
+    arrow.style.left = (rect.left + rect.width / 2 - 7) + 'px';
+    arrow.style.borderTop = 'none';
+    arrow.style.borderLeft = 'none';
+    arrow.style.boxShadow = '-2px -2px 5px rgba(0,0,0,0.04)';
+  } else if (placement === 'top') {
+    top = rect.top - ph - margin;
+    left = rect.left + rect.width / 2 - pw / 2;
+    arrow.style.top = (rect.top - margin + ph - 7) + 'px';
+    arrow.style.left = (rect.left + rect.width / 2 - 7) + 'px';
+    arrow.style.boxShadow = '2px 2px 5px rgba(0,0,0,0.04)';
+  } else if (placement === 'right') {
+    top = rect.top + rect.height / 2 - ph / 2;
+    left = rect.right + margin;
+    arrow.style.top = (rect.top + rect.height / 2 - 7) + 'px';
+    arrow.style.left = (rect.right + margin - 7) + 'px';
+    arrow.style.boxShadow = '-2px 2px 5px rgba(0,0,0,0.04)';
+  } else if (placement === 'left') {
+    top = rect.top + rect.height / 2 - ph / 2;
+    left = rect.left - pw - margin;
+    arrow.style.top = (rect.top + rect.height / 2 - 7) + 'px';
+    arrow.style.left = (rect.left - margin - 7) + 'px';
+    arrow.style.boxShadow = '2px -2px 5px rgba(0,0,0,0.04)';
+  }
+
+  // Clamp to viewport
+  left = Math.max(12, Math.min(left, window.innerWidth - pw - 12));
+  top = Math.max(12, Math.min(top, window.innerHeight - 300));
+
+  popover.style.left = left + 'px';
+  popover.style.top = top + 'px';
+}
+
+function updateProgress(index) {
+  steps.forEach((_, i) => {
+    const d = document.getElementById(`prog-${i}`);
+    if (!d) return;
+    d.className = 'prog-dot';
+    if (i < index) d.classList.add('done');
+    else if (i === index) d.classList.add('active');
+  });
+}
+
+function updateNavButtons(index) {
+  document.getElementById('btnPrev').disabled = index === 0;
+  document.getElementById('btnNext').textContent = index === steps.length - 1 ? 'Finish ✓' : 'Next →';
+}
+
+function nextStep() {
+  if (currentStep < steps.length - 1) {
+    currentStep++;
+    showStep(currentStep);
+  } else {
+    finishTour();
+  }
+}
+
+function prevStep() {
+  if (currentStep > 0) {
+    currentStep--;
+    showStep(currentStep);
+  }
+}
+
+function finishTour() {
+  document.getElementById('tourSpotlight').style.display = 'none';
+  document.getElementById('tourArrow').style.display = 'none';
+  document.getElementById('tourPopover').style.display = 'none';
+  document.getElementById('tourFinish').classList.add('active');
+  launchConfetti();
+}
+
+function closeTour() {
+  tourActive = false;
+  document.getElementById('tourOverlay').classList.remove('active');
+  document.getElementById('tourWelcome').classList.remove('active');
+  document.getElementById('tourFinish').classList.remove('active');
+  document.getElementById('tourPopover').style.display = 'none';
+  document.getElementById('tourSpotlight').style.display = 'none';
+  document.getElementById('tourArrow').style.display = 'none';
+  document.getElementById('confetti').classList.remove('show');
+  document.getElementById('confetti').innerHTML = '';
+}
+
+function launchConfetti() {
+  const wrap = document.getElementById('confetti');
+  wrap.classList.add('show');
+  wrap.innerHTML = '';
+  const colors = ['#1a7a6e','#2a9d8d','#c8f55a','#e07b39','#f7f4ef','#e84b2a','#ffd166'];
+  for (let i = 0; i < 80; i++) {
+    const p = document.createElement('div');
+    p.className = 'confetti-piece';
+    p.style.left = Math.random() * 100 + 'vw';
+    p.style.background = colors[Math.floor(Math.random() * colors.length)];
+    p.style.animationDuration = (2 + Math.random() * 2) + 's';
+    p.style.animationDelay = (Math.random() * 0.8) + 's';
+    p.style.width = (6 + Math.random() * 8) + 'px';
+    p.style.height = (8 + Math.random() * 10) + 'px';
+    p.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+    wrap.appendChild(p);
+  }
+  setTimeout(() => { wrap.innerHTML = ''; wrap.classList.remove('show'); }, 4000);
+}
+
+// Close tour on overlay click
+document.getElementById('tourOverlay').addEventListener('click', closeTour);
+
+// Nav item active state
+document.querySelectorAll('.nav-item').forEach(item => {
+  item.addEventListener('click', () => {
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    item.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

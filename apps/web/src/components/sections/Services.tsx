@@ -1,17 +1,17 @@
 const services = [
   {
-    title: 'Brand Websites',
-    desc: 'High-clarity interfaces designed to build trust and present your services effectively.',
+    title: 'Restaurant Websites',
+    desc: 'Custom, mobile-first websites that put your food, atmosphere, location, and next action front and center.',
     num: '01',
   },
   {
-    title: 'Conversion Pages',
-    desc: 'Goal-oriented landing pages optimized for maximum lead acquisition and sales.',
+    title: 'Menus & Integrations',
+    desc: 'Easy-to-update menus with reservation, online ordering, gift card, POS, and delivery integrations.',
     num: '02',
   },
   {
-    title: 'Custom Tools',
-    desc: 'Bespoke dashboards, booking systems, and interactive calculators for business workflows.',
+    title: 'Local Growth',
+    desc: 'Technical SEO, speed, analytics, and conversion improvements that help nearby guests discover and choose you.',
     num: '03',
   },
 ];
@@ -25,7 +25,7 @@ export function Services() {
             $ expertise
           </span>
           <h2 className="text-4xl md:text-6xl font-display font-medium leading-tight text-brand">
-            Digital products for service providers.
+            Everything your restaurant needs to win online.
           </h2>
         </div>
         <div className="grid md:grid-cols-3 gap-6">

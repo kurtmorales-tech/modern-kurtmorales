@@ -191,7 +191,7 @@ export function ApiDashboardPage() {
   const [messages, setMessages] = useState<ContactMessage[]>([]);
   const [newsletters, setNewsletters] = useState<Newsletter[]>([]);
 
-  useSeo('API dashboard — KurtMorales', 'Monitor Bun content API latency, health, and list endpoints from the browser.', { canonical: '/dashboard', noindex: true });
+  useSeo('Operations Dashboard | KM Web Design', 'Private KM Web Design content, lead, and API operations.', { canonical: '/dashboard', noindex: true });
 
   const refreshProbes = useCallback(async () => {
     setRunning(true);
@@ -272,8 +272,8 @@ export function ApiDashboardPage() {
         <div className="km-panel rounded-[2rem] p-8 md:p-10 space-y-4">
           <div className="flex flex-wrap items-start justify-between gap-6">
             <div className="space-y-2">
-              <p className="text-[10px] font-black uppercase tracking-[0.3em] text-brand">Operations</p>
-              <h1 className="text-4xl md:text-5xl font-display font-medium text-[var(--km-text-strong)]">Dashboard</h1>
+              <p className="text-[10px] font-black uppercase tracking-[0.3em] text-brand">KM Web Design / operations</p>
+              <h1 className="text-4xl md:text-5xl font-display font-medium text-[var(--km-text-strong)]">Team dashboard</h1>
               <p className="max-w-2xl text-base leading-7 text-[var(--km-muted)]">
                 Live probes + admin content management. Login with your admin secret to manage posts, projects, templates, and more.
               </p>

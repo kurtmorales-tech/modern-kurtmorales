@@ -73,13 +73,13 @@ export function PostPage() {
   }, [slug]);
 
   useSeo(
-    post ? `${post.title} — KurtMorales` : 'Post — KurtMorales',
-    post?.excerpt || 'Blog post by KurtMorales.',
+    post ? `${post.title} | KM Web Design` : 'Restaurant Web Design Blog | KM Web Design',
+    post?.excerpt || 'Practical restaurant website guidance from KM Web Design.',
     post
       ? {
           canonical: `/blog/${post.slug}`,
           ogType: 'article',
-          ogImage: coverUrl(post) || 'https://kurtmorales.com/og-default.png',
+          ogImage: coverUrl(post) || 'https://kmwebdesign.xyz/og-default.png',
           article: {
             publishedTime: post.date,
             author: 'Kurt Anthony Morales',

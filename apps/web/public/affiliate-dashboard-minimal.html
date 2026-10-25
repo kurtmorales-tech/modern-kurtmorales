@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partnerflow — Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+/* ── TOKENS ── */
+[data-theme="light"] {
+  --bg:       #f8f7f4;
+  --surface:  #ffffff;
+  --surface2: #f2f0ec;
+  --border:   #e8e5df;
+  --border2:  #d8d4cc;
+  --ink:      #1a1916;
+  --ink2:     #6b6860;
+  --ink3:     #a8a49e;
+  --accent:   #1a1916;
+  --accent2:  #e8e5df;
+  --positive: #2a7a52;
+  --negative: #9a2a2a;
+  --warn:     #7a5a1a;
+  --pos-bg:   #edf5f0;
+  --neg-bg:   #f5edee;
+  --warn-bg:  #f5f0e8;
+  --chart1:   #1a1916;
+  --chart2:   #c8c4bc;
+  --shadow:   0 1px 3px rgba(26,25,22,0.06), 0 4px 16px rgba(26,25,22,0.04);
+  --shadow-md:0 2px 8px rgba(26,25,22,0.08), 0 8px 32px rgba(26,25,22,0.06);
+}
+
+[data-theme="dark"] {
+  --bg:       #0e0e0c;
+  --surface:  #161614;
+  --surface2: #1e1e1b;
+  --border:   #2a2a26;
+  --border2:  #383832;
+  --ink:      #f0ede8;
+  --ink2:     #8a8780;
+  --ink3:     #504e49;
+  --accent:   #f0ede8;
+  --accent2:  #2a2a26;
+  --positive: #4aab7a;
+  --negative: #d46464;
+  --warn:     #c49a40;
+  --pos-bg:   #0e1f16;
+  --neg-bg:   #1f0e0e;
+  --warn-bg:  #1a160a;
+  --chart1:   #f0ede8;
+  --chart2:   #383832;
+  --shadow:   0 1px 3px rgba(0,0,0,0.2), 0 4px 16px rgba(0,0,0,0.15);
+  --shadow-md:0 2px 8px rgba(0,0,0,0.25), 0 8px 32px rgba(0,0,0,0.2);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 13.5px;
+  line-height: 1.55;
+  overflow: hidden;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* ── LAYOUT ── */
+.shell { display: grid; grid-template-columns: 200px 1fr; height: 100vh; }
+
+/* ── SIDEBAR ── */
+.sidebar {
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  display: flex; flex-direction: column;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.sb-top {
+  padding: 24px 20px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.sb-wordmark {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px; font-weight: 400;
+  color: var(--ink); letter-spacing: -0.2px;
+  display: block; margin-bottom: 2px;
+}
+
+.sb-tagline {
+  font-size: 10.5px; color: var(--ink3);
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+
+.sb-nav {
+  flex: 1; padding: 16px 12px;
+  display: flex; flex-direction: column; gap: 1px;
+  overflow-y: auto;
+}
+
+.sb-section {
+  font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink3); padding: 12px 8px 5px; margin-top: 4px;
+}
+
+.sb-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 8px 10px; border-radius: 6px;
+  cursor: pointer; color: var(--ink2);
+  font-size: 13px; font-weight: 400;
+  transition: all 0.15s; user-select: none;
+  text-decoration: none;
+}
+
+.sb-item:hover { background: var(--surface2); color: var(--ink); }
+.sb-item.active { background: var(--accent2); color: var(--ink); font-weight: 500; }
+
+.sb-count {
+  font-size: 10.5px; color: var(--ink3);
+  font-variant-numeric: tabular-nums;
+}
+
+.sb-foot {
+  padding: 16px 12px;
+  border-top: 1px solid var(--border);
+}
+
+.sb-user {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 10px; border-radius: 8px;
+  cursor: pointer; transition: background 0.15s;
+}
+.sb-user:hover { background: var(--surface2); }
+
+.sb-initials {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--accent2); border: 1px solid var(--border2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 500; color: var(--ink);
+  flex-shrink: 0; letter-spacing: 0.02em;
+}
+
+.sb-uname { font-size: 12.5px; color: var(--ink); font-weight: 500; line-height: 1.3; }
+.sb-role  { font-size: 10.5px; color: var(--ink3); }
+
+/* ── MAIN ── */
+.main { display: flex; flex-direction: column; overflow: hidden; }
+
+/* ── TOPBAR ── */
+.topbar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 28px; height: 54px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-shrink: 0;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.tb-left { display: flex; align-items: baseline; gap: 10px; }
+
+.tb-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px; font-weight: 400;
+  color: var(--ink); letter-spacing: -0.2px;
+}
+
+.tb-period {
+  font-size: 12px; color: var(--ink3);
+}
+
+.tb-right { display: flex; align-items: center; gap: 10px; }
+
+.theme-toggle {
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 20px; cursor: pointer;
+  background: transparent;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px; color: var(--ink2);
+  transition: all 0.2s;
+}
+.theme-toggle:hover { background: var(--surface2); color: var(--ink); border-color: var(--border2); }
+
+.toggle-indicator {
+  width: 28px; height: 16px; border-radius: 8px;
+  background: var(--border2); position: relative;
+  transition: background 0.25s;
+}
+
+.toggle-indicator::after {
+  content: '';
+  position: absolute;
+  top: 2px; left: 2px;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--surface);
+  transition: transform 0.25s, background 0.25s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+[data-theme="dark"] .toggle-indicator { background: var(--ink2); }
+[data-theme="dark"] .toggle-indicator::after { transform: translateX(12px); }
+
+.tour-pill {
+  padding: 7px 16px;
+  border: 1px solid var(--border2);
+  border-radius: 20px; cursor: pointer;
+  background: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px; font-weight: 500;
+  color: var(--bg);
+  transition: all 0.18s; letter-spacing: 0.02em;
+}
+.tour-pill:hover { opacity: 0.85; transform: translateY(-1px); }
+
+/* ── CONTENT ── */
+.content {
+  flex: 1; overflow-y: auto; padding: 28px;
+  display: flex; flex-direction: column; gap: 22px;
+}
+
+/* ── METRICS ROW ── */
+.metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+
+.metric {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px; padding: 20px 20px 16px;
+  transition: box-shadow 0.2s, border-color 0.15s, background 0.3s;
+  cursor: default;
+}
+.metric:hover { box-shadow: var(--shadow-md); border-color: var(--border2); }
+
+.metric-label {
+  font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--ink3); margin-bottom: 10px; font-weight: 400;
+}
+
+.metric-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px; font-weight: 400;
+  color: var(--ink); letter-spacing: -0.8px;
+  line-height: 1; margin-bottom: 8px;
+}
+
+.metric-foot { display: flex; align-items: center; justify-content: space-between; }
+
+.metric-delta {
+  font-size: 11.5px; font-weight: 500;
+}
+.delta-up   { color: var(--positive); }
+.delta-down { color: var(--negative); }
+.delta-flat { color: var(--ink3); }
+
+.metric-sub { font-size: 11px; color: var(--ink3); }
+
+/* ── SPARK ── */
+.spark { margin-top: 12px; height: 28px; }
+.spark svg { width: 100%; height: 100%; }
+
+/* ── BODY GRID ── */
+.body-grid { display: grid; grid-template-columns: 1fr 284px; gap: 16px; }
+.col-left  { display: flex; flex-direction: column; gap: 16px; }
+.col-right { display: flex; flex-direction: column; gap: 16px; }
+
+/* ── CARD ── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px; overflow: hidden;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.card-hd {
+  padding: 16px 20px 13px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: baseline; justify-content: space-between;
+  transition: border-color 0.3s;
+}
+
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px; font-weight: 400;
+  color: var(--ink); letter-spacing: -0.1px;
+}
+
+.card-meta { font-size: 11px; color: var(--ink3); }
+
+.card-link {
+  font-size: 11.5px; color: var(--ink2);
+  text-decoration: none; font-weight: 400;
+  border-bottom: 1px solid var(--border2);
+  padding-bottom: 1px; transition: color 0.15s, border-color 0.15s;
+}
+.card-link:hover { color: var(--ink); border-color: var(--ink2); }
+
+/* ── CHART ── */
+.chart-area { padding: 16px 20px; }
+
+.chart-legend {
+  display: flex; gap: 20px; margin-bottom: 14px;
+}
+
+.leg { display: flex; align-items: center; gap: 7px; font-size: 11.5px; color: var(--ink2); }
+
+.leg-line {
+  width: 20px; height: 1.5px; border-radius: 1px;
+}
+
+.leg-line.solid { background: var(--chart1); }
+.leg-line.dashed {
+  background: none;
+  border-top: 1.5px dashed var(--chart2);
+}
+
+.chart-svg-wrap { height: 120px; }
+.chart-svg-wrap svg { width: 100%; height: 100%; }
+
+.chart-labels {
+  display: flex; justify-content: space-between;
+  padding-top: 8px; font-size: 10.5px; color: var(--ink3);
+}
+
+/* ── TABLE ── */
+.aff-table { width: 100%; border-collapse: collapse; }
+
+.aff-table thead th {
+  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink3); font-weight: 400;
+  padding: 10px 20px; text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.aff-table thead th.num { text-align: right; }
+
+.aff-table tbody tr { transition: background 0.12s; cursor: pointer; }
+.aff-table tbody tr:hover { background: var(--surface2); }
+
+.aff-table tbody td {
+  padding: 12px 20px; font-size: 13px;
+  border-bottom: 1px solid var(--border);
+  color: var(--ink);
+  vertical-align: middle;
+}
+.aff-table tbody tr:last-child td { border-bottom: none; }
+
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+.aff-name { font-weight: 500; font-size: 13px; }
+.aff-handle { font-size: 11px; color: var(--ink3); font-weight: 400; margin-top: 1px; }
+
+.status-pill {
+  display: inline-block;
+  font-size: 10.5px; font-weight: 500;
+  padding: 2px 9px; border-radius: 20px;
+  letter-spacing: 0.03em;
+}
+.st-a { background: var(--pos-bg); color: var(--positive); }
+.st-p { background: var(--warn-bg); color: var(--warn); }
+.st-x { background: var(--accent2); color: var(--ink3); }
+
+.cr-track {
+  display: flex; align-items: center; gap: 8px;
+}
+.cr-bar {
+  width: 48px; height: 3px; background: var(--border);
+  border-radius: 2px; overflow: hidden;
+}
+.cr-fill { height: 100%; background: var(--ink); border-radius: 2px; }
+
+/* ── RIGHT COLUMN LISTS ── */
+.list-body { padding: 0; }
+
+.list-row {
+  display: flex; align-items: center;
+  padding: 12px 20px; gap: 12px;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.12s; cursor: pointer;
+}
+.list-row:last-child { border-bottom: none; }
+.list-row:hover { background: var(--surface2); }
+
+.list-rank {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px; color: var(--ink3);
+  width: 16px; text-align: center; flex-shrink: 0;
+}
+
+.list-info { flex: 1; min-width: 0; }
+.list-name { font-size: 12.5px; font-weight: 500; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.list-sub  { font-size: 11px; color: var(--ink3); margin-top: 1px; }
+
+.list-val {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px; font-weight: 400;
+  color: var(--ink); flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.payout-due {
+  display: flex; flex-direction: column; align-items: flex-end; gap: 2px;
+}
+
+.payout-amt {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px; color: var(--ink);
+}
+
+.payout-tag {
+  font-size: 10px; font-weight: 500;
+  padding: 1px 7px; border-radius: 10px;
+}
+
+.ptag-pending { background: var(--warn-bg); color: var(--warn); }
+.ptag-due     { background: var(--neg-bg);  color: var(--negative); }
+
+/* ── DIVIDER ROW ── */
+.divider-row {
+  display: flex; align-items: center; gap: 14px;
+  padding: 10px 20px 0;
+}
+
+.divider-line { flex: 1; height: 1px; background: var(--border); }
+.divider-label { font-size: 10px; color: var(--ink3); white-space: nowrap; letter-spacing: 0.06em; text-transform: uppercase; }
+
+/* ── TOUR OVERLAY ── */
+.overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0);
+  z-index: 900; display: none;
+  backdrop-filter: blur(0px);
+  transition: backdrop-filter 0.3s;
+}
+.overlay.on {
+  display: block;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(2px);
+}
+
+[data-theme="dark"] .overlay.on { background: rgba(0,0,0,0.55); }
+
+.spotlight {
+  position: fixed; border-radius: 10px;
+  box-shadow: 0 0 0 9999px rgba(0,0,0,0.45);
+  z-index: 901; pointer-events: none;
+  outline: 1.5px solid var(--ink2);
+  outline-offset: 3px;
+  transition: all 0.38s cubic-bezier(0.4,0,0.2,1);
+}
+
+[data-theme="dark"] .spotlight { box-shadow: 0 0 0 9999px rgba(0,0,0,0.65); }
+
+/* ── POPOVER ── */
+.popover {
+  position: fixed; z-index: 902;
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 12px; width: 296px;
+  box-shadow: var(--shadow-md);
+  transition: background 0.3s, border-color 0.3s;
+  overflow: hidden;
+}
+
+.pop-bar {
+  height: 3px; background: var(--ink);
+  transition: width 0.35s ease;
+}
+
+.pop-body { padding: 18px 20px 14px; }
+
+.pop-step-txt {
+  font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ink3); margin-bottom: 8px;
+  font-weight: 400;
+}
+
+.pop-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px; font-weight: 400;
+  color: var(--ink); letter-spacing: -0.3px;
+  margin-bottom: 8px; line-height: 1.25;
+}
+
+.pop-text {
+  font-size: 13px; color: var(--ink2); line-height: 1.65;
+}
+
+.pop-foot {
+  padding: 12px 20px;
+  border-top: 1px solid var(--border);
+  background: var(--surface2);
+  display: flex; align-items: center; justify-content: space-between;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.pop-dots { display: flex; gap: 5px; }
+.pd { width: 5px; height: 5px; border-radius: 50%; background: var(--border2); transition: all 0.22s; }
+.pd.done   { background: var(--ink3); }
+.pd.active { background: var(--ink); transform: scale(1.5); }
+
+.pop-nav { display: flex; gap: 8px; }
+
+.btn-prev, .btn-next {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px; font-weight: 500;
+  padding: 6px 14px; border-radius: 6px;
+  cursor: pointer; border: none; transition: all 0.15s;
+}
+
+.btn-prev {
+  background: transparent;
+  border: 1px solid var(--border2);
+  color: var(--ink2);
+}
+.btn-prev:hover { color: var(--ink); border-color: var(--ink3); }
+.btn-prev:disabled { opacity: 0.3; cursor: default; }
+
+.btn-next { background: var(--ink); color: var(--bg); }
+.btn-next:hover { opacity: 0.85; }
+
+.pop-close {
+  position: absolute; top: 12px; right: 14px;
+  background: none; border: none; cursor: pointer;
+  color: var(--ink3); font-size: 16px; line-height: 1;
+  transition: color 0.15s; padding: 2px 4px;
+}
+.pop-close:hover { color: var(--ink); }
+
+/* ── WELCOME / FINISH ── */
+.modal {
+  position: fixed; z-index: 903;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 14px; width: 380px;
+  padding: 40px 36px; text-align: center;
+  box-shadow: var(--shadow-md);
+  display: none;
+  transition: background 0.3s, border-color 0.3s;
+}
+.modal.on { display: block; animation: appear 0.35s cubic-bezier(0.34,1.4,0.64,1) both; }
+
+@keyframes appear {
+  from { opacity:0; transform: translate(-50%,-50%) scale(0.9); }
+  to   { opacity:1; transform: translate(-50%,-50%) scale(1); }
+}
+
+.modal-eyebrow {
+  font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink3); margin-bottom: 12px;
+}
+
+.modal-h {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px; font-weight: 400;
+  color: var(--ink); margin-bottom: 10px;
+  letter-spacing: -0.5px; line-height: 1.2;
+}
+
+.modal-p {
+  font-size: 13.5px; color: var(--ink2);
+  line-height: 1.7; margin-bottom: 28px;
+}
+
+.modal-acts { display: flex; flex-direction: column; gap: 9px; }
+
+.btn-primary {
+  background: var(--ink); color: var(--bg);
+  border: none; border-radius: 8px; padding: 12px;
+  font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+  cursor: pointer; transition: opacity 0.15s; width: 100%;
+  letter-spacing: 0.02em;
+}
+.btn-primary:hover { opacity: 0.82; }
+
+.btn-ghost {
+  background: transparent; color: var(--ink3);
+  border: 1px solid var(--border); border-radius: 8px; padding: 11px;
+  font-family: 'DM Sans', sans-serif; font-size: 12.5px; font-weight: 400;
+  cursor: pointer; transition: all 0.15s; width: 100%;
+}
+.btn-ghost:hover { background: var(--surface2); color: var(--ink2); border-color: var(--border2); }
+
+/* ── CONFETTI ── */
+.confetti-stage { position: fixed; inset: 0; pointer-events: none; z-index: 2000; overflow: hidden; display: none; }
+.confetti-stage.on { display: block; }
+.cp { position: absolute; top: -12px; animation: cfall linear forwards; }
+@keyframes cfall { to { transform: translateY(110vh) rotate(600deg); opacity: 0; } }
+
+/* ── ARROW ── */
+.tour-arr {
+  position: fixed; z-index: 902;
+  width: 10px; height: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  transform: rotate(45deg);
+  transition: all 0.38s cubic-bezier(0.4,0,0.2,1);
+  pointer-events: none;
+}
+
+</style>
+</head>
+<body>
+
+<!-- Confetti -->
+<div class="confetti-stage" id="confetti"></div>
+
+<!-- Tour overlay -->
+<div class="overlay" id="overlay"></div>
+<div class="spotlight" id="spot" style="display:none"></div>
+<div class="tour-arr" id="arr" style="display:none"></div>
+
+<!-- Welcome -->
+<div class="modal on" id="wm">
+  <div class="modal-eyebrow">Partnerflow</div>
+  <h2 class="modal-h">Welcome back,<br><em>Alex.</em></h2>
+  <p class="modal-p">A quick tour will walk you through every section of your affiliate dashboard — under two minutes.</p>
+  <div class="modal-acts">
+    <button class="btn-primary" onclick="startTour()">Take the tour</button>
+    <button class="btn-ghost" onclick="closeAll()">Skip</button>
+  </div>
+</div>
+
+<!-- Popover -->
+<div class="popover" id="pop" style="display:none">
+  <button class="pop-close" onclick="closeAll()">×</button>
+  <div class="pop-bar" id="popBar"></div>
+  <div class="pop-body">
+    <div class="pop-step-txt" id="pStep">01 of 08</div>
+    <h3 class="pop-title" id="pTitle">Title</h3>
+    <p class="pop-text" id="pText">Description</p>
+  </div>
+  <div class="pop-foot">
+    <div class="pop-dots" id="dots"></div>
+    <div class="pop-nav">
+      <button class="btn-prev" id="btnP" onclick="prev()">Back</button>
+      <button class="btn-next" id="btnN" onclick="next()">Next</button>
+    </div>
+  </div>
+</div>
+
+<!-- Finish -->
+<div class="modal" id="finish">
+  <div class="modal-eyebrow">Tour complete</div>
+  <h2 class="modal-h">You know your<br><em>dashboard.</em></h2>
+  <p class="modal-p">Hit "Tour" in the header any time to revisit. Everything you need is a click away.</p>
+  <div class="modal-acts">
+    <button class="btn-primary" onclick="closeAll()">Start working</button>
+  </div>
+</div>
+
+<!-- SHELL -->
+<div class="shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sb-top">
+      <span class="sb-wordmark">Partnerflow</span>
+      <span class="sb-tagline">Affiliate Platform</span>
+    </div>
+
+    <nav class="sb-nav">
+      <div class="sb-section">Overview</div>
+      <div class="sb-item active" id="nav-dash">Dashboard</div>
+      <div class="sb-item" id="nav-affiliates">
+        Affiliates <span class="sb-count">247</span>
+      </div>
+      <div class="sb-item" id="nav-links">Links & Campaigns</div>
+
+      <div class="sb-section">Revenue</div>
+      <div class="sb-item" id="nav-payouts">
+        Payouts <span class="sb-count">12</span>
+      </div>
+      <div class="sb-item" id="nav-rules">Commission Rules</div>
+      <div class="sb-item">Analytics</div>
+
+      <div class="sb-section">Program</div>
+      <div class="sb-item" id="nav-programs">Programs</div>
+      <div class="sb-item">Fraud Detection</div>
+      <div class="sb-item">Integrations</div>
+      <div class="sb-item">Reports</div>
+    </nav>
+
+    <div class="sb-foot">
+      <div class="sb-user">
+        <div class="sb-initials">AK</div>
+        <div>
+          <div class="sb-uname">Alex Kowalski</div>
+          <div class="sb-role">Admin</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <header class="topbar">
+      <div class="tb-left">
+        <div class="tb-title">Dashboard</div>
+        <div class="tb-period">May 2026</div>
+      </div>
+      <div class="tb-right">
+        <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">
+          <div class="toggle-indicator" id="themeInd"></div>
+          <span id="themeLabel">Light</span>
+        </button>
+        <button class="tour-pill" onclick="showWelcome()">Tour</button>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <!-- METRICS -->
+      <div class="metrics" id="el-metrics">
+        <div class="metric">
+          <div class="metric-label">Revenue (MTD)</div>
+          <div class="metric-value">$84.2k</div>
+          <div class="metric-foot">
+            <span class="metric-delta delta-up">+24%</span>
+            <span class="metric-sub">vs April</span>
+          </div>
+          <div class="spark">
+            <svg viewBox="0 0 100 28" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="sg1" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="var(--chart1)" stop-opacity="0.15"/>
+                  <stop offset="100%" stop-color="var(--chart1)" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path d="M0,24 C15,22 25,18 40,14 C55,10 65,16 80,8 C88,4 94,10 100,4 L100,28 L0,28 Z" fill="url(#sg1)"/>
+              <path d="M0,24 C15,22 25,18 40,14 C55,10 65,16 80,8 C88,4 94,10 100,4" fill="none" stroke="var(--chart1)" stroke-width="1.5"/>
+            </svg>
+          </div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Total Clicks</div>
+          <div class="metric-value">48.9k</div>
+          <div class="metric-foot">
+            <span class="metric-delta delta-up">+11%</span>
+            <span class="metric-sub">vs April</span>
+          </div>
+          <div class="spark">
+            <svg viewBox="0 0 100 28" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="sg2" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="var(--chart1)" stop-opacity="0.15"/>
+                  <stop offset="100%" stop-color="var(--chart1)" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path d="M0,20 C12,18 22,22 36,16 C50,10 62,14 76,8 C84,5 92,10 100,6 L100,28 L0,28 Z" fill="url(#sg2)"/>
+              <path d="M0,20 C12,18 22,22 36,16 C50,10 62,14 76,8 C84,5 92,10 100,6" fill="none" stroke="var(--chart1)" stroke-width="1.5"/>
+            </svg>
+          </div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Conversions</div>
+          <div class="metric-value">3,142</div>
+          <div class="metric-foot">
+            <span class="metric-delta delta-up">+8%</span>
+            <span class="metric-sub">vs April</span>
+          </div>
+          <div class="spark">
+            <svg viewBox="0 0 100 28" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="sg3" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="var(--chart1)" stop-opacity="0.15"/>
+                  <stop offset="100%" stop-color="var(--chart1)" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path d="M0,22 C18,20 28,16 44,14 C58,12 68,18 82,10 C90,6 95,12 100,8 L100,28 L0,28 Z" fill="url(#sg3)"/>
+              <path d="M0,22 C18,20 28,16 44,14 C58,12 68,18 82,10 C90,6 95,12 100,8" fill="none" stroke="var(--chart1)" stroke-width="1.5"/>
+            </svg>
+          </div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Conv. Rate</div>
+          <div class="metric-value">6.4%</div>
+          <div class="metric-foot">
+            <span class="metric-delta delta-up">+1.2pp</span>
+            <span class="metric-sub">vs April</span>
+          </div>
+          <div class="spark">
+            <svg viewBox="0 0 100 28" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="sg4" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="var(--chart1)" stop-opacity="0.15"/>
+                  <stop offset="100%" stop-color="var(--chart1)" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path d="M0,26 C10,24 20,20 34,18 C48,16 60,20 74,12 C83,8 92,14 100,10 L100,28 L0,28 Z" fill="url(#sg4)"/>
+              <path d="M0,26 C10,24 20,20 34,18 C48,16 60,20 74,12 C83,8 92,14 100,10" fill="none" stroke="var(--chart1)" stroke-width="1.5"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- BODY GRID -->
+      <div class="body-grid">
+        <div class="col-left">
+
+          <!-- CHART -->
+          <div class="card" id="el-chart">
+            <div class="card-hd">
+              <div>
+                <div class="card-title">Revenue trend</div>
+                <div class="card-meta">Nov 2025 — May 2026</div>
+              </div>
+              <a class="card-link" href="#">Full analytics</a>
+            </div>
+            <div class="chart-area">
+              <div class="chart-legend">
+                <div class="leg"><div class="leg-line solid"></div> Revenue</div>
+                <div class="leg"><div class="leg-line dashed"></div> Clicks (normalised)</div>
+              </div>
+              <div class="chart-svg-wrap">
+                <svg viewBox="0 0 560 120" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="rg" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="var(--chart1)" stop-opacity="0.12"/>
+                      <stop offset="100%" stop-color="var(--chart1)" stop-opacity="0"/>
+                    </linearGradient>
+                  </defs>
+                  <line x1="0" y1="30" x2="560" y2="30" stroke="var(--border)" stroke-width="1"/>
+                  <line x1="0" y1="60" x2="560" y2="60" stroke="var(--border)" stroke-width="1"/>
+                  <line x1="0" y1="90" x2="560" y2="90" stroke="var(--border)" stroke-width="1"/>
+
+                  <path d="M0,105 C70,96 110,80 185,66 C260,52 290,72 360,48 C420,28 460,44 520,26 C535,20 548,22 560,8 L560,120 L0,120 Z" fill="url(#rg)"/>
+                  <path d="M0,105 C70,96 110,80 185,66 C260,52 290,72 360,48 C420,28 460,44 520,26 C535,20 548,22 560,8" fill="none" stroke="var(--chart1)" stroke-width="1.8" stroke-linecap="round"/>
+
+                  <path d="M0,95 C70,92 110,88 185,82 C260,76 290,80 360,70 C420,62 460,68 520,56 C535,52 548,58 560,48" fill="none" stroke="var(--chart2)" stroke-width="1.5" stroke-dasharray="6 4" stroke-linecap="round"/>
+
+                  <circle cx="0"   cy="105" r="3" fill="var(--surface)" stroke="var(--chart1)" stroke-width="1.5"/>
+                  <circle cx="185" cy="66"  r="3" fill="var(--surface)" stroke="var(--chart1)" stroke-width="1.5"/>
+                  <circle cx="360" cy="48"  r="3" fill="var(--surface)" stroke="var(--chart1)" stroke-width="1.5"/>
+                  <circle cx="560" cy="8"   r="4" fill="var(--chart1)" stroke="var(--surface)" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <div class="chart-labels">
+                <span>Nov</span><span>Dec</span><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- AFFILIATES TABLE -->
+          <div class="card" id="el-affiliates">
+            <div class="card-hd">
+              <div>
+                <div class="card-title">Top affiliates</div>
+                <div class="card-meta">Ranked by revenue · May 2026</div>
+              </div>
+              <a class="card-link" href="#">Manage all</a>
+            </div>
+            <table class="aff-table">
+              <thead>
+                <tr>
+                  <th>Affiliate</th>
+                  <th class="num">Revenue</th>
+                  <th class="num">Conv.</th>
+                  <th>CR%</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><div class="aff-name">Marcus Reid</div><div class="aff-handle">@marcusreid</div></td>
+                  <td class="num">$9,840</td>
+                  <td class="num">412</td>
+                  <td><div class="cr-track"><div class="cr-bar"><div class="cr-fill" style="width:82%"></div></div>8.2%</div></td>
+                  <td><span class="status-pill st-a">Active</span></td>
+                </tr>
+                <tr>
+                  <td><div class="aff-name">Sofia Larsson</div><div class="aff-handle">@sofiadigital</div></td>
+                  <td class="num">$7,210</td>
+                  <td class="num">298</td>
+                  <td><div class="cr-track"><div class="cr-bar"><div class="cr-fill" style="width:71%"></div></div>7.1%</div></td>
+                  <td><span class="status-pill st-a">Active</span></td>
+                </tr>
+                <tr>
+                  <td><div class="aff-name">James Okafor</div><div class="aff-handle">@jamespromo</div></td>
+                  <td class="num">$5,640</td>
+                  <td class="num">210</td>
+                  <td><div class="cr-track"><div class="cr-bar"><div class="cr-fill" style="width:58%"></div></div>5.8%</div></td>
+                  <td><span class="status-pill st-a">Active</span></td>
+                </tr>
+                <tr>
+                  <td><div class="aff-name">Anika Larke</div><div class="aff-handle">@anikalinks</div></td>
+                  <td class="num">$4,190</td>
+                  <td class="num">176</td>
+                  <td><div class="cr-track"><div class="cr-bar"><div class="cr-fill" style="width:44%"></div></div>4.4%</div></td>
+                  <td><span class="status-pill st-p">Pending</span></td>
+                </tr>
+                <tr>
+                  <td><div class="aff-name">Tom Watts</div><div class="aff-handle">@tomwattsco</div></td>
+                  <td class="num">$2,850</td>
+                  <td class="num">98</td>
+                  <td><div class="cr-track"><div class="cr-bar"><div class="cr-fill" style="width:31%"></div></div>3.1%</div></td>
+                  <td><span class="status-pill st-x">Paused</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div class="col-right">
+
+          <!-- PAYOUT QUEUE -->
+          <div class="card" id="el-payouts">
+            <div class="card-hd">
+              <div class="card-title">Payout queue</div>
+              <a class="card-link" href="#">Pay all</a>
+            </div>
+            <div class="list-body">
+              <div class="list-row">
+                <div class="list-info">
+                  <div class="list-name">Marcus Reid</div>
+                  <div class="list-sub">Due today</div>
+                </div>
+                <div class="payout-due">
+                  <div class="payout-amt">$3,210</div>
+                  <span class="payout-tag ptag-due">Overdue</span>
+                </div>
+              </div>
+              <div class="list-row">
+                <div class="list-info">
+                  <div class="list-name">Sofia Larsson</div>
+                  <div class="list-sub">Due May 14</div>
+                </div>
+                <div class="payout-due">
+                  <div class="payout-amt">$2,085</div>
+                  <span class="payout-tag ptag-pending">Pending</span>
+                </div>
+              </div>
+              <div class="list-row">
+                <div class="list-info">
+                  <div class="list-name">James Okafor</div>
+                  <div class="list-sub">Due May 15</div>
+                </div>
+                <div class="payout-due">
+                  <div class="payout-amt">$1,640</div>
+                  <span class="payout-tag ptag-pending">Pending</span>
+                </div>
+              </div>
+              <div class="list-row">
+                <div class="list-info">
+                  <div class="list-name">Anika Larke</div>
+                  <div class="list-sub">Due May 18</div>
+                </div>
+                <div class="payout-due">
+                  <div class="payout-amt">$980</div>
+                  <span class="payout-tag ptag-pending">Pending</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TOP LINKS -->
+          <div class="card" id="el-links">
+            <div class="card-hd">
+              <div class="card-title">Top links</div>
+              <a class="card-link" href="#">New link</a>
+            </div>
+            <div class="list-body">
+              <div class="list-row">
+                <div class="list-rank">1</div>
+                <div class="list-info">
+                  <div class="list-name">Homepage Pro</div>
+                  <div class="list-sub">go.pf.io/hp-pro</div>
+                </div>
+                <div class="list-val">18.4k</div>
+              </div>
+              <div class="list-row">
+                <div class="list-rank">2</div>
+                <div class="list-info">
+                  <div class="list-name">Summer Sale</div>
+                  <div class="list-sub">go.pf.io/summer26</div>
+                </div>
+                <div class="list-val">12.8k</div>
+              </div>
+              <div class="list-row">
+                <div class="list-rank">3</div>
+                <div class="list-info">
+                  <div class="list-name">Product Launch</div>
+                  <div class="list-sub">go.pf.io/launch-v2</div>
+                </div>
+                <div class="list-val">9.3k</div>
+              </div>
+              <div class="list-row">
+                <div class="list-rank">4</div>
+                <div class="list-info">
+                  <div class="list-name">Blog CTA</div>
+                  <div class="list-sub">go.pf.io/blog-cta</div>
+                </div>
+                <div class="list-val">6.2k</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PROGRAMS -->
+          <div class="card" id="el-programs">
+            <div class="card-hd">
+              <div class="card-title">Programs</div>
+              <a class="card-link" href="#">Manage</a>
+            </div>
+            <div class="list-body">
+              <div class="list-row">
+                <div class="list-rank">1</div>
+                <div class="list-info">
+                  <div class="list-name">BrandCo Main</div>
+                  <div class="list-sub">20% rev share</div>
+                </div>
+                <div class="list-val">$51k</div>
+              </div>
+              <div class="list-row">
+                <div class="list-rank">2</div>
+                <div class="list-info">
+                  <div class="list-name">Summer Launch</div>
+                  <div class="list-sub">$30 flat CPA</div>
+                </div>
+                <div class="list-val">$22k</div>
+              </div>
+              <div class="list-row">
+                <div class="list-rank">3</div>
+                <div class="list-info">
+                  <div class="list-name">Tier Rewards</div>
+                  <div class="list-sub">Tiered 10–25%</div>
+                </div>
+                <div class="list-val">$11k</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script>
+/* ── THEME ── */
+function toggleTheme() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  document.getElementById('themeLabel').textContent = isDark ? 'Light' : 'Dark';
+}
+
+/* ── TOUR STEPS ── */
+const STEPS = [
+  { id:'el-metrics',   title:'Key metrics',        text:'Your four core KPIs for the month — revenue, clicks, conversions, and conversion rate. Each includes a delta vs. last month and a sparkline trend.', place:'bottom' },
+  { id:'el-chart',     title:'Revenue trend',       text:'Seven months of revenue plotted against normalised click volume. The dashed line lets you spot correlation between traffic and earnings over time.', place:'bottom' },
+  { id:'nav-affiliates',title:'Affiliate roster',   text:'Browse, invite, approve or pause individual affiliates. Filter by status, tier, or program — and bulk-message your top performers.', place:'right' },
+  { id:'el-affiliates', title:'Top affiliates',     text:'Your best earners this month, ranked by revenue. The bar next to the conversion rate shows each affiliate\'s share of your program average.', place:'top' },
+  { id:'el-payouts',   title:'Payout queue',        text:'Everyone due for payment, ordered by date. Red means overdue — act today. You can pay individually or run a bulk payment from the Payouts page.', place:'left' },
+  { id:'el-links',     title:'Top tracking links',  text:'Your highest-traffic affiliate links this month. Click counts update live. Use "New link" to spin up a campaign-specific URL in seconds.', place:'left' },
+  { id:'nav-rules',    title:'Commission rules',    text:'Define flat CPA, percentage rev-share, or tiered structures here. Changes apply immediately across all active affiliates in the program.', place:'right' },
+  { id:'el-programs',  title:'Programs',            text:'Run multiple commission programs simultaneously. Switch between them or create new ones — each with its own rules, links, and affiliate roster.', place:'left' },
+];
+
+let cur = -1;
+
+function showWelcome() {
+  closeAll();
+  document.getElementById('overlay').classList.add('on');
+  document.getElementById('wm').classList.add('on');
+}
+
+function startTour() {
+  document.getElementById('wm').classList.remove('on');
+  buildDots();
+  cur = 0;
+  showStep(0);
+}
+
+function buildDots() {
+  const w = document.getElementById('dots');
+  w.innerHTML = '';
+  STEPS.forEach((_,i) => {
+    const d = document.createElement('div');
+    d.className = 'pd'; d.id = 'pd'+i;
+    w.appendChild(d);
+  });
+}
+
+function showStep(idx) {
+  const s = STEPS[idx];
+  const el = document.getElementById(s.id);
+  if (!el) return;
+  el.scrollIntoView({ behavior:'smooth', block:'center' });
+
+  setTimeout(() => {
+    const r = el.getBoundingClientRect();
+    const pad = 7;
+    const spot = document.getElementById('spot');
+    spot.style.cssText = `display:block;left:${r.left-pad}px;top:${r.top-pad}px;width:${r.width+pad*2}px;height:${r.height+pad*2}px`;
+
+    const pop = document.getElementById('pop');
+    pop.style.display = 'block';
+    document.getElementById('pStep').textContent = `${String(idx+1).padStart(2,'0')} of ${String(STEPS.length).padStart(2,'0')}`;
+    document.getElementById('pTitle').textContent = s.title;
+    document.getElementById('pText').textContent  = s.text;
+    document.getElementById('popBar').style.width = `${((idx+1)/STEPS.length)*100}%`;
+    document.getElementById('btnP').disabled = idx === 0;
+    document.getElementById('btnN').textContent = idx === STEPS.length-1 ? 'Finish' : 'Next';
+
+    placePop(r, s.place);
+    updateDots(idx);
+  }, 110);
+}
+
+function placePop(r, place) {
+  const pop = document.getElementById('pop');
+  const arr = document.getElementById('arr');
+  const pw = 296, ph = 210, m = 16;
+  arr.style.display = 'block';
+  const midY = r.top + r.height/2;
+  const midX = r.left + r.width/2;
+  let top, left;
+
+  if (place === 'bottom') {
+    top = r.bottom + m; left = midX - pw/2;
+    posArr(midX-5, r.bottom+m-5, 'bottom');
+  } else if (place === 'top') {
+    top = r.top - ph - m; left = midX - pw/2;
+    posArr(midX-5, r.top-m+ph-5, 'top');
+  } else if (place === 'right') {
+    top = midY - ph/2; left = r.right + m;
+    posArr(r.right+m-5, midY-5, 'right');
+  } else {
+    top = midY - ph/2; left = r.left - pw - m;
+    posArr(r.left-m-5, midY-5, 'left');
+  }
+
+  left = Math.max(10, Math.min(left, window.innerWidth - pw - 10));
+  top  = Math.max(10, Math.min(top,  window.innerHeight - ph - 10));
+  pop.style.left = left+'px'; pop.style.top = top+'px';
+}
+
+function posArr(x, y, dir) {
+  const a = document.getElementById('arr');
+  a.style.left = x+'px'; a.style.top = y+'px';
+  a.style.borderTopColor    = dir==='top'    ? 'var(--border2)' : 'transparent';
+  a.style.borderLeftColor   = dir==='left'   ? 'var(--border2)' : 'transparent';
+  a.style.borderBottomColor = dir==='bottom' ? 'var(--border2)' : 'transparent';
+  a.style.borderRightColor  = dir==='right'  ? 'var(--border2)' : 'transparent';
+}
+
+function updateDots(idx) {
+  STEPS.forEach((_,i) => {
+    const d = document.getElementById('pd'+i);
+    if (!d) return;
+    d.className = 'pd' + (i < idx ? ' done' : i === idx ? ' active' : '');
+  });
+}
+
+function next() {
+  if (cur < STEPS.length-1) { cur++; showStep(cur); }
+  else finish();
+}
+
+function prev() {
+  if (cur > 0) { cur--; showStep(cur); }
+}
+
+function finish() {
+  ['spot','arr'].forEach(id => document.getElementById(id).style.display = 'none');
+  document.getElementById('pop').style.display = 'none';
+  document.getElementById('finish').classList.add('on');
+  boom();
+}
+
+function closeAll() {
+  document.getElementById('overlay').classList.remove('on');
+  ['wm','finish'].forEach(id => document.getElementById(id).classList.remove('on'));
+  document.getElementById('pop').style.display = 'none';
+  ['spot','arr'].forEach(id => document.getElementById(id).style.display = 'none');
+  document.getElementById('confetti').classList.remove('on');
+  document.getElementById('confetti').innerHTML = '';
+  cur = -1;
+}
+
+function boom() {
+  const wrap = document.getElementById('confetti');
+  wrap.classList.add('on'); wrap.innerHTML = '';
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  const cols = isDark
+    ? ['#f0ede8','#8a8780','#4aab7a','#c49a40','#d46464','#ffffff']
+    : ['#1a1916','#6b6860','#2a7a52','#7a5a1a','#9a2a2a','#c8c4bc'];
+  for (let i = 0; i < 70; i++) {
+    const p = document.createElement('div');
+    p.className = 'cp';
+    p.style.cssText = `left:${Math.random()*100}vw;background:${cols[~~(Math.random()*cols.length)]};animation-duration:${2+Math.random()*2}s;animation-delay:${Math.random()*0.6}s;width:${5+Math.random()*6}px;height:${7+Math.random()*9}px;border-radius:${Math.random()>.5?'50%':'2px'}`;
+    wrap.appendChild(p);
+  }
+  setTimeout(() => { wrap.innerHTML=''; wrap.classList.remove('on'); }, 4000);
+}
+
+document.getElementById('overlay').addEventListener('click', closeAll);
+
+document.querySelectorAll('.sb-item').forEach(el => {
+  el.addEventListener('click', () => {
+    document.querySelectorAll('.sb-item').forEach(n => n.classList.remove('active'));
+    el.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

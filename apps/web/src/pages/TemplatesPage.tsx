@@ -6,7 +6,7 @@ import type { Template } from '../types';
 
 export function TemplatesPage() {
   useSeo(
-    'Website Templates | KurtMorales',
+    'Website Templates | KM Web Design',
     'Ready-to-use website templates for startups, SaaS, ecommerce, and portfolios. Built with modern tech stack.',
     { canonical: '/templates' },
   );

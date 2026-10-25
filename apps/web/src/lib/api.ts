@@ -261,7 +261,7 @@ export async function adminDeleteTemplate(id: string) {
 
 // Subscribers admin — uses the same public endpoint with higher limit, plus individual delete
 export async function adminListSubscribers() {
-  const data = await adminFetch<{ docs: Subscriber[] }>('/api/subscribers', { method: 'GET', limit: 10000 });
+  const data = await adminFetch<{ docs: Subscriber[] }>('/api/subscribers?limit=10000', { method: 'GET' });
   return data?.docs ?? [];
 }
 

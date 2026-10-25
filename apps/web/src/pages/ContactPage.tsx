@@ -3,7 +3,7 @@ import { submitContact } from '../lib/api';
 import { useSeo } from '../lib/seo';
 
 const contactItems = [
-  { label: 'Email', value: 'email@kurtmorales.com', href: 'mailto:email@kurtmorales.com' },
+  { label: 'Email', value: 'hello@kmwebdesign.xyz', href: 'mailto:hello@kmwebdesign.xyz' },
   {
     label: 'LinkedIn',
     value: 'kurtanthonymorales',
@@ -14,8 +14,8 @@ const contactItems = [
 
 export function ContactPage() {
   useSeo(
-    'Contact — KurtMorales',
-    "Get in touch with KurtMorales. Ready to start a web design project in Las Vegas or remotely? Let's talk.",
+    'Contact KM Web Design | Restaurant Website Projects',
+    "Tell KM Web Design about your restaurant, current website, and goals. We build custom restaurant websites in Las Vegas and beyond.",
     { canonical: '/contact' },
   );
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
@@ -29,7 +29,7 @@ export function ContactPage() {
       const body = encodeURIComponent(
         `Name: ${data.name || ''}\nEmail: ${data.email || ''}\nProject: ${data.project || ''}\nBudget: ${data.budget || ''}\nMessage: ${data.message || ''}`,
       );
-      window.location.href = `mailto:email@kurtmorales.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:hello@kmwebdesign.xyz?subject=${subject}&body=${body}`;
     };
 
     setStatus('sending');
@@ -56,8 +56,8 @@ export function ContactPage() {
 
   return (
     <main id="main-content">
-      <section className="pt-32 pb-24 border-b border-gray-100">
-        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-[1fr_1.2fr] gap-20 items-start">
+      <section className="pt-32 pb-24 border-b border-gray-100 overflow-x-hidden">
+        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] gap-20 items-start">
           <div>
             <span className="text-gray-400 font-bold text-[10px] tracking-widest uppercase block mb-6 reveal">
               Contact
@@ -72,8 +72,8 @@ export function ContactPage() {
               className="text-gray-500 leading-relaxed mb-12 reveal"
               style={{ transitionDelay: '200ms' }}
             >
-              Have a project in mind? Reach out with your idea, timeline, and budget — I&apos;ll get
-              back to you within 24 hours.
+              Tell us about your restaurant, your current website, and the guest action you want to
+              improve. We&apos;ll get back to you within one business day.
             </p>
             <ul className="space-y-6 reveal" style={{ transitionDelay: '300ms' }}>
               {contactItems.map((item) => (
@@ -93,7 +93,7 @@ export function ContactPage() {
               ))}
             </ul>
           </div>
-          <div className="reveal-right bg-white border border-gray-200 p-10 relative">
+          <div className="reveal-right min-w-0 max-w-full bg-white border border-gray-200 p-6 sm:p-10 relative">
             <div className="absolute top-0 left-0 w-12 h-[2px] bg-brand" />
             <div className="absolute top-0 left-0 w-[2px] h-12 bg-brand" />
             <form className="space-y-6" onSubmit={submit}>
@@ -132,10 +132,10 @@ export function ContactPage() {
                   className="w-full border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-brand transition-colors bg-white text-gray-700"
                 >
                   <option value="">Select a service...</option>
-                  <option value="brand-website">Brand Website</option>
-                  <option value="landing-page">Landing / Conversion Page</option>
-                  <option value="custom-tool">Custom Tool / Dashboard</option>
-                  <option value="ecommerce">E-commerce</option>
+                  <option value="restaurant-website">Restaurant Website</option>
+                  <option value="menu-ordering">Menu / Online Ordering</option>
+                  <option value="local-seo">Local SEO / Performance</option>
+                  <option value="custom-tool">Custom Dashboard / Tool</option>
                   <option value="other">Other / Not sure</option>
                 </select>
               </label>
@@ -173,7 +173,7 @@ export function ContactPage() {
               )}
               {status === 'error' && (
                 <div className="p-4 bg-red-50 border border-red-200 text-red-700 text-sm font-medium">
-                  ❌ Something went wrong. Please email me directly at email@kurtmorales.com.
+                  Something went wrong. Please email hello@kmwebdesign.xyz directly.
                 </div>
               )}
               <button

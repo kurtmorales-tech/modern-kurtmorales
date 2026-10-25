@@ -6,7 +6,7 @@ const totalProducts = productPlatforms.reduce((sum, platform) => sum + platform.
 
 export function ProductsPage() {
   useSeo(
-    'Products — KurtMorales',
+    'Products | KM Web Design',
     'Curated product roundup page with placeholder listings for Temu, Amazon, TikTok Shop, and Alibaba. Links can be updated manually later.',
     { canonical: '/products' },
   );

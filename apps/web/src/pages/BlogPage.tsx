@@ -15,8 +15,8 @@ function formatDate(value: string) {
 
 export function BlogPage() {
   useSeo(
-    'Blog — KurtMorales',
-    'Thoughts on web development, freelancing, AI integration, and building for the modern web.',
+    'Restaurant Website Blog | KM Web Design',
+    'Practical guidance on restaurant websites, online menus, local SEO, ordering integrations, speed, and accessible digital experiences.',
     { canonical: '/blog' },
   );
   const [posts, setPosts] = useState<Post[]>([]);
@@ -42,11 +42,11 @@ export function BlogPage() {
                 Blog archive
               </span>
               <h1 className="text-4xl md:text-6xl font-display font-medium leading-[0.94] km-text-strong mb-6">
-                Cloudflare-fast notes for <span className="text-brand">modern web work.</span>
+                Better websites for <span className="text-brand">busy restaurants.</span>
               </h1>
               <p className="km-text-muted text-lg leading-relaxed max-w-2xl">
-                Writing on web development, freelancing, AI, delivery workflows, and the small
-                design decisions that make a site feel sharper in motion.
+                Practical notes for restaurant owners who want more direct bookings, clearer menus,
+                and a stronger presence in local search.
               </p>
               {featuredTags.length > 0 && (
                 <div className="mt-8 flex flex-wrap gap-3">
@@ -96,8 +96,7 @@ export function BlogPage() {
                     Focus
                   </span>
                   <p className="text-sm leading-relaxed km-text-muted">
-                    Design systems, launch workflows, local SEO, CMS structure, and AI-assisted
-                    delivery.
+                    Menu UX, local SEO, online ordering, performance, accessibility, and content.
                   </p>
                 </div>
               </div>

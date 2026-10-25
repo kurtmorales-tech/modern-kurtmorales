@@ -6,7 +6,7 @@ import type { Post } from '../types';
 
 export function StudioBlogPage() {
   useSeo(
-    'Blog Studio — KurtMorales',
+    'Blog Studio | KM Web Design',
     'Edit blog posts in the browser through the Cloudflare Worker studio.',
     { canonical: '/studio/blog', noindex: true },
   );

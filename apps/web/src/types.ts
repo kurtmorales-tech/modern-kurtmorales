@@ -1,3 +1,3 @@
-import type { Post, Project, Template, Tag, Upload } from '@kurtmorales/schema';
+import type { ContactMessage, Newsletter, Post, Project, Subscriber, Template, Tag, Upload } from '@kurtmorales/schema';
 
-export type { Post, Project, Template, Tag, Upload };
+export type { ContactMessage, Newsletter, Post, Project, Subscriber, Template, Tag, Upload };

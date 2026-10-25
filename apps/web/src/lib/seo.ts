@@ -15,7 +15,7 @@ type SeoOptions = {
   noindex?: boolean;
 };
 
-const SITE_URL = 'https://kurtmorales.com';
+const SITE_URL = 'https://kmwebdesign.xyz';
 const DEFAULT_IMAGE = `${SITE_URL}/og-default.png`;
 
 function upsertMeta(selector: string, attrs: Record<string, string>) {
@@ -62,11 +62,11 @@ export function useSeo(title: string, description: string, options: SeoOptions =
     upsertMeta('meta[name="keywords"]', {
       name: 'keywords',
       content:
-        'web designer las vegas, freelance web developer las vegas, kurtmorales, small business website las vegas, react developer las vegas, cloudflare pages developer',
+        'restaurant web design Las Vegas, restaurant website design, restaurant web development, online menu design, local SEO Las Vegas, KM Web Design',
     });
     upsertMeta('meta[name="author"]', {
       name: 'author',
-      content: 'Kurt Anthony Morales',
+      content: 'KM Web Design',
     });
     upsertMeta('meta[name="robots"]', {
       name: 'robots',
@@ -98,7 +98,7 @@ export function useSeo(title: string, description: string, options: SeoOptions =
     });
     upsertMeta('meta[property="og:site_name"]', {
       property: 'og:site_name',
-      content: 'KurtMorales',
+      content: 'KM Web Design',
     });
 
     upsertMeta('meta[name="twitter:card"]', {
@@ -137,14 +137,14 @@ export function useSeo(title: string, description: string, options: SeoOptions =
 
     setJsonLd('km-person-jsonld', {
       '@context': 'https://schema.org',
-      '@type': 'Person',
-      name: 'Kurt Anthony Morales',
+      '@type': 'Organization',
+      name: 'KM Web Design',
       url: SITE_URL,
       image: DEFAULT_IMAGE,
-      jobTitle: 'Freelance Web Designer & Developer',
+      description: 'Restaurant web design and development agency based in Las Vegas, Nevada.',
       worksFor: {
         '@type': 'Organization',
-        name: 'KurtMorales Studio',
+        name: 'KM Web Design',
         url: SITE_URL,
       },
       address: {
@@ -163,10 +163,10 @@ export function useSeo(title: string, description: string, options: SeoOptions =
     setJsonLd('km-website-jsonld', {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
-      name: 'KurtMorales',
+      name: 'KM Web Design',
       url: SITE_URL,
-      description: 'Freelance web designer & developer in Las Vegas, NV.',
-      author: { '@type': 'Person', name: 'Kurt Anthony Morales' },
+      description: 'Restaurant web design and development agency in Las Vegas, Nevada.',
+      author: { '@type': 'Organization', name: 'KM Web Design' },
     });
 
     if (ogType === 'article' && options.article) {
@@ -180,12 +180,12 @@ export function useSeo(title: string, description: string, options: SeoOptions =
         dateModified: options.article.modifiedTime || options.article.publishedTime,
         author: {
           '@type': 'Person',
-          name: options.article.author ?? 'Kurt Anthony Morales',
+          name: options.article.author ?? 'Kurt Morales',
           url: `${SITE_URL}/about`,
         },
         publisher: {
           '@type': 'Organization',
-          name: 'KurtMorales',
+          name: 'KM Web Design',
           url: SITE_URL,
         },
         mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },

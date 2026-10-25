@@ -5,7 +5,7 @@ import { useSeo } from '../lib/seo';
 import type { Project } from '../types';
 
 export function ProjectsPage() {
-  useSeo('Projects — KurtMorales', 'Selected projects and digital experiments from KurtMorales.', {
+  useSeo('Restaurant Website Projects | KM Web Design', 'Selected restaurant-focused website concepts and digital projects from KM Web Design.', {
     canonical: '/projects',
   });
   const [projects, setProjects] = useState<Project[]>([]);

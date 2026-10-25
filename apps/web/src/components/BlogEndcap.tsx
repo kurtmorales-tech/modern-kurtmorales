@@ -134,7 +134,7 @@ export function BlogEndcap({
             <Link to="/contact" className="km-button km-button-primary">
               Start a project
             </Link>
-            <a href="mailto:email@kurtmorales.com" className="km-button km-button-secondary">
+            <a href="mailto:hello@kmwebdesign.xyz" className="km-button km-button-secondary">
               Email directly
             </a>
           </div>

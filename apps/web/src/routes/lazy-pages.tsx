@@ -7,6 +7,9 @@ export const AboutPage = lazy(() =>
 export const ApiDashboardPage = lazy(() =>
   import('../pages/ApiDashboardPage').then((m) => ({ default: m.ApiDashboardPage })),
 );
+export const OwnerDashboardPage = lazy(() =>
+  import('../pages/OwnerDashboardPage').then((m) => ({ default: m.OwnerDashboardPage })),
+);
 export const BlogPage = lazy(() =>
   import('../pages/BlogPage').then((m) => ({ default: m.BlogPage })),
 );
@@ -39,4 +42,23 @@ export const TemplatesPage = lazy(() =>
 );
 export const TermsPage = lazy(() =>
   import('../pages/TermsPage').then((m) => ({ default: m.TermsPage })),
+);
+
+export const MigratedProjectShowcase = lazy(() =>
+  import('../migrated/pages/ProjectShowcase').then((m) => ({ default: m.default })),
+);
+export const MigratedArticleDetail = lazy(() =>
+  import('../migrated/pages/ArticleDetail').then((m) => ({ default: m.default })),
+);
+export const MigratedAIWebsiteBuilder = lazy(() =>
+  import('../migrated/pages/demos/AIWebsiteBuilder').then((m) => ({ default: m.default })),
+);
+export const MigratedCryptoBot = lazy(() =>
+  import('../migrated/pages/demos/CryptoBot').then((m) => ({ default: m.default })),
+);
+export const MigratedRestaurantCRM = lazy(() =>
+  import('../migrated/pages/demos/RestaurantCRM').then((m) => ({ default: m.default })),
+);
+export const MigratedAITrading = lazy(() =>
+  import('../migrated/pages/demos/AITrading').then((m) => ({ default: m.default })),
 );

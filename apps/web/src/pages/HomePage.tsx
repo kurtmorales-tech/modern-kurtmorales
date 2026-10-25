@@ -4,33 +4,39 @@ import { ClientReviews } from '../components/sections/ClientReviews';
 import { Hero } from '../components/sections/Hero';
 import { Metrics } from '../components/sections/Metrics';
 import { Packages } from '../components/sections/Packages';
+import { PortfolioBlogLab } from '../components/sections/PortfolioBlogLab';
 import { Process } from '../components/sections/Process';
 import { Projects } from '../components/sections/Projects';
+import { RestaurantConcepts } from '../components/sections/RestaurantConcepts';
 import { Services } from '../components/sections/Services';
 import { Skills } from '../components/sections/Skills';
 import { Templates } from '../components/sections/Templates';
-import { getProjects, getTemplates } from '../lib/api';
+import { getPosts, getProjects, getTemplates } from '../lib/api';
 import { useSeo } from '../lib/seo';
-import type { Project, Template } from '../types';
+import type { Post, Project, Template } from '../types';
 
 export function HomePage() {
   useSeo(
-    'KurtMorales | Web Designer & Developer Las Vegas NV',
-    'KurtMorales — Las Vegas freelance web designer & developer. I build fast, clean, SEO-optimized websites for small businesses, service providers, and startups. Cloudflare Pages and React.',
+    'Restaurant Web Design Las Vegas | KM Web Design',
+    'KM Web Design creates custom, fast restaurant websites in Las Vegas with mobile menus, ordering and reservation integrations, local SEO, and ongoing support.',
     { canonical: '/' },
   );
 
   const [projects, setProjects] = useState<Project[]>([]);
   const [templates, setTemplates] = useState<Template[]>([]);
+  const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
     getProjects().then((items) => setProjects(items.slice(0, 6)));
     getTemplates().then((items) => setTemplates(items.slice(0, 3)));
+    getPosts().then((items) => setPosts(items.slice(0, 6)));
   }, []);
 
   return (
     <main id="main-content">
       <Hero />
+      <RestaurantConcepts />
+      <PortfolioBlogLab projects={projects} posts={posts} />
       <Metrics />
       <Services />
       <Process />
@@ -48,7 +54,7 @@ export function HomePage() {
             <span className="km-pill mb-8">
               <span className="w-2 h-2 bg-green-400 pulse-dot" />
               <span className="font-mono text-[10px] font-black tracking-[0.18em] uppercase km-text-muted">
-                $ open --to-new-projects
+                Now booking restaurant projects
               </span>
             </span>
           </div>
@@ -56,28 +62,23 @@ export function HomePage() {
             className="reveal text-4xl md:text-6xl font-display font-medium leading-tight mb-8"
             style={{ transitionDelay: '100ms' }}
           >
-            Let&apos;s build something
+            Make your restaurant
             <br />
-            <span className="text-brand-light">great together.</span>
+            <span className="text-brand-light">the easy choice.</span>
           </h2>
           <p
             className="reveal km-text-muted text-lg max-w-xl mx-auto mb-12 leading-relaxed"
             style={{ transitionDelay: '200ms' }}
           >
-            Send a short note with your business, goals, and ideal launch timeline. I&apos;ll reply
-            with the best next step.
+            Tell us where your current website is falling short. We&apos;ll recommend a focused next
+            step for your menu, reservations, online ordering, or local visibility.
           </p>
           <div
             className="reveal flex flex-wrap justify-center gap-4"
             style={{ transitionDelay: '300ms' }}
           >
-            <a href="mailto:email@kurtmorales.com" className="km-button km-button-primary group">
-              Start a Project <span aria-hidden>→</span>
-            </a>
-            <a
-              href="#projects"
-              className="km-button km-button-dark"
-            >
+            <a href="/contact" className="km-button km-button-primary group">Request a consultation</a>
+            <a href="#projects" className="km-button km-button-dark">
               View Portfolio
             </a>
           </div>

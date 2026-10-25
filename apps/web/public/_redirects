@@ -1,5 +1,3 @@
-# Only relative URLs allowed in Workers + Assets _redirects
-# www → non-www and blogs subdomain handled by Worker
-
-/home / 301
+# Client-side routes (/work/:id, /articles/:id) need the SPA shell on direct loads.
+# Static files under /showcase/ are still served normally.
 /* /index.html 200

@@ -1,8 +1,9 @@
-import type { PropsWithChildren } from 'react';
+import { Outlet } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Footer } from './Footer';
 import { Header } from './Header';
+import { SiteAssistant } from './SiteAssistant';
 
 function useRevealAndLiveCards() {
   const location = useLocation();
@@ -10,12 +11,12 @@ function useRevealAndLiveCards() {
   useEffect(() => {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const cleanups: Array<() => void> = [];
-    const targets = document.querySelectorAll<HTMLElement>(
-      '.reveal, .reveal-left, .reveal-right, .reveal-scale',
-    );
+    const SELECTOR = '.reveal, .reveal-left, .reveal-right, .reveal-scale';
+
+    const reveal = (target: HTMLElement) => target.classList.add('revealed');
 
     if (reduceMotion) {
-      targets.forEach((target) => target.classList.add('revealed'));
+      document.querySelectorAll<HTMLElement>(SELECTOR).forEach(reveal);
     } else {
       const observer = new IntersectionObserver(
         (entries) => {
@@ -25,10 +26,50 @@ function useRevealAndLiveCards() {
             observer.unobserve(entry.target);
           });
         },
-        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' },
+        { threshold: 0.05, rootMargin: '0px 0px -20px 0px' },
       );
-      targets.forEach((target) => observer.observe(target));
-      cleanups.push(() => observer.disconnect());
+
+      const revealIfInView = () => {
+        document.querySelectorAll<HTMLElement>(SELECTOR).forEach((target) => {
+          if (target.classList.contains('revealed')) return;
+          const rect = target.getBoundingClientRect();
+          if (rect.top < window.innerHeight + 80) {
+            target.classList.add('revealed');
+            observer.unobserve(target);
+          } else {
+            observer.observe(target);
+          }
+        });
+      };
+      revealIfInView();
+
+      const onScroll = () => window.requestAnimationFrame(revealIfInView);
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+
+      const mo = new MutationObserver(() => revealIfInView());
+      mo.observe(document.body, { childList: true, subtree: true });
+      cleanups.push(() => {
+        mo.disconnect();
+        observer.disconnect();
+        window.removeEventListener('scroll', onScroll);
+        window.removeEventListener('resize', onScroll);
+      });
+    }
+
+    // Ensure any reveal elements added later (async data) become visible
+    if (reduceMotion) {
+      const mo = new MutationObserver((mutations) => {
+        mutations.forEach((m) => {
+          m.addedNodes.forEach((node) => {
+            if (!(node instanceof HTMLElement)) return;
+            if (node.matches(SELECTOR)) node.classList.add('revealed');
+            node.querySelectorAll<HTMLElement>(SELECTOR).forEach((t) => t.classList.add('revealed'));
+          });
+        });
+      });
+      mo.observe(document.body, { childList: true, subtree: true });
+      cleanups.push(() => mo.disconnect());
     }
 
     document.querySelectorAll<HTMLElement>('[data-live-card]').forEach((el) => {
@@ -72,13 +113,14 @@ function useRevealAndLiveCards() {
   }, [location.pathname]);
 }
 
-export function Layout({ children }: PropsWithChildren) {
+export function Layout() {
   useRevealAndLiveCards();
   return (
     <>
       <Header />
-      {children}
+      <Outlet />
       <Footer />
+      <SiteAssistant />
     </>
   );
 }

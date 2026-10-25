@@ -70,7 +70,7 @@ function CardLink({
 
 export function ResourcesPage() {
   useSeo(
-    'Resources — KurtMorales',
+    'Restaurant Website Resources | KM Web Design',
     'Website resources, documentation, SEO meta-tag guidance, and backlink planning for modern small-business websites.',
     { canonical: '/resources' },
   );

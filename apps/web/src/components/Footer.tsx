@@ -22,17 +22,17 @@ export function Footer() {
               className="text-2xl font-bold tracking-tight mb-6 inline-flex items-center gap-3 group km-text-strong"
             >
               <span className="inline-flex h-3 w-3 rounded-full bg-brand/80 shadow-[0_0_0_6px_rgba(244,129,32,0.12)]" />
-              Kurt
+              KM
               <span className="text-brand group-hover:text-brand-dark transition-colors duration-300">
-                Morales
+                Web Design
               </span>
             </Link>
             <p className="text-sm km-text-muted max-w-sm leading-relaxed mb-8">
-              Cloudflare-ready websites, sharp content systems, and conversion-focused interfaces
-              built for real business use.
+              Custom restaurant websites, practical digital tools, and launch support for owners who
+              want a stronger online presence.
             </p>
             <div className="flex flex-wrap gap-3">
-              <a href="mailto:email@kurtmorales.com" className="km-button km-button-secondary">
+              <a href="mailto:hello@kmwebdesign.xyz" className="km-button km-button-secondary">
                 Email
               </a>
               <Link to="/contact" className="km-button km-button-primary">
@@ -107,7 +107,7 @@ export function Footer() {
                   to="/dashboard"
                   className="link-underline hover:text-brand transition-colors duration-300"
                 >
-                  API dashboard
+                  Team operations
                 </Link>
               </li>
               <li>
@@ -128,7 +128,7 @@ export function Footer() {
             <ul className="space-y-4 text-sm km-text-muted font-medium">
               <li>
                 <a
-                  href="mailto:email@kurtmorales.com"
+                  href="mailto:hello@kmwebdesign.xyz"
                   className="link-underline hover:text-brand transition-colors duration-300"
                 >
                   Admin Support

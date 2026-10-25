@@ -10,7 +10,7 @@ export function Projects({ projects }: { projects: Project[] }) {
             $ portfolio
           </span>
           <h2 className="text-4xl md:text-6xl font-display font-medium leading-tight text-brand text-pretty">
-            Selected works and digital experiments.
+            More builds, systems, and digital experiments.
           </h2>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
